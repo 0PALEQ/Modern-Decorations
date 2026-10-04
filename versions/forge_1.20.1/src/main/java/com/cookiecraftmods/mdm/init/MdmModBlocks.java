@@ -543,28 +543,28 @@ public class MdmModBlocks {
 		SHOE_RACK_3 = REGISTRY.register("shoe_rack_3", ShoeRack3Block::new);
 		TALL_MIRROR = REGISTRY.register("tall_mirror", TallMirrorBlock::new);
 
-		SeatBlock.setSeatHeightPixels(FOYER_BENCH_WENGE.get(), 13.0D);
-		SeatBlock.setSeatHeightPixels(COUCHLEFT.get(), 10.0D);
-		SeatBlock.setSeatHeightPixels(GREY_COUCH_LEFT.get(), 14.0D);
-		SeatBlock.setSeatHeightPixels(FOYER_BENCH.get(), 13.0D);
-		SeatBlock.setSeatHeightPixels(GREY_COUCH_RIGHT.get(), 14.0D);
-		SeatBlock.setSeatHeightPixels(COUCH_RIGHT.get(), 10.0D);
-		SeatBlock.setSeatHeightPixels(SET_1_CHAIR.get(), 16.0D);
-		SeatBlock.setSeatHeightPixels(FOYER_BENCH_WHITE.get(), 13.0D);
-		SeatBlock.setSeatHeightPixels(OFFICE_SET_1_CHAIR.get(), 16.0D);
-		SeatBlock.setSeatHeightPixels(GREY_COUCH_CORNER.get(), 14.0D);
-		SeatBlock.setSeatHeightPixels(COUCH_CORNER.get(), 10.0D);
-		SeatBlock.setSeatHeightPixels(BLACK_ARMCHAIR.get(), 15.0D);
-		SeatBlock.setSeatHeightPixels(LIGHT_GRAY_COUCH_LEFT.get(), 13.0D);
-		SeatBlock.setSeatHeightPixels(GREY_COUCH_MIDDLE.get(), 14.0D);
-		SeatBlock.setSeatHeightPixels(OUTDOOR_COUCH.get(), 15.0D);
-		SeatBlock.setSeatHeightPixels(LIGHT_GREY_COUCH_RIGHT.get(), 13.0D);
-		SeatBlock.setSeatHeightPixels(LIGHT_GREY_COUCH_MIDDLE.get(), 13.0D);
-		SeatBlock.setSeatHeightPixels(KITCHEN_SET_3_BAR_CHAIR.get(), 19.0D);
-		SeatBlock.setSeatHeightPixels(FOYER_BENCH_DARK.get(), 13.0D);
-		SeatBlock.setSeatHeightPixels(COUCHMIDDLE.get(), 10.0D);
-		SeatBlock.setSeatHeightPixels(WHITE_ARMCHAIR.get(), 15.0D);
-		SeatBlock.setSeatHeightPixels(GREY_SOFA.get(), 20.0D);
+		SeatBlock.setSeatHeightPixels(FOYER_BENCH_WENGE, 13.0D);
+		SeatBlock.setSeatHeightPixels(COUCHLEFT, 10.0D);
+		SeatBlock.setSeatHeightPixels(GREY_COUCH_LEFT, 14.0D);
+		SeatBlock.setSeatHeightPixels(FOYER_BENCH, 13.0D);
+		SeatBlock.setSeatHeightPixels(GREY_COUCH_RIGHT, 14.0D);
+		SeatBlock.setSeatHeightPixels(COUCH_RIGHT, 10.0D);
+		SeatBlock.setSeatHeightPixels(SET_1_CHAIR, 16.0D);
+		SeatBlock.setSeatHeightPixels(FOYER_BENCH_WHITE, 13.0D);
+		SeatBlock.setSeatHeightPixels(OFFICE_SET_1_CHAIR, 16.0D);
+		SeatBlock.setSeatHeightPixels(GREY_COUCH_CORNER, 14.0D);
+		SeatBlock.setSeatHeightPixels(COUCH_CORNER, 10.0D);
+		SeatBlock.setSeatHeightPixels(BLACK_ARMCHAIR, 15.0D);
+		SeatBlock.setSeatHeightPixels(LIGHT_GRAY_COUCH_LEFT, 13.0D);
+		SeatBlock.setSeatHeightPixels(GREY_COUCH_MIDDLE, 14.0D);
+		SeatBlock.setSeatHeightPixels(OUTDOOR_COUCH, 15.0D);
+		SeatBlock.setSeatHeightPixels(LIGHT_GREY_COUCH_RIGHT, 13.0D);
+		SeatBlock.setSeatHeightPixels(LIGHT_GREY_COUCH_MIDDLE, 13.0D);
+		SeatBlock.setSeatHeightPixels(KITCHEN_SET_3_BAR_CHAIR, 19.0D);
+		SeatBlock.setSeatHeightPixels(FOYER_BENCH_DARK, 13.0D);
+		SeatBlock.setSeatHeightPixels(COUCHMIDDLE, 10.0D);
+		SeatBlock.setSeatHeightPixels(WHITE_ARMCHAIR, 15.0D);
+		SeatBlock.setSeatHeightPixels(GREY_SOFA, 20.0D);
 	}
 }
 
