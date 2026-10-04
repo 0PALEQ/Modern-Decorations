@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.registries.RegistryObject;
 
 public final class SeatBlock {
 	private static final String SEAT_TAG = "mdm:seat";
@@ -30,11 +31,11 @@ public final class SeatBlock {
 	private SeatBlock() {
 	}
 
-	public static void setSeatHeight(Block block, double seatHeight) {
-		SEAT_HEIGHTS.put(BuiltInRegistries.BLOCK.getKey(block), seatHeight);
+	public static void setSeatHeight(RegistryObject<Block> block, double seatHeight) {
+		SEAT_HEIGHTS.put(block.getId(), seatHeight);
 	}
 
-	public static void setSeatHeightPixels(Block block, double seatHeightPixels) {
+	public static void setSeatHeightPixels(RegistryObject<Block> block, double seatHeightPixels) {
 		setSeatHeight(block, seatHeightPixels / 16.0D);
 	}
 
