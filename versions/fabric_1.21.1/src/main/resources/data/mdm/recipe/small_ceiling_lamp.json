@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "mdm:furniture_parts"
+  },
+  "result": {
+    "id": "mdm:small_ceiling_lamp",
+    "count": 1
+  }
+}

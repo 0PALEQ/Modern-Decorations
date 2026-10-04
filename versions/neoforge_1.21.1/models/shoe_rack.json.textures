@@ -1,0 +1,34 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "shoe_rack",
+        "1_0": "blue_shoe",
+        "2": "black_shoe",
+        "3": "red_shoe",
+        "4": "yellow_shoe"
+      }
+    },
+    "var2": {
+      "name": "var2",
+      "map": {
+        "0": "shoe_rack",
+        "1_0": "blue_shoe",
+        "2": "red_shoe",
+        "3": "black_shoe",
+        "4": "green_shoe"
+      }
+    },
+    "var1": {
+      "name": "var1",
+      "map": {
+        "0": "shoe_rack",
+        "1_0": "yellow_shoe",
+        "2": "pink_shoe",
+        "3": "blue_shoe",
+        "4": "green_shoe"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "mdm:custom/bathroom_stand",
+  "textures": {
+    "all": "mdm:block/stand",
+    "particle": "mdm:block/stand",
+    "2": "mdm:block/pileoftowelss",
+    "3": "mdm:block/hand_soap_and_cream",
+    "4": "mdm:block/coffeplanks",
+    "5": "mdm:block/te_dzyndzle",
+    "6": "mdm:block/stand"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/crib"
+    },
+    "facing=east": {
+      "model": "mdm:block/crib",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/crib",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/crib",
+      "y": 270
+    }
+  }
+}

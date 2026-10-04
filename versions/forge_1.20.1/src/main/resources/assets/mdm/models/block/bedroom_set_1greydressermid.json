@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/bedroom-set1-grey_dresser_mid",
+  "textures": {
+    "all": "mdm:block/grey-wood",
+    "particle": "mdm:block/grey-wood",
+    "0": "mdm:block/grey-wood",
+    "1": "mdm:block/frames"
+  },
+  "render_type": "solid"
+}

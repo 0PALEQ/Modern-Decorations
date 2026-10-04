@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/bedroom-set1-black-loveseat",
+  "textures": {
+    "all": "mdm:block/black-loveseat",
+    "particle": "mdm:block/black-loveseat",
+    "0": "mdm:block/frames",
+    "1": "mdm:block/black-loveseat"
+  },
+  "render_type": "solid"
+}

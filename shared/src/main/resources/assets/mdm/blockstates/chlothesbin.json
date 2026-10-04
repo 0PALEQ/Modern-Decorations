@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/chlothesbin"
+    },
+    "facing=east": {
+      "model": "mdm:block/chlothesbin",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/chlothesbin",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/chlothesbin",
+      "y": 270
+    }
+  }
+}

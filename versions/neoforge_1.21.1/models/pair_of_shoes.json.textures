@@ -1,0 +1,40 @@
+{
+  "mappings": {
+    "red": {
+      "name": "red",
+      "map": {
+        "0": "red_shoe"
+      }
+    },
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "black_shoe"
+      }
+    },
+    "blue": {
+      "name": "blue",
+      "map": {
+        "0": "blue_shoe"
+      }
+    },
+    "pink": {
+      "name": "pink",
+      "map": {
+        "0": "pink_shoe"
+      }
+    },
+    "green": {
+      "name": "green",
+      "map": {
+        "0": "green_shoe"
+      }
+    },
+    "yellow": {
+      "name": "yellow",
+      "map": {
+        "0": "yellow_shoe"
+      }
+    }
+  }
+}

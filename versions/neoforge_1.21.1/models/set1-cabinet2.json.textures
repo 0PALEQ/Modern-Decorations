@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "set1_table_legs",
+        "1": "ikea_wood",
+        "2": "zawiasy"
+      },
+      "name": "default"
+    }
+  }
+}

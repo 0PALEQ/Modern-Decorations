@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/carpet1",
+  "textures": {
+    "all": "mdm:block/carpet1",
+    "particle": "mdm:block/carpet1",
+    "0": "mdm:block/carpet1"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "table1"
+      },
+      "name": "default"
+    }
+  }
+}

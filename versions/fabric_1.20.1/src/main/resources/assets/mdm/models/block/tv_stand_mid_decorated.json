@@ -1,0 +1,13 @@
+{
+  "parent": "mdm:custom/tvstand_mid_decorated",
+  "textures": {
+    "all": "mdm:block/tvstand",
+    "particle": "mdm:block/tvstand",
+    "0": "mdm:block/tvstand",
+    "1": "mdm:block/console",
+    "2": "mdm:block/games",
+    "4": "mdm:block/baskets",
+    "5": "mdm:block/gaming_oads"
+  },
+  "render_type": "solid"
+}

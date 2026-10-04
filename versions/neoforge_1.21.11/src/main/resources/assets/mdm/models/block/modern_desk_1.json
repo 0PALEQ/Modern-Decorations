@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/modern_desk1",
+  "textures": {
+    "all": "mdm:block/moderndesk2",
+    "particle": "mdm:block/moderndesk2",
+    "0": "mdm:block/moderndesk1"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/standing_white_board",
+  "textures": {
+    "all": "mdm:block/white_board",
+    "particle": "mdm:block/white_board",
+    "0": "mdm:block/white_board"
+  }
+}

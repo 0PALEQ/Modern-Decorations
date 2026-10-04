@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/office-set1-bookshelf-v2-top",
+  "textures": {
+    "all": "mdm:block/ikea_wood",
+    "particle": "mdm:block/ikea_wood",
+    "1": "mdm:block/ikea_wood",
+    "2": "mdm:block/set1_table_legs"
+  },
+  "render_type": "solid"
+}

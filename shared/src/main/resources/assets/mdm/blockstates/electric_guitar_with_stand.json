@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/electric_guitar_with_stand"
+    },
+    "facing=east": {
+      "model": "mdm:block/electric_guitar_with_stand",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/electric_guitar_with_stand",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/electric_guitar_with_stand",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "smalltablebottom",
+        "1": "smalltabletop"
+      },
+      "name": "default"
+    }
+  }
+}

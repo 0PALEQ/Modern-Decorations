@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "mdm:furniture_parts",
+  "result": {
+    "id": "mdm:office_set_1_bookshelf_var_1_top",
+    "count": 1
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/crib",
+  "textures": {
+    "all": "mdm:block/crib",
+    "particle": "mdm:block/crib",
+    "0": "mdm:block/crib",
+    "1": "minecraft:block/stripped_spruce_log"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "tablebase",
+        "1": "tablewood"
+      },
+      "name": "default"
+    }
+  }
+}

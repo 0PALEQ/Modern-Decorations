@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/tvstand_right",
+  "textures": {
+    "all": "mdm:block/tvstand",
+    "particle": "mdm:block/tvstand",
+    "0": "mdm:block/tvstand"
+  }
+}

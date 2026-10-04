@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/potted_cactus",
+  "textures": {
+    "all": "mdm:block/cactusflower",
+    "particle": "mdm:block/cactusflower",
+    "0": "mdm:block/cactus_pot",
+    "1": "mdm:block/cactusflower"
+  },
+  "render_type": "translucent"
+}

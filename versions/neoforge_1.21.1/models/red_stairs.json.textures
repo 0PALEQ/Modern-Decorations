@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "stairsbase",
+        "1": "redplanks"
+      },
+      "name": "default"
+    }
+  }
+}

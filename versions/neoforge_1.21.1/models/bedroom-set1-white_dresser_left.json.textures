@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "white-wood",
+        "1": "frames"
+      },
+      "name": "default"
+    }
+  }
+}

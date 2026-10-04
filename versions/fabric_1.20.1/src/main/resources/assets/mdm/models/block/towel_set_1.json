@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/towel_set_1",
+  "textures": {
+    "all": "mdm:block/pileoftowelss",
+    "particle": "mdm:block/pileoftowelss",
+    "0": "mdm:block/blackandwhitetowel"
+  },
+  "render_type": "solid"
+}

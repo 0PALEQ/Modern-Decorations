@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "ikea_wood",
+        "1": "couch-pillows-texture"
+      },
+      "name": "default"
+    }
+  }
+}

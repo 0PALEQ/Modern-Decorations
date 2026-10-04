@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/coffee_table_04",
+  "textures": {
+    "all": "mdm:block/coffeetableglass",
+    "particle": "mdm:block/coffeetableglass",
+    "0": "minecraft:block/stripped_spruce_log",
+    "1": "mdm:block/coffeetableglass"
+  },
+  "render_type": "translucent"
+}

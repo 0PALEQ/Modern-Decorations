@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/shower",
+  "textures": {
+    "all": "mdm:block/shower1",
+    "particle": "mdm:block/shower1",
+    "0": "mdm:block/shower1"
+  }
+}

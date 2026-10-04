@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "bmf1-2",
+        "2": "whiteplanks"
+      },
+      "name": "default"
+    }
+  }
+}

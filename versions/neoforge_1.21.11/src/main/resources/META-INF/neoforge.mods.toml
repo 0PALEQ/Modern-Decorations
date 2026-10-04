@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="mdm"
+version="${mod_version}"
+displayName="Modern Decorations Mod"
+displayURL="https://cookiecraftmods.com/"
+logoFile="logo.png"
+authors="opaleq"
+description='''
+Adds modern decorative furniture, functional storage, refrigerators and ovens.
+'''
+
+[[dependencies.mdm]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.mdm]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"

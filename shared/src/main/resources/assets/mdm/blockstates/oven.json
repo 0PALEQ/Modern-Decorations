@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/oven"
+    },
+    "facing=east": {
+      "model": "mdm:block/oven",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/oven",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/oven",
+      "y": 270
+    }
+  }
+}

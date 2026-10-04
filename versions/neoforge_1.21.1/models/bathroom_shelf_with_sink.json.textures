@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "sink",
+        "1": "sink_chelf"
+      },
+      "name": "default"
+    }
+  }
+}

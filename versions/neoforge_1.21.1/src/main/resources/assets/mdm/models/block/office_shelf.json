@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/officeshelf",
+  "textures": {
+    "all": "mdm:block/officeshelf",
+    "particle": "mdm:block/officeshelf",
+    "0": "mdm:block/officeshelf"
+  },
+  "render_type": "solid"
+}

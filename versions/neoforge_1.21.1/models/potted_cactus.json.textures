@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "cactus_pot",
+        "1": "cactusflower"
+      },
+      "name": "default"
+    }
+  }
+}

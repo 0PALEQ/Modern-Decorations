@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/bedroom-set1-wenge_dresser_mid",
+  "textures": {
+    "all": "mdm:block/wenge-wood",
+    "particle": "mdm:block/wenge-wood",
+    "0": "mdm:block/wenge-wood",
+    "1": "mdm:block/frames",
+    "2": "mdm:block/frameswenge"
+  },
+  "render_type": "solid"
+}

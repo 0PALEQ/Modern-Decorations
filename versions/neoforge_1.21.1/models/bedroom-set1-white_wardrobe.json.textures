@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "3": "white-wood",
+        "4": "galkioddrzwi",
+        "5": "frames"
+      },
+      "name": "default"
+    }
+  }
+}

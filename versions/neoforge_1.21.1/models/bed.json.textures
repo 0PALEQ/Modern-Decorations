@@ -1,0 +1,13 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "mbed_wood",
+        "1": "czarny",
+        "2": "hhjkkj",
+        "3": "blanket"
+      },
+      "name": "default"
+    }
+  }
+}

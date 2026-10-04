@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/ceilinglight_1_small",
+  "textures": {
+    "all": "mdm:block/ceilinglight_1_small",
+    "particle": "mdm:block/ceilinglight_1_small",
+    "0": "mdm:block/ceilinglight_1_small"
+  },
+  "render_type": "solid"
+}

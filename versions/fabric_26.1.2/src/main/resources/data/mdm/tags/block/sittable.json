@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "mdm:grey_sofa",
+    "mdm:foyer_bench_wenge",
+    "mdm:couchleft",
+    "mdm:grey_couch_left",
+    "mdm:foyer_bench",
+    "mdm:grey_couch_right",
+    "mdm:couch_right",
+    "mdm:set_1_chair",
+    "mdm:foyer_bench_white",
+    "mdm:office_set_1_chair",
+    "mdm:grey_couch_corner",
+    "mdm:couch_corner",
+    "mdm:black_armchair",
+    "mdm:light_gray_couch_left",
+    "mdm:grey_couch_middle",
+    "mdm:outdoor_couch",
+    "mdm:light_grey_couch_right",
+    "mdm:light_grey_couch_middle",
+    "mdm:kitchen_set_3_bar_chair",
+    "mdm:foyer_bench_dark",
+    "mdm:couchmiddle",
+    "mdm:white_armchair"
+  ]
+}

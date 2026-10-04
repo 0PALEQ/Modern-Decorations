@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/chandelier_small",
+  "textures": {
+    "all": "mdm:block/chandelier_bulbs",
+    "particle": "mdm:block/chandelier_bulbs",
+    "0": "mdm:block/chandelier_basencables",
+    "1": "mdm:block/chandelier_bulbs"
+  }
+}

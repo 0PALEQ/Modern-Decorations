@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "couchwood1",
+        "1": "couchpillow2",
+        "2": "couchbase3"
+      },
+      "name": "default"
+    }
+  }
+}

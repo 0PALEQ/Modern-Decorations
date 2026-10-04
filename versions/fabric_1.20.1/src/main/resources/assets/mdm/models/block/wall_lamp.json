@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/wall_lamp",
+  "textures": {
+    "all": "mdm:block/wirebulb",
+    "particle": "mdm:block/wirebulb",
+    "1": "mdm:block/wirebulb",
+    "2": "minecraft:block/stripped_spruce_log"
+  },
+  "render_type": "solid"
+}

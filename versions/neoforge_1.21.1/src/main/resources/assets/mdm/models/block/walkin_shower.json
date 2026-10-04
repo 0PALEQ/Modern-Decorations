@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/shower",
+  "textures": {
+    "all": "mdm:block/shower1",
+    "particle": "mdm:block/shower1",
+    "0": "mdm:block/shower1"
+  },
+  "render_type": "solid"
+}

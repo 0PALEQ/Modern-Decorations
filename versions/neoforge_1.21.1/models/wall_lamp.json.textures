@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "wirebulb",
+        "2": "minecraft:stripped_spruce_log"
+      },
+      "name": "default"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/couchmiddle"
+    },
+    "facing=east": {
+      "model": "mdm:block/couchmiddle",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/couchmiddle",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/couchmiddle",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "grey-wood",
+        "1": "frames"
+      },
+      "name": "default"
+    }
+  }
+}

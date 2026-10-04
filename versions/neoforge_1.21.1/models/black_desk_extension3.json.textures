@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "blackdesk",
+        "1": "cabinet"
+      },
+      "name": "default"
+    }
+  }
+}

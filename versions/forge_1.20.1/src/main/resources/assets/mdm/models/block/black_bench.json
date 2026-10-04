@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/station_bench",
+  "textures": {
+    "all": "mdm:block/black",
+    "particle": "mdm:block/black",
+    "0": "mdm:block/black_bench"
+  },
+  "render_type": "solid"
+}

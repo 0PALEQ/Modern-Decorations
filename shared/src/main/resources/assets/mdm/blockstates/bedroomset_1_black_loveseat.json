@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/bedroomset_1_black_loveseat"
+    },
+    "facing=east": {
+      "model": "mdm:block/bedroomset_1_black_loveseat",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/bedroomset_1_black_loveseat",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/bedroomset_1_black_loveseat",
+      "y": 270
+    }
+  }
+}

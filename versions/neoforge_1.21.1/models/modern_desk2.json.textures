@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "moderndesk2"
+      },
+      "name": "default"
+    }
+  }
+}

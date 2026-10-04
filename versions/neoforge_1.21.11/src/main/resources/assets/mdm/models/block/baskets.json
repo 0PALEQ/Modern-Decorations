@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/baskets",
+  "textures": {
+    "all": "mdm:block/baskets",
+    "particle": "mdm:block/baskets",
+    "3": "mdm:block/baskets"
+  }
+}

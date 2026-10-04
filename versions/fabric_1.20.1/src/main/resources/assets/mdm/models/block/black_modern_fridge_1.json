@@ -1,0 +1,13 @@
+{
+  "parent": "mdm:custom/black_modern_fridge1",
+  "textures": {
+    "all": "mdm:block/knifeandfork",
+    "particle": "mdm:block/knifeandfork",
+    "0": "mdm:block/bmf1-1",
+    "1": "mdm:block/bmf1-2",
+    "2": "mdm:block/bmf1-3",
+    "3": "mdm:block/bmf1-4",
+    "4": "mdm:block/bmf1-5"
+  },
+  "render_type": "solid"
+}

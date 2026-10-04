@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "set3_mixed-color-coffe-table",
+        "2": "baskets",
+        "3": "mugs"
+      },
+      "name": "default"
+    }
+  }
+}

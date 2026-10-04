@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/black_desk",
+  "textures": {
+    "all": "mdm:block/deskicon",
+    "particle": "mdm:block/deskicon",
+    "0": "mdm:block/blackdesk",
+    "1": "mdm:block/cabinet"
+  }
+}

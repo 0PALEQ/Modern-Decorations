@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "minecraft:bookshelf",
+        "1": "ikea_wood"
+      },
+      "name": "default"
+    }
+  }
+}

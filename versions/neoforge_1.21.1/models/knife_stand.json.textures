@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "minecraft:stripped_spruce_log",
+        "1": "seasoningrackframe",
+        "2": "blade"
+      },
+      "name": "default"
+    }
+  }
+}

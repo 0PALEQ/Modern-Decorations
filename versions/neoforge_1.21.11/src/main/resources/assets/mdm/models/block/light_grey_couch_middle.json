@@ -1,0 +1,10 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/couch-center",
+  "textures": {
+    "all": "mdm:block/couch-body-texture",
+    "particle": "mdm:block/couch-body-texture",
+    "0": "mdm:block/couch-body-texture",
+    "1": "mdm:block/couch-pillows-texture"
+  }
+}

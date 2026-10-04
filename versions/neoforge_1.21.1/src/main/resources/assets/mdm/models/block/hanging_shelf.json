@@ -1,0 +1,14 @@
+{
+  "parent": "mdm:custom/hanging_shelf2",
+  "textures": {
+    "all": "mdm:block/textureeinnichtzwei",
+    "particle": "mdm:block/textureeinnichtzwei",
+    "0": "mdm:block/textureeinnichtzwei",
+    "1": "mdm:block/hangingshelfwood",
+    "2": "mdm:block/hangingshelfaccessories",
+    "3": "mdm:block/cactusinpot",
+    "4": "mdm:block/painting",
+    "5": "mdm:block/documents"
+  },
+  "render_type": "solid"
+}

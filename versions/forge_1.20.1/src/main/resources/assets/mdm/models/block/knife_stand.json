@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/knife_stand",
+  "textures": {
+    "all": "mdm:block/blade",
+    "particle": "mdm:block/blade",
+    "0": "minecraft:block/stripped_spruce_log",
+    "1": "mdm:block/seasoningrackframe",
+    "2": "mdm:block/blade"
+  },
+  "render_type": "translucent"
+}

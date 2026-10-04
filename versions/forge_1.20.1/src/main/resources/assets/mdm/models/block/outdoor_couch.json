@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/terrace_couch",
+  "textures": {
+    "all": "mdm:block/couchwood1",
+    "particle": "mdm:block/couchwood1",
+    "0": "mdm:block/couchwood1",
+    "1": "mdm:block/couchpillow2",
+    "2": "mdm:block/couchbase3"
+  },
+  "render_type": "solid"
+}

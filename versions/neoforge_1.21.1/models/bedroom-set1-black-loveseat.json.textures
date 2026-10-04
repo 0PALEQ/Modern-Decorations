@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "frames",
+        "1": "black-loveseat"
+      },
+      "name": "default"
+    }
+  }
+}

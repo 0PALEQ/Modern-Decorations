@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/carpet_1",
+  "textures": {
+    "all": "mdm:block/carpet_1",
+    "particle": "mdm:block/carpet_1",
+    "0": "mdm:block/carpet_1"
+  }
+}

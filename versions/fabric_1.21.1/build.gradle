@@ -1,0 +1,136 @@
+import groovy.json.JsonSlurper
+
+plugins {
+    id 'fabric-loom' version '1.17.14'
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+tasks.withType(org.gradle.api.tasks.bundling.AbstractArchiveTask).configureEach {
+    archiveVersion = "${project.mod_version}-${project.loader_name}-${project.minecraft_version}"
+}
+
+repositories {
+    // Loom supplies the Minecraft and Fabric repositories.
+}
+
+loom {
+    runs {
+        client {
+            client()
+            name = 'Modern Decorations Client'
+        }
+        server {
+            server()
+            name = 'Modern Decorations Server'
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+    options.encoding = 'UTF-8'
+}
+
+tasks.register('validateModResources') {
+    group = 'verification'
+    description = 'Validates Modern Decorations JSON and one-to-one block data files.'
+    dependsOn processResources
+
+    doLast {
+        def resources = layout.buildDirectory.dir('resources/main').get().asFile
+        def parse = new JsonSlurper()
+        fileTree(resources) { include '**/*.json' }.each { json ->
+            try {
+                parse.parse(json)
+            } catch (Exception exception) {
+                throw new GradleException("Invalid JSON: ${json}", exception)
+            }
+        }
+
+        def namesIn = { String directory ->
+            fileTree(file("${resources}/${directory}")) { include '*.json' }
+                    .files.collect { it.name.substring(0, it.name.length() - 5) } as Set
+        }
+
+        def blockstates = namesIn('assets/mdm/blockstates')
+        def blockModels = namesIn('assets/mdm/models/block')
+        def itemModels = namesIn('assets/mdm/models/item')
+        def lootTables = namesIn('data/mdm/loot_table/blocks')
+        def recipes = namesIn('data/mdm/recipe') - 'furniture_parts'
+
+        [
+                'block models': blockModels,
+                'item models': itemModels,
+                'loot tables': lootTables,
+                'stonecutting recipes': recipes
+        ].each { label, actual ->
+            def missing = blockstates - actual
+            if (!missing.isEmpty()) {
+                throw new GradleException("Missing ${label} for: ${missing.sort().join(', ')}")
+            }
+        }
+
+        if (recipes != blockstates) {
+            throw new GradleException('Stonecutting recipe ids must match blockstate ids exactly')
+        }
+
+        fileTree("${resources}/assets/mdm/models") { include '**/*.json' }.each { model ->
+            if (model.text.contains('"render_type"')) {
+                throw new GradleException("Loader-specific render_type remains in ${model}")
+            }
+        }
+    }
+}
+
+check.dependsOn tasks.named('validateModResources')
+
+java {
+    withSourcesJar()
+}
+
+jar {
+    from('LICENSE') {
+        rename { "${it}_${project.base.archivesName.get()}" }
+    }
+}
+
+publishing {
+    publications {
+        create('mavenJava', MavenPublication) {
+            artifactId = project.archives_base_name
+            from components.java
+        }
+    }
+}
+
+sourceSets.main.resources {
+    srcDir rootProject.file('../../shared/src/main/resources')
+}
+
+sourceSets.main.java {
+    srcDir rootProject.file('../../shared/src/mc_1.21.1/java')
+}
+
+apply from: rootProject.file('../../shared/gradle/validate-recipes.gradle')

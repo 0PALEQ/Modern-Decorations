@@ -1,0 +1,10 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/white_stairs",
+  "textures": {
+    "all": "mdm:block/whiteplanks",
+    "particle": "mdm:block/whiteplanks",
+    "0": "mdm:block/stairsbase",
+    "1": "mdm:block/whiteplanks"
+  }
+}

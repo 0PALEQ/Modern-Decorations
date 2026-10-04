@@ -1,0 +1,15 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "textureeinnichtzwei",
+        "1": "hangingshelfwood",
+        "2": "hangingshelfaccessories",
+        "3": "cactusinpot",
+        "4": "painting",
+        "5": "documents"
+      },
+      "name": "default"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "gey_couch",
+        "1": "grey_couch_legz"
+      },
+      "name": "default"
+    }
+  }
+}

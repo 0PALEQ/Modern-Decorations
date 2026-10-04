@@ -1,0 +1,18 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "jar",
+        "1": "seasoningrackframe",
+        "2": "minecraft:stripped_spruce_log",
+        "3": "seasoning1",
+        "4": "seasoning2",
+        "5": "seasoning3",
+        "6": "seasoning4",
+        "7": "seasoning5",
+        "8": "seasoning6"
+      },
+      "name": "default"
+    }
+  }
+}

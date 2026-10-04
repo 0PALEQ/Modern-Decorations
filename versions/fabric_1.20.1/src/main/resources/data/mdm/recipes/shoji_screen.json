@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "mdm:furniture_parts"
+  },
+  "result": "mdm:shoji_screen"
+}
+

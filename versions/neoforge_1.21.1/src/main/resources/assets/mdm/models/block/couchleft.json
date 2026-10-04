@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/couch_left",
+  "textures": {
+    "all": "mdm:block/side_panel",
+    "particle": "mdm:block/side_panel",
+    "0": "mdm:block/couch",
+    "1": "mdm:block/side_panel"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/pile_of_towels"
+    },
+    "facing=east": {
+      "model": "mdm:block/pile_of_towels",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/pile_of_towels",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/pile_of_towels",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "bmf1-1",
+        "1": "bmf1-2",
+        "2": "bmf1-3",
+        "3": "bmf1-4",
+        "4": "bmf1-5"
+      },
+      "name": "default"
+    }
+  }
+}

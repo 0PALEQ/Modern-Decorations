@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/set_1_island_1"
+    },
+    "facing=east": {
+      "model": "mdm:block/set_1_island_1",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/set_1_island_1",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/set_1_island_1",
+      "y": 270
+    }
+  }
+}

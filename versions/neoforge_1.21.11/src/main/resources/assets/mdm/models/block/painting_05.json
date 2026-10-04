@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/painting05",
+  "textures": {
+    "all": "mdm:block/painting05",
+    "particle": "mdm:block/painting05",
+    "0": "mdm:block/painting05"
+  }
+}

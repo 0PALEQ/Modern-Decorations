@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/bathroom_shelf",
+  "textures": {
+    "all": "mdm:block/bathroom_shelf",
+    "particle": "mdm:block/bathroom_shelf",
+    "0": "mdm:block/bathroom_shelf"
+  }
+}

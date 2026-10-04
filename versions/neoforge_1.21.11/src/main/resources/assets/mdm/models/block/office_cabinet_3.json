@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/cabinet3",
+  "textures": {
+    "all": "mdm:block/cabinet",
+    "particle": "mdm:block/cabinet",
+    "1": "mdm:block/cabinet"
+  }
+}

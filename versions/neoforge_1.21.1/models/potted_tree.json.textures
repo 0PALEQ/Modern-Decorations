@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "3": "pottedtreesticks1",
+        "4": "pottedtreepot2",
+        "5": "pottedtreevines3"
+      },
+      "name": "default"
+    }
+  }
+}

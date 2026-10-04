@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/knife_stand"
+    },
+    "facing=east": {
+      "model": "mdm:block/knife_stand",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/knife_stand",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/knife_stand",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "shower1"
+      },
+      "name": "default"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "pillowandblanketandlegs",
+        "1": "armchair_black"
+      },
+      "name": "default"
+    }
+  }
+}

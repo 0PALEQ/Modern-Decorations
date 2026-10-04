@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/grey_curtain_right"
+    },
+    "facing=east": {
+      "model": "mdm:block/grey_curtain_right",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/grey_curtain_right",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/grey_curtain_right",
+      "y": 270
+    }
+  }
+}

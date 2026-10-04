@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/tv_stand_mid_decorated"
+    },
+    "facing=east": {
+      "model": "mdm:block/tv_stand_mid_decorated",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/tv_stand_mid_decorated",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/tv_stand_mid_decorated",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/small_chandelier"
+    },
+    "facing=east": {
+      "model": "mdm:block/small_chandelier",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/small_chandelier",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/small_chandelier",
+      "y": 270
+    }
+  }
+}

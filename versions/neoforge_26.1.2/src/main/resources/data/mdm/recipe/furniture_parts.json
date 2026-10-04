@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "bbb"
+  ],
+  "key": {
+    "a": "minecraft:cobblestone",
+    "b": "#minecraft:planks",
+    "c": "minecraft:iron_nugget"
+  },
+  "result": {
+    "id": "mdm:furniture_parts",
+    "count": 1
+  }
+}

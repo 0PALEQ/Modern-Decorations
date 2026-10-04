@@ -1,0 +1,46 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "curtain_white",
+        "1": "curtain_rack"
+      }
+    },
+    "black": {
+      "name": "black",
+      "map": {
+        "0": "curtain_black",
+        "1": "curtain_rack"
+      }
+    },
+    "blue": {
+      "name": "blue",
+      "map": {
+        "0": "curtain_blue",
+        "1": "curtain_blue"
+      }
+    },
+    "green": {
+      "name": "green",
+      "map": {
+        "0": "curtain_green",
+        "1": "curtain_green"
+      }
+    },
+    "grey": {
+      "name": "grey",
+      "map": {
+        "0": "curtain_grey",
+        "1": "curtain_rack"
+      }
+    },
+    "red": {
+      "name": "red",
+      "map": {
+        "0": "curtain_red",
+        "1": "curtain_rack"
+      }
+    }
+  }
+}

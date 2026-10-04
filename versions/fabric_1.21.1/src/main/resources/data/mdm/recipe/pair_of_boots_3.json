@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "mdm:furniture_parts"
+  },
+  "result": {
+    "id": "mdm:pair_of_boots_3",
+    "count": 1
+  }
+}

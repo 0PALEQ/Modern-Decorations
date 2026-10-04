@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/door_mat"
+    },
+    "facing=east": {
+      "model": "mdm:block/door_mat",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/door_mat",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/door_mat",
+      "y": 270
+    }
+  }
+}

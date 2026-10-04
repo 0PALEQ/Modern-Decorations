@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/toothbrushes",
+  "textures": {
+    "all": "mdm:block/toothbrushes",
+    "particle": "mdm:block/toothbrushes",
+    "0": "mdm:block/toothbrushes"
+  }
+}

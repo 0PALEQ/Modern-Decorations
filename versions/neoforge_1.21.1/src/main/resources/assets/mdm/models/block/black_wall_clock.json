@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/black_wall_clock",
+  "textures": {
+    "all": "mdm:block/black_wall_clock",
+    "particle": "mdm:block/black_wall_clock",
+    "0": "mdm:block/black_wall_clock"
+  },
+  "render_type": "solid"
+}

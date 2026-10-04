@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "couch",
+        "2": "corner_couch"
+      },
+      "name": "default"
+    }
+  }
+}

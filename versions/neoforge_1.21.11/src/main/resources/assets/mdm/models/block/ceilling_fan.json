@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/ceiling_fan",
+  "textures": {
+    "all": "mdm:block/ceillingfantexture",
+    "particle": "mdm:block/ceillingfantexture",
+    "0": "mdm:block/ceilingfan"
+  }
+}

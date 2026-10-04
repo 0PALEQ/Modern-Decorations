@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "modern_painting_base",
+        "1": "modern_painting"
+      },
+      "name": "default"
+    }
+  }
+}

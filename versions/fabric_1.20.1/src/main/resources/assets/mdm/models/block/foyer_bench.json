@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/foyer_bench",
+  "textures": {
+    "all": "mdm:block/foyerseat_pillow",
+    "particle": "mdm:block/foyerseat_pillow",
+    "0": "mdm:block/ikea_wood",
+    "1": "mdm:block/inside",
+    "2": "mdm:block/foyerseat_pillow"
+  },
+  "render_type": "solid"
+}

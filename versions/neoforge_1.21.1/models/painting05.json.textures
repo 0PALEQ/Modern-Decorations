@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "painting05"
+      },
+      "name": "default"
+    },
+    "default2": {
+      "map": {
+        "0": "painting04"
+      },
+      "name": "default2"
+    }
+  }
+}

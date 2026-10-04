@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/outdoor_couch"
+    },
+    "facing=east": {
+      "model": "mdm:block/outdoor_couch",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/outdoor_couch",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/outdoor_couch",
+      "y": 270
+    }
+  }
+}

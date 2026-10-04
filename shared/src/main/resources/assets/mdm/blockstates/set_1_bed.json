@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/set_1_bed"
+    },
+    "facing=east": {
+      "model": "mdm:block/set_1_bed",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/set_1_bed",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/set_1_bed",
+      "y": 270
+    }
+  }
+}

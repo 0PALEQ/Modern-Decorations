@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "bamboo",
+        "2": "bamboo_pot"
+      },
+      "name": "default"
+    }
+  }
+}

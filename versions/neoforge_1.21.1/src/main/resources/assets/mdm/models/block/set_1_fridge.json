@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/set1_fridge",
+  "textures": {
+    "all": "mdm:block/drawer",
+    "particle": "mdm:block/drawer",
+    "0": "mdm:block/cabinetbackground",
+    "1": "mdm:block/drawer"
+  },
+  "render_type": "solid"
+}

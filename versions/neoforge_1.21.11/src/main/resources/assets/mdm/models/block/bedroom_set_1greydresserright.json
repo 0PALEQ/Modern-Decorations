@@ -1,0 +1,10 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/bedroom-set1-grey_dresser_right",
+  "textures": {
+    "all": "mdm:block/grey-wood",
+    "particle": "mdm:block/grey-wood",
+    "0": "mdm:block/grey-wood",
+    "1": "mdm:block/frames"
+  }
+}

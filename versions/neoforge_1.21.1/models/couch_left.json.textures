@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "couch",
+        "1": "side_panel"
+      },
+      "name": "default"
+    }
+  }
+}

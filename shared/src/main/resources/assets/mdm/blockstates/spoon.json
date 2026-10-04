@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/spoon"
+    },
+    "facing=east": {
+      "model": "mdm:block/spoon",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/spoon",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/spoon",
+      "y": 270
+    }
+  }
+}

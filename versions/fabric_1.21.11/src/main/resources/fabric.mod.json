@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "mdm",
+  "version": "${version}",
+  "name": "Modern Decorations Mod",
+  "description": "Adds modern decorative furniture, functional storage, refrigerators and ovens.",
+  "authors": [
+    "opaleq"
+  ],
+  "contact": {
+    "homepage": "https://cookiecraftmods.com/"
+  },
+  "license": "All Rights Reserved",
+  "icon": "logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.cookiecraftmods.mdm.MdmMod"
+    ],
+    "client": [
+      "com.cookiecraftmods.mdm.client.MdmModClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "fabric-api": "*",
+    "minecraft": "1.21.11",
+    "java": ">=21"
+  }
+}

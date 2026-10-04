@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/seasoning_rack"
+    },
+    "facing=east": {
+      "model": "mdm:block/seasoning_rack",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/seasoning_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/seasoning_rack",
+      "y": 270
+    }
+  }
+}

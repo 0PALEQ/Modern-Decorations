@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/street_lantern_top",
+  "textures": {
+    "all": "mdm:block/streetlightbody",
+    "particle": "mdm:block/streetlightbody",
+    "0": "mdm:block/streetlightbody",
+    "1": "mdm:block/streetlightbulb"
+  },
+  "render_type": "solid"
+}

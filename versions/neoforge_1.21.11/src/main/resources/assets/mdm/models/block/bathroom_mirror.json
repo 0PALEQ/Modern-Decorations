@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/mirror",
+  "textures": {
+    "all": "mdm:block/mirror",
+    "particle": "mdm:block/mirror",
+    "0": "mdm:block/mirror"
+  }
+}

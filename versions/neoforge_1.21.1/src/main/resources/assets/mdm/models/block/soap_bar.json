@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/soap_bar",
+  "textures": {
+    "all": "mdm:block/soap_bar",
+    "particle": "mdm:block/soap_bar",
+    "0": "mdm:block/soap_bar"
+  },
+  "render_type": "solid"
+}

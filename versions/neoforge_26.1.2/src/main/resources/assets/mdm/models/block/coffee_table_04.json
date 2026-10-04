@@ -1,0 +1,18 @@
+{
+  "parent": "mdm:custom/coffee_table_04",
+  "textures": {
+    "all": {
+      "force_translucent": true,
+      "sprite": "mdm:block/coffeetableglass"
+    },
+    "particle": {
+      "force_translucent": true,
+      "sprite": "mdm:block/coffeetableglass"
+    },
+    "0": "minecraft:block/stripped_spruce_log",
+    "1": {
+      "force_translucent": true,
+      "sprite": "mdm:block/coffeetableglass"
+    }
+  }
+}
