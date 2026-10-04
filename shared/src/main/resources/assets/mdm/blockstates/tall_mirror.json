@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/tall_mirror"
+    },
+    "facing=east": {
+      "model": "mdm:block/tall_mirror",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/tall_mirror",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/tall_mirror",
+      "y": 270
+    }
+  }
+}

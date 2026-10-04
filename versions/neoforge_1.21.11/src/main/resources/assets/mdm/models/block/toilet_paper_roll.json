@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:translucent",
+  "parent": "mdm:custom/toilet_paper_roll",
+  "textures": {
+    "all": "mdm:block/tppicon",
+    "particle": "mdm:block/tppicon",
+    "0": "mdm:block/tp_roll1"
+  }
+}

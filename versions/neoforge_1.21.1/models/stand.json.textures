@@ -1,0 +1,13 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "stand",
+        "1": "coffeplanks",
+        "2": "texture",
+        "3": "mug"
+      },
+      "name": "default"
+    }
+  }
+}

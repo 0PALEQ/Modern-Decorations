@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/light_gray_couch_left"
+    },
+    "facing=east": {
+      "model": "mdm:block/light_gray_couch_left",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/light_gray_couch_left",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/light_gray_couch_left",
+      "y": 270
+    }
+  }
+}

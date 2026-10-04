@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/hand_soap_and_cream_set"
+    },
+    "facing=east": {
+      "model": "mdm:block/hand_soap_and_cream_set",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/hand_soap_and_cream_set",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/hand_soap_and_cream_set",
+      "y": 270
+    }
+  }
+}

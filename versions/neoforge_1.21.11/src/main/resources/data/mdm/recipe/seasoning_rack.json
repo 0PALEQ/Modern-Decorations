@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "mdm:furniture_parts",
+  "result": {
+    "id": "mdm:seasoning_rack",
+    "count": 1
+  }
+}

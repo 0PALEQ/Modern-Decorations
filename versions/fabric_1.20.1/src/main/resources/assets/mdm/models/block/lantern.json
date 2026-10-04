@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/lantern",
+  "textures": {
+    "all": "mdm:block/coffeplanks",
+    "particle": "mdm:block/coffeplanks",
+    "0": "mdm:block/lanterncandles1",
+    "1": "mdm:block/lanternbody2"
+  },
+  "render_type": "solid"
+}

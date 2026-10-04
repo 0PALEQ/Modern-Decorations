@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/set2__cabinet3",
+  "textures": {
+    "all": "mdm:block/ks2kcounter",
+    "particle": "mdm:block/ks2kcounter",
+    "1": "mdm:block/ks2counter",
+    "2": "mdm:block/ks2kcounter",
+    "3": "mdm:block/baskets"
+  },
+  "render_type": "solid"
+}

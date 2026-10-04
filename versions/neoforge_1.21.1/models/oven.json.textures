@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "oven",
+        "1": "oven2"
+      },
+      "name": "default"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "set1wood",
+        "1": "bed_light",
+        "2": "bed_bottom",
+        "3": "bed_cloth",
+        "4": "pillow",
+        "5": "koldra"
+      },
+      "name": "default"
+    }
+  }
+}

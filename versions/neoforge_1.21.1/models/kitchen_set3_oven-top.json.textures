@@ -1,0 +1,13 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "ikea_wood",
+        "1": "set1_table_legs",
+        "2": "kitchenset3ovenbottom",
+        "3": "microwavescreen"
+      },
+      "name": "default"
+    }
+  }
+}

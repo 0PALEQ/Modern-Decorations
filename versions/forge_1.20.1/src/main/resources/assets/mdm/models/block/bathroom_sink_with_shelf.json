@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/bathroom_shelf_with_sink",
+  "textures": {
+    "all": "mdm:block/sink_chelf",
+    "particle": "mdm:block/sink_chelf",
+    "0": "mdm:block/sink",
+    "1": "mdm:block/sink_chelf"
+  },
+  "render_type": "solid"
+}

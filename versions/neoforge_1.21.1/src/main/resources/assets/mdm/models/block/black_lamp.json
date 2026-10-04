@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/black_lamp",
+  "textures": {
+    "all": "mdm:block/lamp_body",
+    "particle": "mdm:block/lamp_body",
+    "0": "mdm:block/lamp_body"
+  },
+  "render_type": "solid"
+}

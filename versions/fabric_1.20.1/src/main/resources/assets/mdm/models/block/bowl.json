@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/bowl",
+  "textures": {
+    "all": "mdm:block/plate",
+    "particle": "mdm:block/plate",
+    "0": "mdm:block/plate"
+  },
+  "render_type": "solid"
+}

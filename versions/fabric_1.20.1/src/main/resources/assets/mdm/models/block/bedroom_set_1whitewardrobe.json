@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/bedroom-set1-white_wardrobe",
+  "textures": {
+    "all": "mdm:block/white-wood",
+    "particle": "mdm:block/white-wood",
+    "3": "mdm:block/white-wood",
+    "4": "mdm:block/galkioddrzwi",
+    "5": "mdm:block/frames"
+  },
+  "render_type": "solid"
+}

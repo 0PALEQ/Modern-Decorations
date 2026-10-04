@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/bathroom_sink"
+    },
+    "facing=east": {
+      "model": "mdm:block/bathroom_sink",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/bathroom_sink",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/bathroom_sink",
+      "y": 270
+    }
+  }
+}

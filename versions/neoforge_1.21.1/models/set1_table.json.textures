@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "legz",
+        "1": "set1wood",
+        "2": "pillow2"
+      },
+      "name": "default"
+    }
+  }
+}

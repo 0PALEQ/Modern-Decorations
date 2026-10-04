@@ -1,0 +1,256 @@
+import groovy.json.JsonSlurper
+
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'idea'
+}
+
+version = project.mod_version
+group = project.mod_group_id
+
+base {
+    archivesName = project.archives_base_name
+}
+
+tasks.withType(org.gradle.api.tasks.bundling.AbstractArchiveTask).configureEach {
+    archiveVersion = "${project.mod_version}-${project.loader_name}-${project.minecraft_version}"
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+}
+
+neoForge {
+    version = project.neo_version
+
+    parchment {
+        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = project.parchment_minecraft_version
+    }
+
+    runs {
+        client {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        gameTestServer {
+            type = 'gameTestServer'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        data {
+            clientData()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output',
+                    file('src/generated/resources/').absolutePath, '--existing',
+                    file('src/main/resources/').absolutePath
+        }
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.INFO
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    inputs.properties([
+            mod_version: project.mod_version,
+            neo_version: project.neo_version,
+            minecraft_version_range: project.minecraft_version_range
+    ])
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand([
+                mod_version: project.mod_version,
+                neo_version: project.neo_version,
+                minecraft_version_range: project.minecraft_version_range
+        ])
+    }
+    exclude 'fabric.mod.json'
+}
+
+tasks.register('validateModResources') {
+    group = 'verification'
+    description = 'Validates Modern Decorations JSON and one-to-one block data files.'
+    dependsOn processResources
+
+    doLast {
+        def resources = layout.buildDirectory.dir('resources/main').get().asFile
+        def parse = new JsonSlurper()
+        fileTree(resources) { include '**/*.json' }.each { json ->
+            try {
+                parse.parse(json)
+            } catch (Exception exception) {
+                throw new GradleException("Invalid JSON: ${json}", exception)
+            }
+        }
+
+        def namesIn = { String directory ->
+            fileTree(file("${resources}/${directory}")) { include '*.json' }
+                    .files.collect { it.name.substring(0, it.name.length() - 5) } as Set
+        }
+
+        def blockstates = namesIn('assets/mdm/blockstates')
+        def blockModels = namesIn('assets/mdm/models/block')
+        def itemModels = namesIn('assets/mdm/models/item')
+        def itemDefinitions = namesIn('assets/mdm/items')
+        def lootTables = namesIn('data/mdm/loot_table/blocks')
+        def recipes = namesIn('data/mdm/recipe') - 'furniture_parts'
+
+        [
+                'block models': blockModels,
+                'item models': itemModels,
+                'item definitions': itemDefinitions,
+                'loot tables': lootTables,
+                'stonecutting recipes': recipes
+        ].each { label, actual ->
+            def missing = blockstates - actual
+            if (!missing.isEmpty()) {
+                throw new GradleException("Missing ${label} for: ${missing.sort().join(', ')}")
+            }
+        }
+
+        if (recipes != blockstates) {
+            throw new GradleException('Stonecutting recipe ids must match blockstate ids exactly')
+        }
+        if (itemDefinitions != itemModels) {
+            throw new GradleException('Minecraft 1.21.11 item definition ids must match item model ids exactly')
+        }
+
+        def language = parse.parse(file("${resources}/assets/mdm/lang/en_us.json"))
+        (itemDefinitions - 'furniture_parts').each { id ->
+            if (!language.containsKey("block.mdm.${id}".toString())) {
+                throw new GradleException("Missing block-item display name: block.mdm.${id}")
+            }
+        }
+        if (!language.containsKey('item.mdm.furniture_parts')) {
+            throw new GradleException('Missing item display name: item.mdm.furniture_parts')
+        }
+
+        fileTree("${resources}/assets/mdm/items") { include '*.json' }.each { definition ->
+            def json = parse.parse(definition)
+            def id = definition.name.substring(0, definition.name.length() - 5)
+            if (json.model?.type != 'minecraft:model' || json.model?.model != "mdm:item/${id}") {
+                throw new GradleException("Invalid 1.21.11 item definition: ${definition}")
+            }
+        }
+
+        def curtainIds = blockstates.findAll { it == 'curtain_rack' || it ==~ /(black|blue|green|grey|red|white)_curtain(_left|_right)?/ }
+        def curtainFacings = ['facing=north', 'facing=east', 'facing=south', 'facing=west'] as Set
+        curtainIds.each { id ->
+            def state = parse.parse(file("${resources}/assets/mdm/blockstates/${id}.json"))
+            if ((state.variants.keySet() as Set) != curtainFacings) {
+                throw new GradleException("Curtain must remain vertically hung with four horizontal facings: ${id}")
+            }
+        }
+
+        fileTree("${resources}/data/mdm/recipe") { include '*.json'; exclude 'furniture_parts.json' }.each { recipe ->
+            def json = parse.parse(recipe)
+            def id = recipe.name.substring(0, recipe.name.length() - 5)
+            if (json.type != 'minecraft:stonecutting' || json.ingredient != 'mdm:furniture_parts'
+                    || json.result?.id != "mdm:${id}" || json.result?.count != 1) {
+                throw new GradleException("Invalid stonecutting recipe mapping: ${recipe}")
+            }
+        }
+
+        def furnitureParts = parse.parse(file("${resources}/data/mdm/recipe/furniture_parts.json"))
+        if (furnitureParts.type != 'minecraft:crafting_shaped'
+                || furnitureParts.key?.a != 'minecraft:cobblestone'
+                || furnitureParts.key?.b != '#minecraft:planks'
+                || furnitureParts.key?.c != 'minecraft:iron_nugget'
+                || furnitureParts.result?.id != 'mdm:furniture_parts') {
+            throw new GradleException('Furniture-parts recipe does not use the Minecraft 1.21.11 ingredient schema')
+        }
+
+        fileTree("${resources}/assets/mdm/models/block") { include '*.json' }.each { model ->
+            def json = parse.parse(model)
+            if (!(json.render_type in ['minecraft:cutout', 'minecraft:translucent'])) {
+                throw new GradleException("NeoForge render_type missing from block model: ${model}")
+            }
+        }
+
+        fileTree("${resources}/assets/mdm/textures/block") { include '*.png' }.each { texture ->
+            def image = javax.imageio.ImageIO.read(texture)
+            def hasPartialAlpha = false
+            for (int y = 0; y < image.height && !hasPartialAlpha; y++) {
+                for (int x = 0; x < image.width; x++) {
+                    int alpha = (image.getRGB(x, y) >>> 24) & 0xff
+                    if (alpha > 0 && alpha < 255) {
+                        hasPartialAlpha = true
+                        break
+                    }
+                }
+            }
+            if (hasPartialAlpha) {
+                def textureId = "mdm:block/${texture.name.substring(0, texture.name.length() - 4)}"
+                fileTree("${resources}/assets/mdm/models/block") { include '*.json' }.each { model ->
+                    if (model.text.contains("\"${textureId}\"")) {
+                        def json = parse.parse(model)
+                        if (json.render_type != 'minecraft:translucent') {
+                            throw new GradleException("Partially transparent model is not translucent: ${model}")
+                        }
+                    }
+                }
+            }
+        }
+
+        if (file("${resources}/data/mdm/tags/blocks").exists()
+                || file("${resources}/data/minecraft/tags/blocks").exists()) {
+            throw new GradleException('Legacy plural tags/blocks directories are not valid in Minecraft 1.21.11')
+        }
+        if (!file("${resources}/META-INF/neoforge.mods.toml").exists()) {
+            throw new GradleException('NeoForge metadata is missing')
+        }
+    }
+}
+
+check.dependsOn tasks.named('validateModResources')
+
+java {
+    withSourcesJar()
+}
+
+jar {
+    from('LICENSE') {
+        rename { "${it}_${project.base.archivesName.get()}" }
+    }
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            artifactId = project.archives_base_name
+            from components.java
+        }
+    }
+}
+
+sourceSets.main.resources {
+    srcDir rootProject.file('../../shared/src/main/resources')
+}
+
+sourceSets.main.java {
+    srcDir rootProject.file('../../shared/src/mc_1.21.11/java')
+}
+
+apply from: rootProject.file('../../shared/gradle/validate-recipes.gradle')

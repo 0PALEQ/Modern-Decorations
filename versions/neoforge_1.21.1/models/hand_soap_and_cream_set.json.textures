@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "hand_soap_and_cream"
+      },
+      "name": "default"
+    }
+  }
+}

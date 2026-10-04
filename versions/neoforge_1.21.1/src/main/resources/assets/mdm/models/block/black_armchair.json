@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/armchair-black",
+  "textures": {
+    "all": "mdm:block/pillowandblanketandlegs",
+    "particle": "mdm:block/pillowandblanketandlegs",
+    "0": "mdm:block/pillowandblanketandlegs",
+    "1": "mdm:block/armchair_black"
+  },
+  "render_type": "solid"
+}

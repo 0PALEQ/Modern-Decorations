@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "set1_table_legs",
+        "1": "office_chair-texture"
+      },
+      "name": "default"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/bedroom-set1-wenge-nightstand2",
+  "textures": {
+    "all": "mdm:block/wenge-wood",
+    "particle": "mdm:block/wenge-wood",
+    "0": "mdm:block/wenge-wood",
+    "1": "mdm:block/frameswenge"
+  },
+  "render_type": "solid"
+}

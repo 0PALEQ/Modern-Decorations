@@ -1,0 +1,12 @@
+{
+  "parent": "mdm:custom/kitchen_set3_oven-top",
+  "textures": {
+    "all": "mdm:block/ikea_wood",
+    "particle": "mdm:block/ikea_wood",
+    "0": "mdm:block/ikea_wood",
+    "1": "mdm:block/set1_table_legs",
+    "2": "mdm:block/kitchenset3ovenbottom",
+    "3": "mdm:block/microwavescreen"
+  },
+  "render_type": "solid"
+}

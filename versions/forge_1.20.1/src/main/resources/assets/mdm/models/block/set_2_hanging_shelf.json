@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/set2_hanging_shelf1",
+  "textures": {
+    "all": "mdm:block/ks2kcounter",
+    "particle": "mdm:block/ks2kcounter",
+    "2": "mdm:block/ks2kcounter",
+    "3": "mdm:block/showerfloor",
+    "4": "mdm:block/ks2counter"
+  },
+  "render_type": "solid"
+}

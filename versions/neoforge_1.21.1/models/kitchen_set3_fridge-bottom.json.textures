@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "ikea_wood",
+        "1": "set1_table_legs",
+        "2": "fridgebackside"
+      },
+      "name": "default"
+    }
+  }
+}

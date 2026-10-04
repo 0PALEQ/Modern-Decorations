@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/white_wood_foyer_wall_unit"
+    },
+    "facing=east": {
+      "model": "mdm:block/white_wood_foyer_wall_unit",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/white_wood_foyer_wall_unit",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/white_wood_foyer_wall_unit",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mdm:item/induction_cooker"
+  },
+  "render_type": "translucent"
+}

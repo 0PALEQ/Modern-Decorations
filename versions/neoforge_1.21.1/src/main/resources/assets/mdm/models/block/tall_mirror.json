@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/tall_mirror",
+  "textures": {
+    "all": "mdm:block/tall_mirror",
+    "particle": "mdm:block/tall_mirror",
+    "0": "mdm:block/tall_mirror"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "12": "redplanks",
+        "4": "black"
+      },
+      "name": "default"
+    }
+  }
+}

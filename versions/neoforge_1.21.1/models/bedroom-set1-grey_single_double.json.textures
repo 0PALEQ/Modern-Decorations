@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "grey-wood",
+        "1": "frames",
+        "2": "bed_cloth_bedroom"
+      },
+      "name": "default"
+    }
+  }
+}

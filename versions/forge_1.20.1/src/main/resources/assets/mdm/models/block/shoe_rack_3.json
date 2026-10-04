@@ -1,0 +1,13 @@
+{
+  "parent": "mdm:custom/shoe_rack",
+  "textures": {
+    "all": "mdm:block/red_shoe",
+    "particle": "mdm:block/red_shoe",
+    "0": "mdm:block/shoe_rack",
+    "1_0": "mdm:block/yellow_shoe",
+    "2": "mdm:block/pink_shoe",
+    "3": "mdm:block/blue_shoe",
+    "4": "mdm:block/green_shoe"
+  },
+  "render_type": "solid"
+}

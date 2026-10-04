@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/street_lantern_mid",
+  "textures": {
+    "all": "mdm:block/streetlightbody",
+    "particle": "mdm:block/streetlightbody",
+    "0": "mdm:block/streetlightbody"
+  },
+  "render_type": "solid"
+}

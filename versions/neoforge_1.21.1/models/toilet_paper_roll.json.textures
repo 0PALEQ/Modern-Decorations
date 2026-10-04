@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "tp_roll1"
+      },
+      "name": "default"
+    }
+  }
+}

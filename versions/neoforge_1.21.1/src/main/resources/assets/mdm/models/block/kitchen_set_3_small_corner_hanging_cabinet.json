@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/kitchen_set3_small-corner-hanging-cabinet",
+  "textures": {
+    "all": "mdm:block/ikea_wood",
+    "particle": "mdm:block/ikea_wood",
+    "2": "mdm:block/ikea_wood",
+    "3": "mdm:block/set1_table_legs"
+  },
+  "render_type": "solid"
+}

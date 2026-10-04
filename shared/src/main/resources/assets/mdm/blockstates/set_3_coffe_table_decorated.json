@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/set_3_coffe_table_decorated"
+    },
+    "facing=east": {
+      "model": "mdm:block/set_3_coffe_table_decorated",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/set_3_coffe_table_decorated",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/set_3_coffe_table_decorated",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/black_desk_extension_3"
+    },
+    "facing=east": {
+      "model": "mdm:block/black_desk_extension_3",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/black_desk_extension_3",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/black_desk_extension_3",
+      "y": 270
+    }
+  }
+}

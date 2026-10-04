@@ -1,0 +1,57 @@
+import groovy.json.JsonSlurper
+import groovy.io.FileType
+
+def processedResourcesPath = layout.buildDirectory.dir('resources/main').get().asFile.absolutePath
+
+tasks.register('validateRecipes') {
+    group = 'verification'
+    description = 'Ensures every Modern Decorations block has exactly one recipe.'
+    dependsOn tasks.named('processResources')
+    inputs.dir(processedResourcesPath)
+
+    doLast {
+        def resourcesRoot = new File(processedResourcesPath)
+        def blockstatesRoot = new File(resourcesRoot, 'assets/mdm/blockstates')
+        def dataRoot = new File(resourcesRoot, 'data/mdm')
+        def blockIds = (blockstatesRoot.listFiles() ?: [])
+                .findAll { it.isFile() && it.name.endsWith('.json') }
+                .collect { it.name.substring(0, it.name.length() - 5) } as Set
+
+        def outputs = [:].withDefault { [] }
+        ['recipe', 'recipes'].each { directoryName ->
+            def recipeRoot = new File(dataRoot, directoryName)
+            if (recipeRoot.exists()) {
+                recipeRoot.eachFileRecurse(FileType.FILES) { recipeFile ->
+                    if (recipeFile.name.endsWith('.json')) {
+                        def recipe = new JsonSlurper().parse(recipeFile)
+                        def result = recipe.result instanceof Map
+                                ? (recipe.result.id ?: recipe.result.item)
+                                : recipe.result
+                        if (result instanceof String && result.startsWith('mdm:')) {
+                            outputs[result.substring(4)] << recipeFile.name
+                        }
+                    }
+                }
+            }
+        }
+
+        def missing = blockIds.findAll { !outputs.containsKey(it) }.sort()
+        def duplicates = outputs.findAll { id, files -> id in blockIds && files.size() != 1 }
+        if (!missing.isEmpty() || !duplicates.isEmpty()) {
+            def details = []
+            if (!missing.isEmpty()) {
+                details << "missing recipes: ${missing.join(', ')}"
+            }
+            if (!duplicates.isEmpty()) {
+                details << 'duplicate recipes: ' + duplicates.collect { id, files ->
+                    "${id} (${files.sort().join(', ')})"
+                }.sort().join('; ')
+            }
+            throw new GradleException(details.join(' | '))
+        }
+    }
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('validateRecipes')
+}

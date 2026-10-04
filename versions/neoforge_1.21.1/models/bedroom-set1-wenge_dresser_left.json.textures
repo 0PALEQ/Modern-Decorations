@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "wenge-wood",
+        "1": "frames",
+        "2": "frameswenge"
+      },
+      "name": "default"
+    }
+  }
+}

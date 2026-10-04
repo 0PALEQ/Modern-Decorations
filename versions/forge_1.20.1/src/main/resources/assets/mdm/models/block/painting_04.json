@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/painting04",
+  "textures": {
+    "all": "mdm:block/painting03",
+    "particle": "mdm:block/painting03",
+    "0": "mdm:block/painting03"
+  },
+  "render_type": "solid"
+}

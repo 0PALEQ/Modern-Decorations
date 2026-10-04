@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/modern_lamp_1",
+  "textures": {
+    "all": "mdm:block/modernlamp1",
+    "particle": "mdm:block/modernlamp1",
+    "0": "mdm:block/modernlamp1"
+  }
+}

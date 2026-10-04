@@ -1,0 +1,36 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "ikea_wood",
+        "1": "inside",
+        "2": "foyerseat_pillow"
+      }
+    },
+    "dark": {
+      "name": "dark",
+      "map": {
+        "0": "grey-wood",
+        "1": "inside",
+        "2": "foyerseat_pillow"
+      }
+    },
+    "white": {
+      "name": "white",
+      "map": {
+        "0": "white-wood",
+        "1": "inside",
+        "2": "foyerseat_pillow"
+      }
+    },
+    "wenge": {
+      "name": "wenge",
+      "map": {
+        "0": "wenge-wood",
+        "1": "inside",
+        "2": "foyerseat_pillow"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/modern_painting_2",
+  "textures": {
+    "all": "mdm:block/painting_cloud",
+    "particle": "mdm:block/painting_cloud",
+    "0": "mdm:block/painting_cloud"
+  }
+}

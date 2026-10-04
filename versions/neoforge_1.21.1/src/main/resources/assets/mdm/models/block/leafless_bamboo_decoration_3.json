@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/leafless_bamboo_decoration_mid",
+  "textures": {
+    "all": "mdm:block/knifeandfork",
+    "particle": "mdm:block/knifeandfork",
+    "3": "mdm:block/bamboo_pot2",
+    "4": "mdm:block/bamboo"
+  },
+  "render_type": "solid"
+}

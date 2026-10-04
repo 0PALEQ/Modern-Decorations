@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/set_1_livingroom_hanging_cabinet"
+    },
+    "facing=east": {
+      "model": "mdm:block/set_1_livingroom_hanging_cabinet",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/set_1_livingroom_hanging_cabinet",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/set_1_livingroom_hanging_cabinet",
+      "y": 270
+    }
+  }
+}

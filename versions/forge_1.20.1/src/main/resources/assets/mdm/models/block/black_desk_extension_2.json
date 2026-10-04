@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/black_desk_extension2",
+  "textures": {
+    "all": "mdm:block/blackdesk",
+    "particle": "mdm:block/blackdesk",
+    "0": "mdm:block/blackdesk",
+    "1": "mdm:block/cabinet"
+  },
+  "render_type": "solid"
+}

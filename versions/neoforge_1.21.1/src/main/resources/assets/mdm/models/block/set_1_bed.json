@@ -1,0 +1,14 @@
+{
+  "parent": "mdm:custom/set1bed",
+  "textures": {
+    "all": "mdm:block/set1wood",
+    "particle": "mdm:block/set1wood",
+    "0": "mdm:block/set1wood",
+    "1": "mdm:block/bed_light",
+    "2": "mdm:block/bed_bottom",
+    "3": "mdm:block/bed_cloth",
+    "4": "mdm:block/pillow",
+    "5": "mdm:block/koldra"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,75 @@
+plugins {
+    id 'fabric-loom' version '1.10-SNAPSHOT'
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+tasks.withType(org.gradle.api.tasks.bundling.AbstractArchiveTask).configureEach {
+    archiveVersion = "${project.mod_version}-${project.loader_name}-${project.minecraft_version}"
+}
+
+repositories {
+    mavenCentral()
+}
+
+loom {
+    runs {
+        client {
+            client()
+            name = 'Minecraft Client'
+            runDir = 'run/fabric-client'
+        }
+        server {
+            server()
+            name = 'Minecraft Server'
+            runDir = 'run/fabric-server'
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 17
+    options.encoding = 'UTF-8'
+}
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+jar {
+    from('LICENSE') {
+        rename { "${it}_${project.base.archivesName.get()}" }
+    }
+}
+
+sourceSets.main.resources {
+    srcDir rootProject.file('../../shared/src/main/resources')
+}
+
+sourceSets.main.java {
+    srcDir rootProject.file('../../shared/src/mc_1.20.1/java')
+}
+
+apply from: rootProject.file('../../shared/gradle/validate-recipes.gradle')

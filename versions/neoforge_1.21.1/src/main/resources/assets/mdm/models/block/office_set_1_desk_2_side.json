@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/office-set1_desk_2_side",
+  "textures": {
+    "all": "mdm:block/ikea_wood",
+    "particle": "mdm:block/ikea_wood",
+    "0": "mdm:block/set1_table_legs",
+    "1": "mdm:block/ikea_wood"
+  },
+  "render_type": "solid"
+}

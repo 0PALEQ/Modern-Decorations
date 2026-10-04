@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "wenge-wood",
+        "1": "frameswenge",
+        "2": "bed_cloth_bedroom"
+      },
+      "name": "default"
+    }
+  }
+}

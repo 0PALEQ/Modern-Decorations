@@ -1,0 +1,12 @@
+{
+  "parent": "mdm:custom/bedroom-set1-wenge_bunk_bed",
+  "textures": {
+    "all": "mdm:block/bed_cloth_bedroom",
+    "particle": "mdm:block/bed_cloth_bedroom",
+    "0": "mdm:block/bed_cloth_bedroom",
+    "1": "mdm:block/frames",
+    "2": "mdm:block/frameswenge",
+    "3": "mdm:block/wenge-wood"
+  },
+  "render_type": "solid"
+}

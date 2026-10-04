@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/document_folders",
+  "textures": {
+    "all": "mdm:block/documentfolders",
+    "particle": "mdm:block/documentfolders",
+    "0": "mdm:block/documentfolders"
+  }
+}

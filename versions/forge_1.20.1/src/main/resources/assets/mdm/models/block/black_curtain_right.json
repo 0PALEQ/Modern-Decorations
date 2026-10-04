@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/whitecurtainright",
+  "textures": {
+    "all": "mdm:block/curtain_black",
+    "particle": "mdm:block/curtain_black",
+    "0": "mdm:block/curtain_black",
+    "1": "mdm:block/curtain_rack"
+  },
+  "render_type": "translucent"
+}

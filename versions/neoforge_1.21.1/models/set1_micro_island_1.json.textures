@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "2": "cabinetbackground",
+        "3": "drawer"
+      },
+      "name": "default"
+    }
+  }
+}

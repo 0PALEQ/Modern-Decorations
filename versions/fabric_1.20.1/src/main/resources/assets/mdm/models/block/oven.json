@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/oven",
+  "textures": {
+    "all": "mdm:block/oven",
+    "particle": "mdm:block/oven",
+    "0": "mdm:block/oven",
+    "1": "mdm:block/oven2"
+  },
+  "render_type": "solid"
+}

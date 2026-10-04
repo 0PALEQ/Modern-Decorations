@@ -1,0 +1,10 @@
+{
+  "render_type": "minecraft:translucent",
+  "parent": "mdm:custom/whitecurtain",
+  "textures": {
+    "all": "mdm:block/curtain_red",
+    "particle": "mdm:block/curtain_red",
+    "0": "mdm:block/curtain_red",
+    "1": "mdm:block/curtain_rack"
+  }
+}

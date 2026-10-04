@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/station_bench_white",
+  "textures": {
+    "all": "mdm:block/white_bath_tubg",
+    "particle": "mdm:block/white_bath_tubg",
+    "0": {
+      "force_translucent": true,
+      "sprite": "mdm:block/white_bench"
+    }
+  }
+}

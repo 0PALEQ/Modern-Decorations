@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:translucent",
+  "parent": "mdm:custom/plate",
+  "textures": {
+    "all": "mdm:block/plate",
+    "particle": "mdm:block/plate",
+    "0": "mdm:block/plate"
+  }
+}

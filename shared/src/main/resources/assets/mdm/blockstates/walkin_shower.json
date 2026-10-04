@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/walkin_shower"
+    },
+    "facing=east": {
+      "model": "mdm:block/walkin_shower",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/walkin_shower",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/walkin_shower",
+      "y": 270
+    }
+  }
+}

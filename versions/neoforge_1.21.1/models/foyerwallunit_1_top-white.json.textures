@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "white-wood",
+        "2": "foyer_mirror"
+      },
+      "name": "default"
+    }
+  }
+}

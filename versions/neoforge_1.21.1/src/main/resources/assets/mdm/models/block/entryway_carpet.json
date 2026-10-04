@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/entryway_carpet",
+  "textures": {
+    "all": "mdm:block/entryway_carpet",
+    "particle": "mdm:block/entryway_carpet",
+    "0": "mdm:block/entryway_carpet"
+  },
+  "render_type": "translucent"
+}

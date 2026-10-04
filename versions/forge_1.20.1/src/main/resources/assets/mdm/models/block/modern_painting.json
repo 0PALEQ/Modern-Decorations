@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/modern_painting",
+  "textures": {
+    "all": "mdm:block/modern_painting",
+    "particle": "mdm:block/modern_painting",
+    "0": "mdm:block/modern_painting_base",
+    "1": "mdm:block/modern_painting"
+  },
+  "render_type": "solid"
+}

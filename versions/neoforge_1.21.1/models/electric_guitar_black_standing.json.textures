@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "electric_guitar_black",
+        "2": "guitar_stand"
+      }
+    }
+  }
+}

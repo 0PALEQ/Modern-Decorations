@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/gas_stove",
+  "textures": {
+    "all": "mdm:block/gasstove",
+    "particle": "mdm:block/gasstove",
+    "0": "mdm:block/gasstove"
+  },
+  "render_type": "solid"
+}

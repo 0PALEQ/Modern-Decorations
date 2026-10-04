@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "desk_lamp-texture",
+        "1": ""
+      },
+      "name": "default"
+    }
+  }
+}

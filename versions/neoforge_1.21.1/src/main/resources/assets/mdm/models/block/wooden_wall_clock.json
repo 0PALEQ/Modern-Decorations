@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/wooden_wall_clock",
+  "textures": {
+    "all": "mdm:block/ikea_wood",
+    "particle": "mdm:block/ikea_wood",
+    "0": "mdm:block/ikea_wood",
+    "2": "mdm:block/wooden_wall_clock"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,10 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/couch_right",
+  "textures": {
+    "all": "mdm:block/side_panel",
+    "particle": "mdm:block/side_panel",
+    "0": "mdm:block/couch",
+    "1": "mdm:block/side_panel"
+  }
+}

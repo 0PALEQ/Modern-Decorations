@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/coat_hanger"
+    },
+    "facing=east": {
+      "model": "mdm:block/coat_hanger",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/coat_hanger",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/coat_hanger",
+      "y": 270
+    }
+  }
+}

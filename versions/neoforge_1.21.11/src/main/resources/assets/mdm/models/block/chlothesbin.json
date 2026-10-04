@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/clothes_bin",
+  "textures": {
+    "all": "mdm:block/clothes_bin",
+    "particle": "mdm:block/clothes_bin",
+    "0": "mdm:block/clothes_bin"
+  }
+}

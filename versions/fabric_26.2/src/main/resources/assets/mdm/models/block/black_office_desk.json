@@ -1,0 +1,15 @@
+{
+  "parent": "mdm:custom/black_desk",
+  "textures": {
+    "all": {
+      "force_translucent": true,
+      "sprite": "mdm:block/deskicon"
+    },
+    "particle": {
+      "force_translucent": true,
+      "sprite": "mdm:block/deskicon"
+    },
+    "0": "mdm:block/blackdesk",
+    "1": "mdm:block/cabinet"
+  }
+}

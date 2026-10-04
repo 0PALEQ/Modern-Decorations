@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/hanging_shelf",
+  "textures": {
+    "all": "mdm:block/textureeinnichtzwei",
+    "particle": "mdm:block/textureeinnichtzwei",
+    "0": "mdm:block/textureeinnichtzwei",
+    "1": "mdm:block/hangingshelfwood",
+    "2": "mdm:block/hangingshelfaccessories"
+  },
+  "render_type": "solid"
+}

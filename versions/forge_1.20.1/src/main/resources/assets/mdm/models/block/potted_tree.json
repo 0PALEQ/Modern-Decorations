@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/potted_tree",
+  "textures": {
+    "all": "mdm:block/pottedtreesticks1",
+    "particle": "mdm:block/pottedtreesticks1",
+    "3": "mdm:block/pottedtreesticks1",
+    "4": "mdm:block/pottedtreepot2",
+    "5": "mdm:block/pottedtreevines3"
+  },
+  "render_type": "solid"
+}

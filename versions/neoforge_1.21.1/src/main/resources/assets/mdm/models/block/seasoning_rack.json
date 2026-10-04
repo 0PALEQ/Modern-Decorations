@@ -1,0 +1,17 @@
+{
+  "parent": "mdm:custom/seasoning_rack",
+  "textures": {
+    "all": "mdm:block/jar",
+    "particle": "mdm:block/jar",
+    "0": "mdm:block/jar",
+    "1": "mdm:block/seasoningrackframe",
+    "2": "minecraft:block/stripped_spruce_log",
+    "3": "mdm:block/seasoning1",
+    "4": "mdm:block/seasoning2",
+    "5": "mdm:block/seasoning3",
+    "6": "mdm:block/seasoning4",
+    "7": "mdm:block/seasoning5",
+    "8": "mdm:block/seasoning6"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "mdm:blocks/shoji_screen",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mdm:shoji_screen"
+        }
+      ]
+    }
+  ]
+}
+

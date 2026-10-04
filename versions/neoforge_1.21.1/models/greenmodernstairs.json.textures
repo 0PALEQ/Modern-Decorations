@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "4": "black",
+        "8": "greenwood"
+      },
+      "name": "default"
+    }
+  }
+}

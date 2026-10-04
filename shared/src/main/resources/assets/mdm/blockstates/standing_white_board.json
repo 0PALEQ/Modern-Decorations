@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/standing_white_board"
+    },
+    "facing=east": {
+      "model": "mdm:block/standing_white_board",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/standing_white_board",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/standing_white_board",
+      "y": 270
+    }
+  }
+}

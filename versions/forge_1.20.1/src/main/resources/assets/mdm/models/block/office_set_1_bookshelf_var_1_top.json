@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/office-set1-bookshelf-v1-books-top",
+  "textures": {
+    "all": "minecraft:block/bookshelf",
+    "particle": "minecraft:block/bookshelf",
+    "0": "minecraft:block/bookshelf",
+    "1": "mdm:block/ikea_wood"
+  },
+  "render_type": "solid"
+}

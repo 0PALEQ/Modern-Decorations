@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "pooltable",
+        "1": "balls"
+      },
+      "name": "default"
+    }
+  }
+}

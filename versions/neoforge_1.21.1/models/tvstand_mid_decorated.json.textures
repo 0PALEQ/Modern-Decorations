@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "tvstand",
+        "1": "console",
+        "2": "games",
+        "4": "baskets",
+        "5": "gaming_oads"
+      },
+      "name": "default"
+    }
+  }
+}

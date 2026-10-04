@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/terrace_table",
+  "textures": {
+    "all": "mdm:block/tablewood",
+    "particle": "mdm:block/tablewood",
+    "0": "mdm:block/tablebase",
+    "1": "mdm:block/tablewood"
+  },
+  "render_type": "solid"
+}

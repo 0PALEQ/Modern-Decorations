@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "textureeinnichtzwei",
+        "1": "hangingshelfwood",
+        "2": "hangingshelfaccessories"
+      },
+      "name": "default"
+    }
+  }
+}

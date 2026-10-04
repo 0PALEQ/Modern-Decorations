@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "minecraft:stripped_spruce_log",
+        "1": "wall_lamp_02"
+      },
+      "name": "default"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/black_armchair"
+    },
+    "facing=east": {
+      "model": "mdm:block/black_armchair",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/black_armchair",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/black_armchair",
+      "y": 270
+    }
+  }
+}

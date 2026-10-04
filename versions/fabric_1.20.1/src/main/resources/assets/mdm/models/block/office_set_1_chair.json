@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/office-set1-office_chair",
+  "textures": {
+    "all": "mdm:block/office_chair-texture",
+    "particle": "mdm:block/office_chair-texture",
+    "0": "mdm:block/set1_table_legs",
+    "1": "mdm:block/office_chair-texture"
+  },
+  "render_type": "solid"
+}

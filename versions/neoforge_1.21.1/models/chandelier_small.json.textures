@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "chandelier_basencables",
+        "1": "chandelier_bulbs"
+      },
+      "name": "default"
+    }
+  }
+}

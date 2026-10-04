@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "sticks",
+        "1": "minecraft:stripped_spruce_log"
+      },
+      "name": "default"
+    }
+  }
+}

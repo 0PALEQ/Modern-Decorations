@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/black_office_desk"
+    },
+    "facing=east": {
+      "model": "mdm:block/black_office_desk",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/black_office_desk",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/black_office_desk",
+      "y": 270
+    }
+  }
+}

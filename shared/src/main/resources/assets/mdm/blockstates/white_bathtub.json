@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/white_bathtub"
+    },
+    "facing=east": {
+      "model": "mdm:block/white_bathtub",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/white_bathtub",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/white_bathtub",
+      "y": 270
+    }
+  }
+}

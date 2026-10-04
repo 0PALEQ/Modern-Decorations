@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/tvstand_left",
+  "textures": {
+    "all": "mdm:block/tvstand",
+    "particle": "mdm:block/tvstand",
+    "0": "mdm:block/tvstand"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/set1_table",
+  "textures": {
+    "all": "mdm:block/set1wood",
+    "particle": "mdm:block/set1wood",
+    "0": "mdm:block/legz",
+    "1": "mdm:block/set1wood",
+    "2": "mdm:block/pillow2"
+  },
+  "render_type": "solid"
+}

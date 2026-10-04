@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "black",
+        "1": "frameswenge"
+      },
+      "name": "default"
+    }
+  }
+}

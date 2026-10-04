@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "mdm:blocks/white_wood_foyer_wall_unit_top",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mdm:white_wood_foyer_wall_unit_top"
+        }
+      ]
+    }
+  ]
+}

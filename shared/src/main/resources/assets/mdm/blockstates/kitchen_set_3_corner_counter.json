@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/kitchen_set_3_corner_counter"
+    },
+    "facing=east": {
+      "model": "mdm:block/kitchen_set_3_corner_counter",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/kitchen_set_3_corner_counter",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/kitchen_set_3_corner_counter",
+      "y": 270
+    }
+  }
+}

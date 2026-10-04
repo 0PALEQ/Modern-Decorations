@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/set3_mixed_tvstand",
+  "textures": {
+    "all": "mdm:block/set3_mixed_color_tvstand",
+    "particle": "mdm:block/set3_mixed_color_tvstand",
+    "0": "mdm:block/set3_mixed_color_tvstand"
+  },
+  "render_type": "solid"
+}

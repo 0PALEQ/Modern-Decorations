@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/door_mat",
+  "textures": {
+    "all": "mdm:block/door_mat",
+    "particle": "mdm:block/door_mat",
+    "0": "mdm:block/door_mat"
+  },
+  "render_type": "solid"
+}

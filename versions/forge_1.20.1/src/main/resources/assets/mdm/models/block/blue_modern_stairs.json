@@ -1,0 +1,10 @@
+{
+  "parent": "mdm:custom/blue_stairs",
+  "textures": {
+    "all": "mdm:block/bluewood",
+    "particle": "mdm:block/bluewood",
+    "0": "mdm:block/stairsbase",
+    "1": "mdm:block/bluewood"
+  },
+  "render_type": "solid"
+}

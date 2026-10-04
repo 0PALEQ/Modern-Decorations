@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "set1_night_table",
+        "1": "set1wood"
+      },
+      "name": "default"
+    }
+  }
+}

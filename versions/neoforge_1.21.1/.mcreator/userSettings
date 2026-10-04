@@ -1,0 +1,26 @@
+{
+  "workspacePanelIconSize": "LARGE",
+  "workspacePanelSortType": "CREATED",
+  "workspacePanelSortAscending": true,
+  "projectBrowserState": {
+    "expandedPaths": [
+      "[, ModernDecorMod]",
+      "[, ModernDecorMod, Source (Gradle)]",
+      "[, ModernDecorMod, Resources (Gradle)]",
+      "[, ModernDecorMod, Models]"
+    ]
+  },
+  "leftDockState": {
+    "dockSizes": {
+      "project_browser": 280
+    }
+  },
+  "bottomDockState": {
+    "expandedDock": "console",
+    "dockSizes": {
+      "console": 300,
+      "code_viewer": 300,
+      "debugger": 300
+    }
+  }
+}

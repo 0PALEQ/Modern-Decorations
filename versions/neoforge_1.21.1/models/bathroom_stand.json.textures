@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "2": "pileoftowelss",
+        "3": "hand_soap_and_cream",
+        "4": "coffeplanks",
+        "5": "te_dzyndzle",
+        "6": "stand"
+      },
+      "name": "default"
+    }
+  }
+}

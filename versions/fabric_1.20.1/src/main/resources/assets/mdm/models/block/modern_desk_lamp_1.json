@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/modern_desk_lamp_1",
+  "textures": {
+    "all": "mdm:block/modernlamp1",
+    "particle": "mdm:block/modernlamp1",
+    "0": "mdm:block/modernlamp1"
+  },
+  "render_type": "solid"
+}

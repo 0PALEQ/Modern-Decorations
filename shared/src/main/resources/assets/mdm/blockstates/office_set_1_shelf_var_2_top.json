@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/office_set_1_shelf_var_2_top"
+    },
+    "facing=east": {
+      "model": "mdm:block/office_set_1_shelf_var_2_top",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/office_set_1_shelf_var_2_top",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/office_set_1_shelf_var_2_top",
+      "y": 270
+    }
+  }
+}

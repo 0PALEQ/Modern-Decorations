@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/bathroom_sink",
+  "textures": {
+    "all": "mdm:block/sink",
+    "particle": "mdm:block/sink",
+    "0": "mdm:block/sink"
+  }
+}

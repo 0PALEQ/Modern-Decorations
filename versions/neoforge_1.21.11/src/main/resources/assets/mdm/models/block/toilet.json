@@ -1,0 +1,9 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "mdm:custom/toilet",
+  "textures": {
+    "all": "mdm:block/toilet",
+    "particle": "mdm:block/toilet",
+    "0": "mdm:block/toilet"
+  }
+}

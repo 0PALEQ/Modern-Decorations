@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/rain_shower",
+  "textures": {
+    "all": "mdm:block/rainshower",
+    "particle": "mdm:block/rainshower",
+    "0": "mdm:block/rainshower"
+  },
+  "render_type": "solid"
+}

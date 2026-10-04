@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "mdm:furniture_parts"
+  },
+  "result": {
+    "id": "mdm:set_1_coffe_table_1_short",
+    "count": 1
+  }
+}

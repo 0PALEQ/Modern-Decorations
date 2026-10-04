@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "2": "couch-pillows-texture",
+        "5": "couch-body-texture"
+      },
+      "name": "default"
+    }
+  }
+}

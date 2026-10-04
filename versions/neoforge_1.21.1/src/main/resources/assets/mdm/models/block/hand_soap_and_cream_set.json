@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/hand_soap_and_cream_set",
+  "textures": {
+    "all": "mdm:block/hand_soap_and_cream",
+    "particle": "mdm:block/hand_soap_and_cream",
+    "0": "mdm:block/hand_soap_and_cream"
+  },
+  "render_type": "solid"
+}
