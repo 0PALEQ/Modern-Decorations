@@ -19,22 +19,23 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import com.cookiecraftmods.mdm.registry.ModRegistryEntry;
 
 public final class SeatBlock {
 	private static final String SEAT_TAG = "mdm:seat";
 	private static final double DEFAULT_SEAT_HEIGHT = 10.0D / 16.0D;
-	private static final double RIDER_HEIGHT_CORRECTION = 2.0D;
+	private static final double RIDER_HEIGHT_CORRECTION = 2.0D + 5.0D / 16.0D;
 	private static final Map<Identifier, Double> SEAT_HEIGHTS = new HashMap<>();
 	private static final TagKey<Block> SITTABLE_BLOCKS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MdmMod.MODID, "sittable"));
 
 	private SeatBlock() {
 	}
 
-	public static void setSeatHeight(Block block, double seatHeight) {
-		SEAT_HEIGHTS.put(BuiltInRegistries.BLOCK.getKey(block), seatHeight);
+	public static void setSeatHeight(ModRegistryEntry<Block> block, double seatHeight) {
+		SEAT_HEIGHTS.put(block.getId(), seatHeight);
 	}
 
-	public static void setSeatHeightPixels(Block block, double seatHeightPixels) {
+	public static void setSeatHeightPixels(ModRegistryEntry<Block> block, double seatHeightPixels) {
 		setSeatHeight(block, seatHeightPixels / 16.0D);
 	}
 

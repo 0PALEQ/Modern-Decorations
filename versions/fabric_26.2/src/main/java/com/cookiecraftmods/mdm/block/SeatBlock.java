@@ -23,7 +23,7 @@ import net.minecraft.world.phys.AABB;
 public final class SeatBlock {
 	private static final String SEAT_TAG = "mdm:seat";
 	private static final double DEFAULT_SEAT_HEIGHT = 10.0D / 16.0D;
-	private static final double RIDER_HEIGHT_CORRECTION = 2.0D;
+	private static final double RIDER_HEIGHT_CORRECTION = 2.0D + 5.0D / 16.0D;
 	private static final Map<Identifier, Double> SEAT_HEIGHTS = new HashMap<>();
 	private static final TagKey<Block> SITTABLE_BLOCKS = TagKey.create(Registries.BLOCK,
 			Identifier.fromNamespaceAndPath(MdmMod.MODID, "sittable"));
