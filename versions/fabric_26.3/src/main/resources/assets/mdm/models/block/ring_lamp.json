@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/ring_lamp",
+  "textures": {
+    "all": "mdm:block/ring_lamp",
+    "particle": "mdm:block/ring_lamp",
+    "0": "mdm:block/ring_lamp"
+  }
+}

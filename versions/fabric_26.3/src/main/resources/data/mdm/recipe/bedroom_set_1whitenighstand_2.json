@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "mdm:furniture_parts",
+  "result": {
+    "id": "mdm:bedroom_set_1whitenighstand_2",
+    "count": 1
+  }
+}

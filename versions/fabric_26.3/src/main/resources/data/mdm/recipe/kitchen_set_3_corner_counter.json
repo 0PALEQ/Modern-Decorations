@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "mdm:furniture_parts",
+  "result": {
+    "id": "mdm:kitchen_set_3_corner_counter",
+    "count": 1
+  }
+}
