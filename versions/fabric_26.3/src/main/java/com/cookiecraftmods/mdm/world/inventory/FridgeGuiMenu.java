@@ -12,6 +12,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Prediction;
 import net.minecraft.core.BlockPos;
 
 import java.util.Map;
@@ -259,13 +260,16 @@ public class FridgeGuiMenu extends AbstractContainerMenu implements MdmModMenus.
 		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
 			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
 				for (int j = 0; j < internal.getContainerSize(); ++j) {
-					playerIn.drop(internal.getItem(j), false);
+					playerIn.drop(internal.getItem(j), false, Prediction.SERVER_ONLY);
 					internal.setItem(j, ItemStack.EMPTY);
 				}
 			} else {
-				for (int i = 0; i < internal.getContainerSize(); ++i) {
-					playerIn.getInventory().placeItemBackInInventory(internal.getItem(i));
-					internal.setItem(i, ItemStack.EMPTY);
+				for (int j = 0; j < internal.getContainerSize(); ++j) {
+					ItemStack itemstack = internal.getItem(j);
+					if (!itemstack.isEmpty()) {
+						playerIn.drop(itemstack, false, Prediction.SERVER_ONLY);
+						internal.setItem(j, ItemStack.EMPTY);
+					}
 				}
 			}
 		}
