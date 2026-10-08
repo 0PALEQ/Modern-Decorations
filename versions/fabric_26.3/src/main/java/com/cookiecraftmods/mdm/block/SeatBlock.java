@@ -49,7 +49,7 @@ public final class SeatBlock {
 			if (seat == null && seats.isEmpty()) {
 				seat = new ArmorStand(level, pos.getX() + 0.5D, getSeatY(state, pos), pos.getZ() + 0.5D);
 				seat.setNoGravity(true);
-				seat.setInvulnerable(true);
+				seat.setPermanentlyInvulnerable(true);
 				seat.setInvisible(true);
 				seat.addTag(SEAT_TAG);
 				level.addFreshEntity(seat);
