@@ -26,6 +26,6 @@ public final class MdmMod implements ModInitializer {
         UseBlockCallback.EVENT.register((player, level, hand, hit) -> SeatBlock.use(level.getBlockState(hit.getBlockPos()), level, hit.getBlockPos(), player));
         PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, blockEntity) -> SeatBlock.removeSeats(level, pos));
 
-        LOGGER.info("Modern Decorations {} initialized for Fabric", "26.9");
+        LOGGER.info("Modern Decorations initialized for Fabric on Minecraft 26.3");
     }
 }

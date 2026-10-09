@@ -1,5 +1,7 @@
 package com.cookiecraftmods.mdm.client.gui;
 
+import com.mojang.blaze3d.platform.InputConstants;
+
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -37,7 +39,7 @@ public class FreezerguiScreen extends AbstractContainerScreen<FreezerguiMenu> {
 
 	@Override
 	public boolean keyPressed(KeyEvent event) {
-		if (event.key() == 256) {
+		if (event.key() == InputConstants.KEY_ESCAPE) {
 			this.minecraft.player.closeContainer();
 			return true;
 		}
