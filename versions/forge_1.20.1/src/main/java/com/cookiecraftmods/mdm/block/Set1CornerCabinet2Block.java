@@ -39,7 +39,7 @@ public class Set1CornerCabinet2Block extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
 	public Set1CornerCabinet2Block() {
-		super(BlockBehaviour.Properties.of().strength(1f, 10f).instrument(NoteBlockInstrument.BASEDRUM));
+		super(BlockBehaviour.Properties.of().strength(1f, 10f).noOcclusion().instrument(NoteBlockInstrument.BASEDRUM));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
