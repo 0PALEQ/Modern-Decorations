@@ -1,11 +1,3 @@
 {
-  "render_type": "minecraft:cutout",
-  "parent": "mdm:custom/bedroom-set1-grey_wardrobe",
-  "textures": {
-    "all": "mdm:block/grey-wood",
-    "particle": "mdm:block/grey-wood",
-    "0": "mdm:block/grey-wood",
-    "1": "mdm:block/galkioddrzwi",
-    "2": "mdm:block/frames"
-  }
+  "render_type": "minecraft:cutout"
 }

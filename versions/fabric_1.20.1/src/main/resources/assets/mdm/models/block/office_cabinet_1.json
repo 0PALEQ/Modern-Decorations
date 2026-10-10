@@ -1,9 +1,3 @@
 {
-  "parent": "mdm:custom/cabinet1",
-  "textures": {
-    "all": "mdm:block/cabinet",
-    "particle": "mdm:block/cabinet",
-    "1": "mdm:block/cabinet"
-  },
   "render_type": "solid"
 }

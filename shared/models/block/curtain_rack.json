@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/curtainrack",
+  "textures": {
+    "2": "mdm:block/curtain_red",
+    "all": "mdm:block/curtain_rack",
+    "particle": "mdm:block/curtain_rack"
+  }
+}

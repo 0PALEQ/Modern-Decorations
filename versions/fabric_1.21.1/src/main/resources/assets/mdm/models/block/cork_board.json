@@ -1,8 +1,1 @@
-{
-  "parent": "mdm:custom/cork_board",
-  "textures": {
-    "all": "mdm:block/cork_board",
-    "particle": "mdm:block/cork_board",
-    "0": "mdm:block/cork_board"
-  }
-}
+{}

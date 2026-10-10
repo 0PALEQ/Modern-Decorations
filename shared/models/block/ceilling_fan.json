@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/ceiling_fan",
+  "textures": {
+    "0": "mdm:block/ceilingfan",
+    "all": "mdm:block/ceillingfantexture",
+    "particle": "mdm:block/ceillingfantexture"
+  }
+}

@@ -1,9 +1,1 @@
-{
-  "parent": "mdm:custom/whitecurtainright",
-  "textures": {
-    "all": "mdm:block/curtain_blue",
-    "particle": "mdm:block/curtain_blue",
-    "0": "mdm:block/curtain_blue",
-    "1": "mdm:block/curtain_rack"
-  }
-}
+{}

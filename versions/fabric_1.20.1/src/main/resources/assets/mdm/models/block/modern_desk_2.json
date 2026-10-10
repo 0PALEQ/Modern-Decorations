@@ -1,9 +1,3 @@
 {
-  "parent": "mdm:custom/modern_desk2",
-  "textures": {
-    "all": "mdm:block/moderndesk1",
-    "particle": "mdm:block/moderndesk1",
-    "0": "mdm:block/moderndesk2"
-  },
   "render_type": "solid"
 }

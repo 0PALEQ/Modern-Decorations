@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/black_stairs",
+  "textures": {
+    "0": "mdm:block/stairsbase",
+    "1": "mdm:block/blackplanks",
+    "all": "mdm:block/blackplanks",
+    "particle": "mdm:block/blackplanks"
+  }
+}

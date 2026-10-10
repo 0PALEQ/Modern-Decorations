@@ -1,17 +1,1 @@
-{
-  "parent": "mdm:custom/bowl",
-  "textures": {
-    "all": {
-      "force_translucent": true,
-      "sprite": "mdm:block/plate"
-    },
-    "particle": {
-      "force_translucent": true,
-      "sprite": "mdm:block/plate"
-    },
-    "0": {
-      "force_translucent": true,
-      "sprite": "mdm:block/plate"
-    }
-  }
-}
+{}

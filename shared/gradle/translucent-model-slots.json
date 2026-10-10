@@ -1,0 +1,155 @@
+{
+  "black_bench": [
+    "0"
+  ],
+  "black_curtain": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "black_curtain_left": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "black_curtain_right": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "black_office_desk": [
+    "all",
+    "particle"
+  ],
+  "blue_curtain": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "blue_curtain_left": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "blue_curtain_right": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "bowl": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "coffee_table_04": [
+    "1",
+    "all",
+    "particle"
+  ],
+  "green_curtain": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "green_curtain_left": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "green_curtain_right": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "grey_curtain": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "grey_curtain_left": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "grey_curtain_right": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "leafless_bamboo_decoration_1": [
+    "2"
+  ],
+  "leafless_bamboo_decoration_2": [
+    "3"
+  ],
+  "leafless_bamboo_decoration_3": [
+    "3"
+  ],
+  "mug": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "plate": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "potted_cactus": [
+    "1",
+    "all",
+    "particle"
+  ],
+  "red_curtain": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "red_curtain_left": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "red_curtain_right": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "seasoning_rack": [
+    "0",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "all",
+    "particle"
+  ],
+  "shoji_screen": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "toilet_paper_roll": [
+    "all",
+    "particle"
+  ],
+  "white_bench": [
+    "0"
+  ],
+  "white_curtain": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "white_curtain_left": [
+    "0",
+    "all",
+    "particle"
+  ],
+  "white_curtain_right": [
+    "0",
+    "all",
+    "particle"
+  ]
+}

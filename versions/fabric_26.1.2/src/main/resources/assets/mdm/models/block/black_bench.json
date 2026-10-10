@@ -1,11 +1,1 @@
-{
-  "parent": "mdm:custom/station_bench",
-  "textures": {
-    "all": "mdm:block/black",
-    "particle": "mdm:block/black",
-    "0": {
-      "force_translucent": true,
-      "sprite": "mdm:block/black_bench"
-    }
-  }
-}
+{}

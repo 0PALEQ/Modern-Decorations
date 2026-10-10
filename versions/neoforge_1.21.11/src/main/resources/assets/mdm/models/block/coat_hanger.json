@@ -1,9 +1,3 @@
 {
-  "render_type": "minecraft:cutout",
-  "parent": "mdm:custom/coat_hanger",
-  "textures": {
-    "all": "mdm:block/coat_hanger",
-    "particle": "mdm:block/coat_hanger",
-    "0": "mdm:block/coat_hanger"
-  }
+  "render_type": "minecraft:cutout"
 }

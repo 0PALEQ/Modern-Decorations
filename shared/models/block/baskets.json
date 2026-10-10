@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/baskets",
+  "textures": {
+    "3": "mdm:block/baskets",
+    "all": "mdm:block/baskets",
+    "particle": "mdm:block/baskets"
+  }
+}

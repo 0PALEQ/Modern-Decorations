@@ -1,18 +1,1 @@
-{
-  "parent": "mdm:custom/shoji_screen",
-  "textures": {
-    "all": {
-      "force_translucent": true,
-      "sprite": "mdm:block/shoji_screen"
-    },
-    "particle": {
-      "force_translucent": true,
-      "sprite": "mdm:block/shoji_screen"
-    },
-    "0": {
-      "force_translucent": true,
-      "sprite": "mdm:block/shoji_screen"
-    }
-  }
-}
-
+{}

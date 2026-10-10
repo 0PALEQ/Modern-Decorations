@@ -1,0 +1,43 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
+// Compose shared mappings with the small, version-specific rendering settings.
+// Keep the resulting resource format unchanged for Minecraft and validators.
+def sharedModels = rootProject.file('../../shared/models/block')
+def translucencyFile = rootProject.file('../../shared/gradle/translucent-model-slots.json')
+def localModels = file('src/main/resources/assets/mdm/models/block')
+def useTextureDescriptors = project.minecraft_version.toString().startsWith('26.')
+
+tasks.named('processResources') {
+    inputs.dir(sharedModels)
+    inputs.file(translucencyFile)
+    inputs.property('useTextureDescriptors', useTextureDescriptors)
+
+    doLast {
+        def parse = new JsonSlurper()
+        def translucentSlots = parse.parse(translucencyFile)
+        def outputModels = new File(destinationDir, 'assets/mdm/models/block')
+        sharedModels.eachFileMatch(~/.*\.json/) { mappingFile ->
+            def localFile = new File(localModels, mappingFile.name)
+            if (localFile.isFile()) {
+                // Read source settings, never a previously composed build output.
+                def shared = parse.parse(mappingFile)
+                def local = parse.parse(localFile)
+                def model = shared + local
+                model.textures = (shared.textures ?: [:]) + (local.textures ?: [:])
+                if (useTextureDescriptors) {
+                    def id = mappingFile.name.substring(0, mappingFile.name.length() - 5)
+                    (translucentSlots[id] ?: []).each { slot ->
+                        def sprite = model.textures[slot]
+                        if (!(sprite instanceof String)) {
+                            throw new GradleException("Missing shared texture: ${id}#${slot}")
+                        }
+                        model.textures[slot] = [force_translucent: true, sprite: sprite]
+                    }
+                }
+                new File(outputModels, mappingFile.name).setText(
+                        JsonOutput.prettyPrint(JsonOutput.toJson(model)) + '\n', 'UTF-8')
+            }
+        }
+    }
+}

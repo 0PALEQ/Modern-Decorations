@@ -1,9 +1,1 @@
-{
-  "parent": "mdm:custom/foyerwallunit_1_bottom-black",
-  "textures": {
-    "all": "mdm:block/black",
-    "particle": "mdm:block/black",
-    "0": "mdm:block/black",
-    "1": "mdm:block/frameswenge"
-  }
-}
+{}

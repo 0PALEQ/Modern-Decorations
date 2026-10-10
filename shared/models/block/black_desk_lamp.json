@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/deks_lamp1",
+  "textures": {
+    "0": "mdm:block/lamp",
+    "all": "mdm:block/lamp",
+    "particle": "mdm:block/lamp"
+  }
+}

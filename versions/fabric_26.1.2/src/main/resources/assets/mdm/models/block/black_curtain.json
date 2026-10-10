@@ -1,18 +1,1 @@
-{
-  "parent": "mdm:custom/whitecurtain",
-  "textures": {
-    "all": {
-      "force_translucent": true,
-      "sprite": "mdm:block/curtain_black"
-    },
-    "particle": {
-      "force_translucent": true,
-      "sprite": "mdm:block/curtain_black"
-    },
-    "0": {
-      "force_translucent": true,
-      "sprite": "mdm:block/curtain_black"
-    },
-    "1": "mdm:block/curtain_rack"
-  }
-}
+{}

@@ -1,9 +1,1 @@
-{
-  "parent": "mdm:custom/couch_corner",
-  "textures": {
-    "all": "mdm:block/corner_couch",
-    "particle": "mdm:block/corner_couch",
-    "0": "mdm:block/couch",
-    "2": "mdm:block/corner_couch"
-  }
-}
+{}

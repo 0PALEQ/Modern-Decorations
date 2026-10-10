@@ -1,9 +1,3 @@
 {
-  "parent": "mdm:custom/bathroom_radiator",
-  "textures": {
-    "all": "mdm:block/bathroomradiator",
-    "particle": "mdm:block/bathroomradiator",
-    "0": "mdm:block/bathroomradiator"
-  },
   "render_type": "solid"
 }

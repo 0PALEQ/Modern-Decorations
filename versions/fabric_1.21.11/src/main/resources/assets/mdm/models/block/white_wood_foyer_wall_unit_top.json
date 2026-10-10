@@ -1,9 +1,1 @@
-{
-  "parent": "mdm:custom/foyerwallunit_1_top-white",
-  "textures": {
-    "all": "mdm:block/white-wood",
-    "particle": "mdm:block/white-wood",
-    "0": "mdm:block/white-wood",
-    "2": "mdm:block/foyer_mirror"
-  }
-}
+{}

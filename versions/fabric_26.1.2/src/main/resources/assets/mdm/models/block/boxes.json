@@ -1,8 +1,1 @@
-{
-  "parent": "mdm:custom/boxes",
-  "textures": {
-    "all": "mdm:block/boxes",
-    "particle": "mdm:block/boxes",
-    "0": "mdm:block/boxes"
-  }
-}
+{}

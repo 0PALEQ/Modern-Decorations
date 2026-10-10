@@ -1,9 +1,3 @@
 {
-  "parent": "mdm:custom/white_bath_tub",
-  "textures": {
-    "all": "mdm:block/white_bath_tubg",
-    "particle": "mdm:block/white_bath_tubg",
-    "0": "mdm:block/white_bath_tubg"
-  },
   "render_type": "solid"
 }

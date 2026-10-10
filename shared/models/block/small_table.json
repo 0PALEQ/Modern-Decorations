@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/small_table",
+  "textures": {
+    "0": "mdm:block/smalltablebottom",
+    "1": "mdm:block/smalltabletop",
+    "all": "mdm:block/smalltabletop",
+    "particle": "mdm:block/smalltabletop"
+  }
+}

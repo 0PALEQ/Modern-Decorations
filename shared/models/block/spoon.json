@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/spoon",
+  "textures": {
+    "0": "mdm:block/cutlery",
+    "all": "mdm:block/cutlery",
+    "particle": "mdm:block/cutlery"
+  }
+}

@@ -1,10 +1,3 @@
 {
-  "render_type": "minecraft:cutout",
-  "parent": "mdm:custom/pouf",
-  "textures": {
-    "all": "mdm:block/couch-body-texture",
-    "particle": "mdm:block/couch-body-texture",
-    "2": "mdm:block/couch-pillows-texture",
-    "5": "mdm:block/couch-body-texture"
-  }
+  "render_type": "minecraft:cutout"
 }

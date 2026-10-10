@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/ceilinglight_2_big",
+  "textures": {
+    "0": "mdm:block/ceilinglight_1_small",
+    "all": "mdm:block/ceilinglight_1_small",
+    "particle": "mdm:block/ceilinglight_1_small"
+  }
+}

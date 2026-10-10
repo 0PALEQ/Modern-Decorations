@@ -1,9 +1,1 @@
-{
-  "parent": "mdm:custom/office-set1-desk_lamp",
-  "textures": {
-    "all": "mdm:block/desk_lamp-texture",
-    "particle": "mdm:block/desk_lamp-texture",
-    "0": "mdm:block/desk_lamp-texture",
-    "1": "mdm:block/"
-  }
-}
+{}

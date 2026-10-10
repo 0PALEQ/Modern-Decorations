@@ -6,7 +6,6 @@ import com.cookiecraftmods.mdm.registry.RegistryProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import com.cookiecraftmods.mdm.block.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -567,6 +566,7 @@ public class MdmModBlocks {
         SeatBlock.setSeatHeightPixels(COUCHMIDDLE.get(), 10.0D);
         SeatBlock.setSeatHeightPixels(WHITE_ARMCHAIR.get(), 15.0D);
         SeatBlock.setSeatHeightPixels(GREY_SOFA.get(), 20.0D);
+        SeatBlock.setSeatHeightPixels(POUF.get(), 12.0D);
     }
 
     private static ModRegistryEntry<Block> register(String name, Supplier<? extends Block> factory) {

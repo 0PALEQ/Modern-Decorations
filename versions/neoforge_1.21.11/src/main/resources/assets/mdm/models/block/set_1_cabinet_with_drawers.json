@@ -1,10 +1,3 @@
 {
-  "render_type": "minecraft:cutout",
-  "parent": "mdm:custom/set1_cabinet_with_drawers",
-  "textures": {
-    "all": "mdm:block/drawer",
-    "particle": "mdm:block/drawer",
-    "0": "mdm:block/cabinetbackground",
-    "1": "mdm:block/drawer"
-  }
+  "render_type": "minecraft:cutout"
 }

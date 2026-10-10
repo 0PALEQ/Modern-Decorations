@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/set1_corner_cabinet3",
+  "textures": {
+    "2": "mdm:block/cabinetbackground",
+    "3": "mdm:block/drawer",
+    "all": "mdm:block/drawer",
+    "particle": "mdm:block/drawer"
+  }
+}

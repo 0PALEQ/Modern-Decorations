@@ -1,9 +1,3 @@
 {
-  "parent": "mdm:custom/toothbrushes",
-  "textures": {
-    "all": "mdm:block/toothbrushes",
-    "particle": "mdm:block/toothbrushes",
-    "0": "mdm:block/toothbrushes"
-  },
   "render_type": "solid"
 }

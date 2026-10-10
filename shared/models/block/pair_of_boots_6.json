@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/pair_of_shoes",
+  "textures": {
+    "0": "mdm:block/yellow_shoe",
+    "all": "mdm:block/red_shoe",
+    "particle": "mdm:block/red_shoe"
+  }
+}

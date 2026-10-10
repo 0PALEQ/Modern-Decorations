@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/grey_sofa",
+  "textures": {
+    "0": "mdm:block/gey_couch",
+    "1": "mdm:block/grey_couch_legz",
+    "all": "mdm:block/gey_couch",
+    "particle": "mdm:block/gey_couch"
+  }
+}
