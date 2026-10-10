@@ -36,7 +36,7 @@ public class Set1CornerCabinet2Block extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 
 	public Set1CornerCabinet2Block() {
-		super(com.cookiecraftmods.mdm.registry.RegistryProperties.block().strength(1f, 10f).instrument(NoteBlockInstrument.BASEDRUM));
+		super(com.cookiecraftmods.mdm.registry.RegistryProperties.block().strength(1f, 10f).noOcclusion().instrument(NoteBlockInstrument.BASEDRUM));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
