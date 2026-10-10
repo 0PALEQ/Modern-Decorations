@@ -1,9 +1,3 @@
 {
-  "render_type": "minecraft:cutout",
-  "parent": "mdm:custom/pile_of_towels",
-  "textures": {
-    "all": "mdm:block/pileoftowelss",
-    "particle": "mdm:block/pileoftowelss",
-    "9": "mdm:block/pileoftowelss"
-  }
+  "render_type": "minecraft:cutout"
 }

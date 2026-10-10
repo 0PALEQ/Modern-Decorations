@@ -1,8 +1,5 @@
 {
-  "parent": "mdm:custom/curtainrack",
   "textures": {
-    "all": "mdm:block/curtain_rack",
-    "particle": "mdm:block/curtain_rack",
     "2": "mdm:block/curtain_rack"
   }
 }

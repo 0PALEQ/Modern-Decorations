@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/set2_cabinet_with_drawers",
+  "textures": {
+    "1": "mdm:block/ks2counter",
+    "2": "mdm:block/ks2kcounter",
+    "all": "mdm:block/ks2kcounter",
+    "particle": "mdm:block/ks2kcounter"
+  }
+}

@@ -1,9 +1,1 @@
-{
-  "parent": "mdm:custom/grey_couch_corner",
-  "textures": {
-    "all": "mdm:block/gey_couch",
-    "particle": "mdm:block/gey_couch",
-    "0": "mdm:block/gey_couch",
-    "1": "mdm:block/grey_couch_legz"
-  }
-}
+{}

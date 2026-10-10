@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/bedroom-set1-grey-loveseat",
+  "textures": {
+    "0": "mdm:block/frames",
+    "1": "mdm:block/grey-loveseat",
+    "all": "mdm:block/grey-wood",
+    "particle": "mdm:block/grey-wood"
+  }
+}

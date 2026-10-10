@@ -1,9 +1,3 @@
 {
-  "parent": "mdm:custom/clothes_bin",
-  "textures": {
-    "all": "mdm:block/clothes_bin",
-    "particle": "mdm:block/clothes_bin",
-    "0": "mdm:block/clothes_bin"
-  },
   "render_type": "solid"
 }

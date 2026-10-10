@@ -1,0 +1,11 @@
+{
+  "parent": "mdm:custom/stand",
+  "textures": {
+    "0": "mdm:block/stand",
+    "1": "mdm:block/coffeplanks",
+    "2": "mdm:block/te_dzyndzle",
+    "3": "mdm:block/mug",
+    "all": "mdm:block/stand",
+    "particle": "mdm:block/stand"
+  }
+}

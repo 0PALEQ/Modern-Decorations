@@ -1,9 +1,3 @@
 {
-  "render_type": "minecraft:cutout",
-  "parent": "mdm:custom/induction_cooker",
-  "textures": {
-    "all": "mdm:block/induction_cooker",
-    "particle": "mdm:block/induction_cooker",
-    "0": "mdm:block/induction_cooker"
-  }
+  "render_type": "minecraft:cutout"
 }

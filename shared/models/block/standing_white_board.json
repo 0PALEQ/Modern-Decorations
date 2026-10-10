@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/standing_white_board",
+  "textures": {
+    "0": "mdm:block/white_board",
+    "all": "mdm:block/white_board",
+    "particle": "mdm:block/white_board"
+  }
+}

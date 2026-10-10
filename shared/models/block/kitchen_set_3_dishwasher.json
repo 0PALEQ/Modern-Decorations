@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/kitchen_set3_dishwasher",
+  "textures": {
+    "0": "mdm:block/ikea_wood",
+    "1": "mdm:block/set1_table_legs",
+    "all": "mdm:block/ikea_wood",
+    "particle": "mdm:block/ikea_wood"
+  }
+}

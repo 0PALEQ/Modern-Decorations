@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/shoji_screen",
+  "textures": {
+    "0": "mdm:block/shoji_screen",
+    "all": "mdm:block/shoji_screen",
+    "particle": "mdm:block/shoji_screen"
+  }
+}

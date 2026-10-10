@@ -1,10 +1,6 @@
 {
   "render_type": "minecraft:translucent",
-  "parent": "mdm:custom/whitecurtainleft",
   "textures": {
-    "all": "mdm:block/curtain_green",
-    "particle": "mdm:block/curtain_green",
-    "0": "mdm:block/curtain_green",
     "1": "mdm:block/curtain_rack"
   }
 }

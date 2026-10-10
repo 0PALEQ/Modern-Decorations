@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/cabinet3",
+  "textures": {
+    "1": "mdm:block/cabinet",
+    "all": "mdm:block/cabinet",
+    "particle": "mdm:block/cabinet"
+  }
+}

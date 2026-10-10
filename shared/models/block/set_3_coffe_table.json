@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/set3_coffe_table",
+  "textures": {
+    "1": "mdm:block/set3_mixed-color-coffe-table",
+    "all": "mdm:block/set3_mixed-color-coffe-table",
+    "particle": "mdm:block/set3_mixed-color-coffe-table"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/set1_hanging_cabinet",
+  "textures": {
+    "3": "mdm:block/cabinetbackground",
+    "5": "mdm:block/hangingcabinet",
+    "all": "mdm:block/hangingcabinet",
+    "particle": "mdm:block/hangingcabinet"
+  }
+}

@@ -1,9 +1,3 @@
 {
-  "render_type": "minecraft:cutout",
-  "parent": "mdm:custom/electric_guitar_black",
-  "textures": {
-    "all": "mdm:block/electric_guitar_black",
-    "particle": "mdm:block/electric_guitar_black",
-    "1": "mdm:block/electric_guitar_black"
-  }
+  "render_type": "minecraft:cutout"
 }

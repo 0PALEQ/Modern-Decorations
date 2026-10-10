@@ -1,8 +1,1 @@
-{
-  "parent": "mdm:custom/lamp_03",
-  "textures": {
-    "all": "mdm:block/lamp02",
-    "particle": "mdm:block/lamp02",
-    "0": "mdm:block/lamp02"
-  }
-}
+{}

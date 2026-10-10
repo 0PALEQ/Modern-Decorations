@@ -286,3 +286,4 @@ sourceSets.main.java {
 }
 
 apply from: rootProject.file('../../shared/gradle/validate-recipes.gradle')
+apply from: rootProject.file('../../shared/gradle/model-mappings.gradle')

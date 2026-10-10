@@ -1,9 +1,3 @@
 {
-  "parent": "mdm:custom/chopping_board",
-  "textures": {
-    "all": "mdm:block/choppingboard",
-    "particle": "mdm:block/choppingboard",
-    "0": "mdm:block/choppingboard"
-  },
   "render_type": "solid"
 }

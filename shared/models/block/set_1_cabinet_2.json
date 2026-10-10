@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/set1_cabinet2",
+  "textures": {
+    "0": "mdm:block/cabinetbackground",
+    "1": "mdm:block/drawer",
+    "all": "mdm:block/drawer",
+    "particle": "mdm:block/drawer"
+  }
+}

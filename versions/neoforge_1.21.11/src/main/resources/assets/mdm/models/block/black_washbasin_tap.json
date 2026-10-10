@@ -1,9 +1,3 @@
 {
-  "render_type": "minecraft:cutout",
-  "parent": "mdm:custom/black_washbasin_tap",
-  "textures": {
-    "all": "mdm:block/washbasin_tap",
-    "particle": "mdm:block/washbasin_tap",
-    "0": "mdm:block/washbasin_tap"
-  }
+  "render_type": "minecraft:cutout"
 }
