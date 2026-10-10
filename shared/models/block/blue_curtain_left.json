@@ -2,7 +2,7 @@
   "parent": "mdm:custom/whitecurtainleft",
   "textures": {
     "0": "mdm:block/curtain_blue",
-    "1": "mdm:block/curtain_blue",
+    "1": "mdm:block/curtain_rack",
     "all": "mdm:block/curtain_blue",
     "particle": "mdm:block/curtain_blue"
   }
