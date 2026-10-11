@@ -112,7 +112,7 @@ tasks.register('validateModResources') {
             throw new GradleException('Missing item display name: item.mdm.furniture_parts')
         }
 
-        def itemRegistrySource = file('src/main/java/com/cookiecraftmods/mdm/init/MdmModItems.java').text
+        def itemRegistrySource = mainSourceFile('java', 'com/cookiecraftmods/mdm/init/MdmModItems.java').text
         if (!itemRegistrySource.contains('RegistryProperties.item().useBlockDescriptionPrefix()')) {
             throw new GradleException('Block items must use their block translation keys on Minecraft 26.1.2')
         }
@@ -235,6 +235,8 @@ sourceSets.main.resources {
 sourceSets.main.java {
     srcDir rootProject.file('../../shared/src/mc_26.1.2/java')
 }
+
+apply from: rootProject.file('../../shared/gradle/shared-sources.gradle')
 
 apply from: rootProject.file('../../shared/gradle/validate-recipes.gradle')
 apply from: rootProject.file('../../shared/gradle/model-mappings.gradle')

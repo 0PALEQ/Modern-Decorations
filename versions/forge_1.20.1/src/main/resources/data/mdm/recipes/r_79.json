@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "mdm:furniture_parts"
-  },
-  "result": "mdm:set_3_coffe_table_decorated"
-}

@@ -19,11 +19,11 @@ import net.minecraft.core.BlockPos;
 import java.util.stream.IntStream;
 
 
-import com.cookiecraftmods.mdm.world.inventory.StorageMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 
 public class KitchenSet3CornerCounterBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.withSize(14, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(27, ItemStack.EMPTY);
 
 	public KitchenSet3CornerCounterBlockEntity(BlockPos position, BlockState state) {
 		super(MdmModBlockEntities.KITCHEN_SET_3_CORNER_COUNTER.get(), position, state);
@@ -80,7 +80,7 @@ public class KitchenSet3CornerCounterBlockEntity extends RandomizableContainerBl
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new StorageMenu(id, inventory, this.worldPosition);
+		return ChestMenu.threeRows(id, inventory, this);
 	}
 
 	@Override

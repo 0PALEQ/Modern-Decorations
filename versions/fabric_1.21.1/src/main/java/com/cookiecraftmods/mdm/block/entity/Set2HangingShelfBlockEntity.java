@@ -19,11 +19,11 @@ import net.minecraft.core.BlockPos;
 import java.util.stream.IntStream;
 
 
-import com.cookiecraftmods.mdm.world.inventory.StorageMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 
 public class Set2HangingShelfBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.withSize(14, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(27, ItemStack.EMPTY);
 
 	public Set2HangingShelfBlockEntity(BlockPos position, BlockState state) {
 		super(MdmModBlockEntities.SET_2_HANGING_SHELF.get(), position, state);
@@ -80,7 +80,7 @@ public class Set2HangingShelfBlockEntity extends RandomizableContainerBlockEntit
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new StorageMenu(id, inventory, this.worldPosition);
+		return ChestMenu.threeRows(id, inventory, this);
 	}
 
 	@Override

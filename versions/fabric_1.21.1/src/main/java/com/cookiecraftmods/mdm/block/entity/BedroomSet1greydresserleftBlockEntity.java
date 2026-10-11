@@ -19,11 +19,11 @@ import net.minecraft.core.BlockPos;
 import java.util.stream.IntStream;
 
 
-import com.cookiecraftmods.mdm.world.inventory.StorageMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 
 public class BedroomSet1greydresserleftBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.withSize(14, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(27, ItemStack.EMPTY);
 
 	public BedroomSet1greydresserleftBlockEntity(BlockPos position, BlockState state) {
 		super(MdmModBlockEntities.BEDROOM_SET_1GREYDRESSERLEFT.get(), position, state);
@@ -80,7 +80,7 @@ public class BedroomSet1greydresserleftBlockEntity extends RandomizableContainer
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new StorageMenu(id, inventory, this.worldPosition);
+		return ChestMenu.threeRows(id, inventory, this);
 	}
 
 	@Override

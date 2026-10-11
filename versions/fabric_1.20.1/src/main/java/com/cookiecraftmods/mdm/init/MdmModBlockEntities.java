@@ -98,6 +98,31 @@ public class MdmModBlockEntities {
 			BedroomSet1whitenightstand1BlockEntity::new);
 	public static final RegistryEntry<BlockEntityType<BedroomSet1whitenighstand2BlockEntity>> BEDROOM_SET_1WHITENIGHSTAND_2 = register("bedroom_set_1whitenighstand_2", MdmModBlocks.BEDROOM_SET_1WHITENIGHSTAND_2,
 			BedroomSet1whitenighstand2BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<BlackDeskExtension1BlockEntity>> BLACK_DESK_EXTENSION_1 = register("black_desk_extension_1", MdmModBlocks.BLACK_DESK_EXTENSION_1, BlackDeskExtension1BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<BlackDeskExtension2BlockEntity>> BLACK_DESK_EXTENSION_2 = register("black_desk_extension_2", MdmModBlocks.BLACK_DESK_EXTENSION_2, BlackDeskExtension2BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<BlackDeskExtension3BlockEntity>> BLACK_DESK_EXTENSION_3 = register("black_desk_extension_3", MdmModBlocks.BLACK_DESK_EXTENSION_3, BlackDeskExtension3BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeCabinet1BlockEntity>> OFFICE_CABINET_1 = register("office_cabinet_1", MdmModBlocks.OFFICE_CABINET_1, OfficeCabinet1BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeCabinet2BlockEntity>> OFFICE_CABINET_2 = register("office_cabinet_2", MdmModBlocks.OFFICE_CABINET_2, OfficeCabinet2BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeCabinet3BlockEntity>> OFFICE_CABINET_3 = register("office_cabinet_3", MdmModBlocks.OFFICE_CABINET_3, OfficeCabinet3BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<Set1NightTableBlockEntity>> SET_1_NIGHT_TABLE = register("set_1_night_table", MdmModBlocks.SET_1_NIGHT_TABLE, Set1NightTableBlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1BookshelfVar1BottomBlockEntity>> OFFICE_SET_1_BOOKSHELF_VAR_1_BOTTOM = register("office_set_1_bookshelf_var_1_bottom", MdmModBlocks.OFFICE_SET_1_BOOKSHELF_VAR_1_BOTTOM, OfficeSet1BookshelfVar1BottomBlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1BookshelfVar1TopBlockEntity>> OFFICE_SET_1_BOOKSHELF_VAR_1_TOP = register("office_set_1_bookshelf_var_1_top", MdmModBlocks.OFFICE_SET_1_BOOKSHELF_VAR_1_TOP, OfficeSet1BookshelfVar1TopBlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1ShelfVar1BottomBlockEntity>> OFFICE_SET_1_SHELF_VAR_1_BOTTOM = register("office_set_1_shelf_var_1_bottom", MdmModBlocks.OFFICE_SET_1_SHELF_VAR_1_BOTTOM, OfficeSet1ShelfVar1BottomBlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1ShelfVar1TopBlockEntity>> OFFICE_SET_1_SHELF_VAR_1_TOP = register("office_set_1_shelf_var_1_top", MdmModBlocks.OFFICE_SET_1_SHELF_VAR_1_TOP, OfficeSet1ShelfVar1TopBlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1ShelfVar2BottomBlockEntity>> OFFICE_SET_1_SHELF_VAR_2_BOTTOM = register("office_set_1_shelf_var_2_bottom", MdmModBlocks.OFFICE_SET_1_SHELF_VAR_2_BOTTOM, OfficeSet1ShelfVar2BottomBlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1ShelfVar2TopBlockEntity>> OFFICE_SET_1_SHELF_VAR_2_TOP = register("office_set_1_shelf_var_2_top", MdmModBlocks.OFFICE_SET_1_SHELF_VAR_2_TOP, OfficeSet1ShelfVar2TopBlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1Desk1CabinetBlockEntity>> OFFICE_SET_1_DESK_1_CABINET = register("office_set_1_desk_1_cabinet", MdmModBlocks.OFFICE_SET_1_DESK_1_CABINET, OfficeSet1Desk1CabinetBlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1Desk1CabinetVar2BlockEntity>> OFFICE_SET_1_DESK_1_CABINET_VAR_2 = register("office_set_1_desk_1_cabinet_var_2", MdmModBlocks.OFFICE_SET_1_DESK_1_CABINET_VAR_2, OfficeSet1Desk1CabinetVar2BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1Desk1CabinetVar3BlockEntity>> OFFICE_SET_1_DESK_1_CABINET_VAR_3 = register("office_set_1_desk_1_cabinet_var_3", MdmModBlocks.OFFICE_SET_1_DESK_1_CABINET_VAR_3, OfficeSet1Desk1CabinetVar3BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1Desk1CabinetVar4BlockEntity>> OFFICE_SET_1_DESK_1_CABINET_VAR_4 = register("office_set_1_desk_1_cabinet_var_4", MdmModBlocks.OFFICE_SET_1_DESK_1_CABINET_VAR_4, OfficeSet1Desk1CabinetVar4BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1Desk1LeftBlockEntity>> OFFICE_SET_1_DESK_1_LEFT = register("office_set_1_desk_1_left", MdmModBlocks.OFFICE_SET_1_DESK_1_LEFT, OfficeSet1Desk1LeftBlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1Desk1LeftVar2BlockEntity>> OFFICE_SET_1_DESK_1_LEFT_VAR_2 = register("office_set_1_desk_1_left_var_2", MdmModBlocks.OFFICE_SET_1_DESK_1_LEFT_VAR_2, OfficeSet1Desk1LeftVar2BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1Desk1LeftVar3BlockEntity>> OFFICE_SET_1_DESK_1_LEFT_VAR_3 = register("office_set_1_desk_1_left_var_3", MdmModBlocks.OFFICE_SET_1_DESK_1_LEFT_VAR_3, OfficeSet1Desk1LeftVar3BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1Desk1MiddleBlockEntity>> OFFICE_SET_1_DESK_1_MIDDLE = register("office_set_1_desk_1_middle", MdmModBlocks.OFFICE_SET_1_DESK_1_MIDDLE, OfficeSet1Desk1MiddleBlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1Desk1RightBlockEntity>> OFFICE_SET_1_DESK_1_RIGHT = register("office_set_1_desk_1_right", MdmModBlocks.OFFICE_SET_1_DESK_1_RIGHT, OfficeSet1Desk1RightBlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1Desk1RightVar2BlockEntity>> OFFICE_SET_1_DESK_1_RIGHT_VAR_2 = register("office_set_1_desk_1_right_var_2", MdmModBlocks.OFFICE_SET_1_DESK_1_RIGHT_VAR_2, OfficeSet1Desk1RightVar2BlockEntity::new);
+	public static final RegistryEntry<BlockEntityType<OfficeSet1Desk1RightVar3BlockEntity>> OFFICE_SET_1_DESK_1_RIGHT_VAR_3 = register("office_set_1_desk_1_right_var_3", MdmModBlocks.OFFICE_SET_1_DESK_1_RIGHT_VAR_3, OfficeSet1Desk1RightVar3BlockEntity::new);
+
 	private static <T extends BlockEntity> RegistryEntry<BlockEntityType<T>> register(String registryname, RegistryEntry<Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
 	}

@@ -34,7 +34,6 @@ public class MdmModTabs {
 				tabData.accept(MdmModBlocks.LIGHT_COUCH_MIDDLE.get().asItem());
 				tabData.accept(MdmModBlocks.COUCH_RIGHT.get().asItem());
 				tabData.accept(MdmModBlocks.LIGHT_COUCH_RIGHT.get().asItem());
-				tabData.accept(MdmModBlocks.COUCH_CORNER.get().asItem());
 				tabData.accept(MdmModBlocks.SOFA.get().asItem());
 				tabData.accept(MdmModBlocks.LIGHT_SOFA.get().asItem());
 				tabData.accept(MdmModBlocks.HAND_SOAP_AND_CREAM_SET.get().asItem());

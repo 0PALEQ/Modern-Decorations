@@ -113,7 +113,7 @@ tasks.register('validateModResources') {
             throw new GradleException('Missing item display name: item.mdm.furniture_parts')
         }
 
-        def itemRegistrySource = file('src/main/java/com/cookiecraftmods/mdm/init/MdmModItems.java').text
+        def itemRegistrySource = mainSourceFile('java', 'com/cookiecraftmods/mdm/init/MdmModItems.java').text
         if (!itemRegistrySource.contains('RegistryProperties.item().useBlockDescriptionPrefix()')) {
             throw new GradleException('Block items must use their block translation keys on Minecraft 1.21.11')
         }
@@ -164,7 +164,7 @@ tasks.register('validateModResources') {
             throw new GradleException('Furniture-parts recipe does not use the Minecraft 1.21.11 ingredient schema')
         }
 
-        def clientSource = file('src/main/java/com/cookiecraftmods/mdm/client/MdmModClient.java').text
+        def clientSource = mainSourceFile('java', 'com/cookiecraftmods/mdm/client/MdmModClient.java').text
         fileTree("${resources}/assets/mdm/textures/block") { include '*.png' }.each { texture ->
             def image = javax.imageio.ImageIO.read(texture)
             def hasPartialAlpha = false
@@ -231,6 +231,8 @@ sourceSets.main.resources {
 sourceSets.main.java {
     srcDir rootProject.file('../../shared/src/mc_1.21.11/java')
 }
+
+apply from: rootProject.file('../../shared/gradle/shared-sources.gradle')
 
 apply from: rootProject.file('../../shared/gradle/validate-recipes.gradle')
 apply from: rootProject.file('../../shared/gradle/model-mappings.gradle')

@@ -1,7 +1,6 @@
 package com.cookiecraftmods.mdm.client;
 
 import com.cookiecraftmods.mdm.init.MdmModBlocks;
-import com.cookiecraftmods.mdm.init.MdmModScreens;
 import com.cookiecraftmods.mdm.registry.RegistryEntry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -24,7 +23,6 @@ public final class MdmModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        MdmModScreens.initialize();
 
         for (RegistryEntry<? extends Block> entry : MdmModBlocks.REGISTRY.entries()) {
             RenderType layer = TRANSLUCENT_BLOCKS.contains(entry.getId().getPath())

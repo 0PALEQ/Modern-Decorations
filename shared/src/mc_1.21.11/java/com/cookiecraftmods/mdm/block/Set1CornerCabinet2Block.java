@@ -29,7 +29,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 
-import com.cookiecraftmods.mdm.world.inventory.StorageMenu;
 import com.cookiecraftmods.mdm.block.entity.Set1CornerCabinet2BlockEntity;
 
 public class Set1CornerCabinet2Block extends Block implements EntityBlock {
@@ -73,17 +72,9 @@ public class Set1CornerCabinet2Block extends Block implements EntityBlock {
 	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
 		if (entity instanceof ServerPlayer player) {
-			player.openMenu(new MenuProvider() {
-				@Override
-				public Component getDisplayName() {
-					return Component.literal("Set 1 Corner Cabinet 2");
-				}
-
-				@Override
-				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new StorageMenu(id, inventory, pos);
-				}
-			});
+			if (world.getBlockEntity(pos) instanceof MenuProvider provider) {
+				player.openMenu(provider);
+			}
 		}
 		return InteractionResult.SUCCESS;
 	}

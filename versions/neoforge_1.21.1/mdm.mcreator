@@ -225,22 +225,6 @@
       }
     },
     {
-      "name": "CouchCorner",
-      "type": "block",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "couch_corner",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/mdm/models/block/couch_corner.json",
-          "src/main/resources/assets/mdm/models/item/couch_corner.json",
-          "src/main/resources/data/mdm/loot_table/blocks/couch_corner.json",
-          "src/main/java/com/cookiecraftmods/mdm/block/CouchCornerBlock.java",
-          "src/main/resources/assets/mdm/blockstates/couch_corner.json"
-        ]
-      }
-    },
-    {
       "name": "Sofa",
       "type": "block",
       "compiles": true,
@@ -4981,18 +4965,6 @@
       }
     },
     {
-      "name": "R166",
-      "type": "recipe",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "r_166",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/mdm/recipe/r_166.json"
-        ]
-      }
-    },
-    {
       "name": "R167",
       "type": "recipe",
       "compiles": true,
@@ -7507,7 +7479,6 @@
       "CUSTOM:Couchleft",
       "CUSTOM:Couchmiddle",
       "CUSTOM:CouchRight",
-      "CUSTOM:CouchCorner",
       "CUSTOM:Sofa",
       "CUSTOM:HandSoapAndCreamSet",
       "CUSTOM:ToiletPaperRoll",
@@ -7682,7 +7653,6 @@
       "CUSTOM:Couchleft",
       "CUSTOM:Couchmiddle",
       "CUSTOM:CouchRight",
-      "CUSTOM:CouchCorner",
       "CUSTOM:OutdoorCouch",
       "CUSTOM:LightGreyCouchMiddle",
       "CUSTOM:LightGrayCouchLeft",
@@ -7714,7 +7684,6 @@
       "Couchleft",
       "Couchmiddle",
       "CouchRight",
-      "CouchCorner",
       "Sofa",
       "HandSoapAndCreamSet",
       "ToiletPaperRoll",
@@ -8017,7 +7986,6 @@
       "block.mdm.bedroom_set_1grey_nightstand_2": "Bedroom Set 1 Grey Nightstand 2",
       "block.mdm.office_set_1_desk_1_middle": "Office Set 1 Desk 1 Middle",
       "block.mdm.bedroom_set_1grey_nightstand_1": "Bedroom Set 1 Grey Nightstand 1",
-      "block.mdm.couch_corner": "Couch Corner",
       "block.mdm.grey_curtain_left": "Grey Curtain Left",
       "block.mdm.bedroom_set_1wengenighstand_2": "Bedroom Set 1 Wenge Nightstand 2",
       "block.mdm.soap_bar": "Soap Bar",

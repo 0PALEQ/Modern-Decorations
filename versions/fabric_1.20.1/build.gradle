@@ -72,5 +72,7 @@ sourceSets.main.java {
     srcDir rootProject.file('../../shared/src/mc_1.20.1/java')
 }
 
+apply from: rootProject.file('../../shared/gradle/shared-sources.gradle')
+
 apply from: rootProject.file('../../shared/gradle/validate-recipes.gradle')
 apply from: rootProject.file('../../shared/gradle/model-mappings.gradle')

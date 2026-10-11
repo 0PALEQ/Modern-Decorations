@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "mdm:furniture_parts",
-  "result": {
-    "id": "mdm:set_1_corner_hanging_cabinet",
-    "count": 1
-  }
-}

@@ -1,0 +1,14 @@
+import groovy.json.JsonSlurper
+
+def manifest = new JsonSlurper().parse(rootProject.file('../../shared/gradle/source-groups.json'))
+def target = rootProject.projectDir.name
+manifest.groups.findAll { target in it.versions }.each { group ->
+    group.kinds.each { kind ->
+        sourceSets.main."${kind}".srcDir(rootProject.file("../../${group.root}/${kind}"))
+    }
+}
+
+ext.mainSourceFile = { String kind, String relativePath ->
+    sourceSets.main."${kind}".srcDirs.collect { new File(it, relativePath) }
+            .find { it.isFile() } ?: file("src/main/${kind}/${relativePath}")
+}
