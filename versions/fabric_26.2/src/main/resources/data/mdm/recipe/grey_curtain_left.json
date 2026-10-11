@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "mdm:furniture_parts",
-  "result": {
-    "id": "mdm:grey_curtain_left",
-    "count": 1
-  }
-}

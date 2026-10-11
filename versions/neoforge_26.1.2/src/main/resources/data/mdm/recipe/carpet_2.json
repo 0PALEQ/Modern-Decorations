@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "mdm:furniture_parts",
-  "result": {
-    "id": "mdm:carpet_2",
-    "count": 1
-  }
-}

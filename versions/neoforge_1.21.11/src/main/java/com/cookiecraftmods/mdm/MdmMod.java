@@ -3,7 +3,6 @@ package com.cookiecraftmods.mdm;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 import com.cookiecraftmods.mdm.init.MdmModBlocks;
 import com.cookiecraftmods.mdm.init.MdmModItems;
-import com.cookiecraftmods.mdm.init.MdmModMenus;
 import com.cookiecraftmods.mdm.init.MdmModTabs;
 import com.cookiecraftmods.mdm.block.SeatBlock;
 import com.cookiecraftmods.mdm.registry.ModRegistryEntry;
@@ -26,7 +25,6 @@ public final class MdmMod {
         MdmModBlocks.init();
         MdmModItems.init();
         MdmModBlockEntities.init();
-        MdmModMenus.init();
         MdmModTabs.init();
         ModRegistryEntry.attachAll(modEventBus);
 

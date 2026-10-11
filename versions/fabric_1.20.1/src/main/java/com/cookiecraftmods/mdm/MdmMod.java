@@ -3,7 +3,6 @@ package com.cookiecraftmods.mdm;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 import com.cookiecraftmods.mdm.init.MdmModBlocks;
 import com.cookiecraftmods.mdm.init.MdmModItems;
-import com.cookiecraftmods.mdm.init.MdmModMenus;
 import com.cookiecraftmods.mdm.init.MdmModTabs;
 import com.cookiecraftmods.mdm.block.SeatBlock;
 import net.fabricmc.api.ModInitializer;
@@ -21,7 +20,6 @@ public final class MdmMod implements ModInitializer {
         MdmModBlocks.REGISTRY.initialize();
         MdmModItems.REGISTRY.initialize();
         MdmModBlockEntities.REGISTRY.initialize();
-        MdmModMenus.REGISTRY.initialize();
         MdmModTabs.REGISTRY.initialize();
         UseBlockCallback.EVENT.register((player, level, hand, hit) -> SeatBlock.use(level.getBlockState(hit.getBlockPos()), level, hit.getBlockPos(), player));
         PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, blockEntity) -> SeatBlock.removeSeats(level, pos));

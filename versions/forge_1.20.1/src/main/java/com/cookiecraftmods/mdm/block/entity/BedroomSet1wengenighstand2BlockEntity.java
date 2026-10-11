@@ -15,7 +15,6 @@ import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Direction;
@@ -25,13 +24,12 @@ import javax.annotation.Nullable;
 
 import java.util.stream.IntStream;
 
-import io.netty.buffer.Unpooled;
 
-import com.cookiecraftmods.mdm.world.inventory.StorageMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 
 public class BedroomSet1wengenighstand2BlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.withSize(14, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(27, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
 	public BedroomSet1wengenighstand2BlockEntity(BlockPos position, BlockState state) {
@@ -89,7 +87,7 @@ public class BedroomSet1wengenighstand2BlockEntity extends RandomizableContainer
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new StorageMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+		return ChestMenu.threeRows(id, inventory, this);
 	}
 
 	@Override

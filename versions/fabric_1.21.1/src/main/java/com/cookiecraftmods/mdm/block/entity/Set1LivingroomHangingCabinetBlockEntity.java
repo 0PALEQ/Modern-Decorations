@@ -19,11 +19,11 @@ import net.minecraft.core.BlockPos;
 import java.util.stream.IntStream;
 
 
-import com.cookiecraftmods.mdm.world.inventory.StorageMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 
 public class Set1LivingroomHangingCabinetBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.withSize(14, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(27, ItemStack.EMPTY);
 
 	public Set1LivingroomHangingCabinetBlockEntity(BlockPos position, BlockState state) {
 		super(MdmModBlockEntities.SET_1_LIVINGROOM_HANGING_CABINET.get(), position, state);
@@ -80,7 +80,7 @@ public class Set1LivingroomHangingCabinetBlockEntity extends RandomizableContain
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new StorageMenu(id, inventory, this.worldPosition);
+		return ChestMenu.threeRows(id, inventory, this);
 	}
 
 	@Override

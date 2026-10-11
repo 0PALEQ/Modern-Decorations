@@ -30,7 +30,6 @@ import net.minecraft.core.BlockPos;
 
 import java.util.function.Function;
 
-import com.cookiecraftmods.mdm.world.inventory.StorageMenu;
 import com.cookiecraftmods.mdm.block.entity.BedroomSet1wengedresserleftBlockEntity;
 
 public class BedroomSet1wengedresserleftBlock extends Block implements EntityBlock {
@@ -86,17 +85,9 @@ public class BedroomSet1wengedresserleftBlock extends Block implements EntityBlo
 	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
 		if (entity instanceof ServerPlayer player) {
-			player.openMenu(new MenuProvider() {
-				@Override
-				public Component getDisplayName() {
-					return Component.literal("Bedroom Set 1 Wenge Dresser Left");
-				}
-
-				@Override
-				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new StorageMenu(id, inventory, pos);
-				}
-			});
+			if (world.getBlockEntity(pos) instanceof MenuProvider provider) {
+				player.openMenu(provider);
+			}
 		}
 		return InteractionResult.SUCCESS;
 	}

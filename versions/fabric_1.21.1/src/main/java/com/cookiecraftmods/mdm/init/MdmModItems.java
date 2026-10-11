@@ -28,7 +28,6 @@ public class MdmModItems {
 	public static final ModRegistryEntry<Item> LIGHT_COUCH_MIDDLE;
 	public static final ModRegistryEntry<Item> COUCH_RIGHT;
 	public static final ModRegistryEntry<Item> LIGHT_COUCH_RIGHT;
-	public static final ModRegistryEntry<Item> COUCH_CORNER;
 	public static final ModRegistryEntry<Item> SOFA;
 	public static final ModRegistryEntry<Item> LIGHT_SOFA;
 	public static final ModRegistryEntry<Item> HAND_SOAP_AND_CREAM_SET;
@@ -298,7 +297,6 @@ public class MdmModItems {
 		LIGHT_COUCH_MIDDLE = block(MdmModBlocks.LIGHT_COUCH_MIDDLE);
 		COUCH_RIGHT = block(MdmModBlocks.COUCH_RIGHT);
 		LIGHT_COUCH_RIGHT = block(MdmModBlocks.LIGHT_COUCH_RIGHT);
-		COUCH_CORNER = block(MdmModBlocks.COUCH_CORNER);
 		SOFA = block(MdmModBlocks.SOFA);
 		LIGHT_SOFA = block(MdmModBlocks.LIGHT_SOFA);
 		HAND_SOAP_AND_CREAM_SET = block(MdmModBlocks.HAND_SOAP_AND_CREAM_SET);

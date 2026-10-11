@@ -10,7 +10,6 @@ import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Direction;
@@ -20,13 +19,12 @@ import net.minecraft.core.BlockPos;
 
 import java.util.stream.IntStream;
 
-import io.netty.buffer.Unpooled;
 
-import com.cookiecraftmods.mdm.world.inventory.FridgeGuiMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 
 public class KitchenSet3FridgeTopBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.withSize(18, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(27, ItemStack.EMPTY);
 
 	public KitchenSet3FridgeTopBlockEntity(BlockPos position, BlockState state) {
 		super(MdmModBlockEntities.KITCHEN_SET_3_FRIDGE_TOP.get(), position, state);
@@ -83,7 +81,7 @@ public class KitchenSet3FridgeTopBlockEntity extends RandomizableContainerBlockE
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new FridgeGuiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+		return ChestMenu.threeRows(id, inventory, this);
 	}
 
 	@Override

@@ -19,11 +19,11 @@ import net.minecraft.core.BlockPos;
 import java.util.stream.IntStream;
 
 
-import com.cookiecraftmods.mdm.world.inventory.FreezerguiMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 
 public class KitchenSet3FridgeBottomBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.withSize(18, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(27, ItemStack.EMPTY);
 
 	public KitchenSet3FridgeBottomBlockEntity(BlockPos position, BlockState state) {
 		super(MdmModBlockEntities.KITCHEN_SET_3_FRIDGE_BOTTOM.get(), position, state);
@@ -80,7 +80,7 @@ public class KitchenSet3FridgeBottomBlockEntity extends RandomizableContainerBlo
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new FreezerguiMenu(id, inventory, this.worldPosition);
+		return ChestMenu.threeRows(id, inventory, this);
 	}
 
 	@Override

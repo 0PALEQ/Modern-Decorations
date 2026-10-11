@@ -1,0 +1,253 @@
+{
+  "groups": [
+    {
+      "root": "shared/src/groups/set_01",
+      "versions": [
+        "fabric_1.20.1",
+        "fabric_1.21.1",
+        "fabric_1.21.11",
+        "forge_1.20.1",
+        "neoforge_1.21.1",
+        "neoforge_1.21.11"
+      ],
+      "kinds": [
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_02",
+      "versions": [
+        "fabric_1.20.1",
+        "fabric_1.21.1",
+        "forge_1.20.1",
+        "neoforge_1.21.1"
+      ],
+      "kinds": [
+        "java",
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_03",
+      "versions": [
+        "fabric_1.20.1",
+        "fabric_1.21.11",
+        "fabric_26.1.2",
+        "fabric_26.2",
+        "fabric_26.3",
+        "neoforge_1.21.11",
+        "neoforge_26.1.2"
+      ],
+      "kinds": [
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_04",
+      "versions": [
+        "fabric_1.20.1",
+        "forge_1.20.1"
+      ],
+      "kinds": [
+        "java",
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_05",
+      "versions": [
+        "fabric_1.20.1",
+        "forge_1.20.1",
+        "neoforge_1.21.1"
+      ],
+      "kinds": [
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_06",
+      "versions": [
+        "fabric_1.21.1",
+        "fabric_1.21.11",
+        "fabric_26.1.2",
+        "fabric_26.2"
+      ],
+      "kinds": [
+        "java"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_07",
+      "versions": [
+        "fabric_1.21.1",
+        "fabric_1.21.11",
+        "fabric_26.1.2",
+        "fabric_26.2",
+        "fabric_26.3",
+        "neoforge_1.21.1",
+        "neoforge_1.21.11",
+        "neoforge_26.1.2"
+      ],
+      "kinds": [
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_08",
+      "versions": [
+        "fabric_1.21.1",
+        "fabric_1.21.11",
+        "fabric_26.1.2",
+        "fabric_26.2",
+        "fabric_26.3",
+        "neoforge_1.21.11",
+        "neoforge_26.1.2"
+      ],
+      "kinds": [
+        "java",
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_09",
+      "versions": [
+        "fabric_1.21.1",
+        "fabric_1.21.11",
+        "fabric_26.1.2",
+        "fabric_26.2",
+        "fabric_26.3",
+        "neoforge_26.1.2"
+      ],
+      "kinds": [
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_10",
+      "versions": [
+        "fabric_1.21.1",
+        "forge_1.20.1",
+        "neoforge_1.21.1"
+      ],
+      "kinds": [
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_11",
+      "versions": [
+        "fabric_1.21.1",
+        "neoforge_1.21.1"
+      ],
+      "kinds": [
+        "java",
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_12",
+      "versions": [
+        "fabric_1.21.11",
+        "fabric_26.1.2",
+        "fabric_26.2",
+        "fabric_26.3"
+      ],
+      "kinds": [
+        "java"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_13",
+      "versions": [
+        "fabric_1.21.11",
+        "fabric_26.1.2",
+        "fabric_26.2",
+        "fabric_26.3",
+        "neoforge_1.21.11",
+        "neoforge_26.1.2"
+      ],
+      "kinds": [
+        "java",
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_14",
+      "versions": [
+        "fabric_1.21.11",
+        "fabric_26.1.2",
+        "fabric_26.2",
+        "fabric_26.3",
+        "neoforge_26.1.2"
+      ],
+      "kinds": [
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_15",
+      "versions": [
+        "fabric_1.21.11",
+        "fabric_26.2",
+        "fabric_26.3"
+      ],
+      "kinds": [
+        "java"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_16",
+      "versions": [
+        "fabric_1.21.11",
+        "neoforge_1.21.11"
+      ],
+      "kinds": [
+        "java"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_17",
+      "versions": [
+        "fabric_26.1.2",
+        "fabric_26.2",
+        "fabric_26.3",
+        "neoforge_26.1.2"
+      ],
+      "kinds": [
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_18",
+      "versions": [
+        "fabric_26.1.2",
+        "neoforge_26.1.2"
+      ],
+      "kinds": [
+        "java",
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_19",
+      "versions": [
+        "fabric_26.2",
+        "fabric_26.3"
+      ],
+      "kinds": [
+        "java",
+        "resources"
+      ]
+    },
+    {
+      "root": "shared/src/groups/set_20",
+      "versions": [
+        "neoforge_1.21.11",
+        "neoforge_26.1.2"
+      ],
+      "kinds": [
+        "java"
+      ]
+    }
+  ]
+}

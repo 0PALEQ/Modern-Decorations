@@ -48,8 +48,10 @@ neoForge {
         data {
             clientData()
             programArguments.addAll '--mod', project.mod_id, '--all', '--output',
-                    file('src/generated/resources/').absolutePath, '--existing',
-                    file('src/main/resources/').absolutePath
+                    file('src/generated/resources/').absolutePath
+            programArguments.addAll(provider {
+                sourceSets.main.resources.srcDirs.collectMany { ['--existing', it.absolutePath] }
+            })
         }
         configureEach {
             systemProperty 'forge.logging.markers', 'REGISTRIES'
@@ -252,6 +254,8 @@ sourceSets.main.resources {
 sourceSets.main.java {
     srcDir rootProject.file('../../shared/src/mc_1.21.11/java')
 }
+
+apply from: rootProject.file('../../shared/gradle/shared-sources.gradle')
 
 apply from: rootProject.file('../../shared/gradle/validate-recipes.gradle')
 apply from: rootProject.file('../../shared/gradle/model-mappings.gradle')

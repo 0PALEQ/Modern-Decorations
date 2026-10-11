@@ -30,7 +30,6 @@ import it.unimi.dsi.fastutil.ints.IntObjectPair;
 import it.unimi.dsi.fastutil.ints.IntObjectImmutablePair;
 
 import com.cookiecraftmods.mdm.init.MdmModTabs;
-import com.cookiecraftmods.mdm.init.MdmModMenus;
 import com.cookiecraftmods.mdm.init.MdmModItems;
 import com.cookiecraftmods.mdm.init.MdmModBlocks;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
@@ -52,7 +51,6 @@ public class MdmMod {
 		MdmModBlockEntities.REGISTRY.register(bus);
 		MdmModItems.REGISTRY.register(bus);
 		MdmModTabs.REGISTRY.register(bus);
-		MdmModMenus.REGISTRY.register(bus);
 		// Start of user code block mod init
 		// End of user code block mod init
 	}

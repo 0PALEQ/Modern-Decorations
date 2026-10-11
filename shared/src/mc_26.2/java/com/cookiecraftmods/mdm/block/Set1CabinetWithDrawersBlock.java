@@ -34,7 +34,6 @@ import net.minecraft.core.BlockPos;
 
 import java.util.function.Function;
 
-import com.cookiecraftmods.mdm.world.inventory.StorageMenu;
 import com.cookiecraftmods.mdm.block.entity.Set1CabinetWithDrawersBlockEntity;
 
 public class Set1CabinetWithDrawersBlock extends Block implements EntityBlock {
@@ -90,17 +89,9 @@ public class Set1CabinetWithDrawersBlock extends Block implements EntityBlock {
 	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
 		if (entity instanceof ServerPlayer player) {
-			player.openMenu(new MenuProvider() {
-				@Override
-				public Component getDisplayName() {
-					return Component.literal("Set 1 Cabinet With Drawers");
-				}
-
-				@Override
-				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new StorageMenu(id, inventory, pos);
-				}
-			});
+			if (world.getBlockEntity(pos) instanceof MenuProvider provider) {
+				player.openMenu(provider);
+			}
 		}
 		return InteractionResult.SUCCESS;
 	}
