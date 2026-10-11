@@ -22,10 +22,14 @@ public class MdmModBlocks {
     public static final RegistryObject<Block> STEEL_SHELF;
     public static final RegistryObject<Block> BLACK_LAMP;
     public static final RegistryObject<Block> COUCHLEFT;
+    public static final RegistryObject<Block> LIGHT_COUCH_LEFT;
     public static final RegistryObject<Block> COUCHMIDDLE;
+    public static final RegistryObject<Block> LIGHT_COUCH_MIDDLE;
     public static final RegistryObject<Block> COUCH_RIGHT;
+    public static final RegistryObject<Block> LIGHT_COUCH_RIGHT;
     public static final RegistryObject<Block> COUCH_CORNER;
     public static final RegistryObject<Block> SOFA;
+    public static final RegistryObject<Block> LIGHT_SOFA;
     public static final RegistryObject<Block> HAND_SOAP_AND_CREAM_SET;
     public static final RegistryObject<Block> TOILET_PAPER_ROLL;
     public static final RegistryObject<Block> SOAP_BAR;
@@ -288,10 +292,14 @@ public class MdmModBlocks {
         STEEL_SHELF = REGISTRY.register("steel_shelf", SteelShelfBlock::new);
         BLACK_LAMP = REGISTRY.register("black_lamp", BlackLampBlock::new);
         COUCHLEFT = REGISTRY.register("couchleft", CouchleftBlock::new);
+        LIGHT_COUCH_LEFT = REGISTRY.register("light_couch_left", CouchleftBlock::new);
         COUCHMIDDLE = REGISTRY.register("couchmiddle", CouchmiddleBlock::new);
+        LIGHT_COUCH_MIDDLE = REGISTRY.register("light_couch_middle", CouchmiddleBlock::new);
         COUCH_RIGHT = REGISTRY.register("couch_right", CouchRightBlock::new);
+        LIGHT_COUCH_RIGHT = REGISTRY.register("light_couch_right", CouchRightBlock::new);
         COUCH_CORNER = REGISTRY.register("couch_corner", CouchCornerBlock::new);
         SOFA = REGISTRY.register("sofa", SofaBlock::new);
+        LIGHT_SOFA = REGISTRY.register("light_sofa", SofaBlock::new);
         HAND_SOAP_AND_CREAM_SET = REGISTRY.register("hand_soap_and_cream_set", HandSoapAndCreamSetBlock::new);
         TOILET_PAPER_ROLL = REGISTRY.register("toilet_paper_roll", ToiletPaperRollBlock::new);
         SOAP_BAR = REGISTRY.register("soap_bar", SoapBarBlock::new);
@@ -542,11 +550,15 @@ public class MdmModBlocks {
         TALL_MIRROR = REGISTRY.register("tall_mirror", TallMirrorBlock::new);
 
         SeatBlock.setSeatHeightPixels(FOYER_BENCH_WENGE, 13.0D);
-        SeatBlock.setSeatHeightPixels(COUCHLEFT, 10.0D);
+        SeatBlock.setSeatHeightPixels(COUCHLEFT, 13.0D);
+        SeatBlock.setSeatHeightPixels(SOFA, 13.0D);
+        SeatBlock.setSeatHeightPixels(LIGHT_SOFA, 13.0D);
+        SeatBlock.setSeatHeightPixels(LIGHT_COUCH_LEFT, 13.0D);
         SeatBlock.setSeatHeightPixels(GREY_COUCH_LEFT, 14.0D);
         SeatBlock.setSeatHeightPixels(FOYER_BENCH, 13.0D);
         SeatBlock.setSeatHeightPixels(GREY_COUCH_RIGHT, 14.0D);
-        SeatBlock.setSeatHeightPixels(COUCH_RIGHT, 10.0D);
+        SeatBlock.setSeatHeightPixels(COUCH_RIGHT, 13.0D);
+        SeatBlock.setSeatHeightPixels(LIGHT_COUCH_RIGHT, 13.0D);
         SeatBlock.setSeatHeightPixels(SET_1_CHAIR, 16.0D);
         SeatBlock.setSeatHeightPixels(FOYER_BENCH_WHITE, 13.0D);
         SeatBlock.setSeatHeightPixels(OFFICE_SET_1_CHAIR, 16.0D);
@@ -560,7 +572,8 @@ public class MdmModBlocks {
         SeatBlock.setSeatHeightPixels(LIGHT_GREY_COUCH_MIDDLE, 13.0D);
         SeatBlock.setSeatHeightPixels(KITCHEN_SET_3_BAR_CHAIR, 19.0D);
         SeatBlock.setSeatHeightPixels(FOYER_BENCH_DARK, 13.0D);
-        SeatBlock.setSeatHeightPixels(COUCHMIDDLE, 10.0D);
+        SeatBlock.setSeatHeightPixels(COUCHMIDDLE, 13.0D);
+        SeatBlock.setSeatHeightPixels(LIGHT_COUCH_MIDDLE, 13.0D);
         SeatBlock.setSeatHeightPixels(WHITE_ARMCHAIR, 15.0D);
         SeatBlock.setSeatHeightPixels(GREY_SOFA, 20.0D);
         SeatBlock.setSeatHeightPixels(POUF, 8.0D);

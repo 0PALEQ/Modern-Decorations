@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/couch_left",
+  "textures": {
+    "0": "mdm:block/couch_legs",
+    "1": "mdm:block/couch_body_light",
+    "all": "mdm:block/couch_body_light",
+    "particle": "mdm:block/couch_body_light"
+  }
+}
