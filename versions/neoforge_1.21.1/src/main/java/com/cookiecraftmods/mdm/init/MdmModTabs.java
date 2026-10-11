@@ -29,10 +29,14 @@ public class MdmModTabs {
 				tabData.accept(MdmModBlocks.STEEL_SHELF.get().asItem());
 				tabData.accept(MdmModBlocks.BLACK_LAMP.get().asItem());
 				tabData.accept(MdmModBlocks.COUCHLEFT.get().asItem());
+				tabData.accept(MdmModBlocks.LIGHT_COUCH_LEFT.get().asItem());
 				tabData.accept(MdmModBlocks.COUCHMIDDLE.get().asItem());
+				tabData.accept(MdmModBlocks.LIGHT_COUCH_MIDDLE.get().asItem());
 				tabData.accept(MdmModBlocks.COUCH_RIGHT.get().asItem());
+				tabData.accept(MdmModBlocks.LIGHT_COUCH_RIGHT.get().asItem());
 				tabData.accept(MdmModBlocks.COUCH_CORNER.get().asItem());
 				tabData.accept(MdmModBlocks.SOFA.get().asItem());
+				tabData.accept(MdmModBlocks.LIGHT_SOFA.get().asItem());
 				tabData.accept(MdmModBlocks.HAND_SOAP_AND_CREAM_SET.get().asItem());
 				tabData.accept(MdmModBlocks.TOILET_PAPER_ROLL.get().asItem());
 				tabData.accept(MdmModBlocks.SOAP_BAR.get().asItem());

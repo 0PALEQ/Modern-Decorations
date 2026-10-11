@@ -1,8 +1,8 @@
 {
   "parent": "mdm:custom/couch_middle",
   "textures": {
-    "0": "mdm:block/couch",
-    "all": "mdm:block/couch",
-    "particle": "mdm:block/couch"
+    "1": "mdm:block/couch_body_dark",
+    "all": "mdm:block/couch_body_dark",
+    "particle": "mdm:block/couch_body_dark"
   }
 }
