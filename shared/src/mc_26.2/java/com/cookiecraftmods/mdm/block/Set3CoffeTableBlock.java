@@ -1,20 +1,21 @@
 package com.cookiecraftmods.mdm.block;
 
-import net.minecraft.server.level.ServerLevel;
-
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
@@ -25,36 +26,15 @@ import net.minecraft.world.Containers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.Direction;
-import net.minecraft.core.BlockPos;
-
-
-import java.util.function.Function;
 
 import com.cookiecraftmods.mdm.block.entity.Set3CoffeTableBlockEntity;
 
 public class Set3CoffeTableBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public Set3CoffeTableBlock() {
 		super(com.cookiecraftmods.mdm.registry.RegistryProperties.block().sound(SoundType.WOOD).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.BASEDRUM));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
-	}
-
-	private Function<BlockState, VoxelShape> makeShapes() {
-		return this.getShapeForEachState(state -> {
-			return switch (state.getValue(FACING)) {
-				default -> box(0, 0, 3, 16, 10, 13);
-				case NORTH -> box(0, 0, 3, 16, 10, 13);
-				case EAST -> box(3, 0, 0, 13, 10, 16);
-				case WEST -> box(3, 0, 0, 13, 10, 16);
-			};
-		});
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return shapes.apply(state);
 	}
 
 	@Override
@@ -128,4 +108,19 @@ public class Set3CoffeTableBlock extends Block implements EntityBlock {
 		else
 			return 0;
 	}
+	private static final VoxelShape SHAPE_NORTH = box(0, 0, 2.75, 16, 9, 13.25);
+	private static final VoxelShape SHAPE_EAST = box(2.75, 0, 0, 13.25, 9, 16);
+	private static final VoxelShape SHAPE_SOUTH = box(0, 0, 2.75, 16, 9, 13.25);
+	private static final VoxelShape SHAPE_WEST = box(2.75, 0, 0, 13.25, 9, 16);
+
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return switch (state.getValue(FACING)) {
+			case EAST -> SHAPE_EAST;
+			case SOUTH -> SHAPE_SOUTH;
+			case WEST -> SHAPE_WEST;
+			default -> SHAPE_NORTH;
+		};
+	}
+
 }
