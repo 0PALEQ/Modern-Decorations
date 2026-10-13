@@ -10,29 +10,24 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.core.BlockPos;
 
-import com.google.common.collect.ImmutableMap;
-
 public class ShoeRack2Block extends TransparentHorizontalFurnitureBlock {
-	private final ImmutableMap<BlockState, VoxelShape> shapes = this.makeShapes();
+
+	private static final VoxelShape NORTH_SHAPE = Shapes.or(box(0, 0, 7, 16, 9, 16), box(1.25, 9.025, 9.2, 14.25, 13.225, 12.95));
+	private static final VoxelShape EAST_SHAPE = HorizontalFurnitureBlock.rotateShape(NORTH_SHAPE);
+	private static final VoxelShape SOUTH_SHAPE = HorizontalFurnitureBlock.rotateShape(EAST_SHAPE);
+	private static final VoxelShape WEST_SHAPE = HorizontalFurnitureBlock.rotateShape(SOUTH_SHAPE);
 
 	public ShoeRack2Block() {
 		super(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 	}
 
-	private ImmutableMap<BlockState, VoxelShape> makeShapes() {
-		return this.getShapeForEachState(state -> {
-			return switch (state.getValue(FACING)) {
-				default -> box(0, 0, 0, 16, 16, 10);
-				case NORTH -> box(0, 0, 6, 16, 16, 16);
-				case EAST -> box(0, 0, 0, 10, 16, 16);
-				case WEST -> box(6, 0, 0, 16, 16, 16);
-			};
-		});
-	}
-
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return shapes.get(state);
+		return switch (state.getValue(FACING)) {
+			case EAST -> EAST_SHAPE;
+			case SOUTH -> SOUTH_SHAPE;
+			case WEST -> WEST_SHAPE;
+			default -> NORTH_SHAPE;
+		};
 	}
-
 }

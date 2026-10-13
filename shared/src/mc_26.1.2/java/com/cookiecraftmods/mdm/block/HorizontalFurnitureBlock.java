@@ -1,6 +1,8 @@
 package com.cookiecraftmods.mdm.block;
 
 import net.minecraft.core.Direction;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -38,5 +40,13 @@ public class HorizontalFurnitureBlock extends FurnitureBlock {
     @Override
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
+    }
+
+    static VoxelShape rotateShape(VoxelShape shape) {
+        VoxelShape[] rotated = {Shapes.empty()};
+        shape.forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) ->
+                rotated[0] = Shapes.or(rotated[0], Shapes.box(
+                        1 - maxZ, minY, minX, 1 - minZ, maxY, maxX)));
+        return rotated[0];
     }
 }
