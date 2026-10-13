@@ -14,6 +14,7 @@
   "icon": "logo.png",
   "environment": "*",
   "entrypoints": {
+    "client": ["com.cookiecraftmods.mdm.client.clock.ClockClient"],
     "main": [
       "com.cookiecraftmods.mdm.MdmMod"
     ]
