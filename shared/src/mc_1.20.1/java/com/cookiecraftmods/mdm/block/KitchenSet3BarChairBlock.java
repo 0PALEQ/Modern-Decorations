@@ -11,29 +11,24 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.core.BlockPos;
 
-import com.google.common.collect.ImmutableMap;
-
 public class KitchenSet3BarChairBlock extends HorizontalFurnitureBlock {
-	private final ImmutableMap<BlockState, VoxelShape> shapes = this.makeShapes();
+
+	private static final VoxelShape NORTH_SHAPE = Shapes.or(box(4, 0, 4, 12, 12, 12), box(3, 12, 3, 13, 15.25, 13));
+	private static final VoxelShape EAST_SHAPE = HorizontalFurnitureBlock.rotateShape(NORTH_SHAPE);
+	private static final VoxelShape SOUTH_SHAPE = HorizontalFurnitureBlock.rotateShape(EAST_SHAPE);
+	private static final VoxelShape WEST_SHAPE = HorizontalFurnitureBlock.rotateShape(SOUTH_SHAPE);
 
 	public KitchenSet3BarChairBlock() {
 		super(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.BASEDRUM));
 	}
 
-	private ImmutableMap<BlockState, VoxelShape> makeShapes() {
-		return this.getShapeForEachState(state -> {
-			return switch (state.getValue(FACING)) {
-				default -> Shapes.or(box(4, 0, 4, 12, 1, 12), box(5, 12, 5, 11, 13, 11), box(3, 13, 3, 13, 14, 13), box(7.25, 1, 7.25, 8.75, 12, 8.75), box(3.25, 14, 3.25, 12.75, 15, 12.75), box(3.5, 15, 3.5, 12.5, 15.25, 12.5));
-				case NORTH -> Shapes.or(box(4, 0, 4, 12, 1, 12), box(5, 12, 5, 11, 13, 11), box(3, 13, 3, 13, 14, 13), box(7.25, 1, 7.25, 8.75, 12, 8.75), box(3.25, 14, 3.25, 12.75, 15, 12.75), box(3.5, 15, 3.5, 12.5, 15.25, 12.5));
-				case EAST -> Shapes.or(box(4, 0, 4, 12, 1, 12), box(5, 12, 5, 11, 13, 11), box(3, 13, 3, 13, 14, 13), box(7.25, 1, 7.25, 8.75, 12, 8.75), box(3.25, 14, 3.25, 12.75, 15, 12.75), box(3.5, 15, 3.5, 12.5, 15.25, 12.5));
-				case WEST -> Shapes.or(box(4, 0, 4, 12, 1, 12), box(5, 12, 5, 11, 13, 11), box(3, 13, 3, 13, 14, 13), box(7.25, 1, 7.25, 8.75, 12, 8.75), box(3.25, 14, 3.25, 12.75, 15, 12.75), box(3.5, 15, 3.5, 12.5, 15.25, 12.5));
-			};
-		});
-	}
-
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return shapes.get(state);
+		return switch (state.getValue(FACING)) {
+			case EAST -> EAST_SHAPE;
+			case SOUTH -> SOUTH_SHAPE;
+			case WEST -> WEST_SHAPE;
+			default -> NORTH_SHAPE;
+		};
 	}
-
 }

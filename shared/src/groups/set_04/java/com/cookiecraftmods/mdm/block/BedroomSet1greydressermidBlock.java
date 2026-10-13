@@ -1,6 +1,5 @@
 package com.cookiecraftmods.mdm.block;
 
-
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -27,34 +26,28 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-
-import com.google.common.collect.ImmutableMap;
-
 import com.cookiecraftmods.mdm.block.entity.BedroomSet1greydressermidBlockEntity;
 
 public class BedroomSet1greydressermidBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-	private final ImmutableMap<BlockState, VoxelShape> shapes = this.makeShapes();
+	private static final VoxelShape NORTH_SHAPE = box(0, 0, 0.75, 16, 16, 16);
+	private static final VoxelShape EAST_SHAPE = HorizontalFurnitureBlock.rotateShape(NORTH_SHAPE);
+	private static final VoxelShape SOUTH_SHAPE = HorizontalFurnitureBlock.rotateShape(EAST_SHAPE);
+	private static final VoxelShape WEST_SHAPE = HorizontalFurnitureBlock.rotateShape(SOUTH_SHAPE);
 
 	public BedroomSet1greydressermidBlock() {
 		super(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.BASEDRUM));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
-	private ImmutableMap<BlockState, VoxelShape> makeShapes() {
-		return this.getShapeForEachState(state -> {
-			return switch (state.getValue(FACING)) {
-				default -> box(0, 0, 0, 15, 16, 16);
-				case NORTH -> box(1, 0, 0, 16, 16, 16);
-				case EAST -> box(0, 0, 1, 16, 16, 16);
-				case WEST -> box(0, 0, 0, 16, 16, 15);
-			};
-		});
-	}
-
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return shapes.get(state);
+		return switch (state.getValue(FACING)) {
+			case EAST -> EAST_SHAPE;
+			case SOUTH -> SOUTH_SHAPE;
+			case WEST -> WEST_SHAPE;
+			default -> NORTH_SHAPE;
+		};
 	}
 
 	@Override

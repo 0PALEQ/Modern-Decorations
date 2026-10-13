@@ -29,10 +29,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-
 import com.cookiecraftmods.mdm.block.entity.Set2HangingShelfBlockEntity;
 
 public class Set2HangingShelfBlock extends Block implements EntityBlock {
+
+	private static final VoxelShape NORTH_SHAPE = box(0, 0, 10.625, 16, 16, 16);
+	private static final VoxelShape EAST_SHAPE = HorizontalFurnitureBlock.rotateShape(NORTH_SHAPE);
+	private static final VoxelShape SOUTH_SHAPE = HorizontalFurnitureBlock.rotateShape(EAST_SHAPE);
+	private static final VoxelShape WEST_SHAPE = HorizontalFurnitureBlock.rotateShape(SOUTH_SHAPE);
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
 	public Set2HangingShelfBlock() {
@@ -127,5 +131,14 @@ public class Set2HangingShelfBlock extends Block implements EntityBlock {
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
 		else
 			return 0;
+	}
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return switch (state.getValue(FACING)) {
+			case EAST -> EAST_SHAPE;
+			case SOUTH -> SOUTH_SHAPE;
+			case WEST -> WEST_SHAPE;
+			default -> NORTH_SHAPE;
+		};
 	}
 }
