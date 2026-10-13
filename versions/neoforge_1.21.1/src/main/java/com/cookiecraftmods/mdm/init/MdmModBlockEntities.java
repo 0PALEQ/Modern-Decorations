@@ -22,6 +22,8 @@ import com.cookiecraftmods.mdm.MdmMod;
 @EventBusSubscriber
 public class MdmModBlockEntities {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MdmMod.MODID);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WallClockBlockEntity>> BLACK_WALL_CLOCK = register("black_wall_clock", MdmModBlocks.BLACK_WALL_CLOCK, WallClockBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WallClockBlockEntity>> WOODEN_WALL_CLOCK = register("wooden_wall_clock", MdmModBlocks.WOODEN_WALL_CLOCK, WallClockBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<Set1CabinetBlockEntity>> SET_1_CABINET = register("set_1_cabinet", MdmModBlocks.SET_1_CABINET, Set1CabinetBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<Set1CabinetWithDrawersBlockEntity>> SET_1_CABINET_WITH_DRAWERS = register("set_1_cabinet_with_drawers", MdmModBlocks.SET_1_CABINET_WITH_DRAWERS,
 			Set1CabinetWithDrawersBlockEntity::new);

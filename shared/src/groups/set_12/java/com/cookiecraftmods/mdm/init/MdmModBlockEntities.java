@@ -10,6 +10,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import com.cookiecraftmods.mdm.block.entity.*;
 
 public class MdmModBlockEntities {
+	public static final ModRegistryEntry<BlockEntityType<WallClockBlockEntity>> BLACK_WALL_CLOCK = register("black_wall_clock", MdmModBlocks.BLACK_WALL_CLOCK, WallClockBlockEntity::new);
+	public static final ModRegistryEntry<BlockEntityType<WallClockBlockEntity>> WOODEN_WALL_CLOCK = register("wooden_wall_clock", MdmModBlocks.WOODEN_WALL_CLOCK, WallClockBlockEntity::new);
 	public static final ModRegistryEntry<BlockEntityType<Set1CabinetBlockEntity>> SET_1_CABINET = register("set_1_cabinet", MdmModBlocks.SET_1_CABINET, Set1CabinetBlockEntity::new);
 	public static final ModRegistryEntry<BlockEntityType<Set1CabinetWithDrawersBlockEntity>> SET_1_CABINET_WITH_DRAWERS = register("set_1_cabinet_with_drawers", MdmModBlocks.SET_1_CABINET_WITH_DRAWERS,
 			Set1CabinetWithDrawersBlockEntity::new);

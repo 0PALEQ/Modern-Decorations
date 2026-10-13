@@ -18,6 +18,7 @@
       "com.cookiecraftmods.mdm.MdmMod"
     ],
     "client": [
+      "com.cookiecraftmods.mdm.client.clock.ClockClient",
       "com.cookiecraftmods.mdm.client.MdmModClient"
     ]
   },

@@ -2,6 +2,14 @@ import groovy.json.JsonSlurper
 
 def manifest = new JsonSlurper().parse(rootProject.file('../../shared/gradle/source-groups.json'))
 def target = rootProject.projectDir.name
+if (target.startsWith('fabric_')) {
+    sourceSets.main.java.srcDir(rootProject.file('../../shared/src/clock_fabric/java'))
+}
+sourceSets.main.java.srcDir(rootProject.file('../../shared/src/clock/java'))
+sourceSets.main.java.srcDir(rootProject.file(project.minecraft_version.toString() in ['1.20.1', '1.21.1']
+        ? '../../shared/src/clock_legacy/java'
+        : project.minecraft_version.toString() == '1.21.11'
+            ? '../../shared/src/clock_1.21.11/java' : '../../shared/src/clock_modern/java'))
 manifest.groups.findAll { target in it.versions }.each { group ->
     group.kinds.each { kind ->
         sourceSets.main."${kind}".srcDir(rootProject.file("../../${group.root}/${kind}"))
@@ -11,4 +19,24 @@ manifest.groups.findAll { target in it.versions }.each { group ->
 ext.mainSourceFile = { String kind, String relativePath ->
     sourceSets.main."${kind}".srcDirs.collect { new File(it, relativePath) }
             .find { it.isFile() } ?: file("src/main/${kind}/${relativePath}")
+}
+
+def clockTestClasses = layout.buildDirectory.dir('clock-test-classes')
+tasks.register('compileClockTests', JavaCompile) {
+    javaCompiler = javaToolchains.compilerFor(java.toolchain)
+    source rootProject.file('../../shared/tests/ClockHandsTest.java')
+    source rootProject.file('../../shared/src/clock/java/com/cookiecraftmods/mdm/client/clock/ClockTime.java')
+    source rootProject.file('../../shared/src/clock/java/com/cookiecraftmods/mdm/client/clock/ClockHandMesh.java')
+    classpath = sourceSets.main.compileClasspath
+    destinationDirectory = clockTestClasses
+}
+tasks.register('verifyClockHands', JavaExec) {
+    dependsOn tasks.named('compileClockTests')
+    classpath = files(clockTestClasses) + sourceSets.main.compileClasspath
+    mainClass = 'ClockHandsTest'
+    workingDir rootProject.file('../..')
+    javaLauncher = javaToolchains.launcherFor(java.toolchain)
+}
+tasks.named('check') {
+    dependsOn tasks.named('verifyClockHands')
 }

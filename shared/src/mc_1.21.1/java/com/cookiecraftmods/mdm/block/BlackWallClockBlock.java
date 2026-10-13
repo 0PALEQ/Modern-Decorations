@@ -1,5 +1,9 @@
 package com.cookiecraftmods.mdm.block;
 
+import com.cookiecraftmods.mdm.block.entity.WallClockBlockEntity;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -13,7 +17,12 @@ import net.minecraft.core.BlockPos;
 
 import com.google.common.collect.ImmutableMap;
 
-public class BlackWallClockBlock extends HorizontalFurnitureBlock {
+public class BlackWallClockBlock extends HorizontalFurnitureBlock implements EntityBlock {
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new WallClockBlockEntity(pos, state);
+	}
+
 	private final ImmutableMap<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public BlackWallClockBlock() {

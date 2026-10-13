@@ -41,5 +41,26 @@ tasks.named('processResources') {
                         JsonOutput.prettyPrint(JsonOutput.toJson(model)) + '\n', 'UTF-8')
             }
         }
+        ['black_wall_clock', 'wooden_wall_clock'].each { id ->
+            def customFile = new File(destinationDir, "assets/mdm/models/custom/${id}.json")
+            def complete = parse.parse(customFile)
+            def hands = complete.elements.findAll { it.name in ['pointer_hour', 'pointer_minute'] }
+            if (hands.size() != 2) {
+                throw new GradleException("Clock ${id} needs named hour and minute hands")
+            }
+            def body = new LinkedHashMap(complete)
+            body.elements = complete.elements - hands
+            body.remove('groups')
+            new File(customFile.parentFile, "${id}_body.json").text = JsonOutput.toJson(body)
+            def blockFile = new File(outputModels, "${id}.json")
+            def block = parse.parse(blockFile)
+            def itemFile = new File(destinationDir, "assets/mdm/models/item/${id}.json")
+            def item = parse.parse(itemFile)
+            item.parent = "mdm:custom/${id}"
+            item.textures = block.textures
+            itemFile.text = JsonOutput.toJson(item)
+            block.parent = "mdm:custom/${id}_body"
+            blockFile.text = JsonOutput.toJson(block)
+        }
     }
 }
