@@ -1,0 +1,7 @@
+{
+  "parent": "mdm:custom/shower_head",
+  "textures": {
+    "0": "mdm:block/shower_head",
+    "particle": "mdm:block/shower_head"
+  }
+}

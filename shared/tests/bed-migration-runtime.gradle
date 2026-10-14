@@ -1,0 +1,26 @@
+// From a Fabric version directory: gradlew runServer -I ../../shared/tests/bed-migration-runtime.gradle --console=plain ses an isolated test mod and exits during initialization, before opening any world.
+gradle.projectsEvaluated {
+    def project = gradle.rootProject
+    def testMod = project.layout.buildDirectory.dir('migration-runtime-mod')
+    def testRun = project.layout.buildDirectory.dir('migration-runtime-run')
+    def prepare = project.tasks.register('prepareBedMigrationRuntime', JavaCompile) {
+        javaCompiler = project.javaToolchains.compilerFor(project.java.toolchain)
+        source project.file('../../shared/tests/LegacyBedMigrationTest.java')
+        source project.file('../../shared/tests/runtime/LegacyBedMigrationRuntimeTest.java')
+        classpath = project.sourceSets.main.compileClasspath + project.sourceSets.main.output
+        options.compilerArgs.add('-proc:none')
+        destinationDirectory = testMod
+        doLast {
+            new File(testMod.get().asFile, 'fabric.mod.json').text = groovy.json.JsonOutput.toJson([
+                    schemaVersion: 1, id: 'mdm_bed_migration_test', version: '1.0.0',
+                    entrypoints: [main: ['LegacyBedMigrationRuntimeTest']],
+                    depends: [mdm: '*']])
+        }
+    }
+    project.tasks.named('runServer') {
+        dependsOn prepare
+        classpath += project.files(testMod)
+        workingDir testRun
+        doFirst { testRun.get().asFile.mkdirs() }
+    }
+}

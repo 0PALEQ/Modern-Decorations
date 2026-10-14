@@ -2,6 +2,9 @@ modLoader="javafml"
 loaderVersion="[4,)"
 license="All Rights Reserved"
 
+[[mixins]]
+config="mdm.mixins.json"
+
 [[mods]]
 modId="mdm"
 version="${version}"

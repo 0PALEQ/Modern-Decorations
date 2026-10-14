@@ -77,6 +77,10 @@ public class MdmModBlocks {
     public static final DeferredBlock<Block> OFFICE_CABINET_3;
     public static final DeferredBlock<Block> OFFICE_SHELF;
     public static final DeferredBlock<Block> BATHROOM_MIRROR;
+    public static final DeferredBlock<Block> ROUND_MIRROR_BIG;
+    public static final DeferredBlock<Block> ROUND_MIRROR_SMALL;
+    public static final DeferredBlock<Block> SHOWER_HEAD;
+    public static final DeferredBlock<Block> SHOWER_HEAD_CONTROLS;
     public static final DeferredBlock<Block> MODERN_DESK_1;
     public static final DeferredBlock<Block> MODERN_DESK_2;
     public static final DeferredBlock<Block> SHELF;
@@ -367,6 +371,10 @@ public class MdmModBlocks {
         OFFICE_CABINET_3 = REGISTRY.register("office_cabinet_3", OfficeCabinet3Block::new);
         OFFICE_SHELF = REGISTRY.register("office_shelf", OfficeShelfBlock::new);
         BATHROOM_MIRROR = REGISTRY.register("bathroom_mirror", BathroomMirrorBlock::new);
+        ROUND_MIRROR_BIG = REGISTRY.register("round_mirror_big", RoundMirrorBigBlock::new);
+        ROUND_MIRROR_SMALL = REGISTRY.register("round_mirror_small", RoundMirrorSmallBlock::new);
+        SHOWER_HEAD = REGISTRY.register("shower_head", ShowerHeadBlock::new);
+        SHOWER_HEAD_CONTROLS = REGISTRY.register("shower_head_controls", ShowerHeadControlsBlock::new);
         MODERN_DESK_1 = REGISTRY.register("modern_desk_1", ModernDesk1Block::new);
         MODERN_DESK_2 = REGISTRY.register("modern_desk_2", ModernDesk2Block::new);
         SHELF = REGISTRY.register("shelf", ShelfBlock::new);

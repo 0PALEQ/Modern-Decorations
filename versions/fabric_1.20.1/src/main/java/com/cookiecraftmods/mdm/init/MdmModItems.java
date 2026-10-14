@@ -79,6 +79,10 @@ public class MdmModItems {
 	public static final RegistryEntry<Item> OFFICE_CABINET_3;
 	public static final RegistryEntry<Item> OFFICE_SHELF;
 	public static final RegistryEntry<Item> BATHROOM_MIRROR;
+	public static final RegistryEntry<Item> ROUND_MIRROR_BIG;
+	public static final RegistryEntry<Item> ROUND_MIRROR_SMALL;
+	public static final RegistryEntry<Item> SHOWER_HEAD;
+	public static final RegistryEntry<Item> SHOWER_HEAD_CONTROLS;
 	public static final RegistryEntry<Item> MODERN_DESK_1;
 	public static final RegistryEntry<Item> MODERN_DESK_2;
 	public static final RegistryEntry<Item> SHELF;
@@ -369,6 +373,10 @@ public class MdmModItems {
 		OFFICE_CABINET_3 = block(MdmModBlocks.OFFICE_CABINET_3);
 		OFFICE_SHELF = block(MdmModBlocks.OFFICE_SHELF);
 		BATHROOM_MIRROR = block(MdmModBlocks.BATHROOM_MIRROR);
+		ROUND_MIRROR_BIG = block(MdmModBlocks.ROUND_MIRROR_BIG);
+		ROUND_MIRROR_SMALL = block(MdmModBlocks.ROUND_MIRROR_SMALL);
+		SHOWER_HEAD = block(MdmModBlocks.SHOWER_HEAD);
+		SHOWER_HEAD_CONTROLS = block(MdmModBlocks.SHOWER_HEAD_CONTROLS);
 		MODERN_DESK_1 = block(MdmModBlocks.MODERN_DESK_1);
 		MODERN_DESK_2 = block(MdmModBlocks.MODERN_DESK_2);
 		SHELF = block(MdmModBlocks.SHELF);

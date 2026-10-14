@@ -82,6 +82,9 @@ public class MdmMod {
 	@SubscribeEvent
 	public void tick(TickEvent.ServerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
+			for (var level : event.getServer().getAllLevels()) {
+				SeatBlock.removeEmptySeats(level);
+			}
 			int currentTick = event.getServer().getTickCount();
 			IntObjectPair<Runnable> work;
 			while ((work = workToBeScheduled.poll()) != null) {

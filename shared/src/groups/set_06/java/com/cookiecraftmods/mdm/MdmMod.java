@@ -18,6 +18,11 @@ public final class MdmMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register(server -> {
+            for (var level : server.getAllLevels()) {
+                SeatBlock.removeEmptySeats(level);
+            }
+        });
         LightSwitch.registerSounds();
         MdmModBlocks.init();
         MdmModItems.init();

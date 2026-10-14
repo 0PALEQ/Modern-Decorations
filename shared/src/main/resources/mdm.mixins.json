@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.cookiecraftmods.mdm.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "mdm.refmap.json",
+  "mixins": [
+    "LegacyBedNbtMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

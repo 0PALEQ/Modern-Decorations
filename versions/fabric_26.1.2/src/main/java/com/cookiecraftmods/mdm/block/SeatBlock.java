@@ -72,6 +72,17 @@ public final class SeatBlock {
 		return entity.entityTags().contains(SEAT_TAG);
 	}
 
+	// Seats are temporary mounts; discard them as soon as their rider leaves.
+	public static void removeEmptySeats(net.minecraft.server.level.ServerLevel level) {
+		List<ArmorStand> emptySeats = new java.util.ArrayList<>();
+		for (Entity entity : level.getAllEntities()) {
+			if (entity instanceof ArmorStand seat && isSeat(seat) && !seat.isVehicle()) {
+				emptySeats.add(seat);
+			}
+		}
+		emptySeats.forEach(Entity::discard);
+	}
+
 	public static void removeSeats(Level level, BlockPos pos) {
 		for (Entity entity : level.getEntitiesOfClass(Entity.class, new AABB(pos), candidate -> candidate.entityTags().contains(SEAT_TAG))) {
 			entity.ejectPassengers();

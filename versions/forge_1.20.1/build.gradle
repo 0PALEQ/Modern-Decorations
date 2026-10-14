@@ -19,6 +19,18 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+def bedMigrationRefmap = mixin.add(sourceSets.main, 'mdm.refmap.json')
+mixin.config 'mdm.mixins.json'
+
+tasks.named('jar') {
+    from bedMigrationRefmap
+    manifest.attributes 'MixinConfigs': 'mdm.mixins.json'
+}
+
 legacyForge {
     version = "${project.minecraft_version}-${project.forge_version}"
 

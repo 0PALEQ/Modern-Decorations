@@ -7,6 +7,20 @@ if (target.startsWith('fabric_')) {
 }
 sourceSets.main.java.srcDir(rootProject.file('../../shared/src/clock/java'))
 sourceSets.main.java.srcDir(rootProject.file('../../shared/src/furniture/java'))
+sourceSets.main.java.srcDir(rootProject.file('../../shared/src/migration/java'))
+tasks.named('processResources') {
+    inputs.property('bedMigrationRefmap', target in ['fabric_1.20.1', 'forge_1.20.1'])
+}
+if (target == 'fabric_1.20.1') {
+    loom.mixin.defaultRefmapName = 'mdm.refmap.json'
+}
+if (!(target in ['fabric_1.20.1', 'forge_1.20.1'])) {
+    tasks.named('processResources') {
+        filesMatching('mdm.mixins.json') {
+            filter { line -> line.contains('"refmap"') ? null : line }
+        }
+    }
+}
 sourceSets.main.java.srcDir(rootProject.file(project.minecraft_version.toString() in ['1.20.1', '1.21.1']
         ? '../../shared/src/clock_legacy/java'
         : project.minecraft_version.toString() == '1.21.11'
@@ -40,4 +54,23 @@ tasks.register('verifyClockHands', JavaExec) {
 }
 tasks.named('check') {
     dependsOn tasks.named('verifyClockHands')
+}
+
+def migrationTestClasses = layout.buildDirectory.dir('migration-test-classes')
+tasks.register('compileBedMigrationTests', JavaCompile) {
+    javaCompiler = javaToolchains.compilerFor(java.toolchain)
+    source rootProject.file('../../shared/tests/LegacyBedMigrationTest.java')
+    source rootProject.file('../../shared/src/migration/java/com/cookiecraftmods/mdm/migration/LegacyBedMigration.java')
+    classpath = sourceSets.main.compileClasspath
+    options.compilerArgs.add('-proc:none')
+    destinationDirectory = migrationTestClasses
+}
+tasks.register('verifyBedMigration', JavaExec) {
+    dependsOn tasks.named('compileBedMigrationTests')
+    classpath = files(migrationTestClasses) + sourceSets.main.runtimeClasspath
+    mainClass = 'LegacyBedMigrationTest'
+    javaLauncher = javaToolchains.launcherFor(java.toolchain)
+}
+tasks.named('check') {
+    dependsOn tasks.named('verifyBedMigration')
 }

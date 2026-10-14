@@ -1,5 +1,6 @@
 {
   "schemaVersion": 1,
+  "mixins": ["mdm.mixins.json"],
   "id": "mdm",
   "version": "${version}",
   "name": "Modern Decorations Mod",
