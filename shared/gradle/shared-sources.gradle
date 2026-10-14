@@ -6,6 +6,7 @@ if (target.startsWith('fabric_')) {
     sourceSets.main.java.srcDir(rootProject.file('../../shared/src/clock_fabric/java'))
 }
 sourceSets.main.java.srcDir(rootProject.file('../../shared/src/clock/java'))
+sourceSets.main.java.srcDir(rootProject.file('../../shared/src/furniture/java'))
 sourceSets.main.java.srcDir(rootProject.file(project.minecraft_version.toString() in ['1.20.1', '1.21.1']
         ? '../../shared/src/clock_legacy/java'
         : project.minecraft_version.toString() == '1.21.11'

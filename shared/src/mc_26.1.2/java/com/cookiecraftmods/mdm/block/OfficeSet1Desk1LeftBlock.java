@@ -1,5 +1,9 @@
 package com.cookiecraftmods.mdm.block;
 
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,6 +24,11 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.SoundType;
 
 public class OfficeSet1Desk1LeftBlock extends TransparentHorizontalFurnitureBlock implements EntityBlock {
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return OfficeDeskShapes.forFacing(OfficeDeskShapes.DESK_1_LEFT, state.getValue(FACING));
+    }
 
 	public OfficeSet1Desk1LeftBlock() {
 		super(com.cookiecraftmods.mdm.registry.RegistryProperties.block().sound(SoundType.WOOD).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.BASEDRUM));
