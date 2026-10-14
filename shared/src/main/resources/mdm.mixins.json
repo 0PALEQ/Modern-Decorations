@@ -7,6 +7,9 @@
   "mixins": [
     "LegacyBedNbtMixin"
   ],
+  "client": [
+    "FurnitureWaterParticleMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

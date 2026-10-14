@@ -12,12 +12,12 @@ import net.minecraft.core.BlockPos;
 
 import com.google.common.collect.ImmutableMap;
 
-public class ShowerHeadBlock extends HorizontalFurnitureBlock {
+public class ShowerHeadBlock extends RunningSinkBlock {
 	private final ImmutableMap<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public ShowerHeadBlock() {
 		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false)
-				.instrument(NoteBlockInstrument.BASEDRUM));
+				.instrument(NoteBlockInstrument.BASEDRUM), WaterOutlets.SHOWER);
 	}
 
 	private ImmutableMap<BlockState, VoxelShape> makeShapes() {

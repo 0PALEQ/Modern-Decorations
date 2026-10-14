@@ -36,6 +36,38 @@ ext.mainSourceFile = { String kind, String relativePath ->
             .find { it.isFile() } ?: file("src/main/${kind}/${relativePath}")
 }
 
+tasks.register('verifyTranslations') {
+    group = 'verification'
+    description = 'Checks every language for complete, nonblank English translation keys.'
+    dependsOn tasks.named('processResources')
+    doLast {
+        def resources = tasks.named('processResources').get().destinationDir
+        def languageDir = new File(resources, 'assets/mdm/lang')
+        def parser = new JsonSlurper()
+        def english = parser.parse(new File(languageDir, 'en_us.json'))
+        fileTree(languageDir) { include '*.json' }.each { languageFile ->
+            def translations = parser.parse(languageFile)
+            def missing = english.keySet() - translations.keySet()
+            def blank = translations.findAll { key, value ->
+                !(value instanceof String) || value.trim().isEmpty()
+            }.keySet()
+            if (!missing.isEmpty() || !blank.isEmpty()) {
+                throw new GradleException("Incomplete translations in ${languageFile.name}: missing=${missing}, blank=${blank}")
+            }
+        }
+        fileTree(new File(resources, 'assets/mdm/blockstates')) { include '*.json' }.each { blockstate ->
+            def id = blockstate.name.substring(0, blockstate.name.length() - 5)
+            if (!english.containsKey("block.mdm.${id}".toString())) {
+                throw new GradleException("Missing English block translation: ${id}")
+            }
+        }
+    }
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('verifyTranslations')
+}
+
 def clockTestClasses = layout.buildDirectory.dir('clock-test-classes')
 tasks.register('compileClockTests', JavaCompile) {
     javaCompiler = javaToolchains.compilerFor(java.toolchain)

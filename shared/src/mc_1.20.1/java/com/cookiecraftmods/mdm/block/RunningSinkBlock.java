@@ -18,11 +18,15 @@ import net.minecraft.world.phys.BlockHitResult;
 public abstract class RunningSinkBlock extends HorizontalFurnitureBlock {
     public static final BooleanProperty RUNNING = BooleanProperty.create("running");
     private static final int DRIP_INTERVAL = 2;
-    private final double outletX;
+    private final double[][] outlets;
 
     protected RunningSinkBlock(BlockBehaviour.Properties properties, double outletX) {
+        this(properties, new double[][]{{outletX, 16.84, 11.5}});
+    }
+
+    protected RunningSinkBlock(BlockBehaviour.Properties properties, double[][] outlets) {
         super(properties);
-        this.outletX = outletX / 16.0;
+        this.outlets = outlets;
         registerDefaultState(defaultBlockState().setValue(RUNNING, false));
     }
 
@@ -49,21 +53,24 @@ public abstract class RunningSinkBlock extends HorizontalFurnitureBlock {
         if (!state.getValue(RUNNING)) {
             return;
         }
-        // Centre of the small outlet under the tap, just below its bottom face.
-        double x = outletX;
-        double z = 11.5 / 16.0;
-        double rotatedX;
-        double rotatedZ;
-        switch (state.getValue(FACING)) {
-            case EAST -> { rotatedX = 1 - z; rotatedZ = x; }
-            case SOUTH -> { rotatedX = 1 - x; rotatedZ = 1 - z; }
-            case WEST -> { rotatedX = z; rotatedZ = 1 - x; }
-            default -> { rotatedX = x; rotatedZ = z; }
+        for (double[] source : outlets) {
+            double[] outlet = WaterOutlets.rotate(source, state.getValue(FACING));
+            level.sendParticles(ParticleTypes.FALLING_WATER,
+                    pos.getX() + outlet[0], pos.getY() + outlet[1], pos.getZ() + outlet[2],
+                    1, 0, 0, 0, 0);
         }
-        // FALLING_WATER starts falling immediately and accelerates downward under gravity.
-        level.sendParticles(ParticleTypes.FALLING_WATER,
-                pos.getX() + rotatedX, pos.getY() + 16.84 / 16.0, pos.getZ() + rotatedZ,
-                1, 0, 0, 0, 0);
         level.scheduleTick(pos, this, DRIP_INTERVAL);
+    }
+
+    public boolean isWaterOutlet(BlockState state, BlockPos pos, double x, double y, double z) {
+        for (double[] source : outlets) {
+            double[] outlet = WaterOutlets.rotate(source, state.getValue(FACING));
+            if (Math.abs(x - pos.getX() - outlet[0]) < 0.000001
+                    && Math.abs(y - pos.getY() - outlet[1]) < 0.000001
+                    && Math.abs(z - pos.getZ() - outlet[2]) < 0.000001) {
+                return true;
+            }
+        }
+        return false;
     }
 }

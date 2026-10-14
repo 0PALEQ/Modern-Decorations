@@ -11,12 +11,12 @@ import net.minecraft.core.BlockPos;
 
 import java.util.function.Function;
 
-public class ShowerHeadBlock extends HorizontalFurnitureBlock {
+public class ShowerHeadBlock extends RunningSinkBlock {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public ShowerHeadBlock() {
 		super(com.cookiecraftmods.mdm.registry.RegistryProperties.block().sound(SoundType.METAL).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false)
-				.instrument(NoteBlockInstrument.BASEDRUM));
+				.instrument(NoteBlockInstrument.BASEDRUM), WaterOutlets.SHOWER);
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
