@@ -1,0 +1,53 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
+def lightBlocks = [
+        'black_lamp', 'ring_lamp', 'black_desk_lamp', 'modern_lamp_1',
+        'modern_desk_lamp_1', 'modern_chandelier_1', 'lantern', 'street_latern_top',
+        'ceilling_fan', 'set_1_bed', 'office_set_1_desk_lamp', 'small_chandelier',
+        'small_ceiling_lamp', 'big_ceiling_light', 'big_ceiling_lamp',
+        'lamp_03', 'wall_lamp', 'wall_lamp_2'
+]
+
+tasks.named('processResources') {
+    inputs.property('switchableLightBlocks', lightBlocks)
+    doLast {
+        def parse = new JsonSlurper()
+        def assets = new File(destinationDir, 'assets/mdm')
+        def generated = [] as Set
+        Closure darkModel
+        darkModel = { String modelId ->
+            if (!modelId.startsWith('mdm:')) return modelId
+            def path = modelId.substring(4)
+            def darkId = "mdm:lights_off/${path}"
+            if (!generated.add(path)) return darkId
+            def source = new File(assets, "models/${path}.json")
+            if (!source.isFile()) throw new GradleException("Missing light model: ${modelId}")
+            def model = parse.parse(source)
+            model.elements?.each { element -> element.remove('light_emission') }
+            if (model.parent) model.parent = darkModel(model.parent)
+            def output = new File(assets, "models/lights_off/${path}.json")
+            output.parentFile.mkdirs()
+            output.setText(JsonOutput.prettyPrint(JsonOutput.toJson(model)) + '\n', 'UTF-8')
+            return darkId
+        }
+        lightBlocks.each { id ->
+            def file = new File(assets, "blockstates/${id}.json")
+            def blockstate = parse.parse(file)
+            def variants = [:]
+            blockstate.variants.each { key, value ->
+                def onKey = key ? "${key},lit=true" : 'lit=true'
+                def offKey = key ? "${key},lit=false" : 'lit=false'
+                variants[onKey] = value
+                def darken = { variant ->
+                    def off = new LinkedHashMap(variant)
+                    off.model = darkModel(variant.model)
+                    return off
+                }
+                variants[offKey] = value instanceof List ? value.collect(darken) : darken(value)
+            }
+            blockstate.variants = variants
+            file.setText(JsonOutput.prettyPrint(JsonOutput.toJson(blockstate)) + '\n', 'UTF-8')
+        }
+    }
+}

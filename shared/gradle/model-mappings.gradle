@@ -8,6 +8,7 @@ def translucencyFile = rootProject.file('../../shared/gradle/translucent-model-s
 def modelDirectories = sourceSets.main.resources.srcDirs.collect {
     new File(it, 'assets/mdm/models/block')
 }
+
 def useTextureDescriptors = project.minecraft_version.toString().startsWith('26.')
 
 tasks.named('processResources') {
@@ -64,3 +65,5 @@ tasks.named('processResources') {
         }
     }
 }
+
+apply from: rootProject.file('../../shared/gradle/light-models.gradle')

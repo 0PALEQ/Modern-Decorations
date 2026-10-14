@@ -71,7 +71,7 @@ public class Set1LivingroomCabinet2BlockEntity extends RandomizableContainerBloc
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("set_1_livingroom_cabinet_2");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class Set1LivingroomCabinet2BlockEntity extends RandomizableContainerBloc
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Set 1 Livingroom Cabinet 2");
+		return Component.literal("Storage");
 	}
 
 	@Override

@@ -13,11 +13,14 @@ import net.minecraft.core.BlockPos;
 import com.google.common.collect.ImmutableMap;
 
 public class BlackLampBlock extends HorizontalFurnitureBlock {
+	public static final net.minecraft.world.level.block.state.properties.BooleanProperty LIT = LightSwitch.LIT;
+
 	private final ImmutableMap<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public BlackLampBlock() {
-		super(BlockBehaviour.Properties.of().strength(1f, 10f).lightLevel(blockstate -> 15).noOcclusion().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false)
+		super(BlockBehaviour.Properties.of().strength(1f, 10f).lightLevel(blockstate -> blockstate.getValue(LIT) ? 15 : 0).noOcclusion().hasPostProcess((bs, br, bp) -> bs.getValue(LIT)).emissiveRendering((bs, br, bp) -> bs.getValue(LIT)).isRedstoneConductor((bs, br, bp) -> false)
 				.instrument(NoteBlockInstrument.BASEDRUM));
+		registerDefaultState(defaultBlockState().setValue(LIT, true));
 	}
 
 	private ImmutableMap<BlockState, VoxelShape> makeShapes() {
@@ -34,6 +37,12 @@ public class BlackLampBlock extends HorizontalFurnitureBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return shapes.get(state);
+	}
+
+	@Override
+	protected void createBlockStateDefinition(net.minecraft.world.level.block.state.StateDefinition.Builder<Block, BlockState> builder) {
+		super.createBlockStateDefinition(builder);
+		builder.add(LIT);
 	}
 
 }

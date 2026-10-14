@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/universal_hanging_shelf_with_sink_single_light_oak"
+    },
+    "facing=east": {
+      "model": "mdm:block/universal_hanging_shelf_with_sink_single_light_oak",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/universal_hanging_shelf_with_sink_single_light_oak",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/universal_hanging_shelf_with_sink_single_light_oak",
+      "y": 270
+    }
+  }
+}

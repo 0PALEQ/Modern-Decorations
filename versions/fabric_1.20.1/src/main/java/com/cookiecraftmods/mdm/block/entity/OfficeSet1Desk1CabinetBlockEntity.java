@@ -71,7 +71,7 @@ public class OfficeSet1Desk1CabinetBlockEntity extends RandomizableContainerBloc
 
 	@Override
 	public Component getDefaultName() {
-		return Component.translatable("block.mdm.office_set_1_desk_1_cabinet");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class OfficeSet1Desk1CabinetBlockEntity extends RandomizableContainerBloc
 
 	@Override
 	public Component getDisplayName() {
-		return Component.translatable("block.mdm.office_set_1_desk_1_cabinet");
+		return Component.literal("Storage");
 	}
 
 	@Override

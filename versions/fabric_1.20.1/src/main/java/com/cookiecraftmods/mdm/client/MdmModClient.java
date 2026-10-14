@@ -11,6 +11,7 @@ import java.util.Set;
 
 public final class MdmModClient implements ClientModInitializer {
     private static final Set<String> TRANSLUCENT_BLOCKS = Set.of(
+            "freestanding_bathtub",
             "black_bench", "black_curtain", "black_curtain_left", "black_curtain_right",
             "black_office_desk", "blue_curtain", "blue_curtain_left", "blue_curtain_right",
             "bowl", "coffee_table_04", "curtain_rack", "green_curtain", "green_curtain_left",

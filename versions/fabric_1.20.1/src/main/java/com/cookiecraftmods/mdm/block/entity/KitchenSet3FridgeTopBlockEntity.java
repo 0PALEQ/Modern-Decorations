@@ -71,7 +71,7 @@ public class KitchenSet3FridgeTopBlockEntity extends RandomizableContainerBlockE
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("kitchen_set_3_fridge_top");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class KitchenSet3FridgeTopBlockEntity extends RandomizableContainerBlockE
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Kitchen Set 3 Fridge Top");
+		return Component.literal("Storage");
 	}
 
 	@Override

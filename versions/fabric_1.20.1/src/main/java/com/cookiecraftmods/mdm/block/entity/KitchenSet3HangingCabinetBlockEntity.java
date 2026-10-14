@@ -71,7 +71,7 @@ public class KitchenSet3HangingCabinetBlockEntity extends RandomizableContainerB
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("kitchen_set_3_hanging_cabinet");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class KitchenSet3HangingCabinetBlockEntity extends RandomizableContainerB
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Kitchen Set 3 Hanging Cabinet");
+		return Component.literal("Storage");
 	}
 
 	@Override

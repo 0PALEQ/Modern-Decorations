@@ -70,7 +70,7 @@ public class Set1CabinetBlockEntity extends RandomizableContainerBlockEntity imp
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("set_1_cabinet");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class Set1CabinetBlockEntity extends RandomizableContainerBlockEntity imp
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Set 1 Cabinet");
+		return Component.literal("Storage");
 	}
 
 	@Override

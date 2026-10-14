@@ -72,7 +72,7 @@ public class Set1Island1BlockEntity extends RandomizableContainerBlockEntity imp
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("set_1_island_1");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class Set1Island1BlockEntity extends RandomizableContainerBlockEntity imp
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Set 1 Island 1");
+		return Component.literal("Storage");
 	}
 
 	@Override

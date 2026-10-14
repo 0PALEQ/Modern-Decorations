@@ -35,6 +35,9 @@ tasks.register('validateRecipes') {
             }
         }
 
+        // These saved IDs remain registered only for existing-world compatibility.
+        blockIds -= ['bedroom_set_1grey_double_bed', 'bedroom_set_1wenge_double_bed',
+                     'bedroom_set_1white_doublebed']
         def missing = blockIds.findAll { !outputs.containsKey(it) }.sort()
         def duplicates = outputs.findAll { id, files -> id in blockIds && files.size() != 1 }
         if (!missing.isEmpty() || !duplicates.isEmpty()) {

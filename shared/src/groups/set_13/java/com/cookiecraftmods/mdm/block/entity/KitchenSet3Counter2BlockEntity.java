@@ -72,7 +72,7 @@ public class KitchenSet3Counter2BlockEntity extends RandomizableContainerBlockEn
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("kitchen_set_3_counter_2");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class KitchenSet3Counter2BlockEntity extends RandomizableContainerBlockEn
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Kitchen Set 3 Counter 2");
+		return Component.literal("Storage");
 	}
 
 	@Override

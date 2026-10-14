@@ -70,7 +70,7 @@ public class BlackDeskExtension2BlockEntity extends RandomizableContainerBlockEn
 
 	@Override
 	public Component getDefaultName() {
-		return Component.translatable("block.mdm.black_desk_extension_2");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class BlackDeskExtension2BlockEntity extends RandomizableContainerBlockEn
 
 	@Override
 	public Component getDisplayName() {
-		return Component.translatable("block.mdm.black_desk_extension_2");
+		return Component.literal("Storage");
 	}
 
 	@Override

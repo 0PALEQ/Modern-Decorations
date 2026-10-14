@@ -70,7 +70,7 @@ public class KitchenSet3CornerCounterWithSinkBlockEntity extends RandomizableCon
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("kitchen_set_3_corner_counter_with_sink");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class KitchenSet3CornerCounterWithSinkBlockEntity extends RandomizableCon
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Kitchen Set 3 Corner Counter With Sink");
+		return Component.literal("Storage");
 	}
 
 	@Override

@@ -71,7 +71,7 @@ public class BedroomSet1greyDoubleBedBlockEntity extends RandomizableContainerBl
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("bedroom_set_1grey_double_bed");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class BedroomSet1greyDoubleBedBlockEntity extends RandomizableContainerBl
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Bedroom Set 1 Grey Double Bed");
+		return Component.literal("Storage");
 	}
 
 	@Override

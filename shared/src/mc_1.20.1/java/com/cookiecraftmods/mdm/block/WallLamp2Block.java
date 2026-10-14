@@ -13,10 +13,13 @@ import net.minecraft.core.BlockPos;
 import com.google.common.collect.ImmutableMap;
 
 public class WallLamp2Block extends HorizontalFurnitureBlock {
+	public static final net.minecraft.world.level.block.state.properties.BooleanProperty LIT = LightSwitch.LIT;
+
 	private final ImmutableMap<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public WallLamp2Block() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(1f, 10f).lightLevel(blockstate -> 15).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(1f, 10f).lightLevel(blockstate -> blockstate.getValue(LIT) ? 15 : 0).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		registerDefaultState(defaultBlockState().setValue(LIT, true));
 	}
 
 	private ImmutableMap<BlockState, VoxelShape> makeShapes() {
@@ -33,6 +36,12 @@ public class WallLamp2Block extends HorizontalFurnitureBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return shapes.get(state);
+	}
+
+	@Override
+	protected void createBlockStateDefinition(net.minecraft.world.level.block.state.StateDefinition.Builder<Block, BlockState> builder) {
+		super.createBlockStateDefinition(builder);
+		builder.add(LIT);
 	}
 
 }

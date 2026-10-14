@@ -1,5 +1,5 @@
 {
-  "parent": "mdm:custom/bedroom-set1-wenge_double_bed",
+  "parent": "mdm:custom/bedroom-set1-wenge_single_bed",
   "textures": {
     "0": "mdm:block/wenge-wood",
     "1": "mdm:block/frameswenge",

@@ -77,7 +77,7 @@ public class Set1FridgeBlockEntity extends RandomizableContainerBlockEntity impl
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("set_1_fridge");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class Set1FridgeBlockEntity extends RandomizableContainerBlockEntity impl
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Set 1 Fridge");
+		return Component.literal("Storage");
 	}
 
 	@Override

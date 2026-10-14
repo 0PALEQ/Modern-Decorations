@@ -1,0 +1,8 @@
+{
+  "parent": "mdm:custom/freestanding_bathtub",
+  "textures": {
+    "0": "mdm:block/drain_and_tap",
+    "1": "mdm:block/modern_bathtub_body",
+    "particle": "mdm:block/modern_bathtub_body"
+  }
+}

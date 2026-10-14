@@ -5,6 +5,7 @@ import com.cookiecraftmods.mdm.init.MdmModBlocks;
 import com.cookiecraftmods.mdm.init.MdmModItems;
 import com.cookiecraftmods.mdm.init.MdmModTabs;
 import com.cookiecraftmods.mdm.block.SeatBlock;
+import com.cookiecraftmods.mdm.block.LightSwitch;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
@@ -17,11 +18,16 @@ public final class MdmMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        LightSwitch.registerSounds();
         MdmModBlocks.REGISTRY.initialize();
         MdmModItems.REGISTRY.initialize();
         MdmModBlockEntities.REGISTRY.initialize();
         MdmModTabs.REGISTRY.initialize();
-        UseBlockCallback.EVENT.register((player, level, hand, hit) -> SeatBlock.use(level.getBlockState(hit.getBlockPos()), level, hit.getBlockPos(), player));
+        UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
+            var state = level.getBlockState(hit.getBlockPos());
+            var result = LightSwitch.use(state, level, hit.getBlockPos(), player);
+            return result.consumesAction() ? result : SeatBlock.use(state, level, hit.getBlockPos(), player);
+        });
         PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, blockEntity) -> SeatBlock.removeSeats(level, pos));
         LOGGER.info("Modern Decorations initialized for Fabric 1.20.1");
     }

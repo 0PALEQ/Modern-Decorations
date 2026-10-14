@@ -77,7 +77,7 @@ public class KitchenSet3HangingCornerCabinetBlockEntity extends RandomizableCont
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("kitchen_set_3_hanging_corner_cabinet");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class KitchenSet3HangingCornerCabinetBlockEntity extends RandomizableCont
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Kitchen Set 3 Hanging Corner Cabinet");
+		return Component.literal("Storage");
 	}
 
 	@Override
