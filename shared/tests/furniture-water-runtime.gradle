@@ -1,0 +1,24 @@
+gradle.projectsEvaluated {
+    def project = gradle.rootProject
+    def testMod = project.layout.buildDirectory.dir('water-runtime-mod')
+    def testRun = project.layout.buildDirectory.dir('water-runtime-run')
+    def prepare = project.tasks.register('prepareFurnitureWaterRuntime', JavaCompile) {
+        javaCompiler = project.javaToolchains.compilerFor(project.java.toolchain)
+        source project.file('../../shared/tests/runtime/FurnitureWaterRuntimeTest.java')
+        classpath = project.sourceSets.main.compileClasspath + project.sourceSets.main.output
+        options.compilerArgs.add('-proc:none')
+        destinationDirectory = testMod
+        doLast {
+            new File(testMod.get().asFile, 'fabric.mod.json').text = groovy.json.JsonOutput.toJson([
+                    schemaVersion: 1, id: 'mdm_water_test', version: '1.0.0',
+                    entrypoints: [main: ['FurnitureWaterRuntimeTest']],
+                    depends: [mdm: '*']])
+        }
+    }
+    project.tasks.named('runClient') {
+        dependsOn prepare
+        classpath += project.files(testMod)
+        workingDir testRun
+        doFirst { testRun.get().asFile.mkdirs() }
+    }
+}
