@@ -71,7 +71,7 @@ public class OfficeSet1ShelfVar2TopBlockEntity extends RandomizableContainerBloc
 
 	@Override
 	public Component getDefaultName() {
-		return Component.translatable("block.mdm.office_set_1_shelf_var_2_top");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class OfficeSet1ShelfVar2TopBlockEntity extends RandomizableContainerBloc
 
 	@Override
 	public Component getDisplayName() {
-		return Component.translatable("block.mdm.office_set_1_shelf_var_2_top");
+		return Component.literal("Storage");
 	}
 
 	@Override

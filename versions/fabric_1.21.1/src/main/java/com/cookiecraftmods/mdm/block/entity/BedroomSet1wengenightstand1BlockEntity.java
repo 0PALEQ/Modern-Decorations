@@ -70,7 +70,7 @@ public class BedroomSet1wengenightstand1BlockEntity extends RandomizableContaine
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("bedroom_set_1wengenightstand_1");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class BedroomSet1wengenightstand1BlockEntity extends RandomizableContaine
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Bedroom Set 1 Wenge Nightstand 1");
+		return Component.literal("Storage");
 	}
 
 	@Override

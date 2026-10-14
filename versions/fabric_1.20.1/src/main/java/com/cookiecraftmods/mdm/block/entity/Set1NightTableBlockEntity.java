@@ -71,7 +71,7 @@ public class Set1NightTableBlockEntity extends RandomizableContainerBlockEntity 
 
 	@Override
 	public Component getDefaultName() {
-		return Component.translatable("block.mdm.set_1_night_table");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class Set1NightTableBlockEntity extends RandomizableContainerBlockEntity 
 
 	@Override
 	public Component getDisplayName() {
-		return Component.translatable("block.mdm.set_1_night_table");
+		return Component.literal("Storage");
 	}
 
 	@Override

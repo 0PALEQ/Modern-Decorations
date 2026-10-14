@@ -77,7 +77,7 @@ public class Set3CoffeTableDecoratedBlockEntity extends RandomizableContainerBlo
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("set_3_coffe_table_decorated");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class Set3CoffeTableDecoratedBlockEntity extends RandomizableContainerBlo
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Set 3 Coffe Table Decorated");
+		return Component.literal("Storage");
 	}
 
 	@Override

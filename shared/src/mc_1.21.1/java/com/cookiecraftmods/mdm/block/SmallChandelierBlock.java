@@ -11,6 +11,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.core.BlockPos;
 
 public class SmallChandelierBlock extends HorizontalFurnitureBlock {
+	public static final net.minecraft.world.level.block.state.properties.BooleanProperty LIT = LightSwitch.LIT;
+
 
 	private static final VoxelShape NORTH_SHAPE = box(0, 8, 7, 16, 16, 9);
 	private static final VoxelShape EAST_SHAPE = HorizontalFurnitureBlock.rotateShape(NORTH_SHAPE);
@@ -18,7 +20,8 @@ public class SmallChandelierBlock extends HorizontalFurnitureBlock {
 	private static final VoxelShape WEST_SHAPE = HorizontalFurnitureBlock.rotateShape(SOUTH_SHAPE);
 
 	public SmallChandelierBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.GLASS).strength(1f, 10f).lightLevel(blockstate -> 15).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.BASEDRUM));
+		super(BlockBehaviour.Properties.of().sound(SoundType.GLASS).strength(1f, 10f).lightLevel(blockstate -> blockstate.getValue(LIT) ? 15 : 0).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.BASEDRUM));
+		registerDefaultState(defaultBlockState().setValue(LIT, true));
 	}
 
 	@Override
@@ -30,4 +33,10 @@ public class SmallChandelierBlock extends HorizontalFurnitureBlock {
 			default -> NORTH_SHAPE;
 		};
 	}
+	@Override
+	protected void createBlockStateDefinition(net.minecraft.world.level.block.state.StateDefinition.Builder<Block, BlockState> builder) {
+		super.createBlockStateDefinition(builder);
+		builder.add(LIT);
+	}
+
 }

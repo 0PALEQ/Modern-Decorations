@@ -77,7 +77,7 @@ public class Set1TVStandMiddleBlockEntity extends RandomizableContainerBlockEnti
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("set_1_tv_stand_middle");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class Set1TVStandMiddleBlockEntity extends RandomizableContainerBlockEnti
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Set 1 TV Stand Middle");
+		return Component.literal("Storage");
 	}
 
 	@Override

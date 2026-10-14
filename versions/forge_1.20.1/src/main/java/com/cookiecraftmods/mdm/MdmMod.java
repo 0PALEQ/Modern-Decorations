@@ -34,6 +34,7 @@ import com.cookiecraftmods.mdm.init.MdmModItems;
 import com.cookiecraftmods.mdm.init.MdmModBlocks;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 import com.cookiecraftmods.mdm.block.SeatBlock;
+import com.cookiecraftmods.mdm.block.LightSwitch;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 
@@ -47,6 +48,10 @@ public class MdmMod {
 		// End of user code block mod constructor
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = context.getModEventBus();
+        var sounds = net.minecraftforge.registries.DeferredRegister.create(net.minecraft.core.registries.Registries.SOUND_EVENT, MODID);
+        sounds.register("light_on", () -> LightSwitch.ON);
+        sounds.register("light_off", () -> LightSwitch.OFF);
+        sounds.register(bus);
 		MdmModBlocks.REGISTRY.register(bus);
 		MdmModBlockEntities.REGISTRY.register(bus);
 		MdmModItems.REGISTRY.register(bus);
@@ -90,7 +95,14 @@ public class MdmMod {
 
 	@SubscribeEvent
 	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-		if (SeatBlock.use(event.getLevel().getBlockState(event.getPos()), event.getLevel(), event.getPos(), event.getEntity()).consumesAction()) {
+		var state = event.getLevel().getBlockState(event.getPos());
+        var result = LightSwitch.use(state, event.getLevel(), event.getPos(), event.getEntity());
+        if (result.consumesAction()) {
+            event.setCancellationResult(result);
+            event.setCanceled(true);
+            return;
+        }
+		if (SeatBlock.use(state, event.getLevel(), event.getPos(), event.getEntity()).consumesAction()) {
 			event.setCanceled(true);
 		}
 	}

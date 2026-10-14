@@ -77,7 +77,7 @@ public class BedroomSet1wengeSingleBedBlockEntity extends RandomizableContainerB
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("bedroom_set_1wenge_single_bed");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class BedroomSet1wengeSingleBedBlockEntity extends RandomizableContainerB
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Bedroom Set 1 Wenge Single Bed");
+		return Component.literal("Storage");
 	}
 
 	@Override

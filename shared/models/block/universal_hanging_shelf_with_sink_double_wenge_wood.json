@@ -1,0 +1,9 @@
+{
+  "parent": "mdm:custom/universal_hanging_shelf_with_sink_double",
+  "textures": {
+    "0": "mdm:block/wenge-wood",
+    "1": "minecraft:block/quartz_block_bottom",
+    "2": "mdm:block/bathroom_shelf_body",
+    "particle": "mdm:block/wenge-wood"
+  }
+}

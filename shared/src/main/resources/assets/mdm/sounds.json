@@ -1,0 +1,4 @@
+{
+  "light_on": { "sounds": ["mdm:light_on"] },
+  "light_off": { "sounds": ["mdm:light_off"] }
+}

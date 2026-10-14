@@ -77,7 +77,7 @@ public class OfficeSet1BookshelfVar1BottomBlockEntity extends RandomizableContai
 
 	@Override
 	public Component getDefaultName() {
-		return Component.translatable("block.mdm.office_set_1_bookshelf_var_1_bottom");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class OfficeSet1BookshelfVar1BottomBlockEntity extends RandomizableContai
 
 	@Override
 	public Component getDisplayName() {
-		return Component.translatable("block.mdm.office_set_1_bookshelf_var_1_bottom");
+		return Component.literal("Storage");
 	}
 
 	@Override

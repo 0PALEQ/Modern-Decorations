@@ -70,7 +70,7 @@ public class Set2CornerCounterBlockEntity extends RandomizableContainerBlockEnti
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("set_2_corner_counter");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class Set2CornerCounterBlockEntity extends RandomizableContainerBlockEnti
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Set 2 Corner Counter");
+		return Component.literal("Storage");
 	}
 
 	@Override

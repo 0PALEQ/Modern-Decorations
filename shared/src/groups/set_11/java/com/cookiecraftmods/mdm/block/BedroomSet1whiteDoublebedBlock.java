@@ -41,11 +41,11 @@ public class BedroomSet1whiteDoublebedBlock extends Block implements EntityBlock
 
 	private ImmutableMap<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
-			return switch (state.getValue(FACING)) {
-				default -> box(0, 0, 0, 32, 8, 32);
-				case NORTH -> box(-16, 0, -16, 16, 8, 16);
-				case EAST -> box(0, 0, -16, 32, 8, 16);
-				case WEST -> box(-16, 0, 0, 16, 8, 32);
+return switch (state.getValue(FACING)) {
+				default -> box(0, 0, 0, 16, 8, 32);
+				case NORTH -> box(0, 0, -16, 16, 8, 16);
+				case EAST -> box(0, 0, 0, 32, 8, 16);
+				case WEST -> box(-16, 0, 0, 16, 8, 16);
 			};
 		});
 	}

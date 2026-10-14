@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/universal_hanging_shelf_white_wood"
+    },
+    "facing=east": {
+      "model": "mdm:block/universal_hanging_shelf_white_wood",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/universal_hanging_shelf_white_wood",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/universal_hanging_shelf_white_wood",
+      "y": 270
+    }
+  }
+}

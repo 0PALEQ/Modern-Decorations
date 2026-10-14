@@ -1,5 +1,5 @@
 {
-  "parent": "mdm:custom/bedroom-set1-white_double_bed",
+  "parent": "mdm:custom/bedroom-set1-white_single_bed",
   "textures": {
     "0": "mdm:block/white-wood",
     "1": "mdm:block/frames",

@@ -12,10 +12,13 @@ import net.minecraft.core.BlockPos;
 import java.util.function.Function;
 
 public class WallLampBlock extends HorizontalFurnitureBlock {
+	public static final net.minecraft.world.level.block.state.properties.BooleanProperty LIT = LightSwitch.LIT;
+
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public WallLampBlock() {
-		super(com.cookiecraftmods.mdm.registry.RegistryProperties.block().sound(SoundType.WOOD).strength(1f, 10f).lightLevel(blockstate -> 15).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(com.cookiecraftmods.mdm.registry.RegistryProperties.block().sound(SoundType.WOOD).strength(1f, 10f).lightLevel(blockstate -> blockstate.getValue(LIT) ? 15 : 0).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		registerDefaultState(defaultBlockState().setValue(LIT, true));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
@@ -32,6 +35,12 @@ public class WallLampBlock extends HorizontalFurnitureBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return shapes.apply(state);
+	}
+
+	@Override
+	protected void createBlockStateDefinition(net.minecraft.world.level.block.state.StateDefinition.Builder<Block, BlockState> builder) {
+		super.createBlockStateDefinition(builder);
+		builder.add(LIT);
 	}
 
 }

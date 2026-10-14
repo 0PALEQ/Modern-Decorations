@@ -70,7 +70,7 @@ public class BedroomSet1whitewardrobeBlockEntity extends RandomizableContainerBl
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("bedroom_set_1whitewardrobe");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class BedroomSet1whitewardrobeBlockEntity extends RandomizableContainerBl
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Bedroom Set 1 White Wardrobe");
+		return Component.literal("Storage");
 	}
 
 	@Override

@@ -72,7 +72,7 @@ public class Set2HangingShelfBlockEntity extends RandomizableContainerBlockEntit
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("set_2_hanging_shelf");
+		return Component.literal("Storage");
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class Set2HangingShelfBlockEntity extends RandomizableContainerBlockEntit
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Set 2 Hanging Shelf");
+		return Component.literal("Storage");
 	}
 
 	@Override

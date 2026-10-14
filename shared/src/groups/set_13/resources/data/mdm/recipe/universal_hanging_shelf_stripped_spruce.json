@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "mdm:furniture_parts",
+  "result": {
+    "id": "mdm:universal_hanging_shelf_stripped_spruce",
+    "count": 1
+  }
+}
