@@ -6,6 +6,20 @@
         "1": "hands"
       },
       "name": "default"
+    },
+    "black": {
+      "map": {
+        "0": "black",
+        "1": "frameswenge"
+      },
+      "name": "black"
+    },
+    "white": {
+      "map": {
+        "0": "white-wood",
+        "1": "hands"
+      },
+      "name": "white"
     }
   }
 }

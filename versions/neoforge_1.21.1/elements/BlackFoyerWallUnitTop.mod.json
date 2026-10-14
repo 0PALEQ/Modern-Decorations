@@ -9,7 +9,7 @@
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "foyerwallunit_1_top-black:default",
+    "customModelName": "foyerwallunit_1_top:black",
     "rotationMode": 1,
     "enablePitch": false,
     "emissiveRendering": false,

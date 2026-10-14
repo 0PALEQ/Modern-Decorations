@@ -6,6 +6,20 @@
         "2": "foyer_mirror"
       },
       "name": "default"
+    },
+    "black": {
+      "map": {
+        "0": "black",
+        "2": "foyer_mirror"
+      },
+      "name": "black"
+    },
+    "white": {
+      "map": {
+        "0": "white-wood",
+        "2": "foyer_mirror"
+      },
+      "name": "white"
     }
   }
 }

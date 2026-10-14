@@ -1,5 +1,5 @@
 {
-  "parent": "mdm:custom/foyerwallunit_1_bottom-black",
+  "parent": "mdm:custom/foyerwallunit_1_bottom",
   "textures": {
     "0": "mdm:block/black",
     "1": "mdm:block/frameswenge",
