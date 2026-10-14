@@ -73,4 +73,11 @@ public final class MdmMod {
 		}
 	}
 
+	@SubscribeEvent
+	public void removeEmptySeats(net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) {
+		for (var level : event.getServer().getAllLevels()) {
+			SeatBlock.removeEmptySeats(level);
+		}
+	}
+
 }

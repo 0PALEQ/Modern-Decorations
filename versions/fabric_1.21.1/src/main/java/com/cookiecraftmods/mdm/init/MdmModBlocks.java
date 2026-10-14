@@ -78,6 +78,10 @@ public class MdmModBlocks {
     public static final ModRegistryEntry<Block> OFFICE_CABINET_3;
     public static final ModRegistryEntry<Block> OFFICE_SHELF;
     public static final ModRegistryEntry<Block> BATHROOM_MIRROR;
+    public static final ModRegistryEntry<Block> ROUND_MIRROR_BIG;
+    public static final ModRegistryEntry<Block> ROUND_MIRROR_SMALL;
+    public static final ModRegistryEntry<Block> SHOWER_HEAD;
+    public static final ModRegistryEntry<Block> SHOWER_HEAD_CONTROLS;
     public static final ModRegistryEntry<Block> MODERN_DESK_1;
     public static final ModRegistryEntry<Block> MODERN_DESK_2;
     public static final ModRegistryEntry<Block> SHELF;
@@ -368,6 +372,10 @@ public class MdmModBlocks {
         OFFICE_CABINET_3 = register("office_cabinet_3", OfficeCabinet3Block::new);
         OFFICE_SHELF = register("office_shelf", OfficeShelfBlock::new);
         BATHROOM_MIRROR = register("bathroom_mirror", BathroomMirrorBlock::new);
+        ROUND_MIRROR_BIG = register("round_mirror_big", RoundMirrorBigBlock::new);
+        ROUND_MIRROR_SMALL = register("round_mirror_small", RoundMirrorSmallBlock::new);
+        SHOWER_HEAD = register("shower_head", ShowerHeadBlock::new);
+        SHOWER_HEAD_CONTROLS = register("shower_head_controls", ShowerHeadControlsBlock::new);
         MODERN_DESK_1 = register("modern_desk_1", ModernDesk1Block::new);
         MODERN_DESK_2 = register("modern_desk_2", ModernDesk2Block::new);
         SHELF = register("shelf", ShelfBlock::new);

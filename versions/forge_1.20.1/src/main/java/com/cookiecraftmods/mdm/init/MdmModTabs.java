@@ -80,6 +80,10 @@ public class MdmModTabs {
 				tabData.accept(MdmModBlocks.OFFICE_CABINET_3.get().asItem());
 				tabData.accept(MdmModBlocks.OFFICE_SHELF.get().asItem());
 				tabData.accept(MdmModBlocks.BATHROOM_MIRROR.get().asItem());
+				tabData.accept(MdmModBlocks.ROUND_MIRROR_BIG.get().asItem());
+				tabData.accept(MdmModBlocks.ROUND_MIRROR_SMALL.get().asItem());
+				tabData.accept(MdmModBlocks.SHOWER_HEAD.get().asItem());
+				tabData.accept(MdmModBlocks.SHOWER_HEAD_CONTROLS.get().asItem());
 				tabData.accept(MdmModBlocks.BATHROOM_RADIATOR.get().asItem());
 				tabData.accept(MdmModBlocks.BATHROOM_SHELF_02.get().asItem());
 				tabData.accept(MdmModBlocks.WINDOW_BLINDS.get().asItem());

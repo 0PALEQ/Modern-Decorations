@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/shower_head_controls"
+    },
+    "facing=east": {
+      "model": "mdm:block/shower_head_controls",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/shower_head_controls",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/shower_head_controls",
+      "y": 270
+    }
+  }
+}
