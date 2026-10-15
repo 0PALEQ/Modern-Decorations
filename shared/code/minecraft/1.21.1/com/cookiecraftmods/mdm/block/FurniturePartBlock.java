@@ -1,0 +1,167 @@
+package com.cookiecraftmods.mdm.block;
+
+import com.cookiecraftmods.mdm.init.MdmModBlocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.material.*;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.*;
+
+public class FurniturePartBlock extends Block implements SimpleWaterloggedBlock {
+    public static final IntegerProperty X = IntegerProperty.create("offset_x", 0, 2);
+    public static final IntegerProperty Y = IntegerProperty.create("offset_y", 0, 2);
+    public static final IntegerProperty Z = IntegerProperty.create("offset_z", 0, 2);
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+
+    public FurniturePartBlock() {
+        super(BlockBehaviour.Properties.of().strength(1f, 10f).noOcclusion().dynamicShape()
+                .pushReaction(FurnitureFootprint.IMMOVABLE).isRedstoneConductor((state, level, pos) -> false));
+        registerDefaultState(stateDefinition.any().setValue(X, 1).setValue(Y, 1).setValue(Z, 1).setValue(WATERLOGGED, false));
+    }
+
+    public static BlockState forOffset(BlockPos offset, BlockState replaced) {
+        return MdmModBlocks.FURNITURE_PART.get().defaultBlockState()
+                .setValue(X, offset.getX() + 1).setValue(Y, offset.getY() + 1).setValue(Z, offset.getZ() + 1)
+                .setValue(WATERLOGGED, replaced.getFluidState().getType() == Fluids.WATER);
+    }
+
+    public static BlockPos parentPos(BlockState state, BlockPos pos) {
+        return pos.offset(1 - state.getValue(X), 1 - state.getValue(Y), 1 - state.getValue(Z));
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(X, Y, Z, WATERLOGGED);
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return FurnitureFootprint.partShape(level, pos, state);
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return FurnitureFootprint.partCollisionShape(level, pos, state);
+    }
+
+    @Override
+    public VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return Shapes.empty();
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) { return RenderShape.INVISIBLE; }
+
+
+
+    @Override
+    public BlockState rotate(BlockState state, Rotation rotation) {
+        BlockPos offset = new BlockPos(state.getValue(X) - 1, state.getValue(Y) - 1, state.getValue(Z) - 1).rotate(rotation);
+        return state.setValue(X, offset.getX() + 1).setValue(Z, offset.getZ() + 1);
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return switch (mirror) {
+            case LEFT_RIGHT -> state.setValue(Z, 2 - state.getValue(Z));
+            case FRONT_BACK -> state.setValue(X, 2 - state.getValue(X));
+            default -> state;
+        };
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
+        if (!(context.getItemInHand().getItem() instanceof BlockItem item)) return false;
+        BlockPos parent = parentPos(state, context.getClickedPos());
+        BlockState candidate = item.getBlock().defaultBlockState();
+        if (candidate.hasProperty(BlockStateProperties.HORIZONTAL_FACING)) {
+            candidate = candidate.setValue(BlockStateProperties.HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite());
+        }
+        return FurnitureFootprint.compatible(candidate, context.getClickedPos(), context.getLevel().getBlockState(parent), parent);
+    }
+
+    @Override
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+        if (!level.isClientSide && player.isCreative() && FurnitureFootprint.validPart(level, pos, state)) {
+            FurnitureFootprint.destroyParents(level, pos, state, false);
+        }
+        return super.playerWillDestroy(level, pos, state, player);
+    }
+
+    @Override
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        BlockPos parent = parentPos(state, pos);
+        if (level.hasChunkAt(parent) && !FurnitureFootprint.validPart(level, pos, state)) {
+            level.setBlock(pos, state.getFluidState().createLegacyBlock(), Block.UPDATE_ALL);
+        }
+    }
+
+
+    @Override
+    public ItemStack getCloneItemStack(net.minecraft.world.level.LevelReader level, BlockPos pos, BlockState state) {
+        if (!FurnitureFootprint.validPart(level, pos, state)) return ItemStack.EMPTY;
+        BlockPos parent = parentPos(state, pos);
+        BlockState owner = level.getBlockState(parent);
+        return owner.getBlock().getCloneItemStack(level, parent, owner);
+    }
+
+    private static InteractionResult useParent(Level level, BlockPos parent, Player player, BlockHitResult hit) {
+        BlockState owner = level.getBlockState(parent);
+        InteractionResult result = SeatBlock.use(owner, level, parent, player);
+        return result.consumesAction() ? result : owner.useWithoutItem(level, player, parentHit(hit, parent));
+    }
+
+    private static BlockHitResult parentHit(BlockHitResult hit, BlockPos parent) {
+        return new BlockHitResult(hit.getLocation(), hit.getDirection(), parent, hit.isInside());
+    }
+
+    @Override
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        BlockPos parent = parentPos(state, pos);
+        return FurnitureFootprint.validPart(level, pos, state)
+                ? useParent(level, parent, player, hit) : InteractionResult.PASS;
+    }
+
+    @Override
+    public net.minecraft.world.ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hit) {
+        BlockPos parent = parentPos(state, pos);
+        return FurnitureFootprint.validPart(level, pos, state)
+                ? level.getBlockState(parent).useItemOn(stack, level, player, hand, parentHit(hit, parent))
+                : net.minecraft.world.ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState replacement, boolean moving) {
+        if (!state.is(replacement.getBlock())) FurnitureFootprint.partRemoved(level, pos, state, replacement);
+        super.onRemove(state, level, pos, replacement, moving);
+    }
+
+    @Override
+    public BlockState updateShape(BlockState state, net.minecraft.core.Direction direction, BlockState neighborState,
+            net.minecraft.world.level.LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        level.scheduleTick(pos, this, 1);
+        if (state.getValue(WATERLOGGED)) level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+        return state;
+    }
+
+}

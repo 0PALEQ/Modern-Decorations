@@ -50,11 +50,11 @@ tasks.withType(JavaCompile).configureEach {
 apply from: 'mcreator.gradle'
 
 sourceSets.main.resources {
-    srcDir rootProject.file('../../shared/src/main/resources')
+    srcDir rootProject.file('../../shared/resources/common')
 }
 
 sourceSets.main.java {
-    srcDir rootProject.file('../../shared/src/mc_1.21.1/java')
+    srcDir rootProject.file('../../shared/code/minecraft/1.21.1')
 }
 
 apply from: rootProject.file('../../shared/gradle/shared-sources.gradle')

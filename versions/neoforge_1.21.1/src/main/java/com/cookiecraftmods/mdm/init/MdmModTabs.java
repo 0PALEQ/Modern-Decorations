@@ -136,6 +136,8 @@ public class MdmModTabs {
 				tabData.accept(MdmModBlocks.TV_STAND_MID_DECORATED.get().asItem());
 				tabData.accept(MdmModBlocks.POOL_TABLE.get().asItem());
 				tabData.accept(MdmModBlocks.POTTED_TREE.get().asItem());
+				tabData.accept(MdmModBlocks.POTTED_FERN.get().asItem());
+				tabData.accept(MdmModBlocks.POTTED_ZAMIOCULCAS.get().asItem());
 				tabData.accept(MdmModBlocks.OUTDOOR_COUCH.get().asItem());
 				tabData.accept(MdmModBlocks.OUTDOOR_TABLE.get().asItem());
 				tabData.accept(MdmModBlocks.LANTERN.get().asItem());

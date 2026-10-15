@@ -13,6 +13,7 @@ import java.util.function.Supplier;
 public class MdmModBlocks {
     private static final List<ModRegistryEntry<Block>> ENTRIES = new ArrayList<>();
     public static final ModRegistryEntry<Block> BLACK_MODERN_FRIDGE_1;
+    public static final ModRegistryEntry<Block> FURNITURE_PART;
     public static final ModRegistryEntry<Block> LEAFLESS_BAMBOO_DECORATION_1;
     public static final ModRegistryEntry<Block> LEAFLESS_BAMBOO_DECORATION_2;
     public static final ModRegistryEntry<Block> LEAFLESS_BAMBOO_DECORATION_3;
@@ -118,6 +119,8 @@ public class MdmModBlocks {
     public static final ModRegistryEntry<Block> TV_STAND_MID_DECORATED;
     public static final ModRegistryEntry<Block> POOL_TABLE;
     public static final ModRegistryEntry<Block> POTTED_TREE;
+    public static final ModRegistryEntry<Block> POTTED_FERN;
+    public static final ModRegistryEntry<Block> POTTED_ZAMIOCULCAS;
     public static final ModRegistryEntry<Block> OUTDOOR_COUCH;
     public static final ModRegistryEntry<Block> OUTDOOR_TABLE;
     public static final ModRegistryEntry<Block> LANTERN;
@@ -306,6 +309,7 @@ public class MdmModBlocks {
     public static final ModRegistryEntry<Block> TALL_MIRROR;
 
     static {
+        FURNITURE_PART = register("furniture_part", FurniturePartBlock::new);
         BLACK_MODERN_FRIDGE_1 = register("black_modern_fridge_1", BlackModernFridge1Block::new);
         LEAFLESS_BAMBOO_DECORATION_1 = register("leafless_bamboo_decoration_1", LeaflessBambooDecoration1Block::new);
         LEAFLESS_BAMBOO_DECORATION_2 = register("leafless_bamboo_decoration_2", LeaflessBambooDecoration2Block::new);
@@ -412,6 +416,8 @@ public class MdmModBlocks {
         TV_STAND_MID_DECORATED = register("tv_stand_mid_decorated", TVStandMidDecoratedBlock::new);
         POOL_TABLE = register("pool_table", PoolTableBlock::new);
         POTTED_TREE = register("potted_tree", PottedTreeBlock::new);
+        POTTED_FERN = register("potted_fern", PottedFernBlock::new);
+        POTTED_ZAMIOCULCAS = register("potted_zamioculcas", PottedZamioculcasBlock::new);
         OUTDOOR_COUCH = register("outdoor_couch", OutdoorCouchBlock::new);
         OUTDOOR_TABLE = register("outdoor_table", OutdoorTableBlock::new);
         LANTERN = register("lantern", LanternBlock::new);

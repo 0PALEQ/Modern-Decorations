@@ -1,0 +1,30 @@
+gradle.projectsEvaluated {
+    def project = gradle.rootProject
+    def testMod = project.layout.buildDirectory.dir('multicell-runtime-mod')
+    def testRun = project.layout.buildDirectory.dir('multicell-runtime-run')
+    project.loom.runs.server.runDir(testRun.get().asFile.absolutePath)
+    def prepare = project.tasks.register('prepareMulticellRuntime', JavaCompile) {
+        dependsOn project.tasks.named('classes')
+        javaCompiler = project.javaToolchains.compilerFor(project.java.toolchain)
+        source project.file('../../shared/tests/runtime/MulticellFurnitureRuntimeTest.java')
+        classpath = project.sourceSets.main.compileClasspath + project.sourceSets.main.output
+        options.compilerArgs.add('-proc:none')
+        destinationDirectory = testMod
+        doLast {
+            new File(testMod.get().asFile, 'fabric.mod.json').text = groovy.json.JsonOutput.toJson([
+                    schemaVersion: 1, id: 'mdm_multicell_test', version: '1.0.0',
+                    entrypoints: [main: ['MulticellFurnitureRuntimeTest']], depends: [mdm: '*']])
+        }
+    }
+    project.tasks.named('runServer') {
+        dependsOn prepare
+        classpath += project.files(testMod)
+        workingDir testRun
+        args 'nogui'
+        doFirst {
+            testRun.get().asFile.mkdirs()
+            new File(testRun.get().asFile, 'eula.txt').text = 'eula=true\n'
+            new File(testRun.get().asFile, 'server.properties').text = 'online-mode=false\nserver-port=0\nview-distance=2\nsimulation-distance=2\nlevel-type=minecraft:flat\nmax-tick-time=-1\n'
+        }
+    }
+}

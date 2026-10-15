@@ -119,6 +119,8 @@ public class MdmModItems {
 	public static final RegistryObject<Item> TV_STAND_MID_DECORATED;
 	public static final RegistryObject<Item> POOL_TABLE;
 	public static final RegistryObject<Item> POTTED_TREE;
+	public static final RegistryObject<Item> POTTED_FERN;
+	public static final RegistryObject<Item> POTTED_ZAMIOCULCAS;
 	public static final RegistryObject<Item> OUTDOOR_COUCH;
 	public static final RegistryObject<Item> OUTDOOR_TABLE;
 	public static final RegistryObject<Item> LANTERN;
@@ -413,6 +415,8 @@ public class MdmModItems {
 		TV_STAND_MID_DECORATED = block(MdmModBlocks.TV_STAND_MID_DECORATED);
 		POOL_TABLE = block(MdmModBlocks.POOL_TABLE);
 		POTTED_TREE = block(MdmModBlocks.POTTED_TREE);
+		POTTED_FERN = block(MdmModBlocks.POTTED_FERN);
+		POTTED_ZAMIOCULCAS = block(MdmModBlocks.POTTED_ZAMIOCULCAS);
 		OUTDOOR_COUCH = block(MdmModBlocks.OUTDOOR_COUCH);
 		OUTDOOR_TABLE = block(MdmModBlocks.OUTDOOR_TABLE);
 		LANTERN = block(MdmModBlocks.LANTERN);

@@ -1,7 +1,7 @@
 {
   "groups": [
     {
-      "root": "shared/src/groups/set_01",
+      "name": "item-transforms-through-1.21.11",
       "versions": [
         "fabric_1.20.1",
         "fabric_1.21.1",
@@ -10,74 +10,77 @@
         "neoforge_1.21.1",
         "neoforge_1.21.11"
       ],
-      "kinds": [
-        "resources"
-      ]
+      "roots": {
+        "resources": "shared/resources/compat/item-transforms-through-1.21.11"
+      }
     },
     {
-      "root": "shared/src/groups/set_02",
+      "name": "furniture-parts-through-1.21.1",
       "versions": [
         "fabric_1.20.1",
         "fabric_1.21.1",
         "forge_1.20.1",
         "neoforge_1.21.1"
       ],
-      "kinds": [
-        "java",
-        "resources"
-      ]
+      "roots": {
+        "java": "shared/code/compat/furniture-parts-through-1.21.1",
+        "resources": "shared/resources/compat/furniture-parts-through-1.21.1"
+      }
     },
     {
-      "root": "shared/src/groups/set_03",
+      "name": "curtain-states-standard",
       "versions": [
         "fabric_1.20.1",
+        "fabric_1.21.1",
         "fabric_1.21.11",
         "fabric_26.1.2",
         "fabric_26.2",
         "fabric_26.3",
+        "forge_1.20.1",
+        "neoforge_1.21.1",
         "neoforge_1.21.11",
         "neoforge_26.1.2"
       ],
-      "kinds": [
-        "resources"
-      ]
+      "roots": {
+        "resources": "shared/resources/compat/curtain-states-standard"
+      }
     },
     {
-      "root": "shared/src/groups/set_04",
+      "name": "minecraft-1.20.1",
       "versions": [
         "fabric_1.20.1",
         "forge_1.20.1"
       ],
-      "kinds": [
-        "java",
-        "resources"
-      ]
+      "roots": {
+        "java": "shared/code/compat/minecraft-1.20.1",
+        "resources": "shared/resources/compat/minecraft-1.20.1"
+      }
     },
     {
-      "root": "shared/src/groups/set_05",
+      "name": "block-models-legacy-rendering",
       "versions": [
         "fabric_1.20.1",
         "forge_1.20.1",
         "neoforge_1.21.1"
       ],
-      "kinds": [
-        "resources"
-      ]
+      "roots": {
+        "resources": "shared/resources/compat/block-models-legacy-rendering"
+      }
     },
     {
-      "root": "shared/src/groups/set_06",
+      "name": "fabric-entrypoint-through-26.2",
       "versions": [
         "fabric_1.21.1",
         "fabric_1.21.11",
         "fabric_26.1.2",
         "fabric_26.2"
       ],
-      "kinds": [
-        "java"
-      ]
+      "roots": {
+        "java": "shared/code/compat/fabric-entrypoint-through-26.2"
+      }
     },
     {
-      "root": "shared/src/groups/set_07",
+      "name": "loot-and-tags-1.21.1-plus",
       "versions": [
         "fabric_1.21.1",
         "fabric_1.21.11",
@@ -88,12 +91,12 @@
         "neoforge_1.21.11",
         "neoforge_26.1.2"
       ],
-      "kinds": [
-        "resources"
-      ]
+      "roots": {
+        "resources": "shared/resources/compat/loot-and-tags-1.21.1-plus"
+      }
     },
     {
-      "root": "shared/src/groups/set_08",
+      "name": "creative-tabs-and-item-models-modern",
       "versions": [
         "fabric_1.21.1",
         "fabric_1.21.11",
@@ -103,13 +106,13 @@
         "neoforge_1.21.11",
         "neoforge_26.1.2"
       ],
-      "kinds": [
-        "java",
-        "resources"
-      ]
+      "roots": {
+        "java": "shared/code/compat/creative-tabs-and-item-models-modern",
+        "resources": "shared/resources/compat/creative-tabs-and-item-models-modern"
+      }
     },
     {
-      "root": "shared/src/groups/set_09",
+      "name": "block-models-standard-rendering",
       "versions": [
         "fabric_1.21.1",
         "fabric_1.21.11",
@@ -118,46 +121,35 @@
         "fabric_26.3",
         "neoforge_26.1.2"
       ],
-      "kinds": [
-        "resources"
-      ]
+      "roots": {
+        "resources": "shared/resources/compat/block-models-standard-rendering"
+      }
     },
     {
-      "root": "shared/src/groups/set_10",
-      "versions": [
-        "fabric_1.21.1",
-        "forge_1.20.1",
-        "neoforge_1.21.1"
-      ],
-      "kinds": [
-        "resources"
-      ]
-    },
-    {
-      "root": "shared/src/groups/set_11",
+      "name": "minecraft-1.21.1",
       "versions": [
         "fabric_1.21.1",
         "neoforge_1.21.1"
       ],
-      "kinds": [
-        "java",
-        "resources"
-      ]
+      "roots": {
+        "java": "shared/code/compat/minecraft-1.21.1",
+        "resources": "shared/resources/compat/minecraft-1.21.1"
+      }
     },
     {
-      "root": "shared/src/groups/set_12",
+      "name": "fabric-registries-1.21.11-plus",
       "versions": [
         "fabric_1.21.11",
         "fabric_26.1.2",
         "fabric_26.2",
         "fabric_26.3"
       ],
-      "kinds": [
-        "java"
-      ]
+      "roots": {
+        "java": "shared/code/compat/fabric-registries-1.21.11-plus"
+      }
     },
     {
-      "root": "shared/src/groups/set_13",
+      "name": "minecraft-1.21.11-plus",
       "versions": [
         "fabric_1.21.11",
         "fabric_26.1.2",
@@ -166,13 +158,13 @@
         "neoforge_1.21.11",
         "neoforge_26.1.2"
       ],
-      "kinds": [
-        "java",
-        "resources"
-      ]
+      "roots": {
+        "java": "shared/code/compat/minecraft-1.21.11-plus",
+        "resources": "shared/resources/compat/minecraft-1.21.11-plus"
+      }
     },
     {
-      "root": "shared/src/groups/set_14",
+      "name": "curtain-models-modern",
       "versions": [
         "fabric_1.21.11",
         "fabric_26.1.2",
@@ -180,74 +172,74 @@
         "fabric_26.3",
         "neoforge_26.1.2"
       ],
-      "kinds": [
-        "resources"
-      ]
+      "roots": {
+        "resources": "shared/resources/compat/curtain-models-modern"
+      }
     },
     {
-      "root": "shared/src/groups/set_15",
+      "name": "fabric-block-registry-shared",
       "versions": [
         "fabric_1.21.11",
         "fabric_26.2",
         "fabric_26.3"
       ],
-      "kinds": [
-        "java"
-      ]
+      "roots": {
+        "java": "shared/code/compat/fabric-block-registry-shared"
+      }
     },
     {
-      "root": "shared/src/groups/set_16",
+      "name": "registry-properties-1.21.11",
       "versions": [
         "fabric_1.21.11",
         "neoforge_1.21.11"
       ],
-      "kinds": [
-        "java"
-      ]
+      "roots": {
+        "java": "shared/code/compat/registry-properties-1.21.11"
+      }
     },
     {
-      "root": "shared/src/groups/set_17",
+      "name": "item-transforms-26-plus",
       "versions": [
         "fabric_26.1.2",
         "fabric_26.2",
         "fabric_26.3",
         "neoforge_26.1.2"
       ],
-      "kinds": [
-        "resources"
-      ]
+      "roots": {
+        "resources": "shared/resources/compat/item-transforms-26-plus"
+      }
     },
     {
-      "root": "shared/src/groups/set_18",
+      "name": "minecraft-26.1.2",
       "versions": [
         "fabric_26.1.2",
         "neoforge_26.1.2"
       ],
-      "kinds": [
-        "java",
-        "resources"
-      ]
+      "roots": {
+        "java": "shared/code/compat/minecraft-26.1.2",
+        "resources": "shared/resources/compat/minecraft-26.1.2"
+      }
     },
     {
-      "root": "shared/src/groups/set_19",
+      "name": "minecraft-26.2-plus",
       "versions": [
         "fabric_26.2",
         "fabric_26.3"
       ],
-      "kinds": [
-        "java",
-        "resources"
-      ]
+      "roots": {
+        "java": "shared/code/compat/minecraft-26.2-plus",
+        "resources": "shared/resources/compat/minecraft-26.2-plus"
+      }
     },
     {
-      "root": "shared/src/groups/set_20",
+      "name": "neoforge-block-registry-modern",
       "versions": [
         "neoforge_1.21.11",
         "neoforge_26.1.2"
       ],
-      "kinds": [
-        "java"
-      ]
+      "roots": {
+        "java": "shared/code/compat/neoforge-block-registry-modern"
+      }
     }
   ]
 }

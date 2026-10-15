@@ -12,6 +12,7 @@ import com.cookiecraftmods.mdm.MdmMod;
 public class MdmModBlocks {
     public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(MdmMod.MODID);
     public static final DeferredBlock<Block> BLACK_MODERN_FRIDGE_1;
+    public static final DeferredBlock<Block> FURNITURE_PART;
     public static final DeferredBlock<Block> LEAFLESS_BAMBOO_DECORATION_1;
     public static final DeferredBlock<Block> LEAFLESS_BAMBOO_DECORATION_2;
     public static final DeferredBlock<Block> LEAFLESS_BAMBOO_DECORATION_3;
@@ -117,6 +118,8 @@ public class MdmModBlocks {
     public static final DeferredBlock<Block> TV_STAND_MID_DECORATED;
     public static final DeferredBlock<Block> POOL_TABLE;
     public static final DeferredBlock<Block> POTTED_TREE;
+    public static final DeferredBlock<Block> POTTED_FERN;
+    public static final DeferredBlock<Block> POTTED_ZAMIOCULCAS;
     public static final DeferredBlock<Block> OUTDOOR_COUCH;
     public static final DeferredBlock<Block> OUTDOOR_TABLE;
     public static final DeferredBlock<Block> LANTERN;
@@ -305,6 +308,7 @@ public class MdmModBlocks {
     public static final DeferredBlock<Block> TALL_MIRROR;
 
     static {
+        FURNITURE_PART = REGISTRY.register("furniture_part", FurniturePartBlock::new);
         BLACK_MODERN_FRIDGE_1 = REGISTRY.register("black_modern_fridge_1", BlackModernFridge1Block::new);
         LEAFLESS_BAMBOO_DECORATION_1 = REGISTRY.register("leafless_bamboo_decoration_1", LeaflessBambooDecoration1Block::new);
         LEAFLESS_BAMBOO_DECORATION_2 = REGISTRY.register("leafless_bamboo_decoration_2", LeaflessBambooDecoration2Block::new);
@@ -411,6 +415,8 @@ public class MdmModBlocks {
         TV_STAND_MID_DECORATED = REGISTRY.register("tv_stand_mid_decorated", TVStandMidDecoratedBlock::new);
         POOL_TABLE = REGISTRY.register("pool_table", PoolTableBlock::new);
         POTTED_TREE = REGISTRY.register("potted_tree", PottedTreeBlock::new);
+        POTTED_FERN = REGISTRY.register("potted_fern", PottedFernBlock::new);
+        POTTED_ZAMIOCULCAS = REGISTRY.register("potted_zamioculcas", PottedZamioculcasBlock::new);
         OUTDOOR_COUCH = REGISTRY.register("outdoor_couch", OutdoorCouchBlock::new);
         OUTDOOR_TABLE = REGISTRY.register("outdoor_table", OutdoorTableBlock::new);
         LANTERN = REGISTRY.register("lantern", LanternBlock::new);

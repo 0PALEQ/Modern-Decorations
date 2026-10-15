@@ -112,7 +112,7 @@ tasks.register('validateModResources') {
                     .files.collect { it.name.substring(0, it.name.length() - 5) } as Set
         }
 
-        def blockstates = namesIn('assets/mdm/blockstates')
+        def blockstates = namesIn('assets/mdm/blockstates') - 'furniture_part'
         def blockModels = namesIn('assets/mdm/models/block')
         def itemModels = namesIn('assets/mdm/models/item')
         def itemDefinitions = namesIn('assets/mdm/items')
@@ -189,7 +189,7 @@ tasks.register('validateModResources') {
             throw new GradleException('Furniture-parts recipe does not use the Minecraft 1.21.11 ingredient schema')
         }
 
-        fileTree("${resources}/assets/mdm/models/block") { include '*.json' }.each { model ->
+        fileTree("${resources}/assets/mdm/models/block") { include '*.json'; exclude 'furniture_part.json' }.each { model ->
             def json = parse.parse(model)
             if (!(json.render_type in ['minecraft:cutout', 'minecraft:translucent'])) {
                 throw new GradleException("NeoForge render_type missing from block model: ${model}")
@@ -253,11 +253,11 @@ publishing {
 }
 
 sourceSets.main.resources {
-    srcDir rootProject.file('../../shared/src/main/resources')
+    srcDir rootProject.file('../../shared/resources/common')
 }
 
 sourceSets.main.java {
-    srcDir rootProject.file('../../shared/src/mc_1.21.11/java')
+    srcDir rootProject.file('../../shared/code/minecraft/1.21.11')
 }
 
 apply from: rootProject.file('../../shared/gradle/shared-sources.gradle')

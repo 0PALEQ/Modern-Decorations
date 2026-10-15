@@ -73,7 +73,7 @@ tasks.register('validateModResources') {
                     .files.collect { it.name.substring(0, it.name.length() - 5) } as Set
         }
 
-        def blockstates = namesIn('assets/mdm/blockstates')
+        def blockstates = namesIn('assets/mdm/blockstates') - 'furniture_part'
         def blockModels = namesIn('assets/mdm/models/block')
         def itemModels = namesIn('assets/mdm/models/item')
         def itemDefinitions = namesIn('assets/mdm/items')
@@ -234,11 +234,11 @@ publishing {
 }
 
 sourceSets.main.resources {
-    srcDir rootProject.file('../../shared/src/main/resources')
+    srcDir rootProject.file('../../shared/resources/common')
 }
 
 sourceSets.main.java {
-    srcDir rootProject.file('../../shared/src/mc_26.2/java')
+    srcDir rootProject.file('../../shared/code/minecraft/26.2')
 }
 
 apply from: rootProject.file('../../shared/gradle/shared-sources.gradle')

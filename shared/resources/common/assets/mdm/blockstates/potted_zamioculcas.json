@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/potted_zamioculcas"
+    },
+    "facing=east": {
+      "model": "mdm:block/potted_zamioculcas",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/potted_zamioculcas",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/potted_zamioculcas",
+      "y": 270
+    }
+  }
+}

@@ -35,7 +35,6 @@ import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 import com.cookiecraftmods.mdm.block.SeatBlock;
 import com.cookiecraftmods.mdm.block.LightSwitch;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
 
 @Mod("mdm")
 public class MdmMod {
