@@ -17,32 +17,23 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import com.google.common.collect.ImmutableMap;
-
-public class TallMirrorBlock extends Block {
+public class TallMirrorBlock extends FurnitureBlock implements MulticellFurniture {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-	private final ImmutableMap<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public TallMirrorBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.GLASS).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(BlockBehaviour.Properties.of().sound(SoundType.GLASS).pushReaction(FurnitureFootprint.IMMOVABLE).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
-	private ImmutableMap<BlockState, VoxelShape> makeShapes() {
-		return this.getShapeForEachState(state -> {
-			return switch (state.getValue(FACING)) {
-				default -> box(0, -16, 0, 16, 32, 1);
-				case NORTH -> box(0, -16, 15, 16, 32, 16);
-				case EAST -> box(0, -16, 0, 1, 32, 16);
-				case WEST -> box(15, -16, 0, 16, 32, 16);
-			};
-		});
-	}
+    @Override
+    public VoxelShape getFurnitureShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return AdditionalFurnitureShapes.forFacing(AdditionalFurnitureShapes.TALL_MIRROR, state.getValue(FACING));
+    }
 
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return shapes.get(state);
-	}
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return FurnitureFootprint.localShape(getFurnitureShape(state, world, pos, context), BlockPos.ZERO);
+    }
 
 	@Override
 	public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
@@ -67,7 +58,7 @@ public class TallMirrorBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		return FurnitureFootprint.placement(super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()), context);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

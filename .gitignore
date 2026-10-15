@@ -5,6 +5,8 @@ build/
 run/
 out/
 *.iml
+*.log
+logs/
 
 versions/*/.gradle/
 versions/*/.idea/

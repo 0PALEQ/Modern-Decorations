@@ -6,7 +6,8 @@ import java.nio.file.Path;
 /** Standalone checks for time conversion and each editable hand's orientation. */
 public class ClockHandsTest {
     public static void main(String[] args) throws Exception {
-        long[] times = {0, 6000, 12000, 18000, 24000, -6000, Long.MAX_VALUE};
+        long[] times = {0, 250, 500, 999, 1000, 6000, 12000, 18000, 24000,
+                -6000, 24000L * 1000000000L + 250, Long.MAX_VALUE};
         for (long ticks : times) {
             double hours = ((Math.floorMod(ticks, 24000L) / 1000.0) + 6) % 12;
             close(ClockTime.hourAngle(ticks), hours * 30);
@@ -16,10 +17,21 @@ public class ClockHandsTest {
         close(ClockTime.minuteAngle(6250), 90);
         for (String model : new String[]{"black_wall_clock", "wooden_wall_clock"}) {
             for (String hand : new String[]{"pointer_hour", "pointer_minute"}) {
-                Path file = Path.of("shared/src/main/resources/assets/mdm/models/custom/" + model + ".json");
+                Path file = Path.of("shared/resources/common/assets/mdm/models/custom/" + model + ".json");
                 ClockHandMesh mesh;
                 try (var reader = Files.newBufferedReader(file)) { mesh = ClockHandMesh.read(reader, hand); }
                 if (mesh.vertices().size() != 24) throw new AssertionError("Expected six hand faces");
+                // Every face must wind toward its declared outward normal.
+                for (int i = 0; i < mesh.vertices().size(); i += 4) {
+                    var a = mesh.vertices().get(i);
+                    var b = mesh.vertices().get(i + 1);
+                    var c = mesh.vertices().get(i + 2);
+                    float ax = b.x() - a.x(), ay = b.y() - a.y(), az = b.z() - a.z();
+                    float bx = c.x() - a.x(), by = c.y() - a.y(), bz = c.z() - a.z();
+                    float dot = (ay * bz - az * by) * a.nx()
+                            + (az * bx - ax * bz) * a.ny() + (ax * by - ay * bx) * a.nz();
+                    if (dot <= 0) throw new AssertionError("Inverted hand face: " + model + "/" + hand);
+                }
                 double x = mesh.vertices().stream().mapToDouble(ClockHandMesh.Vertex::x).average().orElseThrow();
                 double y = mesh.vertices().stream().mapToDouble(ClockHandMesh.Vertex::y).average().orElseThrow();
                 double length = Math.hypot(x, y);
@@ -31,7 +43,7 @@ public class ClockHandsTest {
                 }
             }
         }
-        System.out.println("Clock time and all four hand orientations passed.");
+        System.out.println("Clock time, all four hand orientations, and face winding passed.");
     }
 
     private static void close(double actual, double expected) {

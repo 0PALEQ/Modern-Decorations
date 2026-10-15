@@ -1,0 +1,46 @@
+package com.cookiecraftmods.mdm.block;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+
+public final class LightSwitch {
+    public static final BooleanProperty LIT = BlockStateProperties.LIT;
+    public static final SoundEvent ON = SoundEvent.createVariableRangeEvent(id("light_on"));
+    public static final SoundEvent OFF = SoundEvent.createVariableRangeEvent(id("light_off"));
+
+    private LightSwitch() {}
+
+    private static ResourceLocation id(String path) {
+        return new ResourceLocation("mdm", path);
+    }
+
+    public static void registerSounds() {
+        Registry.register(BuiltInRegistries.SOUND_EVENT, id("light_on"), ON);
+        Registry.register(BuiltInRegistries.SOUND_EVENT, id("light_off"), OFF);
+    }
+
+    public static InteractionResult use(BlockState state, Level level, BlockPos pos, Player player) {
+        if (!state.hasProperty(LIT) || !BuiltInRegistries.BLOCK.getKey(state.getBlock()).getNamespace().equals("mdm")) {
+            return InteractionResult.PASS;
+        }
+        boolean lit = !state.getValue(LIT);
+        // The client plays for the clicking player; the server notifies everyone else.
+        level.playSound(player, pos, lit ? ON : OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
+        if (!level.isClientSide) {
+            level.setBlock(pos, state.setValue(LIT, lit), Block.UPDATE_ALL);
+            level.gameEvent(player, net.minecraft.world.level.gameevent.GameEvent.BLOCK_CHANGE, pos);
+        }
+        return InteractionResult.SUCCESS;
+    }
+}

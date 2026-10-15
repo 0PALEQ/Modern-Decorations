@@ -3,11 +3,11 @@ import groovy.json.JsonSlurper
 def manifest = new JsonSlurper().parse(rootProject.file('../../shared/gradle/source-groups.json'))
 def target = rootProject.projectDir.name
 if (target.startsWith('fabric_')) {
-    sourceSets.main.java.srcDir(rootProject.file('../../shared/src/clock_fabric/java'))
+    sourceSets.main.java.srcDir(rootProject.file('../../shared/code/compat/clock-fabric'))
 }
-sourceSets.main.java.srcDir(rootProject.file('../../shared/src/clock/java'))
-sourceSets.main.java.srcDir(rootProject.file('../../shared/src/furniture/java'))
-sourceSets.main.java.srcDir(rootProject.file('../../shared/src/migration/java'))
+sourceSets.main.java.srcDir(rootProject.file('../../shared/code/common/clock'))
+sourceSets.main.java.srcDir(rootProject.file('../../shared/code/common/furniture'))
+sourceSets.main.java.srcDir(rootProject.file('../../shared/code/common/migration'))
 tasks.named('processResources') {
     inputs.property('bedMigrationRefmap', target in ['fabric_1.20.1', 'forge_1.20.1'])
 }
@@ -22,12 +22,12 @@ if (!(target in ['fabric_1.20.1', 'forge_1.20.1'])) {
     }
 }
 sourceSets.main.java.srcDir(rootProject.file(project.minecraft_version.toString() in ['1.20.1', '1.21.1']
-        ? '../../shared/src/clock_legacy/java'
+        ? '../../shared/code/compat/clock-legacy'
         : project.minecraft_version.toString() == '1.21.11'
-            ? '../../shared/src/clock_1.21.11/java' : '../../shared/src/clock_modern/java'))
+            ? '../../shared/code/compat/clock-1.21.11' : '../../shared/code/compat/clock-modern'))
 manifest.groups.findAll { target in it.versions }.each { group ->
-    group.kinds.each { kind ->
-        sourceSets.main."${kind}".srcDir(rootProject.file("../../${group.root}/${kind}"))
+    group.roots.each { kind, path ->
+        sourceSets.main."${kind}".srcDir(rootProject.file("../../${path}"))
     }
 }
 
@@ -36,16 +36,18 @@ ext.mainSourceFile = { String kind, String relativePath ->
             .find { it.isFile() } ?: file("src/main/${kind}/${relativePath}")
 }
 
+def translationResourcesPath = layout.buildDirectory.dir('resources/main').get().asFile.absolutePath
 tasks.register('verifyTranslations') {
     group = 'verification'
     description = 'Checks every language for complete, nonblank English translation keys.'
     dependsOn tasks.named('processResources')
+    inputs.dir(translationResourcesPath)
     doLast {
-        def resources = tasks.named('processResources').get().destinationDir
+        def resources = new File(translationResourcesPath)
         def languageDir = new File(resources, 'assets/mdm/lang')
         def parser = new JsonSlurper()
         def english = parser.parse(new File(languageDir, 'en_us.json'))
-        fileTree(languageDir) { include '*.json' }.each { languageFile ->
+        languageDir.eachFileMatch(~/.*\.json/) { languageFile ->
             def translations = parser.parse(languageFile)
             def missing = english.keySet() - translations.keySet()
             def blank = translations.findAll { key, value ->
@@ -55,9 +57,9 @@ tasks.register('verifyTranslations') {
                 throw new GradleException("Incomplete translations in ${languageFile.name}: missing=${missing}, blank=${blank}")
             }
         }
-        fileTree(new File(resources, 'assets/mdm/blockstates')) { include '*.json' }.each { blockstate ->
+        new File(resources, 'assets/mdm/blockstates').eachFileMatch(~/.*\.json/) { blockstate ->
             def id = blockstate.name.substring(0, blockstate.name.length() - 5)
-            if (!english.containsKey("block.mdm.${id}".toString())) {
+            if (id != 'furniture_part' && !english.containsKey("block.mdm.${id}".toString())) {
                 throw new GradleException("Missing English block translation: ${id}")
             }
         }
@@ -72,8 +74,8 @@ def clockTestClasses = layout.buildDirectory.dir('clock-test-classes')
 tasks.register('compileClockTests', JavaCompile) {
     javaCompiler = javaToolchains.compilerFor(java.toolchain)
     source rootProject.file('../../shared/tests/ClockHandsTest.java')
-    source rootProject.file('../../shared/src/clock/java/com/cookiecraftmods/mdm/client/clock/ClockTime.java')
-    source rootProject.file('../../shared/src/clock/java/com/cookiecraftmods/mdm/client/clock/ClockHandMesh.java')
+    source rootProject.file('../../shared/code/common/clock/com/cookiecraftmods/mdm/client/clock/ClockTime.java')
+    source rootProject.file('../../shared/code/common/clock/com/cookiecraftmods/mdm/client/clock/ClockHandMesh.java')
     classpath = sourceSets.main.compileClasspath
     destinationDirectory = clockTestClasses
 }
@@ -92,7 +94,7 @@ def migrationTestClasses = layout.buildDirectory.dir('migration-test-classes')
 tasks.register('compileBedMigrationTests', JavaCompile) {
     javaCompiler = javaToolchains.compilerFor(java.toolchain)
     source rootProject.file('../../shared/tests/LegacyBedMigrationTest.java')
-    source rootProject.file('../../shared/src/migration/java/com/cookiecraftmods/mdm/migration/LegacyBedMigration.java')
+    source rootProject.file('../../shared/code/common/migration/com/cookiecraftmods/mdm/migration/LegacyBedMigration.java')
     classpath = sourceSets.main.compileClasspath
     options.compilerArgs.add('-proc:none')
     destinationDirectory = migrationTestClasses

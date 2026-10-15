@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": { "item": "mdm:furniture_parts" },
+  "result": { "id": "mdm:round_mirror_big", "count": 1 }
+}

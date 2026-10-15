@@ -33,22 +33,22 @@ public class GreyCurtainBlock extends Block {
 			return switch (state.getValue(FACING)) {
 				default -> switch (state.getValue(FACE)) {
 					case FLOOR -> box(-4, -16, 0, 20, 32, 2);
-					case WALL -> box(-4, 14, -16, 20, 16, 32);
+					case WALL -> box(-4, -16, 0, 20, 32, 2);
 					case CEILING -> box(-4, -16, 0, 20, 32, 2);
 				};
 				case NORTH -> switch (state.getValue(FACE)) {
 					case FLOOR -> box(-4, -16, 14, 20, 32, 16);
-					case WALL -> box(-4, 14, -16, 20, 16, 32);
+					case WALL -> box(-4, -16, 14, 20, 32, 16);
 					case CEILING -> box(-4, -16, 14, 20, 32, 16);
 				};
 				case EAST -> switch (state.getValue(FACE)) {
 					case FLOOR -> box(0, -16, -4, 2, 32, 20);
-					case WALL -> box(-16, 14, -4, 32, 16, 20);
+					case WALL -> box(0, -16, -4, 2, 32, 20);
 					case CEILING -> box(0, -16, -4, 2, 32, 20);
 				};
 				case WEST -> switch (state.getValue(FACE)) {
 					case FLOOR -> box(14, -16, -4, 16, 32, 20);
-					case WALL -> box(-16, 14, -4, 32, 16, 20);
+					case WALL -> box(14, -16, -4, 16, 32, 20);
 					case CEILING -> box(14, -16, -4, 16, 32, 20);
 				};
 			};
