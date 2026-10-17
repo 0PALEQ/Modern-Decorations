@@ -34,11 +34,10 @@ public final class LightSwitch {
         if (!state.hasProperty(LIT) || !BuiltInRegistries.BLOCK.getKey(state.getBlock()).getNamespace().equals("mdm")) {
             return InteractionResult.PASS;
         }
-        boolean lit = !state.getValue(LIT);
-        // The client plays for the clicking player; the server notifies everyone else.
-        level.playSound(player, pos, lit ? ON : OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
         if (!level.isClientSide) {
+            boolean lit = !state.getValue(LIT);
             level.setBlock(pos, state.setValue(LIT, lit), Block.UPDATE_ALL);
+            level.playSound(null, pos, lit ? ON : OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
             level.gameEvent(player, net.minecraft.world.level.gameevent.GameEvent.BLOCK_CHANGE, pos);
         }
         return InteractionResult.SUCCESS;

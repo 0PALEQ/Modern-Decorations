@@ -7,7 +7,7 @@ config="mdm.mixins.json"
 
 [[mods]]
 modId="mdm"
-version="26.10"
+version="${mod_version}"
 displayName="ModernDecorMod"
 displayURL="https://cookiecraftmods.com/"
 logoFile="logo.png"
@@ -25,14 +25,14 @@ description="Mod that adds decoration furniture and etc."
 [[dependencies.mdm]]
     modId="neoforge"
     type="required"
-    versionRange="[21.1.190,)"
+    versionRange="[${neo_version},)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.mdm]]
     modId="minecraft"
     type="required"
-    versionRange="[1.21.1]"
+    versionRange="[${minecraft_version}]"
     ordering="AFTER"
     side="BOTH"
 

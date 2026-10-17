@@ -6,7 +6,9 @@
   "refmap": "mdm.refmap.json",
   "mixins": [
     "LegacyBedNbtMixin",
-    "FurnitureChunkLoadMixin"
+    "FurnitureChunkLoadMixin",
+    "SingleBedOrientationMixin",
+    "SingleBedSleepDirectionMixin"
   ],
   "client": [
     "FurnitureWaterParticleMixin"

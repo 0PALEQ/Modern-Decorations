@@ -6,6 +6,7 @@ import com.cookiecraftmods.mdm.init.MdmModItems;
 import com.cookiecraftmods.mdm.init.MdmModTabs;
 import com.cookiecraftmods.mdm.block.SeatBlock;
 import com.cookiecraftmods.mdm.block.LightSwitch;
+import com.cookiecraftmods.mdm.block.SingleBedBlock;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
@@ -30,6 +31,8 @@ public final class MdmMod implements ModInitializer {
         MdmModTabs.init();
         UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
             var state = level.getBlockState(hit.getBlockPos());
+            var bedResult = SingleBedBlock.tryUse(state, level, hit.getBlockPos(), player);
+            if (bedResult.consumesAction()) return bedResult;
             var result = LightSwitch.use(state, level, hit.getBlockPos(), player);
             return result.consumesAction() ? result : SeatBlock.use(state, level, hit.getBlockPos(), player);
         });
