@@ -13,7 +13,7 @@ tasks.withType(org.gradle.api.tasks.bundling.AbstractArchiveTask).configureEach 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 neoForge {
-    version = "21.1.190"
+    version = project.neo_version
 
     runs {
         client {
@@ -48,6 +48,18 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 apply from: 'mcreator.gradle'
+
+processResources {
+    def metadataProperties = [
+        mod_version: project.mod_version,
+        neo_version: project.neo_version,
+        minecraft_version: project.minecraft_version
+    ]
+    inputs.properties metadataProperties
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand metadataProperties
+    }
+}
 
 sourceSets.main.resources {
     srcDir rootProject.file('../../shared/resources/common')

@@ -35,6 +35,7 @@ import com.cookiecraftmods.mdm.init.MdmModBlocks;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 import com.cookiecraftmods.mdm.block.SeatBlock;
 import com.cookiecraftmods.mdm.block.LightSwitch;
+import com.cookiecraftmods.mdm.block.SingleBedBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 @Mod("mdm")
@@ -98,6 +99,12 @@ public class MdmMod {
 	@SubscribeEvent
 	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
 		var state = event.getLevel().getBlockState(event.getPos());
+        var bedResult = SingleBedBlock.tryUse(state, event.getLevel(), event.getPos(), event.getEntity());
+        if (bedResult.consumesAction()) {
+            event.setCancellationResult(bedResult);
+            event.setCanceled(true);
+            return;
+        }
         var result = LightSwitch.use(state, event.getLevel(), event.getPos(), event.getEntity());
         if (result.consumesAction()) {
             event.setCancellationResult(result);

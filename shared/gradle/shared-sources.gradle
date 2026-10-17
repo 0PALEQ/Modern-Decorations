@@ -108,3 +108,28 @@ tasks.register('verifyBedMigration', JavaExec) {
 tasks.named('check') {
     dependsOn tasks.named('verifyBedMigration')
 }
+
+if (target.startsWith('fabric_')) {
+    def singleBedTestClasses = layout.buildDirectory.dir('single-bed-test-classes')
+    tasks.register('compileSingleBedTests', JavaCompile) {
+        dependsOn tasks.named('classes')
+        javaCompiler = javaToolchains.compilerFor(java.toolchain)
+        source rootProject.file('../../shared/tests/SingleBedStateTest.java')
+        classpath = sourceSets.main.runtimeClasspath
+        options.compilerArgs.add('-proc:none')
+        destinationDirectory = singleBedTestClasses
+    }
+    tasks.register('verifySingleBeds', JavaExec) {
+        dependsOn tasks.named('compileSingleBedTests')
+        classpath = files(singleBedTestClasses) + sourceSets.main.runtimeClasspath
+        mainClass = 'SingleBedStateTest'
+        javaLauncher = javaToolchains.launcherFor(java.toolchain)
+        workingDir layout.buildDirectory.dir('single-bed-tests')
+        doFirst {
+            workingDir.mkdirs()
+        }
+    }
+    tasks.named('check') {
+        dependsOn tasks.named('verifySingleBeds')
+    }
+}

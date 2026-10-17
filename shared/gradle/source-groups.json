@@ -1,6 +1,13 @@
 {
   "groups": [
     {
+      "name": "single-bed-26.2",
+      "versions": ["fabric_26.2"],
+      "roots": {
+        "java": "shared/code/compat/single-bed-26.2"
+      }
+    },
+    {
       "name": "item-transforms-through-1.21.11",
       "versions": [
         "fabric_1.20.1",

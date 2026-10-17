@@ -30,13 +30,13 @@ import com.google.common.collect.ImmutableMap;
 
 import com.cookiecraftmods.mdm.block.entity.BedroomSet1whiteSinglebedBlockEntity;
 
-public class BedroomSet1whiteSinglebedBlock extends FurnitureBlock implements EntityBlock, MulticellFurniture {
+public class BedroomSet1whiteSinglebedBlock extends SingleBedBlock implements EntityBlock, MulticellFurniture {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 	private final ImmutableMap<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public BedroomSet1whiteSinglebedBlock() {
 		super(BlockBehaviour.Properties.of().sound(SoundType.WOOD).pushReaction(FurnitureFootprint.IMMOVABLE).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.BASEDRUM));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+		this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
 	}
 
 	private ImmutableMap<BlockState, VoxelShape> makeShapes() {
@@ -61,12 +61,6 @@ public class BedroomSet1whiteSinglebedBlock extends FurnitureBlock implements En
 	}
 
 	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		super.createBlockStateDefinition(builder);
-		builder.add(FACING);
-	}
-
-	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		return FurnitureFootprint.placement(super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()), context);
 	}
@@ -81,13 +75,7 @@ public class BedroomSet1whiteSinglebedBlock extends FurnitureBlock implements En
 
 	@Override
 	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, world, pos, entity, hand, hit);
-		if (entity instanceof ServerPlayer player) {
-			if (world.getBlockEntity(pos) instanceof MenuProvider provider) {
-				player.openMenu(provider);
-			}
-		}
-		return InteractionResult.SUCCESS;
+		return interact(blockstate, world, pos, entity);
 	}
 
 	@Override
