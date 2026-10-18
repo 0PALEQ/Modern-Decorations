@@ -29,9 +29,10 @@ call :build fabric_26.1.2 "%JAVA25_HOME%"
 call :build fabric_26.2 "%JAVA25_HOME%"
 call :build fabric_26.3 "%JAVA25_HOME%"
 call :build forge_1.20.1 "%JAVA17_HOME%"
-call :build neoforge_1.21.1 "%JAVA17_HOME%"
-call :build neoforge_1.21.11 "%JAVA17_HOME%"
-call :build neoforge_26.1.2 "%JAVA17_HOME%"
+call :build neoforge_1.21.1 "%JAVA21_HOME%"
+call :build neoforge_1.21.11 "%JAVA25_HOME%"
+call :build neoforge_26.1.2 "%JAVA25_HOME%"
+call :build neoforge_26.2 "%JAVA25_HOME%"
 
 echo.
 if defined FAILED_TARGETS (
