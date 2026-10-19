@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "3": "minecraft:block/blue_wool"
+  },
+  "parent": "mdm:block/bedroom_set_1grey_double_bed"
+}

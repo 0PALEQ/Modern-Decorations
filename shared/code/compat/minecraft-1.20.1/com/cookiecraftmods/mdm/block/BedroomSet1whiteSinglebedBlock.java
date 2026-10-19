@@ -35,7 +35,11 @@ public class BedroomSet1whiteSinglebedBlock extends SingleBedBlock implements En
 	private final ImmutableMap<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public BedroomSet1whiteSinglebedBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.WOOD).pushReaction(FurnitureFootprint.IMMOVABLE).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.BASEDRUM));
+		this(net.minecraft.world.item.DyeColor.WHITE);
+	}
+
+	public BedroomSet1whiteSinglebedBlock(net.minecraft.world.item.DyeColor color) {
+		super(color, BlockBehaviour.Properties.of().sound(SoundType.WOOD).pushReaction(FurnitureFootprint.IMMOVABLE).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.BASEDRUM));
 		this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
 	}
 

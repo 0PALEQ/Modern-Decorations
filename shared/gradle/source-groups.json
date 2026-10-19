@@ -2,7 +2,7 @@
   "groups": [
     {
       "name": "single-bed-26.2",
-      "versions": ["fabric_26.2"],
+      "versions": ["fabric_26.2", "neoforge_26.2"],
       "roots": {
         "java": "shared/code/compat/single-bed-26.2"
       }
@@ -46,7 +46,8 @@
         "forge_1.20.1",
         "neoforge_1.21.1",
         "neoforge_1.21.11",
-        "neoforge_26.1.2"
+        "neoforge_26.1.2",
+        "neoforge_26.2"
       ],
       "roots": {
         "resources": "shared/resources/compat/curtain-states-standard"
@@ -96,7 +97,8 @@
         "fabric_26.3",
         "neoforge_1.21.1",
         "neoforge_1.21.11",
-        "neoforge_26.1.2"
+        "neoforge_26.1.2",
+        "neoforge_26.2"
       ],
       "roots": {
         "resources": "shared/resources/compat/loot-and-tags-1.21.1-plus"
@@ -111,7 +113,8 @@
         "fabric_26.2",
         "fabric_26.3",
         "neoforge_1.21.11",
-        "neoforge_26.1.2"
+        "neoforge_26.1.2",
+        "neoforge_26.2"
       ],
       "roots": {
         "java": "shared/code/compat/creative-tabs-and-item-models-modern",
@@ -126,7 +129,8 @@
         "fabric_26.1.2",
         "fabric_26.2",
         "fabric_26.3",
-        "neoforge_26.1.2"
+        "neoforge_26.1.2",
+        "neoforge_26.2"
       ],
       "roots": {
         "resources": "shared/resources/compat/block-models-standard-rendering"
@@ -163,7 +167,8 @@
         "fabric_26.2",
         "fabric_26.3",
         "neoforge_1.21.11",
-        "neoforge_26.1.2"
+        "neoforge_26.1.2",
+        "neoforge_26.2"
       ],
       "roots": {
         "java": "shared/code/compat/minecraft-1.21.11-plus",
@@ -177,7 +182,8 @@
         "fabric_26.1.2",
         "fabric_26.2",
         "fabric_26.3",
-        "neoforge_26.1.2"
+        "neoforge_26.1.2",
+        "neoforge_26.2"
       ],
       "roots": {
         "resources": "shared/resources/compat/curtain-models-modern"
@@ -210,7 +216,8 @@
         "fabric_26.1.2",
         "fabric_26.2",
         "fabric_26.3",
-        "neoforge_26.1.2"
+        "neoforge_26.1.2",
+        "neoforge_26.2"
       ],
       "roots": {
         "resources": "shared/resources/compat/item-transforms-26-plus"
@@ -231,7 +238,8 @@
       "name": "minecraft-26.2-plus",
       "versions": [
         "fabric_26.2",
-        "fabric_26.3"
+        "fabric_26.3",
+        "neoforge_26.2"
       ],
       "roots": {
         "java": "shared/code/compat/minecraft-26.2-plus",
@@ -242,7 +250,8 @@
       "name": "neoforge-block-registry-modern",
       "versions": [
         "neoforge_1.21.11",
-        "neoforge_26.1.2"
+        "neoforge_26.1.2",
+        "neoforge_26.2"
       ],
       "roots": {
         "java": "shared/code/compat/neoforge-block-registry-modern"

@@ -84,10 +84,10 @@ tasks.register('validateModResources') {
                 'block models': blockModels,
                 'item models': itemModels,
                 'loot tables': lootTables,
-                'stonecutting recipes': recipes
+                'block recipes': recipes
         ].each { label, actual ->
             // Legacy double-bed IDs have no recipes, but still need models and loot.
-            def expected = label == 'stonecutting recipes'
+            def expected = label == 'block recipes'
                     ? blockstates - ['bedroom_set_1grey_double_bed', 'bedroom_set_1wenge_double_bed',
                                      'bedroom_set_1white_doublebed'] : blockstates
             def missing = expected - actual
@@ -98,7 +98,7 @@ tasks.register('validateModResources') {
 
         if (recipes != blockstates - ['bedroom_set_1grey_double_bed',
                                      'bedroom_set_1wenge_double_bed', 'bedroom_set_1white_doublebed']) {
-            throw new GradleException('Stonecutting recipe ids must match blockstate ids exactly')
+            throw new GradleException('Block recipe ids must match blockstate ids exactly')
         }
 
         fileTree("${resources}/assets/mdm/models") { include '**/*.json' }.each { model ->

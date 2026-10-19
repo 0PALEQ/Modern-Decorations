@@ -86,10 +86,10 @@ tasks.register('validateModResources') {
                 'item models': itemModels,
                 'item definitions': itemDefinitions,
                 'loot tables': lootTables,
-                'stonecutting recipes': recipes
+                'block recipes': recipes
         ].each { label, actual ->
             // Legacy double-bed IDs have no recipes, but still need models and loot.
-            def expected = label == 'stonecutting recipes'
+            def expected = label == 'block recipes'
                     ? blockstates - ['bedroom_set_1grey_double_bed', 'bedroom_set_1wenge_double_bed',
                                      'bedroom_set_1white_doublebed'] : blockstates
             def missing = expected - actual
@@ -100,7 +100,7 @@ tasks.register('validateModResources') {
 
         if (recipes != blockstates - ['bedroom_set_1grey_double_bed',
                                      'bedroom_set_1wenge_double_bed', 'bedroom_set_1white_doublebed']) {
-            throw new GradleException('Stonecutting recipe ids must match blockstate ids exactly')
+            throw new GradleException('Block recipe ids must match blockstate ids exactly')
         }
 
         if (itemDefinitions != itemModels) {
@@ -154,9 +154,9 @@ tasks.register('validateModResources') {
         fileTree("${resources}/data/mdm/recipe") { include '*.json'; exclude 'furniture_parts.json' }.each { recipe ->
             def json = parse.parse(recipe)
             def id = recipe.name.substring(0, recipe.name.length() - 5)
-            if (json.type != 'minecraft:stonecutting' || json.ingredient != 'mdm:furniture_parts'
-                    || json.result?.id != "mdm:${id}" || json.result?.count != 1) {
-                throw new GradleException("Invalid stonecutting recipe mapping: ${recipe}")
+            if (!validateDyedBedRecipe(id, json) && (json.type != 'minecraft:stonecutting' || json.ingredient != 'mdm:furniture_parts'
+                    || json.result?.id != "mdm:${id}" || json.result?.count != 1)) {
+                throw new GradleException("Invalid block recipe mapping: ${recipe}")
             }
         }
 

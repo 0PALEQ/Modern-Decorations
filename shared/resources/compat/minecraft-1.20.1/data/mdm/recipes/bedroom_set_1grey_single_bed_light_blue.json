@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "decorations",
+  "group": "mdm:dyed_single_beds",
+  "ingredients": [
+    {
+      "item": "mdm:bedroom_set_1grey_single_bed"
+    },
+    {
+      "item": "minecraft:light_blue_dye"
+    }
+  ],
+  "result": {
+    "item": "mdm:bedroom_set_1grey_single_bed_light_blue",
+    "count": 1
+  }
+}

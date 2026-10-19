@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mdm:block/bedroom_set_1grey_single_bed_black"
+    },
+    "facing=east": {
+      "model": "mdm:block/bedroom_set_1grey_single_bed_black",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mdm:block/bedroom_set_1grey_single_bed_black",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mdm:block/bedroom_set_1grey_single_bed_black",
+      "y": 270
+    }
+  }
+}

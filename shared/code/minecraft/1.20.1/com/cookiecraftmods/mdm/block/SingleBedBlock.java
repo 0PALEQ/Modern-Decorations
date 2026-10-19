@@ -23,7 +23,11 @@ import net.minecraft.world.phys.Vec3;
 
 public abstract class SingleBedBlock extends BedBlock {
     protected SingleBedBlock(BlockBehaviour.Properties properties) {
-        super(DyeColor.GRAY, properties);
+        this(DyeColor.WHITE, properties);
+    }
+
+    protected SingleBedBlock(DyeColor color, BlockBehaviour.Properties properties) {
+        super(color, properties);
         registerDefaultState(defaultBlockState().setValue(PART, BedPart.HEAD));
     }
 
