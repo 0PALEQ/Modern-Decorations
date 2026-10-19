@@ -34,7 +34,11 @@ public class BedroomSet1wengeSingleBedBlock extends SingleBedBlock implements En
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public BedroomSet1wengeSingleBedBlock() {
-		super(com.cookiecraftmods.mdm.registry.RegistryProperties.block().sound(SoundType.WOOD).pushReaction(FurnitureFootprint.IMMOVABLE).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.BASEDRUM));
+		this(net.minecraft.world.item.DyeColor.WHITE);
+	}
+
+	public BedroomSet1wengeSingleBedBlock(net.minecraft.world.item.DyeColor color) {
+		super(color, com.cookiecraftmods.mdm.registry.RegistryProperties.block().sound(SoundType.WOOD).pushReaction(FurnitureFootprint.IMMOVABLE).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.BASEDRUM));
 		this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
 	}
 

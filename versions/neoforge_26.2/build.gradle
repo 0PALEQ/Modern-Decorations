@@ -3,7 +3,7 @@ import groovy.json.JsonSlurper
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.141'
+    id 'net.neoforged.moddev' version '2.0.148'
     id 'idea'
 }
 
@@ -87,10 +87,10 @@ tasks.register('validateModResources') {
                 'item models': itemModels,
                 'item definitions': itemDefinitions,
                 'loot tables': lootTables,
-                'stonecutting recipes': recipes
+                'block recipes': recipes
         ].each { label, actual ->
             // Legacy double-bed IDs have no recipes, but still need models and loot.
-            def expected = label == 'stonecutting recipes'
+            def expected = label == 'block recipes'
                     ? blockstates - ['bedroom_set_1grey_double_bed', 'bedroom_set_1wenge_double_bed',
                                      'bedroom_set_1white_doublebed'] : blockstates
             def missing = expected - actual
@@ -101,11 +101,11 @@ tasks.register('validateModResources') {
 
         if (recipes != blockstates - ['bedroom_set_1grey_double_bed',
                                      'bedroom_set_1wenge_double_bed', 'bedroom_set_1white_doublebed']) {
-            throw new GradleException('Stonecutting recipe ids must match blockstate ids exactly')
+            throw new GradleException('Block recipe ids must match blockstate ids exactly')
         }
 
         if (itemDefinitions != itemModels) {
-            throw new GradleException('Minecraft 26.1.2 item definition ids must match item model ids exactly')
+            throw new GradleException('Minecraft 26.2 item definition ids must match item model ids exactly')
         }
 
         if (!file("${resources}/META-INF/neoforge.mods.toml").exists()
@@ -132,7 +132,7 @@ tasks.register('validateModResources') {
 
         def blockRegistrySource = javaSource('com/cookiecraftmods/mdm/init/MdmModBlocks.java').text
         def registeredBlocks = [] as Set
-        (blockRegistrySource =~ /register\("([a-z0-9_]+)",\s*([A-Za-z0-9_]+)::new\)/).each {
+        (blockRegistrySource =~ /register\("([a-z0-9_]+)",/).each {
             registeredBlocks.add(it[1])
         }
         if (registeredBlocks - 'furniture_part' != blockstates) {
@@ -168,14 +168,14 @@ tasks.register('validateModResources') {
 
         def itemRegistrySource = javaSource('com/cookiecraftmods/mdm/init/MdmModItems.java').text
         if (!itemRegistrySource.contains('RegistryProperties.item().useBlockDescriptionPrefix()')) {
-            throw new GradleException('Block items must use their block translation keys on Minecraft 26.1.2')
+            throw new GradleException('Block items must use their block translation keys on Minecraft 26.2')
         }
 
         fileTree("${resources}/assets/mdm/items") { include '*.json' }.each { definition ->
             def json = parse.parse(definition)
             def id = definition.name.substring(0, definition.name.length() - 5)
             if (json.model?.type != 'minecraft:model' || json.model?.model != "mdm:item/${id}") {
-                throw new GradleException("Invalid 26.1.2 item definition: ${definition}")
+                throw new GradleException("Invalid 26.2 item definition: ${definition}")
             }
         }
 
@@ -202,9 +202,9 @@ tasks.register('validateModResources') {
         fileTree("${resources}/data/mdm/recipe") { include '*.json'; exclude 'furniture_parts.json' }.each { recipe ->
             def json = parse.parse(recipe)
             def id = recipe.name.substring(0, recipe.name.length() - 5)
-            if (json.type != 'minecraft:stonecutting' || json.ingredient != 'mdm:furniture_parts'
-                    || json.result?.id != "mdm:${id}" || json.result?.count != 1) {
-                throw new GradleException("Invalid stonecutting recipe mapping: ${recipe}")
+            if (!validateDyedBedRecipe(id, json) && (json.type != 'minecraft:stonecutting' || json.ingredient != 'mdm:furniture_parts'
+                    || json.result?.id != "mdm:${id}" || json.result?.count != 1)) {
+                throw new GradleException("Invalid block recipe mapping: ${recipe}")
             }
         }
 
@@ -214,7 +214,7 @@ tasks.register('validateModResources') {
                 || furnitureParts.key?.b != '#minecraft:planks'
                 || furnitureParts.key?.c != 'minecraft:iron_nugget'
                 || furnitureParts.result?.id != 'mdm:furniture_parts') {
-            throw new GradleException('Furniture-parts recipe does not use the Minecraft 26.1.2 ingredient schema')
+            throw new GradleException('Furniture-parts recipe does not use the Minecraft 26.2 ingredient schema')
         }
 
         fileTree("${resources}/assets/mdm/textures/block") { include '*.png' }.each { texture ->
@@ -237,7 +237,7 @@ tasks.register('validateModResources') {
                         def referencedTexture = textureEntry instanceof Map ? textureEntry.sprite : textureEntry
                         if (referencedTexture == textureId
                                 && (!(textureEntry instanceof Map) || textureEntry.force_translucent != true)) {
-                            throw new GradleException("Partially transparent texture slot must use the 26.1.2 force_translucent descriptor: ${model}#${slot}")
+                            throw new GradleException("Partially transparent texture slot must use the 26.2 force_translucent descriptor: ${model}#${slot}")
                         }
                     }
                 }
@@ -246,7 +246,7 @@ tasks.register('validateModResources') {
 
         if (file("${resources}/data/mdm/tags/blocks").exists()
                 || file("${resources}/data/minecraft/tags/blocks").exists()) {
-            throw new GradleException('Legacy plural tags/blocks directories are not valid in Minecraft 26.1.2')
+            throw new GradleException('Legacy plural tags/blocks directories are not valid in Minecraft 26.2')
         }
 
         fileTree("${resources}/assets/mdm/models") { include '**/*.json' }.each { model ->
@@ -287,7 +287,7 @@ sourceSets.main.resources {
 }
 
 sourceSets.main.java {
-    srcDir rootProject.file('../../shared/code/minecraft/26.1.2')
+    srcDir rootProject.file('../../shared/code/minecraft/26.2')
 }
 
 apply from: rootProject.file('../../shared/gradle/shared-sources.gradle')

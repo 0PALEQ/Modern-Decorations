@@ -1,5 +1,7 @@
 import groovy.json.JsonSlurper
 
+apply from: rootProject.file('../../shared/gradle/dyed-bed-recipes.gradle')
+
 def manifest = new JsonSlurper().parse(rootProject.file('../../shared/gradle/source-groups.json'))
 def target = rootProject.projectDir.name
 if (target.startsWith('fabric_')) {

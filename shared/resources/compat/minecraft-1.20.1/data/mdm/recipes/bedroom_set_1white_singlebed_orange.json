@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "decorations",
+  "group": "mdm:dyed_single_beds",
+  "ingredients": [
+    {
+      "item": "mdm:bedroom_set_1white_singlebed"
+    },
+    {
+      "item": "minecraft:orange_dye"
+    }
+  ],
+  "result": {
+    "item": "mdm:bedroom_set_1white_singlebed_orange",
+    "count": 1
+  }
+}

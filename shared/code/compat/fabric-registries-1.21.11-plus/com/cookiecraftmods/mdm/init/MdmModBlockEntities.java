@@ -142,7 +142,7 @@ public class MdmModBlockEntities {
 
 	private static <T extends BlockEntity> ModRegistryEntry<BlockEntityType<T>> register(String registryname, ModRegistryEntry<Block> block, FabricBlockEntityTypeBuilder.Factory<T> supplier) {
 		return ModRegistryEntry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, registryname,
-				() -> FabricBlockEntityTypeBuilder.create(supplier, block.get()).build());
+				() -> FabricBlockEntityTypeBuilder.create(supplier, com.cookiecraftmods.mdm.block.BedVariants.validBlocks(registryname, block.get())).build());
 	}
 
 	public static void init() {

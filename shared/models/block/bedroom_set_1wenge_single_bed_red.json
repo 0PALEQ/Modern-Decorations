@@ -1,0 +1,6 @@
+{
+  "parent": "mdm:block/bedroom_set_1wenge_single_bed",
+  "textures": {
+    "3": "minecraft:block/red_wool"
+  }
+}

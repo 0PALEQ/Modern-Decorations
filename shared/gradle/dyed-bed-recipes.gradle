@@ -1,0 +1,15 @@
+ext.validateDyedBedRecipe = { String id, Map recipe ->
+    def match = id =~ /^(bedroom_set_1(?:grey_single_bed|wenge_single_bed|white_singlebed))_(orange|magenta|light_blue|yellow|lime|pink|gray|light_gray|cyan|purple|blue|brown|green|red|black)$/
+    if (!match.matches()) {
+        return false
+    }
+    def ingredients = ["mdm:${match[0][1]}".toString(), "minecraft:${match[0][2]}_dye".toString()]
+    if (project.minecraft_version.toString() in ['1.20.1', '1.21.1']) {
+        ingredients = ingredients.collect { [item: it] }
+    }
+    if (recipe.type != 'minecraft:crafting_shapeless' || recipe.ingredients != ingredients
+            || (recipe.result?.id ?: recipe.result?.item) != "mdm:${id}" || recipe.result?.count != 1) {
+        throw new GradleException("Invalid white-bed dye recipe: ${id}")
+    }
+    return true
+}

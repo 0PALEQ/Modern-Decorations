@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "decorations",
+  "group": "mdm:dyed_single_beds",
+  "ingredients": [
+    "mdm:bedroom_set_1wenge_single_bed",
+    "minecraft:pink_dye"
+  ],
+  "result": {
+    "id": "mdm:bedroom_set_1wenge_single_bed_pink",
+    "count": 1
+  }
+}

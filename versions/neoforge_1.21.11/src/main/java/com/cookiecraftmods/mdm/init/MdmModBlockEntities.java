@@ -145,7 +145,7 @@ public class MdmModBlockEntities {
 
 	private static <T extends BlockEntity> ModRegistryEntry<BlockEntityType<T>> register(String registryname, ModRegistryEntry<Block> block, BiFunction<BlockPos, BlockState, T> supplier) {
 		return ModRegistryEntry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, registryname,
-				() -> new BlockEntityType<>(supplier::apply, block.get()));
+				() -> new BlockEntityType<>(supplier::apply, com.cookiecraftmods.mdm.block.BedVariants.validBlocks(registryname, block.get())));
 	}
 
 	public static void init() {

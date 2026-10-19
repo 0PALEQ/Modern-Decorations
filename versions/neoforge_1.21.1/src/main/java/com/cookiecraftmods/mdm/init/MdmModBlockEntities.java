@@ -155,7 +155,7 @@ public class MdmModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OfficeSet1Desk1RightVar3BlockEntity>> OFFICE_SET_1_DESK_1_RIGHT_VAR_3 = register("office_set_1_desk_1_right_var_3", MdmModBlocks.OFFICE_SET_1_DESK_1_RIGHT_VAR_3, OfficeSet1Desk1RightVar3BlockEntity::new);
 
 	private static <T extends BlockEntity> DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> register(String registryname, DeferredHolder<Block, Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {
-		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
+		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, com.cookiecraftmods.mdm.block.BedVariants.validBlocks(registryname, block.get())).build(null));
 	}
 
 	@SubscribeEvent
