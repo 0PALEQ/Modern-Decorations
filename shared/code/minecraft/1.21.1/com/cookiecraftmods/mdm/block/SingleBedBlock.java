@@ -46,6 +46,7 @@ public abstract class SingleBedBlock extends BedBlock {
     }
 
     public InteractionResult interact(BlockState state, Level level, BlockPos pos, Player player) {
+        if (level.isClientSide) return InteractionResult.SUCCESS;
         if (player.isShiftKeyDown()) {
             if (player instanceof ServerPlayer serverPlayer && level.getBlockEntity(pos) instanceof MenuProvider provider) {
                 serverPlayer.openMenu(provider);

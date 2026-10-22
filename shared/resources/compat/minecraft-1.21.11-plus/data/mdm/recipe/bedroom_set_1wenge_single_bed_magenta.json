@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "decorations",
+  "category": "misc",
   "group": "mdm:dyed_single_beds",
   "ingredients": [
     "mdm:bedroom_set_1wenge_single_bed",

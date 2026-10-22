@@ -320,6 +320,7 @@ public class MdmModBlocks {
     public static final DeferredBlock<Block> LAMP_03;
     public static final DeferredBlock<Block> MUG;
     public static final DeferredBlock<Block> PAINTING_05;
+    public static final DeferredBlock<Block> PAINTING_06;
     public static final DeferredBlock<Block> PLATE;
     public static final DeferredBlock<Block> POTTED_CACTUS;
     public static final DeferredBlock<Block> POUF;
@@ -335,6 +336,8 @@ public class MdmModBlocks {
     public static final DeferredBlock<Block> COAT_HANGER;
     public static final DeferredBlock<Block> DOOR_MAT;
     public static final DeferredBlock<Block> ELECTRIC_GUITAR_BLACK;
+    public static final DeferredBlock<Block> ELECTRIC_GUITAR_RED;
+    public static final DeferredBlock<Block> ELECTRIC_GUITAR_BLUE;
     public static final DeferredBlock<Block> ELECTRIC_GUITAR_WITH_STAND;
     public static final DeferredBlock<Block> ENTRYWAY_CARPET;
     public static final DeferredBlock<Block> FOYER_BENCH;
@@ -515,7 +518,7 @@ public class MdmModBlocks {
         BEDROOM_SET_1GREYDRESSERLEFT = REGISTRY.register("bedroom_set_1greydresserleft", BedroomSet1greydresserleftBlock::new);
         BEDROOM_SET_1GREYDRESSERMID = REGISTRY.register("bedroom_set_1greydressermid", BedroomSet1greydressermidBlock::new);
         BEDROOM_SET_1GREYDRESSERRIGHT = REGISTRY.register("bedroom_set_1greydresserright", BedroomSet1greydresserrightBlock::new);
-        BEDROOM_SET_1GREY_SINGLE_BED = REGISTRY.register("bedroom_set_1grey_single_bed", BedroomSet1greySingleBedBlock::new);
+        BEDROOM_SET_1GREY_SINGLE_BED = REGISTRY.register("bedroom_set_1grey_single_bed", () -> new BedroomSet1greySingleBedBlock());
         BEDROOM_SET_1GREY_SINGLE_BED_ORANGE = REGISTRY.register("bedroom_set_1grey_single_bed_orange", () -> new BedroomSet1greySingleBedBlock(net.minecraft.world.item.DyeColor.ORANGE));
         BEDROOM_SET_1GREY_SINGLE_BED_MAGENTA = REGISTRY.register("bedroom_set_1grey_single_bed_magenta", () -> new BedroomSet1greySingleBedBlock(net.minecraft.world.item.DyeColor.MAGENTA));
         BEDROOM_SET_1GREY_SINGLE_BED_LIGHT_BLUE = REGISTRY.register("bedroom_set_1grey_single_bed_light_blue", () -> new BedroomSet1greySingleBedBlock(net.minecraft.world.item.DyeColor.LIGHT_BLUE));
@@ -539,7 +542,7 @@ public class MdmModBlocks {
         BEDROOM_SET_1GREY_NIGHTSTAND_2 = REGISTRY.register("bedroom_set_1grey_nightstand_2", BedroomSet1greyNightstand2Block::new);
         BEDROOM_SET_1WENGEBUNKBED = REGISTRY.register("bedroom_set_1wengebunkbed", BedroomSet1wengebunkbedBlock::new);
         BEDROOM_SET_1WENGE_DOUBLE_BED = REGISTRY.register("bedroom_set_1wenge_double_bed", BedroomSet1wengeDoubleBedBlock::new);
-        BEDROOM_SET_1WENGE_SINGLE_BED = REGISTRY.register("bedroom_set_1wenge_single_bed", BedroomSet1wengeSingleBedBlock::new);
+        BEDROOM_SET_1WENGE_SINGLE_BED = REGISTRY.register("bedroom_set_1wenge_single_bed", () -> new BedroomSet1wengeSingleBedBlock());
         BEDROOM_SET_1WENGE_SINGLE_BED_ORANGE = REGISTRY.register("bedroom_set_1wenge_single_bed_orange", () -> new BedroomSet1wengeSingleBedBlock(net.minecraft.world.item.DyeColor.ORANGE));
         BEDROOM_SET_1WENGE_SINGLE_BED_MAGENTA = REGISTRY.register("bedroom_set_1wenge_single_bed_magenta", () -> new BedroomSet1wengeSingleBedBlock(net.minecraft.world.item.DyeColor.MAGENTA));
         BEDROOM_SET_1WENGE_SINGLE_BED_LIGHT_BLUE = REGISTRY.register("bedroom_set_1wenge_single_bed_light_blue", () -> new BedroomSet1wengeSingleBedBlock(net.minecraft.world.item.DyeColor.LIGHT_BLUE));
@@ -563,7 +566,7 @@ public class MdmModBlocks {
         BEDROOM_SET_1WENGENIGHSTAND_2 = REGISTRY.register("bedroom_set_1wengenighstand_2", BedroomSet1wengenighstand2Block::new);
         BEDROOM_SET_1WHITEBUNKBED = REGISTRY.register("bedroom_set_1whitebunkbed", BedroomSet1whitebunkbedBlock::new);
         BEDROOM_SET_1WHITE_DOUBLEBED = REGISTRY.register("bedroom_set_1white_doublebed", BedroomSet1whiteDoublebedBlock::new);
-        BEDROOM_SET_1WHITE_SINGLEBED = REGISTRY.register("bedroom_set_1white_singlebed", BedroomSet1whiteSinglebedBlock::new);
+        BEDROOM_SET_1WHITE_SINGLEBED = REGISTRY.register("bedroom_set_1white_singlebed", () -> new BedroomSet1whiteSinglebedBlock());
         BEDROOM_SET_1WHITE_SINGLEBED_ORANGE = REGISTRY.register("bedroom_set_1white_singlebed_orange", () -> new BedroomSet1whiteSinglebedBlock(net.minecraft.world.item.DyeColor.ORANGE));
         BEDROOM_SET_1WHITE_SINGLEBED_MAGENTA = REGISTRY.register("bedroom_set_1white_singlebed_magenta", () -> new BedroomSet1whiteSinglebedBlock(net.minecraft.world.item.DyeColor.MAGENTA));
         BEDROOM_SET_1WHITE_SINGLEBED_LIGHT_BLUE = REGISTRY.register("bedroom_set_1white_singlebed_light_blue", () -> new BedroomSet1whiteSinglebedBlock(net.minecraft.world.item.DyeColor.LIGHT_BLUE));
@@ -662,6 +665,7 @@ public class MdmModBlocks {
         LAMP_03 = REGISTRY.register("lamp_03", Lamp03Block::new);
         MUG = REGISTRY.register("mug", MugBlock::new);
         PAINTING_05 = REGISTRY.register("painting_05", Painting05Block::new);
+        PAINTING_06 = REGISTRY.register("painting_06", Painting06Block::new);
         PLATE = REGISTRY.register("plate", PlateBlock::new);
         POTTED_CACTUS = REGISTRY.register("potted_cactus", PottedCactusBlock::new);
         POUF = REGISTRY.register("pouf", PoufBlock::new);
@@ -677,6 +681,8 @@ public class MdmModBlocks {
         COAT_HANGER = REGISTRY.register("coat_hanger", CoatHangerBlock::new);
         DOOR_MAT = REGISTRY.register("door_mat", DoorMatBlock::new);
         ELECTRIC_GUITAR_BLACK = REGISTRY.register("electric_guitar_black", ElectricGuitarBlackBlock::new);
+        ELECTRIC_GUITAR_RED = REGISTRY.register("electric_guitar_red", ElectricGuitarBlackBlock::new);
+        ELECTRIC_GUITAR_BLUE = REGISTRY.register("electric_guitar_blue", ElectricGuitarBlackBlock::new);
         ELECTRIC_GUITAR_WITH_STAND = REGISTRY.register("electric_guitar_with_stand", ElectricGuitarWithStandBlock::new);
         ENTRYWAY_CARPET = REGISTRY.register("entryway_carpet", EntrywayCarpetBlock::new);
         FOYER_BENCH = REGISTRY.register("foyer_bench", FoyerBenchBlock::new);

@@ -1,5 +1,5 @@
 {
-  "parent": "mdm:custom/painting05",
+  "parent": "mdm:custom/painting04_artwork",
   "textures": {
     "0": "mdm:block/painting05",
     "all": "mdm:block/painting05",
