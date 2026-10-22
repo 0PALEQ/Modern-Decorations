@@ -325,6 +325,7 @@ public class MdmModItems {
 	public static final DeferredItem<Item> LAMP_03;
 	public static final DeferredItem<Item> MUG;
 	public static final DeferredItem<Item> PAINTING_05;
+	public static final DeferredItem<Item> PAINTING_06;
 	public static final DeferredItem<Item> PLATE;
 	public static final DeferredItem<Item> POTTED_CACTUS;
 	public static final DeferredItem<Item> POUF;
@@ -340,6 +341,8 @@ public class MdmModItems {
 	public static final DeferredItem<Item> COAT_HANGER;
 	public static final DeferredItem<Item> DOOR_MAT;
 	public static final DeferredItem<Item> ELECTRIC_GUITAR_BLACK;
+	public static final DeferredItem<Item> ELECTRIC_GUITAR_RED;
+	public static final DeferredItem<Item> ELECTRIC_GUITAR_BLUE;
 	public static final DeferredItem<Item> ELECTRIC_GUITAR_WITH_STAND;
 	public static final DeferredItem<Item> ENTRYWAY_CARPET;
 	public static final DeferredItem<Item> FOYER_BENCH;
@@ -666,6 +669,7 @@ public class MdmModItems {
 		LAMP_03 = block(MdmModBlocks.LAMP_03);
 		MUG = block(MdmModBlocks.MUG);
 		PAINTING_05 = block(MdmModBlocks.PAINTING_05);
+		PAINTING_06 = block(MdmModBlocks.PAINTING_06);
 		PLATE = block(MdmModBlocks.PLATE);
 		POTTED_CACTUS = block(MdmModBlocks.POTTED_CACTUS);
 		POUF = block(MdmModBlocks.POUF);
@@ -681,6 +685,8 @@ public class MdmModItems {
 		COAT_HANGER = block(MdmModBlocks.COAT_HANGER);
 		DOOR_MAT = block(MdmModBlocks.DOOR_MAT);
 		ELECTRIC_GUITAR_BLACK = block(MdmModBlocks.ELECTRIC_GUITAR_BLACK);
+		ELECTRIC_GUITAR_RED = block(MdmModBlocks.ELECTRIC_GUITAR_RED);
+		ELECTRIC_GUITAR_BLUE = block(MdmModBlocks.ELECTRIC_GUITAR_BLUE);
 		ELECTRIC_GUITAR_WITH_STAND = block(MdmModBlocks.ELECTRIC_GUITAR_WITH_STAND);
 		ENTRYWAY_CARPET = block(MdmModBlocks.ENTRYWAY_CARPET);
 		FOYER_BENCH = block(MdmModBlocks.FOYER_BENCH);

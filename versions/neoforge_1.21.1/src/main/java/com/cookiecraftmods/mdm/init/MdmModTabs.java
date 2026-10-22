@@ -296,6 +296,7 @@ public class MdmModTabs {
 				tabData.accept(MdmModBlocks.STANDING_WHITE_BOARD.get().asItem());
 				tabData.accept(MdmModBlocks.MODERN_PAINTING.get().asItem());
 				tabData.accept(MdmModBlocks.PAINTING_05.get().asItem());
+				tabData.accept(MdmModBlocks.PAINTING_06.get().asItem());
 				tabData.accept(MdmModBlocks.PAINTING_03.get().asItem());
 				tabData.accept(MdmModBlocks.PAINTING_04.get().asItem());
 				tabData.accept(MdmModBlocks.MODERN_PAINTING_2.get().asItem());
@@ -337,6 +338,8 @@ public class MdmModTabs {
 				tabData.accept(MdmModBlocks.COAT_HANGER.get().asItem());
 				tabData.accept(MdmModBlocks.DOOR_MAT.get().asItem());
 				tabData.accept(MdmModBlocks.ELECTRIC_GUITAR_BLACK.get().asItem());
+				tabData.accept(MdmModBlocks.ELECTRIC_GUITAR_RED.get().asItem());
+				tabData.accept(MdmModBlocks.ELECTRIC_GUITAR_BLUE.get().asItem());
 				tabData.accept(MdmModBlocks.ELECTRIC_GUITAR_WITH_STAND.get().asItem());
 				tabData.accept(MdmModBlocks.FOYER_BENCH.get().asItem());
 				tabData.accept(MdmModBlocks.ENTRYWAY_CARPET.get().asItem());

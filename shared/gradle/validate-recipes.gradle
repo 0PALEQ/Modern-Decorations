@@ -24,6 +24,11 @@ tasks.register('validateRecipes') {
                 recipeRoot.eachFileRecurse(FileType.FILES) { recipeFile ->
                     if (recipeFile.name.endsWith('.json')) {
                         def recipe = new JsonSlurper().parse(recipeFile)
+                        if (recipe.type in ['minecraft:crafting_shaped', 'minecraft:crafting_shapeless']
+                                && recipe.category != null
+                                && !(recipe.category in ['building', 'redstone', 'equipment', 'misc'])) {
+                            throw new GradleException("Invalid crafting recipe category in ${recipeFile}: ${recipe.category}")
+                        }
                         def result = recipe.result instanceof Map
                                 ? (recipe.result.id ?: recipe.result.item)
                                 : recipe.result

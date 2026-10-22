@@ -49,6 +49,9 @@ public class SingleBedStateTest {
                 }
                 require(bed instanceof BedBlock, "Not a native bed: " + color);
                 require(bed.getColor() == cloth, "Native bed dye color does not match cloth");
+                if (args.length > 0 && args[0].equals("client-interaction")) {
+                    requireClientInteraction(bed);
+                }
                 require(bed.defaultBlockState().getValue(BedBlock.PART) == BedPart.HEAD, "Old saves must default to head");
                 require(!bed.defaultBlockState().getValue(BedBlock.OCCUPIED), "New bed is occupied");
                 require(bed.getRenderShape(bed.defaultBlockState()) == RenderShape.MODEL, "Custom model lost");
@@ -82,5 +85,21 @@ public class SingleBedStateTest {
 
     private static void require(boolean condition, String message) {
         if (!condition) throw new AssertionError(message);
+    }
+
+    private static void requireClientInteraction(SingleBedBlock bed) throws Exception {
+        // No renderer or connection is needed: the client must acknowledge the
+        // click without touching server state, so Fabric can send its packet.
+        var unsafeField = sun.misc.Unsafe.class.getDeclaredField("theUnsafe");
+        unsafeField.setAccessible(true);
+        var unsafe = (sun.misc.Unsafe) unsafeField.get(null);
+        var level = (net.minecraft.world.level.Level) unsafe.allocateInstance(
+                Class.forName("net.minecraft.client.multiplayer.ClientLevel"));
+        var clientSide = net.minecraft.world.level.Level.class.getDeclaredField("isClientSide");
+        clientSide.setAccessible(true);
+        clientSide.setBoolean(level, true);
+        require(bed.interact(bed.defaultBlockState(), level, BlockPos.ZERO, null)
+                == net.minecraft.world.InteractionResult.SUCCESS,
+                "Client bed click will not send Fabric's interaction packet");
     }
 }

@@ -321,6 +321,7 @@ public class MdmModBlocks {
     public static final ModRegistryEntry<Block> LAMP_03;
     public static final ModRegistryEntry<Block> MUG;
     public static final ModRegistryEntry<Block> PAINTING_05;
+    public static final ModRegistryEntry<Block> PAINTING_06;
     public static final ModRegistryEntry<Block> PLATE;
     public static final ModRegistryEntry<Block> POTTED_CACTUS;
     public static final ModRegistryEntry<Block> POUF;
@@ -336,6 +337,8 @@ public class MdmModBlocks {
     public static final ModRegistryEntry<Block> COAT_HANGER;
     public static final ModRegistryEntry<Block> DOOR_MAT;
     public static final ModRegistryEntry<Block> ELECTRIC_GUITAR_BLACK;
+    public static final ModRegistryEntry<Block> ELECTRIC_GUITAR_RED;
+    public static final ModRegistryEntry<Block> ELECTRIC_GUITAR_BLUE;
     public static final ModRegistryEntry<Block> ELECTRIC_GUITAR_WITH_STAND;
     public static final ModRegistryEntry<Block> ENTRYWAY_CARPET;
     public static final ModRegistryEntry<Block> FOYER_BENCH;
@@ -663,6 +666,7 @@ public class MdmModBlocks {
         LAMP_03 = register("lamp_03", Lamp03Block::new);
         MUG = register("mug", MugBlock::new);
         PAINTING_05 = register("painting_05", Painting05Block::new);
+        PAINTING_06 = register("painting_06", Painting06Block::new);
         PLATE = register("plate", PlateBlock::new);
         POTTED_CACTUS = register("potted_cactus", PottedCactusBlock::new);
         POUF = register("pouf", PoufBlock::new);
@@ -678,6 +682,8 @@ public class MdmModBlocks {
         COAT_HANGER = register("coat_hanger", CoatHangerBlock::new);
         DOOR_MAT = register("door_mat", DoorMatBlock::new);
         ELECTRIC_GUITAR_BLACK = register("electric_guitar_black", ElectricGuitarBlackBlock::new);
+        ELECTRIC_GUITAR_RED = register("electric_guitar_red", ElectricGuitarBlackBlock::new);
+        ELECTRIC_GUITAR_BLUE = register("electric_guitar_blue", ElectricGuitarBlackBlock::new);
         ELECTRIC_GUITAR_WITH_STAND = register("electric_guitar_with_stand", ElectricGuitarWithStandBlock::new);
         ENTRYWAY_CARPET = register("entryway_carpet", EntrywayCarpetBlock::new);
         FOYER_BENCH = register("foyer_bench", FoyerBenchBlock::new);

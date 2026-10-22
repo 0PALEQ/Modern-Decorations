@@ -7,9 +7,31 @@ ext.validateDyedBedRecipe = { String id, Map recipe ->
     if (project.minecraft_version.toString() in ['1.20.1', '1.21.1']) {
         ingredients = ingredients.collect { [item: it] }
     }
-    if (recipe.type != 'minecraft:crafting_shapeless' || recipe.ingredients != ingredients
+    if (recipe.type != 'minecraft:crafting_shapeless' || recipe.category != 'misc' || recipe.ingredients != ingredients
             || (recipe.result?.id ?: recipe.result?.item) != "mdm:${id}" || recipe.result?.count != 1) {
         throw new GradleException("Invalid white-bed dye recipe: ${id}")
     }
     return true
+}
+
+if (rootProject.projectDir.name == 'fabric_26.3') {
+    def testClasses = layout.buildDirectory.dir('dyed-bed-recipe-tests')
+    tasks.register('compileDyedBedRecipeTests', JavaCompile) {
+        dependsOn tasks.named('classes')
+        javaCompiler = javaToolchains.compilerFor(java.toolchain)
+        source rootProject.file('../../shared/tests/DyedBedRecipeTest.java')
+        classpath = sourceSets.main.runtimeClasspath
+        options.compilerArgs.add('-proc:none')
+        destinationDirectory = testClasses
+    }
+    tasks.register('verifyDyedBedRecipes', JavaExec) {
+        dependsOn tasks.named('compileDyedBedRecipeTests')
+        classpath = files(testClasses) + sourceSets.main.runtimeClasspath
+        mainClass = 'DyedBedRecipeTest'
+        javaLauncher = javaToolchains.launcherFor(java.toolchain)
+        args layout.buildDirectory.dir('resources/main').get().asFile.absolutePath
+        workingDir layout.buildDirectory.dir('dyed-bed-recipe-tests-run')
+        doFirst { workingDir.mkdirs() }
+    }
+    tasks.named('check') { dependsOn tasks.named('verifyDyedBedRecipes') }
 }

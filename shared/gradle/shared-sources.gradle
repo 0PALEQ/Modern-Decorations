@@ -125,6 +125,9 @@ if (target.startsWith('fabric_')) {
         dependsOn tasks.named('compileSingleBedTests')
         classpath = files(singleBedTestClasses) + sourceSets.main.runtimeClasspath
         mainClass = 'SingleBedStateTest'
+        if (target == 'fabric_1.21.1') {
+            args 'client-interaction'
+        }
         javaLauncher = javaToolchains.launcherFor(java.toolchain)
         workingDir layout.buildDirectory.dir('single-bed-tests')
         doFirst {

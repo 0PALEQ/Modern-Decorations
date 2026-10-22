@@ -319,6 +319,7 @@ public class MdmModBlocks {
     public static final RegistryEntry<Block> LAMP_03;
     public static final RegistryEntry<Block> MUG;
     public static final RegistryEntry<Block> PAINTING_05;
+    public static final RegistryEntry<Block> PAINTING_06;
     public static final RegistryEntry<Block> PLATE;
     public static final RegistryEntry<Block> POTTED_CACTUS;
     public static final RegistryEntry<Block> POUF;
@@ -334,6 +335,8 @@ public class MdmModBlocks {
     public static final RegistryEntry<Block> COAT_HANGER;
     public static final RegistryEntry<Block> DOOR_MAT;
     public static final RegistryEntry<Block> ELECTRIC_GUITAR_BLACK;
+    public static final RegistryEntry<Block> ELECTRIC_GUITAR_RED;
+    public static final RegistryEntry<Block> ELECTRIC_GUITAR_BLUE;
     public static final RegistryEntry<Block> ELECTRIC_GUITAR_WITH_STAND;
     public static final RegistryEntry<Block> ENTRYWAY_CARPET;
     public static final RegistryEntry<Block> FOYER_BENCH;
@@ -661,6 +664,7 @@ public class MdmModBlocks {
         LAMP_03 = REGISTRY.register("lamp_03", Lamp03Block::new);
         MUG = REGISTRY.register("mug", MugBlock::new);
         PAINTING_05 = REGISTRY.register("painting_05", Painting05Block::new);
+        PAINTING_06 = REGISTRY.register("painting_06", Painting06Block::new);
         PLATE = REGISTRY.register("plate", PlateBlock::new);
         POTTED_CACTUS = REGISTRY.register("potted_cactus", PottedCactusBlock::new);
         POUF = REGISTRY.register("pouf", PoufBlock::new);
@@ -676,6 +680,8 @@ public class MdmModBlocks {
         COAT_HANGER = REGISTRY.register("coat_hanger", CoatHangerBlock::new);
         DOOR_MAT = REGISTRY.register("door_mat", DoorMatBlock::new);
         ELECTRIC_GUITAR_BLACK = REGISTRY.register("electric_guitar_black", ElectricGuitarBlackBlock::new);
+        ELECTRIC_GUITAR_RED = REGISTRY.register("electric_guitar_red", ElectricGuitarBlackBlock::new);
+        ELECTRIC_GUITAR_BLUE = REGISTRY.register("electric_guitar_blue", ElectricGuitarBlackBlock::new);
         ELECTRIC_GUITAR_WITH_STAND = REGISTRY.register("electric_guitar_with_stand", ElectricGuitarWithStandBlock::new);
         ENTRYWAY_CARPET = REGISTRY.register("entryway_carpet", EntrywayCarpetBlock::new);
         FOYER_BENCH = REGISTRY.register("foyer_bench", FoyerBenchBlock::new);
