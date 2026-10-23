@@ -9,9 +9,14 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class FurnitureBlock extends Block {
+public class FurnitureBlock extends Block implements net.minecraft.world.level.block.EntityBlock {
     protected FurnitureBlock(BlockBehaviour.Properties properties) {
-        super(properties);
+        super(properties.dynamicShape());
+    }
+
+    @Override
+    public net.minecraft.world.level.block.entity.BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new com.cookiecraftmods.mdm.block.entity.DecorationPlacementBlockEntity(pos, state);
     }
 
     @Override

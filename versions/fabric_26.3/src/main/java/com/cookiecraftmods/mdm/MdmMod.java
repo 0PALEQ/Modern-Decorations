@@ -30,6 +30,7 @@ public final class MdmMod implements ModInitializer {
         MdmModBlockEntities.init();
         MdmModTabs.init();
         UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
+            if (player.isShiftKeyDown() && player.getItemInHand(hand).getItem() instanceof net.minecraft.world.item.BlockItem held && com.cookiecraftmods.mdm.placement.PrecisePlacement.supported(held.getBlock())) return net.minecraft.world.InteractionResult.PASS;
             var state = level.getBlockState(hit.getBlockPos());
             var bedResult = SingleBedBlock.tryUse(state, level, hit.getBlockPos(), player);
             if (bedResult.consumesAction()) return bedResult;

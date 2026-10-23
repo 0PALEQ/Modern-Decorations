@@ -320,6 +320,7 @@ public class MdmModBlocks {
     public static final RegistryEntry<Block> MUG;
     public static final RegistryEntry<Block> PAINTING_05;
     public static final RegistryEntry<Block> PAINTING_06;
+    public static final RegistryEntry<Block> PAINTING_07;
     public static final RegistryEntry<Block> PLATE;
     public static final RegistryEntry<Block> POTTED_CACTUS;
     public static final RegistryEntry<Block> POUF;
@@ -665,6 +666,7 @@ public class MdmModBlocks {
         MUG = REGISTRY.register("mug", MugBlock::new);
         PAINTING_05 = REGISTRY.register("painting_05", Painting05Block::new);
         PAINTING_06 = REGISTRY.register("painting_06", Painting06Block::new);
+        PAINTING_07 = REGISTRY.register("painting_07", Painting07Block::new);
         PLATE = REGISTRY.register("plate", PlateBlock::new);
         POTTED_CACTUS = REGISTRY.register("potted_cactus", PottedCactusBlock::new);
         POUF = REGISTRY.register("pouf", PoufBlock::new);

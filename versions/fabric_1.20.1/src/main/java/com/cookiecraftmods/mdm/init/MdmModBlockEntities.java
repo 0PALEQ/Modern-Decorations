@@ -13,6 +13,7 @@ import com.cookiecraftmods.mdm.MdmMod;
 
 public class MdmModBlockEntities {
 	public static final SimpleRegistry<BlockEntityType<?>> REGISTRY = SimpleRegistry.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MdmMod.MODID);
+	public static final RegistryEntry<BlockEntityType<DecorationPlacementBlockEntity>> DECORATION_PLACEMENT = REGISTRY.register("decoration_placement", () -> BlockEntityType.Builder.of(DecorationPlacementBlockEntity::new, net.minecraft.core.registries.BuiltInRegistries.BLOCK.stream().filter(com.cookiecraftmods.mdm.placement.PrecisePlacement::supported).toArray(Block[]::new)).build(null));
 	public static final RegistryEntry<BlockEntityType<WallClockBlockEntity>> BLACK_WALL_CLOCK = register("black_wall_clock", MdmModBlocks.BLACK_WALL_CLOCK, WallClockBlockEntity::new);
 	public static final RegistryEntry<BlockEntityType<WallClockBlockEntity>> WOODEN_WALL_CLOCK = register("wooden_wall_clock", MdmModBlocks.WOODEN_WALL_CLOCK, WallClockBlockEntity::new);
 	public static final RegistryEntry<BlockEntityType<Set1CabinetBlockEntity>> SET_1_CABINET = register("set_1_cabinet", MdmModBlocks.SET_1_CABINET, Set1CabinetBlockEntity::new);

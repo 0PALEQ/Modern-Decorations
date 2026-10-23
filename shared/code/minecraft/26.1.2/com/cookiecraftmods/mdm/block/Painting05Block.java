@@ -19,10 +19,10 @@ public class Painting05Block extends HorizontalFurnitureBlock {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(0, 4, 0, 16, 28, 1);
-				case NORTH -> box(0, 4, 15, 16, 28, 16);
-				case EAST -> box(0, 4, 0, 1, 28, 16);
-				case WEST -> box(15, 4, 0, 16, 28, 16);
+				default -> box(-4, 0, 0, 20, 16, 1);
+				case NORTH -> box(-4, 0, 15, 20, 16, 16);
+				case EAST -> box(0, 0, -4, 1, 16, 20);
+				case WEST -> box(15, 0, -4, 16, 16, 20);
 			};
 		});
 	}

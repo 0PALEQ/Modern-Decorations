@@ -22,30 +22,32 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.*;
 
 public class FurniturePartBlock extends Block implements SimpleWaterloggedBlock {
-    public static final IntegerProperty X = IntegerProperty.create("offset_x", 0, 2);
-    public static final IntegerProperty Y = IntegerProperty.create("offset_y", 0, 2);
-    public static final IntegerProperty Z = IntegerProperty.create("offset_z", 0, 2);
+    public static final IntegerProperty X = IntegerProperty.create("offset_x", 0, 8);
+    public static final IntegerProperty Y = IntegerProperty.create("offset_y", 0, 8);
+    public static final IntegerProperty Z = IntegerProperty.create("offset_z", 0, 8);
+    public static final BooleanProperty EXTENDED = BooleanProperty.create("extended");
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public FurniturePartBlock() {
         super(BlockBehaviour.Properties.of().strength(1f, 10f).noOcclusion().dynamicShape()
                 .pushReaction(FurnitureFootprint.IMMOVABLE).isRedstoneConductor((state, level, pos) -> false));
-        registerDefaultState(stateDefinition.any().setValue(X, 1).setValue(Y, 1).setValue(Z, 1).setValue(WATERLOGGED, false));
+        registerDefaultState(stateDefinition.any().setValue(X, 1).setValue(Y, 1).setValue(Z, 1).setValue(WATERLOGGED, false).setValue(EXTENDED, false));
     }
 
     public static BlockState forOffset(BlockPos offset, BlockState replaced) {
         return MdmModBlocks.FURNITURE_PART.get().defaultBlockState()
-                .setValue(X, offset.getX() + 1).setValue(Y, offset.getY() + 1).setValue(Z, offset.getZ() + 1)
+                .setValue(EXTENDED, true).setValue(X, offset.getX() + 4).setValue(Y, offset.getY() + 4).setValue(Z, offset.getZ() + 4)
                 .setValue(WATERLOGGED, replaced.getFluidState().getType() == Fluids.WATER);
     }
 
     public static BlockPos parentPos(BlockState state, BlockPos pos) {
-        return pos.offset(1 - state.getValue(X), 1 - state.getValue(Y), 1 - state.getValue(Z));
+        int center = state.getValue(EXTENDED) ? 4 : 1;
+        return pos.offset(center - state.getValue(X), center - state.getValue(Y), center - state.getValue(Z));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(X, Y, Z, WATERLOGGED);
+        builder.add(X, Y, Z, WATERLOGGED, EXTENDED);
     }
 
     @Override
@@ -70,15 +72,17 @@ public class FurniturePartBlock extends Block implements SimpleWaterloggedBlock 
 
     @Override
     public BlockState rotate(BlockState state, Rotation rotation) {
-        BlockPos offset = new BlockPos(state.getValue(X) - 1, state.getValue(Y) - 1, state.getValue(Z) - 1).rotate(rotation);
-        return state.setValue(X, offset.getX() + 1).setValue(Z, offset.getZ() + 1);
+        int center = state.getValue(EXTENDED) ? 4 : 1;
+        BlockPos offset = new BlockPos(state.getValue(X) - center, state.getValue(Y) - center, state.getValue(Z) - center).rotate(rotation);
+        return state.setValue(X, offset.getX() + center).setValue(Z, offset.getZ() + center);
     }
 
     @Override
     public BlockState mirror(BlockState state, Mirror mirror) {
+        int center = state.getValue(EXTENDED) ? 4 : 1;
         return switch (mirror) {
-            case LEFT_RIGHT -> state.setValue(Z, 2 - state.getValue(Z));
-            case FRONT_BACK -> state.setValue(X, 2 - state.getValue(X));
+            case LEFT_RIGHT -> state.setValue(Z, 2 * center - state.getValue(Z));
+            case FRONT_BACK -> state.setValue(X, 2 * center - state.getValue(X));
             default -> state;
         };
     }

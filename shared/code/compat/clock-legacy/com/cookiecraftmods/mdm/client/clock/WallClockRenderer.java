@@ -21,6 +21,8 @@ public final class WallClockRenderer implements BlockEntityRenderer<WallClockBlo
         boolean wooden = clock.getBlockState().getBlock() instanceof WoodenWallClockBlock;
         long time = ClockPlatform.time(clock);
         pose.pushPose();
+        var placementOffset = com.cookiecraftmods.mdm.placement.PrecisePlacement.offset(clock.getLevel(), clock.getBlockPos());
+        pose.translate(placementOffset.x, placementOffset.y, placementOffset.z);
         pose.translate(0.5, 0.5, 0.5);
         pose.mulPose(Axis.YP.rotationDegrees(-clock.getBlockState()
                 .getValue(HorizontalFurnitureBlock.FACING).toYRot() + 180));

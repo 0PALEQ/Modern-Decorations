@@ -322,6 +322,7 @@ public class MdmModBlocks {
     public static final ModRegistryEntry<Block> MUG;
     public static final ModRegistryEntry<Block> PAINTING_05;
     public static final ModRegistryEntry<Block> PAINTING_06;
+    public static final ModRegistryEntry<Block> PAINTING_07;
     public static final ModRegistryEntry<Block> PLATE;
     public static final ModRegistryEntry<Block> POTTED_CACTUS;
     public static final ModRegistryEntry<Block> POUF;
@@ -667,6 +668,7 @@ public class MdmModBlocks {
         MUG = register("mug", MugBlock::new);
         PAINTING_05 = register("painting_05", Painting05Block::new);
         PAINTING_06 = register("painting_06", Painting06Block::new);
+        PAINTING_07 = register("painting_07", Painting07Block::new);
         PLATE = register("plate", PlateBlock::new);
         POTTED_CACTUS = register("potted_cactus", PottedCactusBlock::new);
         POUF = register("pouf", PoufBlock::new);
