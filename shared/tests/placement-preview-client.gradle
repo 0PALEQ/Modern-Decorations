@@ -1,0 +1,34 @@
+gradle.projectsEvaluated {
+    def project = gradle.rootProject
+    def testMod = project.layout.buildDirectory.dir('placement-preview-client-mod')
+    def testRun = project.layout.buildDirectory.dir('placement-preview-client-run')
+    project.loom.runs.client.runDir(testRun.get().asFile.absolutePath)
+    project.loom.runs.client.programArgs '--quickPlaySingleplayer', 'preview-test', '--width', '1100', '--height', '760'
+    def prepare = project.tasks.register('preparePlacementPreviewClient', JavaCompile) {
+        dependsOn project.tasks.named('classes')
+        javaCompiler = project.javaToolchains.compilerFor(project.java.toolchain)
+        source project.file('../../shared/tests/runtime/PlacementPreviewClientTest.java')
+        classpath = project.sourceSets.main.compileClasspath + project.sourceSets.main.output
+        options.compilerArgs.add('-proc:none')
+        destinationDirectory = testMod
+        doLast {
+            new File(testMod.get().asFile, 'fabric.mod.json').text = groovy.json.JsonOutput.toJson([
+                schemaVersion: 1, id: 'mdm_placement_preview_client_test', version: '1.0.0',
+                entrypoints: [client: ['PlacementPreviewClientTest']], depends: [mdm: '*']])
+            testRun.get().asFile.mkdirs()
+            new File(testRun.get().asFile, 'options.txt').text = 'onboardAccessibility:false\nrenderDistance:4\nsimulationDistance:5\npauseOnLostFocus:false\nmaxFps:60\n'
+            def world = new File(testRun.get().asFile, 'saves/preview-test')
+            if (!new File(world, 'level.dat').exists()) {
+                project.copy {
+                    from project.layout.buildDirectory.dir('decoration-placement-runtime-run/world')
+                    into world
+                }
+            }
+        }
+    }
+    project.tasks.named('runClient') {
+        dependsOn prepare
+        classpath += project.files(testMod)
+        workingDir testRun
+    }
+}

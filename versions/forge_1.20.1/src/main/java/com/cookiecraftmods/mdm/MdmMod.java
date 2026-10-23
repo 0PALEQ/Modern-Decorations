@@ -98,6 +98,7 @@ public class MdmMod {
 
 	@SubscribeEvent
 	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        if (event.getEntity().isShiftKeyDown() && event.getEntity().getItemInHand(event.getHand()).getItem() instanceof net.minecraft.world.item.BlockItem held && com.cookiecraftmods.mdm.placement.PrecisePlacement.supported(held.getBlock())) return;
 		var state = event.getLevel().getBlockState(event.getPos());
         var bedResult = SingleBedBlock.tryUse(state, event.getLevel(), event.getPos(), event.getEntity());
         if (bedResult.consumesAction()) {

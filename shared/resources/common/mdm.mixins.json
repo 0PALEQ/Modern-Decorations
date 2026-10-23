@@ -7,11 +7,19 @@
   "mixins": [
     "LegacyBedNbtMixin",
     "FurnitureChunkLoadMixin",
+    "PixelPlacementOffsetMixin",
+    "PlacementEntityMixin",
+    "DecorationDynamicShapeMixin",
+    "PlacementPersistenceMixin",
+    "DecorationPlacementItemMixin",
+    "DecorationPlacementShapeMixin",
     "SingleBedOrientationMixin",
     "SingleBedSleepDirectionMixin"
   ],
   "client": [
-    "FurnitureWaterParticleMixin"
+    "FurnitureWaterParticleMixin",
+    "PlacementClientMixin",
+    "PlacementPreviewMixin"
   ],
   "injectors": {
     "defaultRequire": 1

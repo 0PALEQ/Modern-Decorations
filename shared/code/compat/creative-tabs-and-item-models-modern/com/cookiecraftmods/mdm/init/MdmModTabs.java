@@ -289,6 +289,7 @@ public class MdmModTabs {
 				tabData.accept(MdmModBlocks.MODERN_PAINTING.get().asItem());
 				tabData.accept(MdmModBlocks.PAINTING_05.get().asItem());
 				tabData.accept(MdmModBlocks.PAINTING_06.get().asItem());
+				tabData.accept(MdmModBlocks.PAINTING_07.get().asItem());
 				tabData.accept(MdmModBlocks.PAINTING_03.get().asItem());
 				tabData.accept(MdmModBlocks.PAINTING_04.get().asItem());
 				tabData.accept(MdmModBlocks.MODERN_PAINTING_2.get().asItem());

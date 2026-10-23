@@ -44,10 +44,11 @@ public final class SeatBlock {
 			return InteractionResult.PASS;
 		}
 		if (!level.isClientSide) {
-			List<ArmorStand> seats = level.getEntitiesOfClass(ArmorStand.class, new AABB(pos), SeatBlock::isSeat);
+			var offset = com.cookiecraftmods.mdm.placement.PrecisePlacement.offset(level, pos);
+			List<ArmorStand> seats = level.getEntitiesOfClass(ArmorStand.class, new AABB(pos).move(offset), SeatBlock::isSeat);
 			ArmorStand seat = seats.stream().filter(candidate -> candidate.getPassengers().isEmpty()).findFirst().orElse(null);
 			if (seat == null && seats.isEmpty()) {
-				seat = new ArmorStand(level, pos.getX() + 0.5D, getSeatY(state, pos), pos.getZ() + 0.5D);
+				seat = new ArmorStand(level, pos.getX() + 0.5D + offset.x, getSeatY(state, pos) + offset.y, pos.getZ() + 0.5D + offset.z);
 				seat.setNoGravity(true);
 				seat.setInvulnerable(true);
 				seat.setInvisible(true);
@@ -55,7 +56,7 @@ public final class SeatBlock {
 				level.addFreshEntity(seat);
 			}
 			if (seat != null) {
-				seat.setPos(pos.getX() + 0.5D, getSeatY(state, pos), pos.getZ() + 0.5D);
+				seat.setPos(pos.getX() + 0.5D + offset.x, getSeatY(state, pos) + offset.y, pos.getZ() + 0.5D + offset.z);
 				if (state.hasProperty(HorizontalDirectionalBlock.FACING)) {
 					seat.setYRot(state.getValue(HorizontalDirectionalBlock.FACING).toYRot());
 				}
@@ -85,7 +86,7 @@ public final class SeatBlock {
 	}
 
 	public static void removeSeats(Level level, BlockPos pos) {
-		for (Entity entity : level.getEntitiesOfClass(Entity.class, new AABB(pos), candidate -> candidate.getTags().contains(SEAT_TAG))) {
+		for (Entity entity : level.getEntitiesOfClass(Entity.class, new AABB(pos).move(com.cookiecraftmods.mdm.placement.PrecisePlacement.offset(level, pos)), candidate -> candidate.getTags().contains(SEAT_TAG))) {
 			entity.ejectPassengers();
 			entity.discard();
 		}

@@ -53,10 +53,11 @@ public abstract class RunningSinkBlock extends HorizontalFurnitureBlock {
         if (!state.getValue(RUNNING)) {
             return;
         }
+        var offset = com.cookiecraftmods.mdm.placement.PrecisePlacement.offset(level, pos);
         for (double[] source : outlets) {
             double[] outlet = WaterOutlets.rotate(source, state.getValue(FACING));
             level.sendParticles(ParticleTypes.FALLING_WATER,
-                    pos.getX() + outlet[0], pos.getY() + outlet[1], pos.getZ() + outlet[2],
+                    pos.getX() + outlet[0] + offset.x, pos.getY() + outlet[1] + offset.y, pos.getZ() + outlet[2] + offset.z,
                     1, 0, 0, 0, 0);
         }
         level.scheduleTick(pos, this, DRIP_INTERVAL);

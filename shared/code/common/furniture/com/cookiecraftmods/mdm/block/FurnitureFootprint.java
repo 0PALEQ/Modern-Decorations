@@ -1,6 +1,7 @@
 package com.cookiecraftmods.mdm.block;
 
 import net.minecraft.core.BlockPos;
+import com.cookiecraftmods.mdm.placement.PrecisePlacement;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -30,7 +31,7 @@ public final class FurnitureFootprint {
     }
 
     public static VoxelShape fullShape(BlockState state, BlockGetter level, BlockPos pos) {
-        return ((MulticellFurniture) state.getBlock()).getFurnitureShape(state, level, pos, CollisionContext.empty());
+        return PrecisePlacement.fullShape(state, level, pos, false);
     }
 
     public static VoxelShape localShape(VoxelShape full, BlockPos offset) {
@@ -53,7 +54,7 @@ public final class FurnitureFootprint {
     }
 
     public static BlockState placement(BlockState state, BlockPlaceContext context) {
-        if (!(state.getBlock() instanceof MulticellFurniture)) return state;
+        if (PrecisePlacement.isPlanning() || !(state.getBlock() instanceof MulticellFurniture)) return state;
         Level level = context.getLevel();
         BlockPos parent = context.getClickedPos();
         for (BlockPos offset : offsets(fullShape(state, level, parent))) {
@@ -81,7 +82,7 @@ public final class FurnitureFootprint {
     }
 
     public static void placeParts(Level level, BlockPos parent, BlockState state) {
-        if (!(state.getBlock() instanceof MulticellFurniture)) return;
+        if (!(state.getBlock() instanceof MulticellFurniture) && !PrecisePlacement.active(level, parent)) return;
         for (BlockPos offset : offsets(fullShape(state, level, parent))) {
             BlockPos cell = parent.offset(offset);
             BlockState existing = level.getBlockState(cell);
@@ -92,7 +93,7 @@ public final class FurnitureFootprint {
     }
 
     public static void removeParts(Level level, BlockPos parent, BlockState state) {
-        if (!(state.getBlock() instanceof MulticellFurniture)) return;
+        if (!(state.getBlock() instanceof MulticellFurniture) && !PrecisePlacement.active(level, parent)) return;
         SeatBlock.removeSeats(level, parent);
         for (BlockPos offset : offsets(fullShape(state, level, parent))) {
             BlockPos cell = parent.offset(offset);
@@ -110,7 +111,7 @@ public final class FurnitureFootprint {
     public static boolean validPart(BlockGetter level, BlockPos cell, BlockState part) {
         BlockPos parent = FurniturePartBlock.parentPos(part, cell);
         BlockState state = level.getBlockState(parent);
-        return state.getBlock() instanceof MulticellFurniture
+        return (state.getBlock() instanceof MulticellFurniture || PrecisePlacement.active(level, parent))
                 && !localShape(fullShape(state, level, parent), cell.subtract(parent)).isEmpty();
     }
 
@@ -137,9 +138,7 @@ public final class FurnitureFootprint {
     }
 
     private static VoxelShape partSourceShape(BlockState state, BlockGetter level, BlockPos pos, boolean collision) {
-        MulticellFurniture furniture = (MulticellFurniture) state.getBlock();
-        return collision ? furniture.getFurnitureCollisionShape(state, level, pos, CollisionContext.empty())
-                : furniture.getFurnitureShape(state, level, pos, CollisionContext.empty());
+        return PrecisePlacement.fullShape(state, level, pos, collision);
     }
 
     public static void partRemoved(Level level, BlockPos cell, BlockState part, BlockState replacement) {

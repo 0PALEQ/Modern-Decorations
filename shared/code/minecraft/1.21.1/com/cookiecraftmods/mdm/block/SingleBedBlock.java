@@ -27,7 +27,7 @@ public abstract class SingleBedBlock extends BedBlock {
     }
 
     protected SingleBedBlock(DyeColor color, BlockBehaviour.Properties properties) {
-        super(color, properties);
+        super(color, properties.dynamicShape());
         registerDefaultState(defaultBlockState().setValue(PART, BedPart.HEAD));
     }
 

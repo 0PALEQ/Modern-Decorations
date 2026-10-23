@@ -322,6 +322,7 @@ public class MdmModItems {
 	public static final ModRegistryEntry<Item> MUG;
 	public static final ModRegistryEntry<Item> PAINTING_05;
 	public static final ModRegistryEntry<Item> PAINTING_06;
+	public static final ModRegistryEntry<Item> PAINTING_07;
 	public static final ModRegistryEntry<Item> PLATE;
 	public static final ModRegistryEntry<Item> POTTED_CACTUS;
 	public static final ModRegistryEntry<Item> POUF;
@@ -666,6 +667,7 @@ public class MdmModItems {
 		MUG = block(MdmModBlocks.MUG);
 		PAINTING_05 = block(MdmModBlocks.PAINTING_05);
 		PAINTING_06 = block(MdmModBlocks.PAINTING_06);
+		PAINTING_07 = block(MdmModBlocks.PAINTING_07);
 		PLATE = block(MdmModBlocks.PLATE);
 		POTTED_CACTUS = block(MdmModBlocks.POTTED_CACTUS);
 		POUF = block(MdmModBlocks.POUF);

@@ -20,6 +20,7 @@ public final class WallClockRenderer implements BlockEntityRenderer<WallClockBlo
 
     public static final class State extends BlockEntityRenderState {
         boolean wooden;
+        Vec3 placementOffset;
         float facing, hour, minute;
     }
 
@@ -30,6 +31,7 @@ public final class WallClockRenderer implements BlockEntityRenderer<WallClockBlo
     public void extractRenderState(WallClockBlockEntity clock, State state, float partialTick,
                                    Vec3 camera, ModelFeatureRenderer.CrumblingOverlay breaking) {
         BlockEntityRenderer.super.extractRenderState(clock, state, partialTick, camera, breaking);
+        state.placementOffset = com.cookiecraftmods.mdm.placement.PrecisePlacement.offset(clock.getLevel(), clock.getBlockPos());
         state.wooden = clock.getBlockState().getBlock() instanceof WoodenWallClockBlock;
         state.facing = -clock.getBlockState().getValue(HorizontalFurnitureBlock.FACING).toYRot() + 180;
         long time = clock.getLevel() == null ? 0 : ClockPlatform.time(clock);
@@ -40,6 +42,7 @@ public final class WallClockRenderer implements BlockEntityRenderer<WallClockBlo
     @Override
     public void submit(State state, PoseStack pose, SubmitNodeCollector collector, CameraRenderState camera) {
         pose.pushPose();
+        pose.translate(state.placementOffset.x, state.placementOffset.y, state.placementOffset.z);
         pose.translate(0.5, 0.5, 0.5);
         pose.mulPose(Axis.YP.rotationDegrees(state.facing));
         pose.translate(-0.5, -0.5, -0.5);
