@@ -1,4 +1,5 @@
 package com.cookiecraftmods.mdm.block;
+import com.cookiecraftmods.eqlib.block.FurnitureFootprint;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.shapes.Shapes;

@@ -1,4 +1,5 @@
 package com.cookiecraftmods.mdm.init;
+import com.cookiecraftmods.eqlib.placement.PrecisePlacement;
 
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -13,7 +14,7 @@ import com.cookiecraftmods.mdm.MdmMod;
 
 public class MdmModBlockEntities {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MdmMod.MODID);
-	public static final RegistryObject<BlockEntityType<DecorationPlacementBlockEntity>> DECORATION_PLACEMENT = REGISTRY.register("decoration_placement", () -> BlockEntityType.Builder.of(DecorationPlacementBlockEntity::new, net.minecraft.core.registries.BuiltInRegistries.BLOCK.stream().filter(com.cookiecraftmods.mdm.placement.PrecisePlacement::supported).toArray(Block[]::new)).build(null));
+	public static final RegistryObject<BlockEntityType<DecorationPlacementBlockEntity>> DECORATION_PLACEMENT = REGISTRY.register("decoration_placement", () -> BlockEntityType.Builder.of(DecorationPlacementBlockEntity::new, net.minecraft.core.registries.BuiltInRegistries.BLOCK.stream().filter(com.cookiecraftmods.eqlib.placement.PrecisePlacement::supported).toArray(Block[]::new)).build(null));
 	public static final RegistryObject<BlockEntityType<WallClockBlockEntity>> BLACK_WALL_CLOCK = register("black_wall_clock", MdmModBlocks.BLACK_WALL_CLOCK, WallClockBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<WallClockBlockEntity>> WOODEN_WALL_CLOCK = register("wooden_wall_clock", MdmModBlocks.WOODEN_WALL_CLOCK, WallClockBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<Set1CabinetBlockEntity>> SET_1_CABINET = register("set_1_cabinet", MdmModBlocks.SET_1_CABINET, Set1CabinetBlockEntity::new);

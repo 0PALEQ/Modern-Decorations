@@ -1,5 +1,9 @@
 package com.cookiecraftmods.mdm.client.clock;
 
+import com.cookiecraftmods.eqlib.core.clock.ClockTime;
+import com.cookiecraftmods.eqlib.core.clock.ClockHandMesh;
+import com.cookiecraftmods.eqlib.placement.PrecisePlacement;
+
 import com.cookiecraftmods.mdm.block.HorizontalFurnitureBlock;
 import com.cookiecraftmods.mdm.block.WoodenWallClockBlock;
 import com.cookiecraftmods.mdm.block.entity.WallClockBlockEntity;
@@ -31,7 +35,7 @@ public final class WallClockRenderer implements BlockEntityRenderer<WallClockBlo
     public void extractRenderState(WallClockBlockEntity clock, State state, float partialTick,
                                    Vec3 camera, ModelFeatureRenderer.CrumblingOverlay breaking) {
         BlockEntityRenderer.super.extractRenderState(clock, state, partialTick, camera, breaking);
-        state.placementOffset = com.cookiecraftmods.mdm.placement.PrecisePlacement.offset(clock.getLevel(), clock.getBlockPos());
+        state.placementOffset = com.cookiecraftmods.eqlib.placement.PrecisePlacement.offset(clock.getLevel(), clock.getBlockPos());
         state.wooden = clock.getBlockState().getBlock() instanceof WoodenWallClockBlock;
         state.facing = -clock.getBlockState().getValue(HorizontalFurnitureBlock.FACING).toYRot() + 180;
         long time = clock.getLevel() == null ? 0 : ClockPlatform.time(clock);

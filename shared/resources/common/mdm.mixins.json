@@ -6,20 +6,12 @@
   "refmap": "mdm.refmap.json",
   "mixins": [
     "LegacyBedNbtMixin",
-    "FurnitureChunkLoadMixin",
-    "PixelPlacementOffsetMixin",
-    "PlacementEntityMixin",
-    "DecorationDynamicShapeMixin",
-    "PlacementPersistenceMixin",
-    "DecorationPlacementItemMixin",
-    "DecorationPlacementShapeMixin",
     "SingleBedOrientationMixin",
+    "PlacedBedPositionMixin",
     "SingleBedSleepDirectionMixin"
   ],
   "client": [
-    "FurnitureWaterParticleMixin",
-    "PlacementClientMixin",
-    "PlacementPreviewMixin"
+    "FurnitureWaterParticleMixin"
   ],
   "injectors": {
     "defaultRequire": 1

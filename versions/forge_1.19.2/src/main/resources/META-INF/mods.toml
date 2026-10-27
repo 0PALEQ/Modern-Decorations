@@ -1,0 +1,36 @@
+modLoader="javafml"
+loaderVersion="[43,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="mdm"
+version="${mod_version}"
+displayName="ModernDecorMod"
+displayURL="https://cookiecraftmods.com/"
+logoFile="logo.png"
+credits="https://cookiecraftmods.com/"
+authors="opaleq"
+description="Mod that adds decoration furniture and etc."
+
+# Start of user code block mod configuration
+# End of user code block mod configuration
+
+[[dependencies.mdm]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.2]"
+    ordering="AFTER"
+    side="BOTH"
+
+
+
+
+# Start of user code block dependencies configuration
+# End of user code block dependencies configuration
+
+[[dependencies.mdm]]
+modId="eqlib"
+mandatory=true
+versionRange="[1.0.3,2.0.0)"
+ordering="AFTER"
+side="BOTH"

@@ -1,0 +1,43 @@
+def target = rootProject.projectDir.name
+def eqlibRoot = rootProject.file(providers.gradleProperty('eqlibDir')
+        .orElse(providers.environmentVariable('EQLIB_DIR'))
+        .getOrElse('../../../../opaleqsLibrary'))
+def api = new File(eqlibRoot, "build/api/eqlib-${target}.jar")
+def bundle = new File(eqlibRoot, "dist/eqlib-${eqlib_version}.jar")
+def useCheckout = api.isFile() && bundle.isFile()
+
+repositories {
+    maven { url = uri(providers.gradleProperty('eqlibMaven').getOrElse(new File(eqlibRoot, 'maven').absolutePath)) }
+}
+configurations { eqlibRuntime { transitive = false } }
+dependencies {
+    compileOnly(useCheckout ? files(api) : "com.cookiecraftmods:eqlib:${eqlib_version}:dev-${target}")
+    eqlibRuntime(useCheckout ? files(bundle) : "com.cookiecraftmods:eqlib:${eqlib_version}")
+    if (target.startsWith('fabric_')) runtimeOnly files(configurations.eqlibRuntime)
+}
+// Standalone verification programs use the named implementation without invoking a game loader.
+tasks.withType(JavaExec).configureEach {
+    if (!name.startsWith('run')) {
+        classpath += useCheckout ? files(api) : configurations.compileClasspath.filter { it.name.startsWith('eqlib-') }
+    }
+}
+if (!target.startsWith('fabric_')) {
+    def model = extensions.findByName('neoForge') ?: extensions.findByName('legacyForge')
+    if (model != null) model.runs.configureEach { systemProperty 'eqlib.development', 'true' }
+    else minecraft.runs.configureEach { property 'eqlib.development', 'true' }
+    // Resolve the final run directory after fixtures and consumers configure their runs.
+    gradle.projectsEvaluated {
+        def runNames = model != null ? model.runs.names : minecraft.runs.names
+        runNames.each { runName ->
+            def taskName = 'run' + runName.capitalize()
+            def directory = model != null ? model.runs.getByName(runName).gameDirectory
+                    : minecraft.runs.getByName(runName).workingDirectory
+            def install = tasks.register("installEqlibFor${taskName.capitalize()}", Copy) {
+                from configurations.eqlibRuntime
+                rename { 'eqlib-universal.jar' }
+                into model != null ? directory.map { it.dir('mods') } : new File(directory, 'mods')
+            }
+            tasks.matching { it.name == taskName }.configureEach { dependsOn install }
+        }
+    }
+}

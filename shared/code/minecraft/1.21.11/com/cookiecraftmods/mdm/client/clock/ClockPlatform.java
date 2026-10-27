@@ -1,5 +1,7 @@
 package com.cookiecraftmods.mdm.client.clock;
 
+import com.cookiecraftmods.eqlib.core.clock.ClockHandMesh;
+
 import com.cookiecraftmods.mdm.block.entity.WallClockBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

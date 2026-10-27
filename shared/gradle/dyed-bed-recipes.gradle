@@ -20,7 +20,7 @@ if (rootProject.projectDir.name == 'fabric_26.3') {
         dependsOn tasks.named('classes')
         javaCompiler = javaToolchains.compilerFor(java.toolchain)
         source rootProject.file('../../shared/tests/DyedBedRecipeTest.java')
-        classpath = sourceSets.main.runtimeClasspath
+        classpath = sourceSets.main.runtimeClasspath + sourceSets.main.compileClasspath
         options.compilerArgs.add('-proc:none')
         destinationDirectory = testClasses
     }

@@ -29,3 +29,10 @@ type="required"
 versionRange="[26.1.2]"
 ordering="NONE"
 side="BOTH"
+
+[[dependencies.mdm]]
+modId="eqlib"
+type="required"
+versionRange="[1.0.3,2.0.0)"
+ordering="AFTER"
+side="BOTH"

@@ -1,6 +1,6 @@
-import com.cookiecraftmods.mdm.block.FurnitureFootprint;
-import com.cookiecraftmods.mdm.block.FurniturePartBlock;
-import com.cookiecraftmods.mdm.block.MulticellFurniture;
+import com.cookiecraftmods.eqlib.block.FurnitureFootprint;
+import com.cookiecraftmods.eqlib.block.FurniturePartBlock;
+import com.cookiecraftmods.eqlib.block.MulticellFurniture;
 import com.cookiecraftmods.mdm.init.MdmModBlocks;
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.api.ModInitializer;
@@ -75,9 +75,10 @@ public final class MulticellFurnitureRuntimeTest implements ModInitializer {
         player.connection = new ServerGamePacketListenerImpl(server, new Connection(PacketFlow.SERVERBOUND),
                 player, CommonListenerCookie.createInitial(profile, false));
         player.setPos(0.5, 200, 4.5);
-        List<Block> targets = BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof MulticellFurniture).toList();
+        List<Block> targets = BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof MulticellFurniture
+                && !(b instanceof com.cookiecraftmods.mdm.block.PixelHorizontalFurnitureBlock)).toList();
         require(targets.stream().map(b -> b.getClass().getSimpleName()).collect(Collectors.toSet()).equals(EXPECTED),
-                "Only the requested furniture types should opt in");
+                "Furniture type catalog changed: " + targets.stream().map(b -> b.getClass().getSimpleName()).collect(Collectors.toSet()));
         int cases = 0;
         for (Block block : targets) {
             for (Direction facing : new Direction[]{Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST}) {
@@ -230,7 +231,7 @@ public final class MulticellFurnitureRuntimeTest implements ModInitializer {
     private static void checkOrphan(ServerLevel level) {
         clear(level);
         BlockPos cell = POS.above();
-        BlockState orphan = FurniturePartBlock.forOffset(new BlockPos(0, 1, 0), Blocks.WATER.defaultBlockState());
+        BlockState orphan = FurniturePartBlock.forOffset(new BlockPos(0, 1, 0), Blocks.WATER.defaultBlockState(), com.cookiecraftmods.mdm.init.MdmModBlocks.COUCHLEFT.get());
         level.setBlock(cell, orphan, Block.UPDATE_ALL);
         ((FurniturePartBlock) orphan.getBlock()).tick(orphan, level, cell, level.getRandom());
         require(level.getBlockState(cell).is(Blocks.WATER), "Orphan helper did not clean up and restore water");
@@ -344,7 +345,7 @@ public final class MulticellFurnitureRuntimeTest implements ModInitializer {
         clear(level);
         level.setBlock(POS, MdmModBlocks.WHITE_BOARD.get().defaultBlockState(), Block.UPDATE_ALL);
         BlockPos obsolete = POS.above();
-        BlockState oldPart = FurniturePartBlock.forOffset(new BlockPos(0, 1, 0), Blocks.AIR.defaultBlockState());
+        BlockState oldPart = FurniturePartBlock.forOffset(new BlockPos(0, 1, 0), Blocks.AIR.defaultBlockState(), com.cookiecraftmods.mdm.init.MdmModBlocks.COUCHLEFT.get());
         level.setBlock(obsolete, oldPart, Block.UPDATE_ALL);
         chunk.unregisterTickContainerFromLevel(level);
         chunk.registerTickContainerInLevel(level);

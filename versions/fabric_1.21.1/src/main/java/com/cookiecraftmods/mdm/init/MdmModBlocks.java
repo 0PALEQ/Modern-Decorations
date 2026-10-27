@@ -1,6 +1,7 @@
 package com.cookiecraftmods.mdm.init;
+import com.cookiecraftmods.eqlib.block.FurniturePartBlock;
 
-import com.cookiecraftmods.mdm.block.SeatBlock;
+import com.cookiecraftmods.eqlib.block.SeatBlock;
 import com.cookiecraftmods.mdm.registry.ModRegistryEntry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
@@ -11,6 +12,23 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class MdmModBlocks {
+    private static net.minecraft.world.level.block.Block eqlibHelper() { return FURNITURE_PART.get(); }
+    static {
+        com.cookiecraftmods.eqlib.api.FurnitureApi.register("com.cookiecraftmods.mdm.block.", MdmModBlocks::eqlibHelper,
+            state -> state.is(net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.BLOCK, net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("mdm", "sittable"))),
+            state -> state.getBlock() instanceof PixelHorizontalFurnitureBlock ? PixelHorizontalFurnitureBlock.modelOffset(state) : net.minecraft.world.phys.Vec3.ZERO,
+            (a, aPos, b, bPos) -> {
+        String aName = a.getBlock().getClass().getSimpleName();
+        String bName = b.getBlock().getClass().getSimpleName();
+        if (!aName.contains("FoyerWallUnit") || !bName.contains("FoyerWallUnit")) return false;
+        boolean aTop = aName.contains("Top");
+        boolean bTop = bName.contains("Top");
+        if (aTop == bTop || !aPos.equals(aTop ? bPos.above() : bPos.below())) return false;
+        if (!aName.replace("Top", "").replace("Bottom", "").equals(bName.replace("Top", "").replace("Bottom", ""))) return false;
+        return a.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING) == b.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING);
+            });
+    }
+
     private static final List<ModRegistryEntry<Block>> ENTRIES = new ArrayList<>();
     public static final ModRegistryEntry<Block> BLACK_MODERN_FRIDGE_1;
     public static final ModRegistryEntry<Block> FURNITURE_PART;
@@ -358,7 +376,7 @@ public class MdmModBlocks {
     public static final ModRegistryEntry<Block> TALL_MIRROR;
 
     static {
-        FURNITURE_PART = register("furniture_part", FurniturePartBlock::new);
+        FURNITURE_PART = register("furniture_part", () -> new FurniturePartBlock(net.minecraft.world.level.block.state.BlockBehaviour.Properties.of()));
         BLACK_MODERN_FRIDGE_1 = register("black_modern_fridge_1", BlackModernFridge1Block::new);
         LEAFLESS_BAMBOO_DECORATION_1 = register("leafless_bamboo_decoration_1", LeaflessBambooDecoration1Block::new);
         LEAFLESS_BAMBOO_DECORATION_2 = register("leafless_bamboo_decoration_2", LeaflessBambooDecoration2Block::new);

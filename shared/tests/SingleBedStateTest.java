@@ -1,5 +1,5 @@
-import com.cookiecraftmods.mdm.block.FurnitureFootprint;
-import com.cookiecraftmods.mdm.block.MulticellFurniture;
+import com.cookiecraftmods.eqlib.block.FurnitureFootprint;
+import com.cookiecraftmods.eqlib.block.MulticellFurniture;
 import com.cookiecraftmods.mdm.block.SingleBedBlock;
 import java.util.IdentityHashMap;
 import java.util.function.Supplier;

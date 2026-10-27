@@ -1,4 +1,6 @@
 package com.cookiecraftmods.mdm.block;
+import com.cookiecraftmods.eqlib.block.FurnitureFootprint;
+import com.cookiecraftmods.eqlib.block.MulticellFurniture;
 
 import net.minecraft.server.level.ServerLevel;
 

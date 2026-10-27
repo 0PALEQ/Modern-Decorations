@@ -1,7 +1,7 @@
-import com.cookiecraftmods.mdm.block.FurnitureFootprint;
-import com.cookiecraftmods.mdm.block.FurniturePartBlock;
-import com.cookiecraftmods.mdm.placement.PlacementOffsetAccess;
-import com.cookiecraftmods.mdm.placement.PrecisePlacement;
+import com.cookiecraftmods.eqlib.block.FurnitureFootprint;
+import com.cookiecraftmods.eqlib.block.FurniturePartBlock;
+import com.cookiecraftmods.eqlib.placement.PlacementOffsetAccess;
+import com.cookiecraftmods.eqlib.placement.PrecisePlacement;
 import com.mojang.authlib.GameProfile;
 import java.util.UUID;
 import net.fabricmc.api.ModInitializer;

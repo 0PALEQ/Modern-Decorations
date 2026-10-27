@@ -1,0 +1,59 @@
+// Forge / NeoForge: installs only a test fixture JAR in an isolated run directory.
+gradle.projectsEvaluated {
+    def project = gradle.rootProject
+    if (project.findProperty('archives_base_name') == 'eqlib') return
+    def legacy = project.name && project.projectDir.name.startsWith('forge_')
+    def loader = legacy ? 'Forge' : 'NeoForge'
+    def testRoot = project.layout.buildDirectory.dir('placement-unload-runtime-mod')
+    def testClasses = project.layout.buildDirectory.dir('placement-unload-runtime-classes')
+    def testRun = project.layout.buildDirectory.dir('placement-unload-runtime-run')
+    def model = legacy ? project.legacyForge : project.neoForge
+    model.runs.named('server') {
+        gameDirectory = testRun
+        programArgument '--nogui'
+    }
+    def compile = project.tasks.register('compilePlacementUnloadFixture', JavaCompile) {
+        dependsOn project.tasks.named('classes')
+        javaCompiler = project.javaToolchains.compilerFor(project.java.toolchain)
+        source project.file('../../shared/tests/runtime/PlacementUnloadScenario.java')
+        source project.file("../../shared/tests/runtime/PlacementUnload${loader}Test.java")
+        classpath = project.sourceSets.main.compileClasspath + project.sourceSets.main.output
+        options.compilerArgs.add('-proc:none')
+        destinationDirectory = testClasses
+        doLast {
+            def meta = new File(testRoot.get().asFile, 'META-INF')
+            meta.mkdirs()
+            new File(meta, legacy ? 'mods.toml' : 'neoforge.mods.toml').text = '''modLoader="javafml"
+loaderVersion="[1,)"
+license="All Rights Reserved"
+[[mods]]
+modId="mdm_placement_unload_test"
+version="1.0.0"
+displayName="Placement unload regression fixture"
+'''
+        }
+    }
+    def jar = project.tasks.register('placementUnloadFixtureJar', Jar) {
+        dependsOn compile
+        archiveFileName = 'placement-unload-test.jar'
+        destinationDirectory = testRun.map { it.dir('mods') }
+        from testClasses
+        from testRoot
+    }
+    project.tasks.named('runServer') {
+        dependsOn jar
+        doFirst {
+            testRun.get().asFile.mkdirs()
+            new File(testRun.get().asFile, 'placement-unload-result.txt').delete()
+            new File(testRun.get().asFile, 'eula.txt').text = 'eula=true\n'
+            new File(testRun.get().asFile, 'server.properties').text = 'online-mode=false\nserver-port=0\nview-distance=2\nsimulation-distance=2\nlevel-type=minecraft:flat\nmax-tick-time=-1\n'
+        }
+        doLast {
+            def result = new File(testRun.get().asFile, 'placement-unload-result.txt')
+            if (!result.isFile() || !result.text.startsWith('PLACEMENT_UNLOAD_SHUTDOWN_PASSED:')) {
+                throw new GradleException('The server did not verify a precise-entity unload and clean shutdown')
+            }
+        }
+
+    }
+}

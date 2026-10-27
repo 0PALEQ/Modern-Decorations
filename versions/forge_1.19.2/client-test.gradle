@@ -1,0 +1,21 @@
+// Add client asset smoke checks to the isolated fixture installed by runtime-test.gradle.
+gradle.projectsEvaluated {
+    def project = gradle.rootProject
+    def testRun = project.layout.buildDirectory.dir('backport-runtime-run')
+    project.legacyForge.runs.named('client') {
+        gameDirectory = testRun
+    }
+    project.tasks.named('runClient') {
+        dependsOn project.tasks.named('backportFixtureJar')
+        doFirst {
+            testRun.get().asFile.mkdirs()
+            new File(testRun.get().asFile, 'backport-client-result.txt').delete()
+        }
+        doLast {
+            def result = new File(testRun.get().asFile, 'backport-client-result.txt')
+            if (!result.isFile() || !result.text.startsWith('BACKPORT_CLIENT_PASSED:')) {
+                throw new GradleException('Client resource smoke test did not pass')
+            }
+        }
+    }
+}

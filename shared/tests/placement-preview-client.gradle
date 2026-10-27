@@ -1,5 +1,6 @@
 gradle.projectsEvaluated {
     def project = gradle.rootProject
+    if (project.findProperty('archives_base_name') == 'eqlib') return
     def testMod = project.layout.buildDirectory.dir('placement-preview-client-mod')
     def testRun = project.layout.buildDirectory.dir('placement-preview-client-run')
     project.loom.runs.client.runDir(testRun.get().asFile.absolutePath)

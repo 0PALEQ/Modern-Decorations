@@ -1,4 +1,4 @@
-import com.cookiecraftmods.mdm.block.FurnitureFootprint;
+import com.cookiecraftmods.eqlib.block.FurnitureFootprint;
 import com.cookiecraftmods.mdm.block.SingleBedBlock;
 import com.mojang.authlib.GameProfile;
 import java.util.UUID;

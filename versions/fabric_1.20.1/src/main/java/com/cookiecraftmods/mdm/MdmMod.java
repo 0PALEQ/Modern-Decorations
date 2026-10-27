@@ -1,10 +1,11 @@
 package com.cookiecraftmods.mdm;
+import com.cookiecraftmods.eqlib.placement.PrecisePlacement;
 
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
 import com.cookiecraftmods.mdm.init.MdmModBlocks;
 import com.cookiecraftmods.mdm.init.MdmModItems;
 import com.cookiecraftmods.mdm.init.MdmModTabs;
-import com.cookiecraftmods.mdm.block.SeatBlock;
+import com.cookiecraftmods.eqlib.block.SeatBlock;
 import com.cookiecraftmods.mdm.block.LightSwitch;
 import com.cookiecraftmods.mdm.block.SingleBedBlock;
 import net.fabricmc.api.ModInitializer;
@@ -19,18 +20,13 @@ public final class MdmMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register(server -> {
-            for (var level : server.getAllLevels()) {
-                SeatBlock.removeEmptySeats(level);
-            }
-        });
         LightSwitch.registerSounds();
         MdmModBlocks.REGISTRY.initialize();
         MdmModItems.REGISTRY.initialize();
         MdmModBlockEntities.REGISTRY.initialize();
         MdmModTabs.REGISTRY.initialize();
         UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
-            if (player.isShiftKeyDown() && player.getItemInHand(hand).getItem() instanceof net.minecraft.world.item.BlockItem held && com.cookiecraftmods.mdm.placement.PrecisePlacement.supported(held.getBlock())) return net.minecraft.world.InteractionResult.PASS;
+            if (player.isShiftKeyDown() && player.getItemInHand(hand).getItem() instanceof net.minecraft.world.item.BlockItem held && com.cookiecraftmods.eqlib.placement.PrecisePlacement.supported(held.getBlock())) return net.minecraft.world.InteractionResult.PASS;
             var state = level.getBlockState(hit.getBlockPos());
             var bedResult = SingleBedBlock.tryUse(state, level, hit.getBlockPos(), player);
             if (bedResult.consumesAction()) return bedResult;

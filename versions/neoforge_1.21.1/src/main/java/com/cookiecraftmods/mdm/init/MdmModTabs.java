@@ -1,6 +1,3 @@
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package com.cookiecraftmods.mdm.init;
 
 import net.neoforged.neoforge.registries.DeferredRegister;

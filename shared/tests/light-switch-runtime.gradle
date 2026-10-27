@@ -1,0 +1,33 @@
+// From the repository root: versions/fabric_26.3/gradlew.bat -p versions/fabric_26.3 -I ../../shared/tests/light-switch-runtime.gradle runServer --no-watch-fs
+gradle.projectsEvaluated {
+    def targetProject = gradle.rootProject
+    def testMod = targetProject.layout.buildDirectory.dir('light-switch-runtime-mod')
+    def testRun = targetProject.layout.buildDirectory.dir('light-switch-runtime-run')
+    targetProject.loom.runs.server.runDir(testRun.get().asFile.absolutePath)
+    def prepare = targetProject.tasks.register('prepareLightSwitchRuntime', JavaCompile) {
+        dependsOn targetProject.tasks.named('classes')
+        javaCompiler = targetProject.javaToolchains.compilerFor(targetProject.java.toolchain)
+        source targetProject.file('../../shared/tests/runtime/LightSwitchRuntimeTest.java')
+        classpath = targetProject.sourceSets.main.compileClasspath + targetProject.sourceSets.main.output
+        options.compilerArgs.add('-proc:none')
+        destinationDirectory = testMod
+        doLast {
+            new File(testMod.get().asFile, 'fabric.mod.json').text = groovy.json.JsonOutput.toJson([
+                schemaVersion: 1, id: 'mdm_light_switch_test', version: '1.0.0',
+                entrypoints: [main: ['LightSwitchRuntimeTest']], depends: [mdm: '*']])
+        }
+    }
+    targetProject.tasks.named('runServer') {
+        dependsOn prepare
+        classpath += targetProject.files(testMod)
+        workingDir testRun
+        args 'nogui'
+        doFirst {
+            testRun.get().asFile.mkdirs()
+            new File(testRun.get().asFile, 'eula.txt').text = 'eula=true\n'
+            new File(testRun.get().asFile, 'server.properties').text = 'online-mode=false\nserver-port=0\nview-distance=2\nsimulation-distance=2\nlevel-type=minecraft:flat\nmax-tick-time=-1\n'
+        }
+    }
+}
+
+

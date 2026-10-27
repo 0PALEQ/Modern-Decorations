@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.cookiecraftmods.mdm.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mdm.refmap.json",
+  "mixins": [
+    "LegacyBedNbtMixin",
+    "SingleBedOrientationMixin",
+    "PlacedBedPositionMixin",
+    "SingleBedSleepDirectionMixin"
+  ],
+  "client": [
+    "FurnitureWaterParticleMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

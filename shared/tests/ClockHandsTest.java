@@ -1,5 +1,5 @@
-import com.cookiecraftmods.mdm.client.clock.ClockHandMesh;
-import com.cookiecraftmods.mdm.client.clock.ClockTime;
+import com.cookiecraftmods.eqlib.core.clock.ClockHandMesh;
+import com.cookiecraftmods.eqlib.core.clock.ClockTime;
 import java.nio.file.Files;
 import java.nio.file.Path;
 

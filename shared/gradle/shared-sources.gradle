@@ -4,26 +4,38 @@ apply from: rootProject.file('../../shared/gradle/dyed-bed-recipes.gradle')
 
 def manifest = new JsonSlurper().parse(rootProject.file('../../shared/gradle/source-groups.json'))
 def target = rootProject.projectDir.name
+// 26.3 returns a success flag from LivingEntity#setPosToBed instead of void.
+sourceSets.main.java.exclude(target == 'fabric_26.3'
+        ? '**/PlacedBedPositionMixin.java' : '**/PlacedBedPositionModernMixin.java')
+tasks.named('processResources') {
+    inputs.property('bedPositionReturnsSuccess', target == 'fabric_26.3')
+    if (target == 'fabric_26.3') {
+        filesMatching('mdm.mixins.json') {
+            filter { line -> line.replace('"PlacedBedPositionMixin"', '"PlacedBedPositionModernMixin"') }
+        }
+    }
+}
 if (target.startsWith('fabric_')) {
     sourceSets.main.java.srcDir(rootProject.file('../../shared/code/compat/clock-fabric'))
 }
+// Clock block entities remain consumer-owned; only neutral utilities moved to eqlib.
 sourceSets.main.java.srcDir(rootProject.file('../../shared/code/common/clock'))
-sourceSets.main.java.srcDir(rootProject.file('../../shared/code/common/furniture'))
+if (target != 'forge_1.19.2') sourceSets.main.java.srcDir(rootProject.file('../../shared/code/common/furniture'))
 sourceSets.main.java.srcDir(rootProject.file('../../shared/code/common/migration'))
 tasks.named('processResources') {
-    inputs.property('bedMigrationRefmap', target in ['fabric_1.20.1', 'forge_1.20.1'])
+    inputs.property('bedMigrationRefmap', target in ['forge_1.19.2', 'fabric_1.20.1', 'forge_1.20.1'])
 }
 if (target == 'fabric_1.20.1') {
     loom.mixin.defaultRefmapName = 'mdm.refmap.json'
 }
-if (!(target in ['fabric_1.20.1', 'forge_1.20.1'])) {
+if (!(target in ['forge_1.19.2', 'fabric_1.20.1', 'forge_1.20.1'])) {
     tasks.named('processResources') {
         filesMatching('mdm.mixins.json') {
             filter { line -> line.contains('"refmap"') ? null : line }
         }
     }
 }
-sourceSets.main.java.srcDir(rootProject.file(project.minecraft_version.toString() in ['1.20.1', '1.21.1']
+if (target != 'forge_1.19.2') sourceSets.main.java.srcDir(rootProject.file(project.minecraft_version.toString() in ['1.20.1', '1.21.1']
         ? '../../shared/code/compat/clock-legacy'
         : project.minecraft_version.toString() == '1.21.11'
             ? '../../shared/code/compat/clock-1.21.11' : '../../shared/code/compat/clock-modern'))
@@ -76,14 +88,12 @@ def clockTestClasses = layout.buildDirectory.dir('clock-test-classes')
 tasks.register('compileClockTests', JavaCompile) {
     javaCompiler = javaToolchains.compilerFor(java.toolchain)
     source rootProject.file('../../shared/tests/ClockHandsTest.java')
-    source rootProject.file('../../shared/code/common/clock/com/cookiecraftmods/mdm/client/clock/ClockTime.java')
-    source rootProject.file('../../shared/code/common/clock/com/cookiecraftmods/mdm/client/clock/ClockHandMesh.java')
     classpath = sourceSets.main.compileClasspath
     destinationDirectory = clockTestClasses
 }
 tasks.register('verifyClockHands', JavaExec) {
     dependsOn tasks.named('compileClockTests')
-    classpath = files(clockTestClasses) + sourceSets.main.compileClasspath
+    classpath = files(clockTestClasses) + sourceSets.main.runtimeClasspath
     mainClass = 'ClockHandsTest'
     workingDir rootProject.file('../..')
     javaLauncher = javaToolchains.launcherFor(java.toolchain)
@@ -117,7 +127,7 @@ if (target.startsWith('fabric_')) {
         dependsOn tasks.named('classes')
         javaCompiler = javaToolchains.compilerFor(java.toolchain)
         source rootProject.file('../../shared/tests/SingleBedStateTest.java')
-        classpath = sourceSets.main.runtimeClasspath
+        classpath = sourceSets.main.runtimeClasspath + sourceSets.main.compileClasspath
         options.compilerArgs.add('-proc:none')
         destinationDirectory = singleBedTestClasses
     }

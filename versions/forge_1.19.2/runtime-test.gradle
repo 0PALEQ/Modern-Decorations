@@ -1,0 +1,57 @@
+// Installs a test-only Forge fixture JAR in an isolated run directory.
+gradle.projectsEvaluated {
+    def project = gradle.rootProject
+    def testRoot = project.layout.buildDirectory.dir('backport-runtime-mod')
+    def testClasses = project.layout.buildDirectory.dir('backport-runtime-classes')
+    def testRun = project.layout.buildDirectory.dir('backport-runtime-run')
+    def model = project.legacyForge
+    model.runs.named('server') {
+        gameDirectory = testRun
+        programArgument '--nogui'
+    }
+    def compile = project.tasks.register('compileBackportFixture', JavaCompile) {
+        dependsOn project.tasks.named('classes')
+        javaCompiler = project.javaToolchains.compilerFor(project.java.toolchain)
+        source project.file('src/testmod/java')
+        classpath = project.sourceSets.main.compileClasspath + project.sourceSets.main.output
+        options.compilerArgs.add('-proc:none')
+        destinationDirectory = testClasses
+        doLast {
+            def meta = new File(testRoot.get().asFile, 'META-INF')
+            meta.mkdirs()
+            new File(testRoot.get().asFile, 'pack.mcmeta').text = '{"pack":{"pack_format":9,"description":"Backport test fixture"}}'
+
+            new File(meta, 'mods.toml').text = '''modLoader="javafml"
+loaderVersion="[1,)"
+license="All Rights Reserved"
+[[mods]]
+modId="mdm_backport_test"
+version="1.0.0"
+displayName="Forge 1.19.2 backport regression fixture"
+'''
+        }
+    }
+    def jar = project.tasks.register('backportFixtureJar', Jar) {
+        dependsOn compile
+        archiveFileName = 'backport-test.jar'
+        destinationDirectory = testRun.map { it.dir('mods') }
+        from testClasses
+        from testRoot
+    }
+    project.tasks.named('runServer') {
+        dependsOn jar
+        doFirst {
+            testRun.get().asFile.mkdirs()
+            new File(testRun.get().asFile, 'backport-result.txt').delete()
+            new File(testRun.get().asFile, 'eula.txt').text = 'eula=true\n'
+            new File(testRun.get().asFile, 'server.properties').text = 'online-mode=false\nserver-port=0\nview-distance=2\nsimulation-distance=2\nlevel-type=minecraft:flat\ngenerator-settings={"layers":[{"block":"minecraft:bedrock","height":1},{"block":"minecraft:dirt","height":2},{"block":"minecraft:grass_block","height":1}],"biome":"minecraft:plains"}\nmax-tick-time=-1\n'
+        }
+        doLast {
+            def result = new File(testRun.get().asFile, 'backport-result.txt')
+            if (!result.isFile() || !result.text.startsWith('BACKPORT_RUNTIME_PASSED:')) {
+                throw new GradleException('The backport runtime regression fixture did not pass')
+            }
+        }
+
+    }
+}

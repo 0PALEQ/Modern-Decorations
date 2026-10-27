@@ -1,6 +1,7 @@
 // From a Fabric version directory: gradlew runServer -I ../../shared/tests/bed-migration-runtime.gradle --console=plain ses an isolated test mod and exits during initialization, before opening any world.
 gradle.projectsEvaluated {
     def project = gradle.rootProject
+    if (project.findProperty('archives_base_name') == 'eqlib') return
     def testMod = project.layout.buildDirectory.dir('migration-runtime-mod')
     def testRun = project.layout.buildDirectory.dir('migration-runtime-run')
     def prepare = project.tasks.register('prepareBedMigrationRuntime', JavaCompile) {

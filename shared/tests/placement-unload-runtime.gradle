@@ -1,0 +1,40 @@
+// Fabric 1.20.1 / 1.21.1: gradle -p versions/fabric_1.21.1 -I shared/tests/placement-unload-runtime.gradle runServer
+gradle.projectsEvaluated {
+    def targetProject = gradle.rootProject
+    def testMod = targetProject.layout.buildDirectory.dir('placement-unload-runtime-mod')
+    def testRun = targetProject.layout.buildDirectory.dir('placement-unload-runtime-run')
+    targetProject.loom.runs.server.runDir('build/placement-unload-runtime-run')
+    def prepare = targetProject.tasks.register('preparePlacementUnloadRuntime', JavaCompile) {
+        dependsOn targetProject.tasks.named('classes')
+        javaCompiler = targetProject.javaToolchains.compilerFor(targetProject.java.toolchain)
+        source targetProject.file('../../shared/tests/runtime/PlacementUnloadRuntimeTest.java')
+        source targetProject.file('../../shared/tests/runtime/PlacementUnloadScenario.java')
+        classpath = targetProject.sourceSets.main.compileClasspath + targetProject.sourceSets.main.output
+        options.compilerArgs.add('-proc:none')
+        destinationDirectory = testMod
+        doLast {
+            new File(testMod.get().asFile, 'fabric.mod.json').text = groovy.json.JsonOutput.toJson([
+                schemaVersion: 1, id: 'mdm_placement_unload_test', version: '1.0.0',
+                entrypoints: [main: ['com.cookiecraftmods.mdm.tests.PlacementUnloadRuntimeTest']], depends: [mdm: '*']])
+        }
+    }
+    targetProject.tasks.named('runServer') {
+        dependsOn prepare
+        classpath += targetProject.files(testMod)
+        workingDir testRun.get().asFile
+        args 'nogui'
+        doFirst {
+            testRun.get().asFile.mkdirs()
+            new File(testRun.get().asFile, 'placement-unload-result.txt').delete()
+            new File(testRun.get().asFile, 'eula.txt').text = 'eula=true\n'
+            new File(testRun.get().asFile, 'server.properties').text = 'online-mode=false\nserver-port=0\nview-distance=2\nsimulation-distance=2\nlevel-type=minecraft:flat\nmax-tick-time=-1\n'
+        }
+        doLast {
+            def result = new File(testRun.get().asFile, 'placement-unload-result.txt')
+            if (!result.isFile() || !result.text.startsWith('PLACEMENT_UNLOAD_SHUTDOWN_PASSED:')) {
+                throw new GradleException('The server did not verify a precise-entity unload and clean shutdown')
+            }
+        }
+
+    }
+}

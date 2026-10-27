@@ -28,6 +28,8 @@ call :build fabric_1.21.11 "%JAVA21_HOME%"
 call :build fabric_26.1.2 "%JAVA25_HOME%"
 call :build fabric_26.2 "%JAVA25_HOME%"
 call :build fabric_26.3 "%JAVA25_HOME%"
+call :build forge_1.16.5 "%JAVA17_HOME%"
+call :build forge_1.19.2 "%JAVA17_HOME%"
 call :build forge_1.20.1 "%JAVA17_HOME%"
 call :build neoforge_1.21.1 "%JAVA21_HOME%"
 call :build neoforge_1.21.11 "%JAVA25_HOME%"
@@ -52,7 +54,7 @@ set "TARGET_DIR=%PROJECT_ROOT%versions\%TARGET%"
 echo ============================================================
 echo Building %TARGET% with %JAVA_HOME%
 echo ============================================================
-call "%TARGET_DIR%\gradlew.bat" -p "%TARGET_DIR%" clean build --no-daemon --console=plain
+call "%TARGET_DIR%\gradlew.bat" -p "%TARGET_DIR%" clean build --no-daemon --no-watch-fs --console=plain
 if errorlevel 1 (
     echo FAILED: %TARGET%
     set "FAILED_TARGETS=!FAILED_TARGETS! %TARGET%"

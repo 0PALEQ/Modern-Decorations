@@ -1,4 +1,7 @@
 package com.cookiecraftmods.mdm.block;
+import com.cookiecraftmods.eqlib.block.FurnitureFootprint;
+import com.cookiecraftmods.eqlib.block.MulticellFurniture;
+import com.cookiecraftmods.eqlib.placement.PrecisePlacement;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -59,7 +62,7 @@ public abstract class PixelHorizontalFurnitureBlock extends TransparentHorizonta
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockState state = defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-        if (!com.cookiecraftmods.mdm.placement.PrecisePlacement.isPlanning() && context.getPlayer() != null && context.getPlayer().isShiftKeyDown()) {
+        if (!com.cookiecraftmods.eqlib.placement.PrecisePlacement.isPlanning() && context.getPlayer() != null && context.getPlayer().isShiftKeyDown()) {
             Vec3 hit = context.getClickLocation();
             BlockPos pos = context.getClickedPos();
             state = snapToSurface(state, context.getClickedFace().getAxis(),

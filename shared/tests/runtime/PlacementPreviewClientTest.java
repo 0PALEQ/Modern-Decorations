@@ -1,5 +1,5 @@
-import com.cookiecraftmods.mdm.client.placement.PlacementPreview;
-import com.cookiecraftmods.mdm.block.FurnitureFootprint;
+import com.cookiecraftmods.eqlib.client.placement.PlacementPreview;
+import com.cookiecraftmods.eqlib.block.FurnitureFootprint;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;

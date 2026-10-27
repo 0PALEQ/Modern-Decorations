@@ -1,4 +1,5 @@
 package com.cookiecraftmods.mdm.mixin;
+import com.cookiecraftmods.eqlib.placement.PrecisePlacement;
 
 import com.cookiecraftmods.mdm.block.RunningSinkBlock;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -46,7 +47,7 @@ public abstract class FurnitureWaterParticleMixin extends Particle {
     @Unique
     private boolean mdm$isOutlet(BlockPos pos) {
         BlockState state = level.getBlockState(pos);
-        var offset = com.cookiecraftmods.mdm.placement.PrecisePlacement.offset(level, pos);
+        var offset = com.cookiecraftmods.eqlib.placement.PrecisePlacement.offset(level, pos);
         return state.getBlock() instanceof RunningSinkBlock sink
                 && sink.isWaterOutlet(state, pos, x - offset.x, y - offset.y, z - offset.z);
     }

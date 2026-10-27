@@ -1,6 +1,7 @@
 package com.cookiecraftmods.mdm.init;
+import com.cookiecraftmods.eqlib.block.FurniturePartBlock;
 
-import com.cookiecraftmods.mdm.block.SeatBlock;
+import com.cookiecraftmods.eqlib.block.SeatBlock;
 import com.cookiecraftmods.mdm.registry.ModRegistryEntry;
 import com.cookiecraftmods.mdm.registry.RegistryProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -12,6 +13,23 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class MdmModBlocks {
+    private static net.minecraft.world.level.block.Block eqlibHelper() { return FURNITURE_PART.get(); }
+    static {
+        com.cookiecraftmods.eqlib.api.FurnitureApi.register("com.cookiecraftmods.mdm.block.", MdmModBlocks::eqlibHelper,
+            state -> state.is(net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.BLOCK, net.minecraft.resources.Identifier.fromNamespaceAndPath("mdm", "sittable"))),
+            state -> state.getBlock() instanceof PixelHorizontalFurnitureBlock ? PixelHorizontalFurnitureBlock.modelOffset(state) : net.minecraft.world.phys.Vec3.ZERO,
+            (a, aPos, b, bPos) -> {
+        String aName = a.getBlock().getClass().getSimpleName();
+        String bName = b.getBlock().getClass().getSimpleName();
+        if (!aName.contains("FoyerWallUnit") || !bName.contains("FoyerWallUnit")) return false;
+        boolean aTop = aName.contains("Top");
+        boolean bTop = bName.contains("Top");
+        if (aTop == bTop || !aPos.equals(aTop ? bPos.above() : bPos.below())) return false;
+        if (!aName.replace("Top", "").replace("Bottom", "").equals(bName.replace("Top", "").replace("Bottom", ""))) return false;
+        return a.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING) == b.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING);
+            });
+    }
+
     private static final List<ModRegistryEntry<Block>> ENTRIES = new ArrayList<>();
     public static final ModRegistryEntry<Block> BLACK_MODERN_FRIDGE_1;
     public static final ModRegistryEntry<Block> FURNITURE_PART;
@@ -359,7 +377,7 @@ public class MdmModBlocks {
     public static final ModRegistryEntry<Block> TALL_MIRROR;
 
     static {
-        FURNITURE_PART = register("furniture_part", FurniturePartBlock::new);
+        FURNITURE_PART = register("furniture_part", () -> new FurniturePartBlock(com.cookiecraftmods.mdm.registry.RegistryProperties.block()));
         BLACK_MODERN_FRIDGE_1 = register("black_modern_fridge_1", BlackModernFridge1Block::new);
         LEAFLESS_BAMBOO_DECORATION_1 = register("leafless_bamboo_decoration_1", LeaflessBambooDecoration1Block::new);
         LEAFLESS_BAMBOO_DECORATION_2 = register("leafless_bamboo_decoration_2", LeaflessBambooDecoration2Block::new);
@@ -704,33 +722,33 @@ public class MdmModBlocks {
         SHOE_RACK_3 = register("shoe_rack_3", ShoeRack3Block::new);
         TALL_MIRROR = register("tall_mirror", TallMirrorBlock::new);
 
-        SeatBlock.setSeatHeightPixels(FOYER_BENCH_WENGE, 13.0D);
-        SeatBlock.setSeatHeightPixels(COUCHLEFT, 13.0D);
-        SeatBlock.setSeatHeightPixels(SOFA, 13.0D);
-        SeatBlock.setSeatHeightPixels(LIGHT_SOFA, 13.0D);
-        SeatBlock.setSeatHeightPixels(LIGHT_COUCH_LEFT, 13.0D);
-        SeatBlock.setSeatHeightPixels(GREY_COUCH_LEFT, 14.0D);
-        SeatBlock.setSeatHeightPixels(FOYER_BENCH, 13.0D);
-        SeatBlock.setSeatHeightPixels(GREY_COUCH_RIGHT, 14.0D);
-        SeatBlock.setSeatHeightPixels(COUCH_RIGHT, 13.0D);
-        SeatBlock.setSeatHeightPixels(LIGHT_COUCH_RIGHT, 13.0D);
-        SeatBlock.setSeatHeightPixels(SET_1_CHAIR, 16.0D);
-        SeatBlock.setSeatHeightPixels(FOYER_BENCH_WHITE, 13.0D);
-        SeatBlock.setSeatHeightPixels(OFFICE_SET_1_CHAIR, 16.0D);
-        SeatBlock.setSeatHeightPixels(GREY_COUCH_CORNER, 14.0D);
-        SeatBlock.setSeatHeightPixels(BLACK_ARMCHAIR, 15.0D);
-        SeatBlock.setSeatHeightPixels(LIGHT_GRAY_COUCH_LEFT, 13.0D);
-        SeatBlock.setSeatHeightPixels(GREY_COUCH_MIDDLE, 14.0D);
-        SeatBlock.setSeatHeightPixels(OUTDOOR_COUCH, 15.0D);
-        SeatBlock.setSeatHeightPixels(LIGHT_GREY_COUCH_RIGHT, 13.0D);
-        SeatBlock.setSeatHeightPixels(LIGHT_GREY_COUCH_MIDDLE, 13.0D);
-        SeatBlock.setSeatHeightPixels(KITCHEN_SET_3_BAR_CHAIR, 19.0D);
-        SeatBlock.setSeatHeightPixels(FOYER_BENCH_DARK, 13.0D);
-        SeatBlock.setSeatHeightPixels(COUCHMIDDLE, 13.0D);
-        SeatBlock.setSeatHeightPixels(LIGHT_COUCH_MIDDLE, 13.0D);
-        SeatBlock.setSeatHeightPixels(WHITE_ARMCHAIR, 15.0D);
-        SeatBlock.setSeatHeightPixels(GREY_SOFA, 20.0D);
-        SeatBlock.setSeatHeightPixels(POUF, 12.0D);
+        SeatBlock.setSeatHeightPixels(FOYER_BENCH_WENGE.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(COUCHLEFT.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(SOFA.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(LIGHT_SOFA.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(LIGHT_COUCH_LEFT.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(GREY_COUCH_LEFT.getId(), 14.0D);
+        SeatBlock.setSeatHeightPixels(FOYER_BENCH.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(GREY_COUCH_RIGHT.getId(), 14.0D);
+        SeatBlock.setSeatHeightPixels(COUCH_RIGHT.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(LIGHT_COUCH_RIGHT.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(SET_1_CHAIR.getId(), 16.0D);
+        SeatBlock.setSeatHeightPixels(FOYER_BENCH_WHITE.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(OFFICE_SET_1_CHAIR.getId(), 16.0D);
+        SeatBlock.setSeatHeightPixels(GREY_COUCH_CORNER.getId(), 14.0D);
+        SeatBlock.setSeatHeightPixels(BLACK_ARMCHAIR.getId(), 15.0D);
+        SeatBlock.setSeatHeightPixels(LIGHT_GRAY_COUCH_LEFT.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(GREY_COUCH_MIDDLE.getId(), 14.0D);
+        SeatBlock.setSeatHeightPixels(OUTDOOR_COUCH.getId(), 15.0D);
+        SeatBlock.setSeatHeightPixels(LIGHT_GREY_COUCH_RIGHT.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(LIGHT_GREY_COUCH_MIDDLE.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(KITCHEN_SET_3_BAR_CHAIR.getId(), 19.0D);
+        SeatBlock.setSeatHeightPixels(FOYER_BENCH_DARK.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(COUCHMIDDLE.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(LIGHT_COUCH_MIDDLE.getId(), 13.0D);
+        SeatBlock.setSeatHeightPixels(WHITE_ARMCHAIR.getId(), 15.0D);
+        SeatBlock.setSeatHeightPixels(GREY_SOFA.getId(), 20.0D);
+        SeatBlock.setSeatHeightPixels(POUF.getId(), 12.0D);
     }
 
     private static ModRegistryEntry<Block> register(String name, Supplier<? extends Block> factory) {

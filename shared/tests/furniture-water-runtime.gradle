@@ -1,5 +1,6 @@
 gradle.projectsEvaluated {
     def project = gradle.rootProject
+    if (project.findProperty('archives_base_name') == 'eqlib') return
     def testMod = project.layout.buildDirectory.dir('water-runtime-mod')
     def testRun = project.layout.buildDirectory.dir('water-runtime-run')
     def prepare = project.tasks.register('prepareFurnitureWaterRuntime', JavaCompile) {

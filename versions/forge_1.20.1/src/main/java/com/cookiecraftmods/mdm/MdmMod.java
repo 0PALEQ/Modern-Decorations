@@ -1,4 +1,5 @@
 package com.cookiecraftmods.mdm;
+import com.cookiecraftmods.eqlib.placement.PrecisePlacement;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -33,7 +34,7 @@ import com.cookiecraftmods.mdm.init.MdmModTabs;
 import com.cookiecraftmods.mdm.init.MdmModItems;
 import com.cookiecraftmods.mdm.init.MdmModBlocks;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
-import com.cookiecraftmods.mdm.block.SeatBlock;
+import com.cookiecraftmods.eqlib.block.SeatBlock;
 import com.cookiecraftmods.mdm.block.LightSwitch;
 import com.cookiecraftmods.mdm.block.SingleBedBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -82,9 +83,6 @@ public class MdmMod {
 	@SubscribeEvent
 	public void tick(TickEvent.ServerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
-			for (var level : event.getServer().getAllLevels()) {
-				SeatBlock.removeEmptySeats(level);
-			}
 			int currentTick = event.getServer().getTickCount();
 			IntObjectPair<Runnable> work;
 			while ((work = workToBeScheduled.poll()) != null) {
@@ -98,7 +96,7 @@ public class MdmMod {
 
 	@SubscribeEvent
 	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        if (event.getEntity().isShiftKeyDown() && event.getEntity().getItemInHand(event.getHand()).getItem() instanceof net.minecraft.world.item.BlockItem held && com.cookiecraftmods.mdm.placement.PrecisePlacement.supported(held.getBlock())) return;
+        if (event.getEntity().isShiftKeyDown() && event.getEntity().getItemInHand(event.getHand()).getItem() instanceof net.minecraft.world.item.BlockItem held && com.cookiecraftmods.eqlib.placement.PrecisePlacement.supported(held.getBlock())) return;
 		var state = event.getLevel().getBlockState(event.getPos());
         var bedResult = SingleBedBlock.tryUse(state, event.getLevel(), event.getPos(), event.getEntity());
         if (bedResult.consumesAction()) {
@@ -113,6 +111,14 @@ public class MdmMod {
             return;
         }
 		if (SeatBlock.use(state, event.getLevel(), event.getPos(), event.getEntity()).consumesAction()) {
+            // Mounting an armor stand does not align the rider with its rotation.
+            if (event.getEntity() instanceof net.minecraft.server.level.ServerPlayer && event.getEntity().isPassenger() && state.hasProperty(net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING)) {
+                net.minecraft.server.level.ServerPlayer rider = (net.minecraft.server.level.ServerPlayer) event.getEntity();
+                float yaw = state.getValue(net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING).toYRot();
+                rider.connection.teleport(rider.getX(), rider.getY(), rider.getZ(), yaw, rider.getXRot());
+                rider.setYHeadRot(yaw);
+                rider.setYBodyRot(yaw);
+            }
 			event.setCanceled(true);
 		}
 	}

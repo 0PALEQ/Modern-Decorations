@@ -1,8 +1,7 @@
-/* *    MCreator note: This file will be REGENERATED on each build. */
-/* *    opaleq note: no more mcreator lmao. */
 package com.cookiecraftmods.mdm.init;
+import com.cookiecraftmods.eqlib.block.FurniturePartBlock;
 
-import com.cookiecraftmods.mdm.block.SeatBlock;
+import com.cookiecraftmods.eqlib.block.SeatBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.minecraft.world.level.block.Block;
@@ -10,6 +9,23 @@ import com.cookiecraftmods.mdm.block.*;
 import com.cookiecraftmods.mdm.MdmMod;
 
 public class MdmModBlocks {
+    private static net.minecraft.world.level.block.Block eqlibHelper() { return FURNITURE_PART.get(); }
+    static {
+        com.cookiecraftmods.eqlib.api.FurnitureApi.register("com.cookiecraftmods.mdm.block.", MdmModBlocks::eqlibHelper,
+            state -> state.is(net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.BLOCK, net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("mdm", "sittable"))),
+            state -> state.getBlock() instanceof PixelHorizontalFurnitureBlock ? PixelHorizontalFurnitureBlock.modelOffset(state) : net.minecraft.world.phys.Vec3.ZERO,
+            (a, aPos, b, bPos) -> {
+        String aName = a.getBlock().getClass().getSimpleName();
+        String bName = b.getBlock().getClass().getSimpleName();
+        if (!aName.contains("FoyerWallUnit") || !bName.contains("FoyerWallUnit")) return false;
+        boolean aTop = aName.contains("Top");
+        boolean bTop = bName.contains("Top");
+        if (aTop == bTop || !aPos.equals(aTop ? bPos.above() : bPos.below())) return false;
+        if (!aName.replace("Top", "").replace("Bottom", "").equals(bName.replace("Top", "").replace("Bottom", ""))) return false;
+        return a.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING) == b.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING);
+            });
+    }
+
     public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(MdmMod.MODID);
     public static final DeferredBlock<Block> BLACK_MODERN_FRIDGE_1;
     public static final DeferredBlock<Block> FURNITURE_PART;
@@ -357,7 +373,7 @@ public class MdmModBlocks {
     public static final DeferredBlock<Block> TALL_MIRROR;
 
     static {
-        FURNITURE_PART = REGISTRY.register("furniture_part", FurniturePartBlock::new);
+        FURNITURE_PART = REGISTRY.register("furniture_part", () -> new FurniturePartBlock(net.minecraft.world.level.block.state.BlockBehaviour.Properties.of()));
         BLACK_MODERN_FRIDGE_1 = REGISTRY.register("black_modern_fridge_1", BlackModernFridge1Block::new);
         LEAFLESS_BAMBOO_DECORATION_1 = REGISTRY.register("leafless_bamboo_decoration_1", LeaflessBambooDecoration1Block::new);
         LEAFLESS_BAMBOO_DECORATION_2 = REGISTRY.register("leafless_bamboo_decoration_2", LeaflessBambooDecoration2Block::new);

@@ -41,3 +41,10 @@ description="Mod that adds decoration furniture and etc."
 
 # Start of user code block dependencies configuration
 # End of user code block dependencies configuration
+
+[[dependencies.mdm]]
+modId="eqlib"
+type="required"
+versionRange="[1.0.3,2.0.0)"
+ordering="AFTER"
+side="BOTH"

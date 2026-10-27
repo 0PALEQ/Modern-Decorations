@@ -1,4 +1,5 @@
 package com.cookiecraftmods.mdm;
+import com.cookiecraftmods.eqlib.placement.PrecisePlacement;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -32,7 +33,7 @@ import com.cookiecraftmods.mdm.init.MdmModTabs;
 import com.cookiecraftmods.mdm.init.MdmModItems;
 import com.cookiecraftmods.mdm.init.MdmModBlocks;
 import com.cookiecraftmods.mdm.init.MdmModBlockEntities;
-import com.cookiecraftmods.mdm.block.SeatBlock;
+import com.cookiecraftmods.eqlib.block.SeatBlock;
 import com.cookiecraftmods.mdm.block.LightSwitch;
 import com.cookiecraftmods.mdm.block.SingleBedBlock;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -102,7 +103,7 @@ public class MdmMod {
 
 	@SubscribeEvent
 	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        if (event.getEntity().isShiftKeyDown() && event.getEntity().getItemInHand(event.getHand()).getItem() instanceof net.minecraft.world.item.BlockItem held && com.cookiecraftmods.mdm.placement.PrecisePlacement.supported(held.getBlock())) return;
+        if (event.getEntity().isShiftKeyDown() && event.getEntity().getItemInHand(event.getHand()).getItem() instanceof net.minecraft.world.item.BlockItem held && com.cookiecraftmods.eqlib.placement.PrecisePlacement.supported(held.getBlock())) return;
 		var state = event.getLevel().getBlockState(event.getPos());
         var bedResult = SingleBedBlock.tryUse(state, event.getLevel(), event.getPos(), event.getEntity());
         if (bedResult.consumesAction()) {
@@ -121,11 +122,5 @@ public class MdmMod {
 		}
 	}
 
-	@SubscribeEvent
-	public void removeEmptySeats(net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) {
-		for (var level : event.getServer().getAllLevels()) {
-			SeatBlock.removeEmptySeats(level);
-		}
-	}
 
 }

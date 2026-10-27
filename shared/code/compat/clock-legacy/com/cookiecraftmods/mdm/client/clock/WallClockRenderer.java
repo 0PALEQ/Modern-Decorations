@@ -1,5 +1,9 @@
 package com.cookiecraftmods.mdm.client.clock;
 
+import com.cookiecraftmods.eqlib.core.clock.ClockTime;
+import com.cookiecraftmods.eqlib.core.clock.ClockHandMesh;
+import com.cookiecraftmods.eqlib.placement.PrecisePlacement;
+
 import com.cookiecraftmods.mdm.block.HorizontalFurnitureBlock;
 import com.cookiecraftmods.mdm.block.WoodenWallClockBlock;
 import com.cookiecraftmods.mdm.block.entity.WallClockBlockEntity;
@@ -21,7 +25,7 @@ public final class WallClockRenderer implements BlockEntityRenderer<WallClockBlo
         boolean wooden = clock.getBlockState().getBlock() instanceof WoodenWallClockBlock;
         long time = ClockPlatform.time(clock);
         pose.pushPose();
-        var placementOffset = com.cookiecraftmods.mdm.placement.PrecisePlacement.offset(clock.getLevel(), clock.getBlockPos());
+        var placementOffset = com.cookiecraftmods.eqlib.placement.PrecisePlacement.offset(clock.getLevel(), clock.getBlockPos());
         pose.translate(placementOffset.x, placementOffset.y, placementOffset.z);
         pose.translate(0.5, 0.5, 0.5);
         pose.mulPose(Axis.YP.rotationDegrees(-clock.getBlockState()

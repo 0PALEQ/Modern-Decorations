@@ -1,0 +1,100 @@
+buildscript {
+    repositories { maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }; maven { url = 'https://maven.minecraftforge.net/' }; mavenCentral() }
+    dependencies { classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT' }
+}
+plugins {
+    id 'net.minecraftforge.gradle' version '6.0.54'
+
+}
+version = project.mod_version
+group = project.maven_group
+base { archivesName = project.archives_base_name }
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+repositories { mavenCentral(); maven { url = 'https://repo.spongepowered.org/repository/maven-public/' } }
+minecraft {
+    mappings channel: 'official', version: '1.16.5'
+    runs {
+        client { workingDirectory project.file('run/client'); mods { mdm { source sourceSets.main } } }
+        server { workingDirectory project.file('run/server'); mods { mdm { source sourceSets.main } } }
+    }
+}
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+sourceSets.main.resources {
+    srcDir rootProject.file('../../shared/resources/common')
+    srcDir rootProject.file('../../shared/resources/compat/minecraft-1.20.1')
+    srcDir rootProject.file('../../shared/resources/compat/furniture-parts-through-1.21.1')
+    srcDir rootProject.file('../../shared/resources/compat/item-transforms-through-1.21.11')
+    srcDir rootProject.file('../../shared/resources/compat/curtain-states-standard')
+    srcDir rootProject.file('../../shared/resources/compat/block-models-legacy-rendering')
+}
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/mods.toml') { expand 'mod_version': project.version }
+    filesMatching('pack.mcmeta') { filter { line -> line.replace('"pack_format": 15', '"pack_format": 6') } }
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.compilerArgs += ['-Xmaxerrs', '1000'] }
+jar { manifest.attributes 'MixinConfigs': 'mdm.mixins.json'; finalizedBy 'reobfJar' }
+apply from: rootProject.file('../../shared/gradle/model-mappings.gradle')
+
+
+apply plugin: 'org.spongepowered.mixin'
+mixin { add sourceSets.main, 'mdm.refmap.json'; config 'mdm.mixins.json' }
+
+// MixinGradle writes these outside the classes directory. Restore them with
+// cached compilation results so clean builds still package the runtime refmap.
+tasks.named('compileJava', JavaCompile) {
+    outputs.file(layout.buildDirectory.file('tmp/compileJava/compileJava-refmap.json'))
+            .withPropertyName('mixinRefmap')
+    outputs.file(layout.buildDirectory.file('tmp/compileJava/compileJava-mappings.tsrg'))
+            .withPropertyName('mixinMappings')
+}
+tasks.named('jar', Jar) {
+    from(layout.buildDirectory.file('tmp/compileJava/compileJava-refmap.json')) {
+        rename { 'mdm.refmap.json' }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+dependencies { annotationProcessor 'com.github.bsideup.jabel:jabel-javac-plugin:1.0.0' }
+tasks.withType(JavaCompile).configureEach { options.release = 8; javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(17) } }
+
+
+
+processResources { duplicatesStrategy = DuplicatesStrategy.EXCLUDE }
+if (providers.gradleProperty('smokeTest').isPresent()) {
+    sourceSets.main.java.srcDir('src/smoke/java')
+    minecraft.runs.server {
+        workingDirectory project.file('build/smoke-run')
+        args '--nogui'
+    }
+    tasks.matching { it.name == 'runServer' }.configureEach {
+        doFirst {
+            def dir = file('build/smoke-run')
+            dir.mkdirs()
+            new File(dir, 'eula.txt').text = 'eula=true\n'
+            new File(dir, 'server.properties').text = 'online-mode=false\nserver-port=0\nview-distance=2\nlevel-type=flat\nmax-tick-time=-1\n'
+            delete new File(dir, 'smoke-result.txt')
+        }
+        doLast {
+            if (!file('build/smoke-run/smoke-result.txt').isFile()) throw new GradleException('Backport smoke test did not finish')
+        }
+    }
+}
+
+if (providers.gradleProperty('smokeTest').isPresent()) {
+    minecraft.runs.client { workingDirectory project.file('build/client-smoke-run') }
+    tasks.matching { it.name == 'runClient' }.configureEach {
+        doFirst { delete file('build/client-smoke-run/client-smoke-result.txt') }
+        doLast { if (!file('build/client-smoke-run/client-smoke-result.txt').isFile()) throw new GradleException('Client smoke test did not finish') }
+    }
+}
+tasks.withType(org.gradle.api.tasks.bundling.AbstractArchiveTask).configureEach {
+    archiveVersion = "${project.mod_version}-${project.loader_name}-${project.minecraft_version}"
+}
+apply from: rootProject.file('../../shared/gradle/validate-recipes.gradle')
+
+apply from: rootProject.file('../../shared/gradle/eqlib.gradle')

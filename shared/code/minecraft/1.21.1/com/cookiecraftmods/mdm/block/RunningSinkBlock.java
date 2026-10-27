@@ -1,4 +1,5 @@
 package com.cookiecraftmods.mdm.block;
+import com.cookiecraftmods.eqlib.placement.PrecisePlacement;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -52,7 +53,7 @@ public abstract class RunningSinkBlock extends HorizontalFurnitureBlock {
         if (!state.getValue(RUNNING)) {
             return;
         }
-        var offset = com.cookiecraftmods.mdm.placement.PrecisePlacement.offset(level, pos);
+        var offset = com.cookiecraftmods.eqlib.placement.PrecisePlacement.offset(level, pos);
         for (double[] source : outlets) {
             double[] outlet = WaterOutlets.rotate(source, state.getValue(FACING));
             level.sendParticles(ParticleTypes.FALLING_WATER,

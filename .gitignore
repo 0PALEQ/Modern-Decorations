@@ -7,9 +7,48 @@ out/
 *.iml
 *.log
 logs/
+diagnostics
 
 versions/*/.gradle/
 versions/*/.idea/
 versions/*/build/
 versions/*/run/
 versions/*/out/
+
+# Universal library runtime cache
+.eqlib/
+
+# Local development mods and disabled test bundles
+dev-runtime-libs/
+dev-runtime-mods/
+disabled-run-mods/
+/versions/*/mods/
+/versions/*/*.jar
+
+# Local editor metadata
+.eclipse/
+.settings/
+.classpath
+.project
+
+# Python caches and temporary files
+__pycache__/
+*.py[cod]
+*.tmp
+*.bak
+*~
+
+# Crash reports, JVM dumps, and operating-system metadata
+crash-reports/
+hs_err_pid*
+replay_pid*
+*.hprof
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
+!.env.sample

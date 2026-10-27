@@ -1,0 +1,100 @@
+plugins {
+    id 'net.neoforged.moddev.legacyforge' version '2.0.141'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+tasks.withType(org.gradle.api.tasks.bundling.AbstractArchiveTask).configureEach {
+    archiveVersion = "${project.mod_version}-${project.loader_name}-${project.minecraft_version}"
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+def bedMigrationRefmap = mixin.add(sourceSets.main, 'mdm.refmap.json')
+mixin.config 'mdm.mixins.json'
+
+tasks.named('jar') {
+    from bedMigrationRefmap
+    manifest.attributes 'MixinConfigs': 'mdm.mixins.json'
+}
+
+legacyForge {
+    version = "${project.minecraft_version}-${project.forge_version}"
+
+    runs {
+        client {
+            client()
+            gameDirectory = file('run/client')
+        }
+        server {
+            server()
+            gameDirectory = file('run/server')
+        }
+
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        "${project.mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+sourceSets.main.resources {
+    srcDir rootProject.file('../../shared/resources/common')
+}
+
+
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/mods.toml') {
+        expand 'mod_version': project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 17
+    options.encoding = 'UTF-8'
+}
+
+java {
+    withSourcesJar()
+}
+
+apply from: rootProject.file('../../shared/gradle/shared-sources.gradle')
+
+apply from: rootProject.file('../../shared/gradle/validate-recipes.gradle')
+sourceSets.main.resources {
+    srcDir rootProject.file('../../shared/resources/compat/minecraft-1.20.1')
+    srcDir rootProject.file('../../shared/resources/compat/furniture-parts-through-1.21.1')
+}
+
+apply from: rootProject.file('../../shared/gradle/model-mappings.gradle')
+
+
+// Minecraft 1.19.2 uses resource pack format 9.
+tasks.named('processResources') {
+    filesMatching('pack.mcmeta') {
+        filter { line -> line.replace('"pack_format": 15', '"pack_format": 9') }
+    }
+}
+
+apply from: rootProject.file('../../shared/gradle/eqlib.gradle')
